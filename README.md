@@ -10,6 +10,6 @@ CREATE TABLE maps (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 IN
 CREATE INDEX mapname ON maps(mapname);
 CREATE INDEX sha1 on maps(sha1);
 .mode csv
-.import processed/maps.csv maps
+.import --skip 1 processed/maps.csv maps
 .exit
 ```
