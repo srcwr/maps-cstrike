@@ -21,8 +21,8 @@ with open(csvname, "w", newline="") as csvfile:
         with open(filename, "rb") as f:
             mm = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
             vbspver = mm.read(5)
-            if vbspver != b'VBSP\x19' and vbspver != b'VBSP\x20':
-                if vbspver == b'VBSP\x21':
+            if vbspver != b'VBSP\x13' and vbspver != b'VBSP\x14':
+                if vbspver == b'VBSP\x15':
                     print("skipping CS:GO map " + filename)
                 else:
                     print("not a CS:S map? " + filename)
