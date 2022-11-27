@@ -12,6 +12,8 @@ except:
 reader = csv.reader(f)
 
 for row in reader:
+    if row[1] == "filesize":
+        continue
     name = row[0]
     if not name in things:
         things[name] = []
