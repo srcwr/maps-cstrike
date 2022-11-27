@@ -23,9 +23,11 @@ with open(csvname, "w", newline="") as csvfile:
             vbspver = mm.read(5)
             if vbspver != b'VBSP\x13' and vbspver != b'VBSP\x14':
                 if vbspver == b'VBSP\x15':
-                    print("skipping CS:GO map " + filename)
+                    print("==== skipping CS:GO map " + filename)
+                elif vbspver[:4] == b'\x1E\x00\x00\x00' or vbspver[:4] == b'\x1D\x00\x00\x00':
+                    print("==== skipping GoldSrc map? " + filename)
                 else:
-                    print("not a CS:S map? " + filename)
+                    print("==== not a CS:S map? " + filename)
                 continue
             mm.seek(0)
             digest = hashlib.sha1(mm).hexdigest()
