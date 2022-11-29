@@ -8,8 +8,8 @@ import os
 import shutil
 from pathlib import Path
 
-csvname = "unprocessed/nameofthing.csv"
-mapsfolder = "../folder/with/maps"
+csvname = "unprocessed/misc.csv"
+mapsfolder = "../todo"
 
 if os.path.exists(csvname):
     raise Exception("DONT OVERWRITE THAT CSV!")
