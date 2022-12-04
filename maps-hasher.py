@@ -7,8 +7,9 @@ import mmap
 import os
 import shutil
 from pathlib import Path
+from stat import *
 
-csvname = "unprocessed/misc.csv"
+csvname = "unprocessed/misc2.csv"
 mapsfolder = "../todo"
 
 if os.path.exists(csvname):
@@ -17,7 +18,10 @@ if os.path.exists(csvname):
 with open(csvname, "w", newline="") as csvfile:
     mycsv = csv.writer(csvfile)
     for filename in glob.glob(mapsfolder + "/**/*.bsp", recursive=True):
-        filesize = os.stat(filename).st_size
+        statttt = os.stat(filename)
+        if S_ISDIR(statttt.st_mode):
+            continue
+        filesize = statttt.st_size
         with open(filename, "rb") as f:
             mm = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
             vbspver = mm.read(5)
