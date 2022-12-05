@@ -41,7 +41,7 @@ cur.executemany("INSERT INTO maps_unfiltered VALUES(?,?,?,?);", [u.split(",") fo
 cur.executemany("INSERT INTO maps_canon VALUES(?,?,?,?);", [u.split(",") for u in unique])
 
 with open("canon.csv") as f:
-    things = [line.lower().strip().split(",") for line in f]
+    things = [line.lower().strip().split(",")[:2] for line in f]
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
 
