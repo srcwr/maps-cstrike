@@ -43,6 +43,11 @@ bhop_cyber,f9f9bebf7280074570e9125d66324458c2ed381f,latest on gamebanana
 bhop_dark_waters,6cdd86b44039a179b860e3261aee9198313cf45f,latest
 bhop_degree,e719b20a3cf21c4f0aa1d3ed4ad49fbea7911013,latest on gamebanana
 bhop_despondent,3ab7981d4cdf8d19f4d935251207d09b167948a5,latest on gamebanana
+bhop_devvy,3c716186ae4ce101b81fe5c36e4f905932529df6,latest on gamebanana (v05)
+bhop_diremaul,0a163f1a5607c87aa4264cd352ec031d11d4bba0,latest on gamebanana (v2 with booster fix)
+bhop_dual_fast,c7189a701623b0e18cf87270c5842c0ae51438ba,original version (the version with the func_buttons you need to stripper out)
+bhop_dusk,d9583ddb0c5dce36d9ae5f7c69f5a9c01550f2fe,fixed textures version (the version on gamebanana (v1.1) has fucked textures)
+bhop_dust_v2,53c3df856a7a96d220b968d0a1c0255da18fd5d9,original/gamebanana version. the chicago trikz bb version removes the func_illusionary entities
 bhop_eject,448256ae3d1bec3f6fbf8441fb58804f15257f75,latest on gamebanana
 bhop_epiphany2,30272187b8cc9af949a7279c666b7bde39009238,latest on gamebanana (first level skip fix)
 bhop_evolintent_b,b8f3c23b899a616ef417706387efad6bbf9fdf70,latest on gamebanana
@@ -58,7 +63,11 @@ bhop_hextra-f,189f7292962d84a2c9591e6b6d8b9b63b912094f,latest on gamebanana
 bhop_hyable,012f5fd11d3c80dc6e46c89217b65eccec102603,latest on gamebanana
 bhop_illusions,51c7162e8607479083fa46d4d1b5d35eb720fa98,latest on gamebanana
 bhop_jurfs_v2,bfc28ac5689bafcf59b7d1b6e69abbedafbfb9d6,latest on gamebanana
+bhop_lush,9c509e0f69a7341ce27c9e8740b97bbb65d06f07,latest on gamebanana
 bhop_mall_css,3a206318d1ccb846759f84756355ff2615205c46,latest on gamebanana (assets compressed)
+bhop_metric,6583474096a36f500fc75052a1ec3cb8cd0636ba,latest on gamebanana
+bhop_miansai,60f82d20655313d28dded48c84856044a4f37cf0,fixed version of the port to css
+bhop_p09,28d2a37073aba96f90fac20d904389a8511179a4,latest on gamebanana (v2)
 bhop_sumptuous,c0d4cc19f442e5aa53e142842f1b7cc139527a79,latest on gamebanana
 bhop_tedious,861b2471296a80cc83debf560bc9f85ddd6f25ae,latest on gamebanana (the other version has broken textures)
 bhop_the_journey_lyned6,3cab4c49737d682dfb0a564efcf2da87c315e0cb,latest on gamebanana
