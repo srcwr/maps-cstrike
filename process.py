@@ -101,5 +101,5 @@ def create_thing(table, outfilename, canon):
     with open("index_bottom.html", encoding="utf-8") as f:
         write_mini(f"processed/{outfilename}", index_html + f.read())
 
-create_thing("maps_unfiltered", "unfiltered.html", False)
-create_thing("maps_canon", "canon.html", True)
+create_thing("maps_unfiltered", "hashed/index.html", False)
+create_thing("maps_canon", "maps/index.html", True)
