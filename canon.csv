@@ -33,6 +33,7 @@ bhop_catharsis,126d929bf487213552ef476f44b095dbca0fd8b3
 bhop_cellerman_fix,676ade8f019bffef0fdabe84da4ae88cc6eb9672
 bhop_cewl,6e63f9af029567182c19e3e8b49cd9a9883afb34
 bhop_challenge,08dbc1402af2ea29b67f0025fc74ad1d7f42efa9,latest on gamebanana
+bhop_classicaux,8fa26dd4999e797108117dbe78dd0ff61d2694c3,latest on gamebanana (update for a model causing errors)
 bhop_cleaned,b1a68a7f652ed0afdeaa112ea851868e17100b79
 bhop_clove,ac8317979181238a3e3ec17cf36715b57b260c87
 bhop_crutle_css,d5f2dee34f6db22520e116b19f5a754a7f27ed63
@@ -49,6 +50,7 @@ bhop_diremaul,0a163f1a5607c87aa4264cd352ec031d11d4bba0,latest on gamebanana (v2 
 bhop_dual_fast,c7189a701623b0e18cf87270c5842c0ae51438ba,original version (the version with the func_buttons you need to stripper out)
 bhop_dusk,d9583ddb0c5dce36d9ae5f7c69f5a9c01550f2fe,fixed textures version (the version on gamebanana (v1.1) has fucked textures)
 bhop_dust_v2,53c3df856a7a96d220b968d0a1c0255da18fd5d9,original/gamebanana version. the chicago trikz bb version removes the func_illusionary entities
+bhop_easyhop_benghaziedition,5f9ab07f986ccb5fedf96dfc2de8d11f00429027,fixes a missing texture apparently
 bhop_eject,448256ae3d1bec3f6fbf8441fb58804f15257f75,latest on gamebanana
 bhop_epiphany2,30272187b8cc9af949a7279c666b7bde39009238,latest on gamebanana (first level skip fix)
 bhop_evolintent_b,b8f3c23b899a616ef417706387efad6bbf9fdf70,latest on gamebanana
@@ -79,6 +81,7 @@ bhop_theendofabeautifulera,634e049af7745723806d16c6bfa704dec1ad3af4,latest on ga
 bhop_time_pro,a3eeea1321933d87285919b9b1a5aaf65bbf6114,latest on gamebanana
 bhop_transitions,4a955b688792b0198a975e915bf814103b83e35a,latest on gamebanana (v3)
 bhop_tricks,d382e00ccae73b2dcc9a8347ec18a7809979bfd2,the other of bhop_tricks version is an early beta
+bhop_winter_fix,f85db923445b509d5bc477fa6e85af6a7dd5c2f8,actually bhop_winter_fix. the other bhop_winter_fix (from strafesonfleek) is actually bhop_winter with a fucked skybox but not fullbright
 bhop_woodenspace,f7d85b20a2df095299762c3aa3b257ed4c4c079b,latest on gamebanana
 bhop_zelda_final,a2cf3033a41fb49c6636e689745724aa60b5d7e7,latest on gamebanana
 bhop_zhopavqaqe,e17973ca771c84f5a387f39e6387476d98bf99e5,latest on gamebanana
@@ -90,6 +93,7 @@ de_cpl_mills,692fc8c915f850dffced326a23d0dfabe4000acb,latest on gamebanana
 de_dust,3695832fcda6f3e07e1ef738efac1125a7915235,latest included version
 de_dust2,7693e3f86618c4802b46be6482f16e5828b49165,latest included version
 de_inferno,128cb9ef3c09b0192f3a46443f45d7f1d3172f61,latest included version
+kz_bhop_cube,8d92f0f6fe541e53115f51c837b8d5a653897994,latest on gamebanana
 kz_chk_cruel,0db04de1766aa3ddcc5f5b9b37bafaa3678a1a39,latest
 kz_chk_cruel_h,61698ce35a5eb84846bb56295d7a0f45f4c085b9,latest
 kz_mnk_dark,055d57d90738f6bcbb0009a7807f1ef30c69f206,latest
