@@ -21,6 +21,7 @@ bhop_blueglow_playtest03,520e5389b9ff1c9fffd55f5728ed690eba1a8b65
 bhop_bobahop,acd6080b86a3118d30251f7349d09531686033c8
 bhop_bochadick,397ba3eb1089c28d8eca0e310421b02e06e08b76
 bhop_bonner,8708a91e306c13e270c2d4fd32f248549db88388
+bhop_brax,b86e636cab05dfa8b36c29f430e789a2231c1c5b,apparently Flow made a version of bhop_brax with fixed surfs so I think this is that version
 bhop_brodinski_test1,69a1c390befcee481e03c1c552fdcecbf3596772
 bhop_bw,391f4c0d562b3f29872edf718bbb33eb658e86b3
 bhop_byrem2,c9464614c274971a66aca6ed4a1a3140de5b65e4,latest on gamebanana
@@ -63,6 +64,8 @@ bhop_hextra-f,189f7292962d84a2c9591e6b6d8b9b63b912094f,latest on gamebanana
 bhop_hyable,012f5fd11d3c80dc6e46c89217b65eccec102603,latest on gamebanana
 bhop_illusions,51c7162e8607479083fa46d4d1b5d35eb720fa98,latest on gamebanana
 bhop_jurfs_v2,bfc28ac5689bafcf59b7d1b6e69abbedafbfb9d6,latest on gamebanana
+bhop_licityyoi,4ac09bc24eb196dc8d862605b357f5bf97c1ce4d,latest on gamebanana
+bhop_lifeless_x,a51f8fb81964498d1174aa73f61d2580fee0a6d9,latest on gamebanana (the version that fixes getting stuck in the middle of blocks)
 bhop_lush,9c509e0f69a7341ce27c9e8740b97bbb65d06f07,latest on gamebanana
 bhop_mall_css,3a206318d1ccb846759f84756355ff2615205c46,latest on gamebanana (assets compressed)
 bhop_metric,6583474096a36f500fc75052a1ec3cb8cd0636ba,latest on gamebanana
@@ -99,3 +102,4 @@ surf_exclave_fix,46e82253eebc3e4e363464c6da47cdcfc6bf6cf2,original (not momentum
 surf_exile,10a23190fdad8542cf83b60e5eb434ba28c45411,original (not momentum-mod edit)
 surf_prismatic_ksf,8bd56711c9aba8c9f9701c122fce8686bb9880a7,latest on gamebana (2.0)
 surf_rookie,25f056b0825b02a26e0e5af5ca6684a5652fb51a,original (not momentum-mod edit)
+xc_temple,733daefa427febbe466d543348b3e66a5762aad9,latest on gamebanana (id 123811 is original. id 123812 is latest)
