@@ -127,6 +127,9 @@ kz_chk_cruel,0db04de1766aa3ddcc5f5b9b37bafaa3678a1a39,latest
 kz_chk_cruel_h,61698ce35a5eb84846bb56295d7a0f45f4c085b9,latest
 kz_cloudwalker,27b072d9ff4408c48c646e9473afe19331e390ac,i packed the kzmod things
 kz_mnk_dark,055d57d90738f6bcbb0009a7807f1ef30c69f206,latest
+mg_3k_smash_lego_copter,75344cea55d857ec72749cf5bb736f5163c4a24a,latest on gamebanana (the hellclan version changes the velocity of some trigger_push entities)
+mg_hellz_multigame_fix,c1cc38d296b02bcc16cde4b8bce4ad2c41384ad3,edits the mg_tp_rot func_rotating entity to start on since otherwise it never rotates
+mg_ski_mountain_resort_fix,65c2399b7223ff7a640507756e37b477485a6c5c,latest on gamebanana (the gfl version removes the bombsite entity)
 scoutzknivez3,6336c1d5b661063c5394f7d815d0e8ff2d3c1ad1,this is actually a remake/edit
 surf_004_fix,c94e88c76ed08fdd80d25ac8e58505324b5f973d,original (not momentum-mod edit)
 surf_1day,3985067f4af3eb9a1504e823b4ab3849cdfea29d,original (not momentum-mod edit)
