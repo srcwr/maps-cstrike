@@ -84,7 +84,20 @@ bhop_mall_css,3a206318d1ccb846759f84756355ff2615205c46,latest on gamebanana (ass
 bhop_metric,6583474096a36f500fc75052a1ec3cb8cd0636ba,latest on gamebanana
 bhop_miansai,60f82d20655313d28dded48c84856044a4f37cf0,fixed version of the port to css
 bhop_monority,d6f8e9757ac2d75009c4b3c479476baec8c925a4,latest on gamebanana
+bhop_montague,beeeed6d9d50d8e1d8b9240a029efd8c506423e6,latest on gamebanana (nice hash btw. beeeed)
+bhop_nana,2f8a0e26951f1ba5cff28d042ccd2b5af7b19f0c,latest on gamebanana
+bhop_nature,b8fd002cd261e2387ef2a9f0363407560befbbe6,latest on gamebanana
+bhop_nekoclimb_1,09468109865580018f70872f930083bd96e4af46,latest afaik
+bhop_p07,76506ee25a724b6e186cd8a3cc42536fefab6d18,this is p07 not p07_v2
 bhop_p09,28d2a37073aba96f90fac20d904389a8511179a4,latest on gamebanana (v2)
+bhop_pumpkin_stem,15cd1d8174d83e4aa79c1d96bb89a0ad5c0bc1a5,latest on gamebanana (the other version removes the end doors & the scout)
+bhop_pure,5ac2cd4dd313a0bdca66f90860878abc20d2e238,latest on gamebanana
+bhop_quaker,9926c15e6b7c1483ac235b8faf384bf027dd1562,latest on gamebanana
+bhop_series_one,19e41f5930584440007dd11bafc1dabf55839f52,latest on gamebanana
+bhop_shutdown,52acb72058ad0ede4753f7ad9804fa9eea19253b,latest on gamebanana
+bhop_shutdown2,8be17b2ea61c514563c82708705c55b01f8552dd,latest on gamebanana
+bhop_skyppy_alpha_v1,d5598bba49092769126ae92e434fda730f7b569d,probably original off gamebanana since it has the dumb func_rotating entities
+bhop_splrez,b6c582deae3add5894f966a120a3af2e89e8a863,the gamebanana version has an entity with an empty classname which makes it kill the server so this version is one that fixes that. alternatively you could use a stripper config on hammerid 79725
 bhop_sumptuous,c0d4cc19f442e5aa53e142842f1b7cc139527a79,latest on gamebanana
 bhop_tedious,861b2471296a80cc83debf560bc9f85ddd6f25ae,latest on gamebanana (the other version has broken textures)
 bhop_the_journey_lyned6,3cab4c49737d682dfb0a564efcf2da87c315e0cb,latest on gamebanana
@@ -105,10 +118,16 @@ de_cpl_mills,692fc8c915f850dffced326a23d0dfabe4000acb,latest on gamebanana
 de_dust,3695832fcda6f3e07e1ef738efac1125a7915235,latest included version
 de_dust2,7693e3f86618c4802b46be6482f16e5828b49165,latest included version
 de_inferno,128cb9ef3c09b0192f3a46443f45d7f1d3172f61,latest included version
+kz_bhop_awake,95da268f166292d8fcabf1eef062026f2b57eedc,not sure which version this is but it doesnt matter because kz_bhop_awake_fix exists and kz_bhop_awake doesnt matter
 kz_bhop_cube,8d92f0f6fe541e53115f51c837b8d5a653897994,latest on gamebanana
+kz_bhop_skyworld,047c99d2b121fa7ef5d3314f5d6cdf1ad3434627,latest on gamebanana
+kz_bhop_tradewinds,597b01719f8124b3ae3ce171fc506c7ecb2ecd4b,latest on gamebanana
+kz_bhop_tradewinds2,8d2cca8322f15de664b25fbf1cf6460e027f3187,latest on gamebanana
 kz_chk_cruel,0db04de1766aa3ddcc5f5b9b37bafaa3678a1a39,latest
 kz_chk_cruel_h,61698ce35a5eb84846bb56295d7a0f45f4c085b9,latest
+kz_cloudwalker,27b072d9ff4408c48c646e9473afe19331e390ac,i packed the kzmod things
 kz_mnk_dark,055d57d90738f6bcbb0009a7807f1ef30c69f206,latest
+scoutzknivez3,6336c1d5b661063c5394f7d815d0e8ff2d3c1ad1,this is actually a remake/edit
 surf_004_fix,c94e88c76ed08fdd80d25ac8e58505324b5f973d,original (not momentum-mod edit)
 surf_1day,3985067f4af3eb9a1504e823b4ab3849cdfea29d,original (not momentum-mod edit)
 surf_25_lighters,8bae34664dfe647cfc6eb72829edb3b9a70ef5b9,original (not momentum-mod edit)
