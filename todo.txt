@@ -9,7 +9,7 @@ Figure out what to do with:
 		- Two different ports
 	kz_crate_delight
 		- Two different ports. Might need to be packed.
-	kz_crate_delight
+	kz_genesis
 		- Two different ports. One needs to be packed
 	kz_kzro_communityblock
 		- One has a teleport destination for gate3_d. And the other has a big filesize. Not sure what the differences are...
