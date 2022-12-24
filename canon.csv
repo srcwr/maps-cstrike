@@ -83,29 +83,60 @@ bhop_lush,9c509e0f69a7341ce27c9e8740b97bbb65d06f07,latest on gamebanana
 bhop_mall_css,3a206318d1ccb846759f84756355ff2615205c46,latest on gamebanana (assets compressed)
 bhop_metric,6583474096a36f500fc75052a1ec3cb8cd0636ba,latest on gamebanana
 bhop_miansai,60f82d20655313d28dded48c84856044a4f37cf0,fixed version of the port to css
+bhop_miracle,0a8ad0ed6e23e404811cd347173146380b025ebc,latest on gamebanana
 bhop_monority,d6f8e9757ac2d75009c4b3c479476baec8c925a4,latest on gamebanana
 bhop_montague,beeeed6d9d50d8e1d8b9240a029efd8c506423e6,latest on gamebanana (nice hash btw. beeeed)
 bhop_nana,2f8a0e26951f1ba5cff28d042ccd2b5af7b19f0c,latest on gamebanana
 bhop_nature,b8fd002cd261e2387ef2a9f0363407560befbbe6,latest on gamebanana
 bhop_nekoclimb_1,09468109865580018f70872f930083bd96e4af46,latest afaik
+bhop_neon_v2,0f0159e59d68f6aff0c544d605848df10ca0ae00,latest on gamebanana (idk why the other version exists)
+bhop_never2,221d8ef621136acea8fc312a6cdd5c46ec11eabe,mapversion 94 vs the other bhop_never2 which is mapversion 93 (also kz_bhop_never2 exists and is mapversion 104 so play that)
+bhop_noninscripsit,27e780ac3e7c585145eb50f0023008de5f4580b6,port of the tf2 version
+bhop_nvm,b81b7054de294830d45e453097b4e26faae30c01,the version without porn
+bhop_olipoid,c0b82da0f49400a2470eca03333e113003176305,latest on gamebanana
 bhop_p07,76506ee25a724b6e186cd8a3cc42536fefab6d18,this is p07 not p07_v2
 bhop_p09,28d2a37073aba96f90fac20d904389a8511179a4,latest on gamebanana (v2)
+bhop_padd,f30806bce63f79766218089d55420dbac3f51a75,higher mapversion (151 vs 152)
+bhop_patq_texture,b38b649f9538086128d46275cf5c54d18dd336e8,latest on gamebanana
+bhop_perspective,a3abac550998c3ec9ee459809b0879131859655d,latest on gamebanana
+bhop_pharma,1cb6a283087f288c226b08f78f437a461e453c3e,latest on gamebanana
+bhop_precision_beta1,66738c0b9935b73c07bb3d98ac7f1e2e050ead09,the strafesonfleek version is a fullbright texture for some reason
+bhop_pride,cef28fbac90ce76d64cf01ba26c46a0a07e8bc60,latest on gamebanana
 bhop_pumpkin_stem,15cd1d8174d83e4aa79c1d96bb89a0ad5c0bc1a5,latest on gamebanana (the other version removes the end doors & the scout)
 bhop_pure,5ac2cd4dd313a0bdca66f90860878abc20d2e238,latest on gamebanana
 bhop_quaker,9926c15e6b7c1483ac235b8faf384bf027dd1562,latest on gamebanana
+bhop_rand0m_gm,01f64a77b925201bb8bb7dd6664fbc09e6b3c693,version without empty classname entities or something. maybe a port from the gmod version. it works is the point
+bhop_rgbglow_sr,0068a2a943c4996d110308820261fdecd53b6b7a,latest on gamebanana
+bhop_rikudo,b20b2df537ed249430a255f961cb78550db88412,latest on gamebanana
+bhop_rings_final,66470c36dfb60257d2ceae5214a97848ad8393eb,latest on gamebanana (still sucks)
 bhop_series_one,19e41f5930584440007dd11bafc1dabf55839f52,latest on gamebanana
 bhop_shutdown,52acb72058ad0ede4753f7ad9804fa9eea19253b,latest on gamebanana
 bhop_shutdown2,8be17b2ea61c514563c82708705c55b01f8552dd,latest on gamebanana
+bhop_spinachsucksatmapping2,83ea388873e898211c098fc79b12f083a0fb1c35,latest on gamebanana
 bhop_skyppy_alpha_v1,d5598bba49092769126ae92e434fda730f7b569d,probably original off gamebanana since it has the dumb func_rotating entities
+bhop_skyway,62100556c66d3d30dc4f969a56fab3ccae7131f7,newer mapversion (70) than the one from chicago trikz bb (67)
+bhop_sloop,ae2c2d8cea739a829dd1a81838377459064aade5,latest on gamebanana (packed textures)
+bhop_spdmp_2hr,8f1e019cd6f41727dba07cf97ef6eeaa958d9072,latest on gamebanana
 bhop_splrez,b6c582deae3add5894f966a120a3af2e89e8a863,the gamebanana version has an entity with an empty classname which makes it kill the server so this version is one that fixes that. alternatively you could use a stripper config on hammerid 79725
 bhop_sumptuous,c0d4cc19f442e5aa53e142842f1b7cc139527a79,latest on gamebanana
+bhop_sunrise,c62b47381701bbe2f886a59344d0ef53fcc9c6c5,latest on gamebanana
+bhop_synthetic_fix,9ad3b316be5c586e05c9476d4740a6ab18e8cd4f,latest on gamebanana
+bhop_tbd,d6fb7fc56076d4b9419e00741f69049fc3575185,latest on gamebanana
+bhop_tectum,96d9d583fb336a38f5b688b0f883015ad3e28d1d,fixes missing tree model
 bhop_tedious,861b2471296a80cc83debf560bc9f85ddd6f25ae,latest on gamebanana (the other version has broken textures)
+bhop_thc_gold,1bb715b9c7fceaf8ce5f50aa9d80f4270b9b9022,from gamebanana. the chicago trikz bb one does stuff to the game_player_equip
 bhop_the_journey_lyned6,3cab4c49737d682dfb0a564efcf2da87c315e0cb,latest on gamebanana
 bhop_thebigleap,1e08471ae98365f2f0077cc7eea4efaba594315b,latest on gamebanana (v4)
 bhop_theendofabeautifulera,634e049af7745723806d16c6bfa704dec1ad3af4,latest on gamebanana
 bhop_time_pro,a3eeea1321933d87285919b9b1a5aaf65bbf6114,latest on gamebanana
 bhop_transitions,4a955b688792b0198a975e915bf814103b83e35a,latest on gamebanana (v3)
 bhop_tricks,d382e00ccae73b2dcc9a8347ec18a7809979bfd2,the other of bhop_tricks version is an early beta
+bhop_twisty,17d192cb3cd4f4770e2e37c4f4444a9ae68db9b4,latest on gamebanana
+bhop_understanding,9c34ac298e2cd669861e10b270db42d3d4c806d1,latest on gamebanana
+bhop_vagabond,851240979c45682e3465f1e8895aeeb1dd807422,latest on gamebanana
+bhop_vandora,8ec38913b489290083e26368374d5e380ee0478d,latest on gamebanana
+bhop_whatislove,bb9e3fcb7c3e443541c26ecdbf21e3169e525dc8,latest on gamebanana
+bhop_whipz,6ee96b80edcc7ef67450122c7bb22f537f6733dd,original from gamebanana (the strafesonfleek version removes some scouts that have doors attached or something)
 bhop_winter_fix,f85db923445b509d5bc477fa6e85af6a7dd5c2f8,actually bhop_winter_fix. the other bhop_winter_fix (from strafesonfleek) is actually bhop_winter with a fucked skybox but not fullbright
 bhop_woodenspace,f7d85b20a2df095299762c3aa3b257ed4c4c079b,latest on gamebanana
 bhop_zelda_final,a2cf3033a41fb49c6636e689745724aa60b5d7e7,latest on gamebanana
@@ -127,6 +158,8 @@ kz_chk_cruel,0db04de1766aa3ddcc5f5b9b37bafaa3678a1a39,latest
 kz_chk_cruel_h,61698ce35a5eb84846bb56295d7a0f45f4c085b9,latest
 kz_cloudwalker,27b072d9ff4408c48c646e9473afe19331e390ac,i packed the kzmod things
 kz_mnk_dark,055d57d90738f6bcbb0009a7807f1ef30c69f206,latest
+kz_sunlight,f4999ae70292b5fd5659ddef125f015d4777ac11,latest
+kz_xtremeblock,955ee17b39c2e3030191226dd1b3348f09f0eeab,packed version
 mg_3k_smash_lego_copter,75344cea55d857ec72749cf5bb736f5163c4a24a,latest on gamebanana (the hellclan version changes the velocity of some trigger_push entities)
 mg_hellz_multigame_fix,c1cc38d296b02bcc16cde4b8bce4ad2c41384ad3,edits the mg_tp_rot func_rotating entity to start on since otherwise it never rotates
 mg_ski_mountain_resort_fix,65c2399b7223ff7a640507756e37b477485a6c5c,latest on gamebanana (the gfl version removes the bombsite entity)
@@ -140,4 +173,9 @@ surf_exclave_fix,46e82253eebc3e4e363464c6da47cdcfc6bf6cf2,original (not momentum
 surf_exile,10a23190fdad8542cf83b60e5eb434ba28c45411,original (not momentum-mod edit)
 surf_prismatic_ksf,8bd56711c9aba8c9f9701c122fce8686bb9880a7,latest on gamebana (2.0)
 surf_rookie,25f056b0825b02a26e0e5af5ca6684a5652fb51a,original (not momentum-mod edit)
+xc_cliff_of_kamoon_fix,6b6aa05660172bba50249e8d54a43c4e4f623a54,an edit or something that fixes some lighting. also removes the funny helicopters :pensive:
+xc_de_dust2,92272490bbe484e37a29a3101152130d75e47880,original (has the minigame buttons)
+xc_piscine_final,a2ab2543d38de6ba3ba9a8058a4d11aae7c5f61a,packed version
 xc_temple,733daefa427febbe466d543348b3e66a5762aad9,latest on gamebanana (id 123811 is original. id 123812 is latest)
+ze_crazy_escape_css2,5f25c0efdf094e6b0007ab00762dc910b06740bd,higher mapversion (1776 vs 1769)
+ze_sorrento_escape_v5,75f01f5ba9e443fadfa78a300cf831ba7bed7c5f,adds another trigger_hurt in the water so fuck it why not

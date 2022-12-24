@@ -1,6 +1,17 @@
 Figure out what to do with:
 	bhop_winter_fix,2688471,822439,3d19b027307bbce87b8d52bd4b10c884858df0d3
 		- This ISN'T bhop_winter_fix. It's bhop_winter with a fucked skybox but not fullbright
-
-
-
+	bhop_sloop
+		- It has a retexture somewhere...
+	bhop_sky_6xl,27040497,9583332,c14e9d58dcd4093ed65fd92c0eebf0919ce90d7c
+		- Adds lighting so it's not fullbright
+	bhop_platinum_fix
+		- Two different ports
+	kz_crate_delight
+		- Two different ports. Might need to be packed.
+	kz_crate_delight
+		- Two different ports. One needs to be packed
+	kz_kzro_communityblock
+		- One has a teleport destination for gate3_d. And the other has a big filesize. Not sure what the differences are...
+	kz_mix_multitude
+		- varying amount of unpacked-ness
