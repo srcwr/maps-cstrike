@@ -17,6 +17,7 @@ if os.path.exists(csvname):
 
 with open(csvname, "w", newline="") as csvfile:
     mycsv = csv.writer(csvfile)
+    mycsv.writerow(["mapname","filesize","filesize_bz2","sha1"])
     for filename in glob.glob(mapsfolder + "/**/*.bsp", recursive=True):
         statttt = os.stat(filename)
         if S_ISDIR(statttt.st_mode):

@@ -35,6 +35,8 @@ unfiltered = set(unique)
 for filename in glob.glob("filters/*.csv"):
     with open(filename) as f:
         for line in f:
+            if line == "mapname,filesize,filesize_bz2,sha1\n":
+                continue
             unique.remove(line.lower().strip())
 
 cur.executemany("INSERT INTO maps_unfiltered VALUES(?,?,?,?);", [u.split(",") for u in unfiltered])
@@ -42,6 +44,7 @@ cur.executemany("INSERT INTO maps_canon VALUES(?,?,?,?);", [u.split(",") for u i
 
 with open("canon.csv") as f:
     things = [line.lower().strip().split(",")[:2] for line in f]
+    things.pop(0) # remove "mapname,sha1,note"
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
 
