@@ -27,6 +27,7 @@ unique = set()
 for filename in glob.glob("unprocessed/*.csv"):
     with open(filename) as f:
         for line in f:
+            line = ','.join(line.lower().split(',', 4)) + "\n" # lol anti-note-r
             if line == "mapname,filesize,filesize_bz2,sha1\n":
                 continue
             unique.add(line.lower().strip())

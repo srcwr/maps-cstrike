@@ -12,12 +12,12 @@ from stat import *
 csvname = "unprocessed/misc2.csv"
 mapsfolder = "../todo"
 
-if os.path.exists(csvname):
+if os.path.exists(csvname) and os.path.getsize(csvname) > 50:
     raise Exception("DONT OVERWRITE THAT CSV!")
 
 with open(csvname, "w", newline="") as csvfile:
     mycsv = csv.writer(csvfile)
-    mycsv.writerow(["mapname","filesize","filesize_bz2","sha1"])
+    mycsv.writerow(["mapname","filesize","filesize_bz2","sha1","note"])
     for filename in glob.glob(mapsfolder + "/**/*.bsp", recursive=True):
         statttt = os.stat(filename)
         if S_ISDIR(statttt.st_mode):
@@ -48,4 +48,5 @@ with open(csvname, "w", newline="") as csvfile:
                 shutil.copystat(renameto, renameto+".bz2")
             mm.close()
             filesize_bz2 = os.stat(renameto + ".bz2").st_size
-            mycsv.writerow([Path(filename).stem,filesize,filesize_bz2,digest])
+            pp = Path(filename)
+            mycsv.writerow([pp.stem,filesize,filesize_bz2,digest,pp.parent])
