@@ -45,6 +45,7 @@ with open(csvname, "w", newline="") as csvfile:
                 with bz2.open(renameto + ".bz2", "wb") as fbz2:
                     mm.seek(0)
                     unused = fbz2.write(mm)
+                shutil.copystat(renameto, renameto+".bz2")
             mm.close()
             filesize_bz2 = os.stat(renameto + ".bz2").st_size
             mycsv.writerow([Path(filename).stem,filesize,filesize_bz2,digest])
