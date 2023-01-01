@@ -4,6 +4,7 @@ import html
 import gzip
 import minify_html
 import sqlite3
+import csv
 
 if not os.path.exists("processed"):
     os.makedirs("processed")
@@ -25,25 +26,30 @@ CREATE INDEX sha1c on maps_canon(sha1);
 
 unique = set()
 for filename in glob.glob("unprocessed/*.csv"):
-    with open(filename) as f:
-        for line in f:
-            line = ','.join(line.lower().split(',', 4)) + "\n" # lol anti-note-r
-            if line == "mapname,filesize,filesize_bz2,sha1\n":
+    with open(filename, newline='', encoding="utf-8") as f:
+        cr = csv.reader(f)
+        for line in cr:
+            if line[0] == "mapname":
                 continue
-            unique.add(line.lower().strip())
+            unique.add(tuple([x.lower() for x in line][:4])) # :4 for anti-note
 
 unfiltered = set(unique)
 for filename in glob.glob("filters/*.csv"):
-    with open(filename) as f:
-        for line in f:
-            if line == "mapname,filesize,filesize_bz2,sha1\n":
+    with open(filename, newline='', encoding="utf-8") as f:
+        cr = csv.reader(f)
+        for line in cr:
+            if line[0] == "mapname":
                 continue
-            unique.remove(line.lower().strip())
+            unique.add(tuple([x.lower() for x in line]))
+            #if line == "mapname,filesize,filesize_bz2,sha1\n":
+            #    continue
+            #unique.remove(line.lower().strip())
 
-cur.executemany("INSERT INTO maps_unfiltered VALUES(?,?,?,?);", [u.split(",") for u in unfiltered])
-cur.executemany("INSERT INTO maps_canon VALUES(?,?,?,?);", [u.split(",") for u in unique])
+cur.executemany("INSERT INTO maps_unfiltered VALUES(?,?,?,?);", unfiltered)
+cur.executemany("INSERT INTO maps_canon VALUES(?,?,?,?);", unique)
 
-with open("canon.csv") as f:
+with open("canon.csv", encoding="utf-8") as f:
+    #things = [[x.lower().strip() for x in line] for line in csv.reader(f)] # also newline='' in open
     things = [line.lower().strip().split(",")[:2] for line in f]
     things.pop(0) # remove "mapname,sha1,note"
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
