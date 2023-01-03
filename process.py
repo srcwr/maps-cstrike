@@ -51,7 +51,7 @@ for filename in glob.glob("filters/*.csv"):
         for line in cr:
             if line[0] == "mapname":
                 continue
-            unique.remove(tuple([x.lower() for x in line]))
+            unique.remove(tuple([x.lower() for x in line][:4]))
             #if line == "mapname,filesize,filesize_bz2,sha1\n":
             #    continue
             #unique.remove(line.lower().strip())
@@ -75,7 +75,7 @@ def write_mini(filename, content):
         h.write(content)
 
 def create_thing(table, outfilename, canon, title):
-    res = cur.execute(f"SELECT COUNT(*), SUM(s) FROM (SELECT SUM(filesize) s FROM {table} GROUP BY sha1);").fetchone()
+    res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} GROUP BY sha1);").fetchone()
 
     with open("index_top.html", encoding="utf-8") as f:
         index_html = """
@@ -90,8 +90,9 @@ def create_thing(table, outfilename, canon, title):
         <h2><a href="https://fastdl.me">homepage</a></h2>
         <h3>Number of maps: {}</h3>
         <h3>Unpacked size: {:,} BYTES</h3>
+        <h3>BZ2 size: {:,} BYTES</h3>
         <h4>(sorting is slow... you have been warned...)</h4>
-        """.format(title, res[0], res[1])
+        """.format(title, res[0], res[1], res[2])
 
     index_html += """
     <table id="list" class="sortable">
