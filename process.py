@@ -15,19 +15,23 @@ cur.executescript("""
 DROP TABLE IF EXISTS maps_unfiltered;
 DROP TABLE IF EXISTS maps_canon;
 DROP TABLE IF EXISTS gamebanana;
+DROP TABLE IF EXISTS links;
 
 CREATE TABLE maps_unfiltered (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 CREATE TABLE maps_canon (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 CREATE TABLE gamebanana (sha1 TEXT NOT NULL, gamebananaid INT NOT NULL, gamebananafileid INT NOT NULL);
+CREATE TABLE links (sha1 TEXT NOT NULL, url TEXT NOT NULL);
 
 CREATE INDEX mapnameu ON maps_unfiltered(mapname);
 CREATE INDEX sha1m on maps_unfiltered(sha1);
 CREATE INDEX mapnamec ON maps_canon(mapname);
 CREATE INDEX sha1c on maps_canon(sha1);
 CREATE INDEX sha1g on gamebanana(sha1);
+CREATE INDEX sha1o on links(sha1);
 """)
 
 gamebanana = {}
+links = {}
 
 unique = set()
 for filename in glob.glob("unprocessed/*.csv"):
@@ -38,10 +42,13 @@ for filename in glob.glob("unprocessed/*.csv"):
                 continue
             thing = [x.lower() for x in line]
             if len(thing) > 4:
-                # path & maybe gamebanana path...
-                splits = thing[4].split('_')
-                if splits[0].isdigit() and splits[1].isdigit(): # might have false positives...
-                    gamebanana[thing[3]] = (int(splits[0]), int(splits[1]))
+                if thing[4].startswith("http://") or thing[4].startswith("https://"):
+                    links[thing[3]] = thing[4]
+                else:
+                    # path & maybe gamebanana path...
+                    splits = thing[4].split('_')
+                    if splits[0].isdigit() and splits[1].isdigit(): # might have false positives...
+                        gamebanana[thing[3]] = (int(splits[0]), int(splits[1]))
             unique.add(tuple(thing[:4]))
 
 unfiltered = set(unique)
@@ -59,6 +66,7 @@ for filename in glob.glob("filters/*.csv"):
 cur.executemany("INSERT INTO maps_unfiltered VALUES(?,?,?,?);", unfiltered)
 cur.executemany("INSERT INTO maps_canon VALUES(?,?,?,?);", unique)
 cur.executemany("INSERT INTO gamebanana VALUES(?,?,?);", [(a,b,c) for a, (b, c) in gamebanana.items()])
+cur.executemany("INSERT INTO links VALUES(?,?);", [(a,b) for a, b in links.items()])
 
 with open("canon.csv", encoding="utf-8") as f:
     #things = [[x.lower().strip() for x in line] for line in csv.reader(f)] # also newline='' in open
@@ -102,18 +110,22 @@ def create_thing(table, outfilename, canon, title):
     <th style="width:5%">Hash</th>
     <th style="width:5%">Size bsp</th>
     <th style="width:5%">Size bz2</th>
-    <th style="width:5%">Gamebanana page</th>
+    <th style="width:5%">Page</th>
     </tr>
     </thead>
     <tbody>
     """
 
-    for row in cur.execute(f"SELECT mapname, filesize, filesize_bz2, m.sha1, gamebananaid FROM {table} m LEFT JOIN gamebanana g ON g.sha1 = m.sha1 ORDER BY mapname;").fetchall():
-        gbid = row[4]
-        if gbid == None:
-            gbid = ""
+    for row in cur.execute(f"SELECT mapname, filesize, filesize_bz2, m.sha1, gamebananaid, url FROM {table} m LEFT JOIN gamebanana g ON g.sha1 = m.sha1 LEFT JOIN links l ON l.sha1 = m.sha1 ORDER BY mapname;").fetchall():
+        link = row[5]
+        if link != None:
+            link = f'<td><a href="{link}">clickme</a></td>'
         else:
-            gbid = f'<td><a href="https://gamebanana.com/mods/{gbid}">{gbid}</a></td>'
+            gbid = row[4]
+            if gbid == None:
+                link = ""
+            else:
+                link = f'<td><a href="https://gamebanana.com/mods/{gbid}">{gbid}</a></td>'
         if canon:
             index_html += """
             <tr>
@@ -123,7 +135,7 @@ def create_thing(table, outfilename, canon, title):
             <td>{}</td>
             {}
             </tr>
-            """.format(html.escape(row[0]), html.escape(row[0]), row[3], row[1], row[2], gbid)
+            """.format(html.escape(row[0]), html.escape(row[0]), row[3], row[1], row[2], link)
         else:
             #<td><a href="#">{}</a></td>
             index_html += """
@@ -134,7 +146,7 @@ def create_thing(table, outfilename, canon, title):
             <td>{}</td>
             {}
             </tr>
-            """.format(html.escape(row[0]), row[3], row[3], row[1], row[2], gbid)
+            """.format(html.escape(row[0]), row[3], row[3], row[1], row[2], link)
 
     with open("index_bottom.html", encoding="utf-8") as f:
         write_mini(f"processed/{outfilename}", index_html + f.read())
