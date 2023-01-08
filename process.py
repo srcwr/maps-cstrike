@@ -30,6 +30,8 @@ CREATE INDEX sha1g on gamebanana(sha1);
 CREATE INDEX sha1o on links(sha1);
 """)
 
+# TODO: remerge maps table & add `canon` column to table...
+
 gamebanana = {}
 links = {}
 
