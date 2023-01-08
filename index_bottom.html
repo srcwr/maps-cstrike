@@ -9,7 +9,7 @@ function download_mapname(event) {
     var anchor = document.createElement("a");
     //anchor.href = "../hashed/" + hash /*+ "/" + mapname*/ + ".bsp.bz2";
     //anchor.href = "/hashed/" + hash + "/" + mapname + ".bsp.bz2";
-	anchor.href = `https://main.x.fastdl.me/h2/${hash}/${mapname}.bsp.bz2`;
+	anchor.href = `https://main.fastdl.me/h2/${hash}/${mapname}.bsp.bz2`;
     anchor.download = mapname + ".bsp.bz2";
     document.body.appendChild(anchor);
     anchor.click();

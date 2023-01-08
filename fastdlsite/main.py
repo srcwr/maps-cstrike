@@ -24,7 +24,7 @@ def AAAAA(mapname):
         #abort(404)
         return "", 404
     maphash = res[0]
-    return redirect(f"https://mainr2.x.fastdl.me/hashed/{maphash}.bsp.bz2", code=302)
+    return redirect(f"https://mainr2.fastdl.me/hashed/{maphash}.bsp.bz2", code=302)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=55155)
