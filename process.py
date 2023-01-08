@@ -43,6 +43,7 @@ for filename in glob.glob("unprocessed/*.csv"):
             if line[0] == "mapname":
                 continue
             thing = [x.lower() for x in line]
+            thing[0] = thing[0].replace('.', '_') # because CS:S fails to download maps with excess periods....
             if len(thing) > 4:
                 if thing[4].startswith("http://") or thing[4].startswith("https://"):
                     links[thing[3]] = thing[4]

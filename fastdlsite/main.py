@@ -23,7 +23,7 @@ def AAAAA(mapname):
     if res == None or res[0] == None:
         #abort(404)
         redirurl = request.headers.get("redirurl")
-        if redirurl == None:
+        if redirurl == None or redirurl == "":
             return "", 404
         else
             return redirect(f"{redirurl}/maps/{mapname}.bsp.bz2", code=302)
