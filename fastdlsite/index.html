@@ -48,11 +48,13 @@ Questions:
 		<br>
 	</li>
 	<li>Can I use this as my fastdl?
-		<ul><li>Yes, or you can make your maps url redirect to here.</li></ul>
+		<ul><li>Yes, or you can make your maps url redirect to here.
+		<br>sv_downloadurl "http://main.x.fastdl.me/"
+		</li></ul>
 		<br>
 	</li>
 	<li>Maybe host .bsp files too?
-		<ul><li>Maybe one day so you can rclone/httpdirfs the URL as your "maps" folder.</li></ul>
+		<ul><li>Maybe one day. It would be cool to rclone/httpdirfs the URL as your "maps" folder.</li></ul>
 		<br>
 	</li>
 	<li>What's the different between /maps/ & /hashed/?
@@ -71,8 +73,8 @@ Other things:
 <ul>
 	<li>If you want to download with wget/curl:
 		<ul>
-			<li>wget https://main.x.fastdl.me/maps/bhop_badges.bsp.bz2</li>
-			<li>curl -L -O https://main.x.fastdl.me/maps/bhop_badges.bsp.bz2</li>
+			<li>wget http://main.x.fastdl.me/maps/bhop_badges.bsp.bz2</li>
+			<li>curl -L -O http://main.x.fastdl.me/maps/bhop_badges.bsp.bz2</li>
 			<br>
 		</ul>
 	</li>
@@ -83,6 +85,25 @@ Other things:
 	</li>
 	<li>I rename maps sometimes when different people reuse the same mapname.
 		<br>See <a href="https://github.com/srcwr/maps-cstrike/blob/master/unprocessed/renamed_by_me.csv">renamed_by_me.csv</a> / <a href="https://github.com/srcwr/maps-cstrike/blob/master/filters/removed_because_i_renamed_them.csv">removed_because_i_renamed_them.csv</a>
+	</li>
+	<br>
+	<li>Available URL samples:
+		<ul>
+			<li><a href="http://main.x.fastdl.me/">main.x.fastdl.me/</a>
+				<ul><li>Open directory with some generic sounds and materials for bhoptimer.</li></ul></li>
+			<li><a href="http://main.x.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2">main.x.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2</a>
+				<ul><li>Directory with every .bsp.bz2 archived.</li></ul></li>
+			<li><a href="http://main.x.fastdl.me/maps/bhop_badges.bsp.bz2">main.x.fastdl.me/maps/bhop_badges.bsp.bz2</a>
+				<ul><li>Path that is used for fastdl.
+				<br>This 302 redirects to <a href="http://main.x.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2">main.x.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2</a>
+				</li></ul>
+			</li>
+			<li><a href="http://main.x.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2">main.x.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2</a>
+				<ul><li>Used for the /maps/ page to download hashed files with a good filename.
+				<br>Scrape /maps/ or /hashed/ instead of this.
+				</li></ul>
+			</li>
+		</ul>
 	</li>
 </ul>
 </body>

@@ -129,24 +129,24 @@ def create_thing(table, outfilename, canon, title):
         if canon:
             index_html += """
             <tr>
-            <td><a href="{}.bsp.bz2" download>{}</a></td>
+            <td><a href="#">{}</a></td>
             <td>{}</td>
             <td>{}</td>
             <td>{}</td>
             {}
             </tr>
-            """.format(html.escape(row[0]), html.escape(row[0]), row[3], row[1], row[2], link)
+            """.format(html.escape(row[0]), row[3], row[1], row[2], link)
         else:
             #<td><a href="#">{}</a></td>
             index_html += """
             <tr>
+            <td><a href="#">{}</a></td>
             <td>{}</td>
-            <td><a href="{}.bsp.bz2" download>{}</a></td>
             <td>{}</td>
             <td>{}</td>
             {}
             </tr>
-            """.format(html.escape(row[0]), row[3], row[3], row[1], row[2], link)
+            """.format(html.escape(row[0]), row[3], row[1], row[2], link)
 
     with open("index_bottom.html", encoding="utf-8") as f:
         write_mini(f"processed/{outfilename}", index_html + f.read())
