@@ -1,4 +1,4 @@
-from flask import Flask,redirect,g,abort
+from flask import Flask,redirect,g,abort,request
 import sqlite3
 
 app = Flask(__name__)
@@ -22,7 +22,11 @@ def AAAAA(mapname):
     res = cur.fetchone()
     if res == None or res[0] == None:
         #abort(404)
-        return "", 404
+        redirurl = request.headers.get("redirurl")
+        if redirurl == None:
+            return "", 404
+        else
+            return redirect(f"{redirurl}/maps/{mapname}.bsp.bz2", code=302)
     maphash = res[0]
     return redirect(f"https://mainr2.fastdl.me/hashed/{maphash}.bsp.bz2", code=302)
 
