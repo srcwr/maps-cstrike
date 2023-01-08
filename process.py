@@ -43,7 +43,7 @@ for filename in glob.glob("unprocessed/*.csv"):
             if line[0] == "mapname":
                 continue
             thing = [x.lower() for x in line]
-            thing[0] = thing[0].replace('.', '_') # because CS:S fails to download maps with excess periods....
+            thing[0] = thing[0].replace('.', '_').replace(' ', '_').strip() # because CS:S fails to download maps
             if len(thing) > 4:
                 if thing[4].startswith("http://") or thing[4].startswith("https://"):
                     links[thing[3]] = thing[4]
@@ -61,7 +61,9 @@ for filename in glob.glob("filters/*.csv"):
         for line in cr:
             if line[0] == "mapname":
                 continue
-            unique.remove(tuple([x.lower() for x in line][:4]))
+            thing = [x.lower() for x in line][:4]
+            thing[0] = thing[0].replace('.', '_').replace(' ', '_').strip() # because CS:S fails to download maps
+            unique.remove(tuple(thing))
             #if line == "mapname,filesize,filesize_bz2,sha1\n":
             #    continue
             #unique.remove(line.lower().strip())
