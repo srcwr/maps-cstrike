@@ -6,8 +6,8 @@ import minify_html
 import sqlite3
 import csv
 
-if not os.path.exists("processed"):
-    os.makedirs("processed")
+os.makedirs("processed/hashed", exist_ok=True)
+os.makedirs("processed/maps", exist_ok=True)
 
 conn = sqlite3.connect("processed/maps.db")
 cur = conn.cursor()
@@ -80,13 +80,6 @@ with open("canon.csv", encoding="utf-8") as f:
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
 
-def write_mini(filename, content):
-    with open(filename, "w", encoding="utf-8") as h:
-        content = minify_html.minify(content, minify_js=True, minify_css=True)
-        with gzip.open(filename + ".gz", "wt", encoding="utf-8") as g:
-            g.write(content)
-        h.write(content)
-
 def create_thing(table, outfilename, canon, title):
     res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} GROUP BY sha1);").fetchone()
 
@@ -107,7 +100,9 @@ def create_thing(table, outfilename, canon, title):
         <h4>(sorting is slow... you have been warned...)</h4>
         """.format(title, res[0], res[1], res[2])
 
-    index_html += """
+    outf = open(f"processed/{outfilename}", "w+", encoding="utf-8")
+  
+    outf.write(index_html + """
     <table id="list" class="sortable">
     <thead>
     <tr>
@@ -119,7 +114,7 @@ def create_thing(table, outfilename, canon, title):
     </tr>
     </thead>
     <tbody>
-    """
+    """)
 
     for row in cur.execute(f"SELECT mapname, filesize, filesize_bz2, m.sha1, gamebananaid, url FROM {table} m LEFT JOIN gamebanana g ON g.sha1 = m.sha1 LEFT JOIN links l ON l.sha1 = m.sha1 ORDER BY mapname;").fetchall():
         link = row[5]
@@ -132,7 +127,7 @@ def create_thing(table, outfilename, canon, title):
             else:
                 link = f'<td><a href="https://gamebanana.com/mods/{gbid}">{gbid}</a></td>'
         if canon:
-            index_html += """
+            index_html = """
             <tr>
             <td><a href="#">{}</a></td>
             <td>{}</td>
@@ -143,7 +138,7 @@ def create_thing(table, outfilename, canon, title):
             """.format(html.escape(row[0]), row[3], row[1], row[2], link)
         else:
             #<td><a href="#">{}</a></td>
-            index_html += """
+            index_html = """
             <tr>
             <td><a href="#">{}</a></td>
             <td>{}</td>
@@ -152,9 +147,15 @@ def create_thing(table, outfilename, canon, title):
             {}
             </tr>
             """.format(html.escape(row[0]), row[3], row[1], row[2], link)
+        outf.write(index_html)
 
-    with open("index_bottom.html", encoding="utf-8") as f:
-        write_mini(f"processed/{outfilename}", index_html + f.read())
+    outf.seek(0)
+    content = minify_html.minify(outf.read() + open("index_bottom.html", encoding="utf-8").read(), minify_js=True, minify_css=True)
+    outf.seek(0)
+    outf.truncate(0)
+    outf.write(content)
+    with gzip.open(f"processed/{outfilename}.gz", "wt", encoding="utf-8") as g:
+        g.write(content)
 
 create_thing("maps_unfiltered", "hashed/index.html", False, "hashed/unfiltered maps")
 create_thing("maps_canon", "maps/index.html", True, "canon/filtered maps")
