@@ -18,7 +18,7 @@ def close_connection(exception):
 @app.route('/maps/<mapname>.bsp.bz2')
 def AAAAA(mapname):
     cur = get_db().cursor()
-    cur.execute("SELECT sha1, MAX(filesize_bz2) fbz2 FROM maps_canon WHERE mapname = ? LIMIT 1", (mapname.lower(),))
+    cur.execute("SELECT sha1, MAX(filesize_bz2) fbz2 FROM maps_canon WHERE mapname = ?", (mapname.lower(),))
     res = cur.fetchone()
     if res == None or res[0] == None:
         #abort(404)

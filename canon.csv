@@ -156,6 +156,7 @@ bhop_zelda_final,a2cf3033a41fb49c6636e689745724aa60b5d7e7,latest on gamebanana
 bhop_zhopavqaqe,e17973ca771c84f5a387f39e6387476d98bf99e5,latest on gamebanana
 bhop_zig_remake,974a3e883170bd6f833e90594a2920a682953653,latest on gamebanana
 bkz_cubebhop,dd002065d626c81385fbd3c25a0819928d9700c3,latest
+cs_stationarena_beta,d8796c58f26ee3402eaf0f17e5b1cf5aa4b3e9aa,non .bak version on gamebanana
 de_contra,5eac721746632d41f5e096aa9037ff02c553198d,latest on gamebanana
 de_corridors,c3abffc6bbea37d49459f7e178a1733d7e53f9ab,the larger version
 de_cpl_mill,8e4d9409bd6fcfae3021b35e2e0ebf260cfaf06f,latest on gamebanana
@@ -196,8 +197,13 @@ trikz_concret,eca0d7ce29ca1c23af3cf3dca1bc7fc90f89f242,latest version on gameban
 trikz_extreme_final,820a72f7102edebe6fc6f0b0dc7b1fd941210353,latest version on gamebanana
 trikz_kyoto_fix,18496d9535a04ff7f63dcc532460fe3ce944985d,a new mapversion (140 vs 59) but also trikz_kyoto_final exists
 trikz_laele,8bc89b158b3f0ddaec8f6363875619ac2e6b9dee,latest on gamebanana
+trikz_zen,0e497a33831b8abc9873f60bf6f3a8411272522c,latest on gamebanana
+xc_bhop_source,b54cf5cb5a01c22ebe3c7fa7804b5f8c7a45f2b0,latest on gamebanana
 xc_cliff_of_kamoon_fix,6b6aa05660172bba50249e8d54a43c4e4f623a54,an edit or something that fixes some lighting. also removes the funny helicopters :pensive:
 xc_de_dust2,92272490bbe484e37a29a3101152130d75e47880,original (has the minigame buttons)
+xc_medium_v2,c01b1cbbb4afbf7099d7ca0cdc510aade605fa4d,latest on gamebanana
+xc_obsidian,28be5b81d86832d213ca651fb30350c00ee63334,latest on gamebanana (xc-makes-me-xd version probably edits the entity lumps)
+xc_peak,ebb9d2394e2ddf6b22f66ca05e06e8cff8acf410,latest on gamebanana (the xc-makes-me-xd version edits the entity lumps)
 xc_piscine_final,a2ab2543d38de6ba3ba9a8058a4d11aae7c5f61a,packed version
 xc_temple,733daefa427febbe466d543348b3e66a5762aad9,latest on gamebanana (id 123811 is original. id 123812 is latest)
 ze_crazy_escape_css2,5f25c0efdf094e6b0007ab00762dc910b06740bd,higher mapversion (1776 vs 1769)
