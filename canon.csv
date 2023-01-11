@@ -1,12 +1,14 @@
 mapname,sha1,note
 bhop_25,56ee63b9f3ab60ceef0dc8c24d1c8e42d78777b5,latest on gamebanana
 bhop_4matan,f82a1f34b3331545ae04f9af3756c17fcfe69dbd,latest on gamebanana
+bhop_620s,a932b908363ed2a1a6814913014b6de451d7ce3d,actually packed and working on css
 bhop_aadhua,8d5b32603470fb44a5d36af7df5f07663064a972,latest on gamebanana
 bhop_alba,c54957c4c876e3c7c08a7525f7479e49b3efeaff,latest on gamebanana
 bhop_alien_sewers_css,0d0814799b70f993722bdf91e92573c7ef7f36e5,latest on gamebanana
 bhop_airflow_v2_fix,41e2155fb451763292c68a4e2de712a2e41de00c,latest on gamebanana
 bhop_amoebic_fix,d3d325f0445987ffcadac36aef34667aa8ce278a,
 bhop_apathy,b605ece6b35a26982488dd2e6cfb91bdc0c5f9c2,latest on gamebanana
+bhop_appaisaniceman,c46cc4c09165807878eaaf5fb81698b6b56dc8d9,latest on gamebanana so hopefully the right version lol
 bhop_arcane_v1,7ee3c9ec7550d6a9e9282b92534174f9d3926b6d,
 bhop_ares,f1c56e442803d43ea21a92b2846a28432829c3a2,
 bhop_auto_omega,eb1be8a1169a8b5cd33c6d242f6d2f327042a3c1,
@@ -34,6 +36,7 @@ bhop_catharsis,126d929bf487213552ef476f44b095dbca0fd8b3,
 bhop_cellerman_fix,676ade8f019bffef0fdabe84da4ae88cc6eb9672,
 bhop_cewl,6e63f9af029567182c19e3e8b49cd9a9883afb34,
 bhop_challenge,08dbc1402af2ea29b67f0025fc74ad1d7f42efa9,latest on gamebanana
+bhop_challenjour_final,c60ce9f954ae37f776415d5659bc84284d5ddbbd,randomly picked. doesnt matter since bhop_challenjour_v2 exists
 bhop_classicaux,8fa26dd4999e797108117dbe78dd0ff61d2694c3,latest on gamebanana (update for a model causing errors)
 bhop_cleaned,b1a68a7f652ed0afdeaa112ea851868e17100b79,
 bhop_clove,ac8317979181238a3e3ec17cf36715b57b260c87,
@@ -49,13 +52,20 @@ bhop_degree,e719b20a3cf21c4f0aa1d3ed4ad49fbea7911013,latest on gamebanana
 bhop_despondent,3ab7981d4cdf8d19f4d935251207d09b167948a5,latest on gamebanana
 bhop_devvy,3c716186ae4ce101b81fe5c36e4f905932529df6,latest on gamebanana (v05)
 bhop_diremaul,0a163f1a5607c87aa4264cd352ec031d11d4bba0,latest on gamebanana (v2 with booster fix)
+bhop_domzk,3d41e94fcd07cdede1da4026074ee31075424569,latest on gamebanana (the e79f80... version might be packed for gmod or something)
 bhop_dual_fast,c7189a701623b0e18cf87270c5842c0ae51438ba,original version (the version with the func_buttons you need to stripper out)
 bhop_dusk,d9583ddb0c5dce36d9ae5f7c69f5a9c01550f2fe,fixed textures version (the version on gamebanana (v1.1) has fucked textures)
 bhop_dust_v2,53c3df856a7a96d220b968d0a1c0255da18fd5d9,original/gamebanana version. the chicago trikz bb version removes the func_illusionary entities
 bhop_easyhop_benghaziedition,5f9ab07f986ccb5fedf96dfc2de8d11f00429027,fixes a missing texture apparently
+bhop_eazy_sr,f33a9cc844f6d60a1ac71c3845ba1089816ae6f3,newer mapversion in entity lumps (7 vs 4)
 bhop_eject,448256ae3d1bec3f6fbf8441fb58804f15257f75,latest on gamebanana
+bhop_electric,448256ae3d1bec3f6fbf8441fb58804f15257f75,latest on gamebanana (and newest mapversion (27 vs 28 vs 30))
 bhop_epiphany2,30272187b8cc9af949a7279c666b7bde39009238,latest on gamebanana (first level skip fix)
 bhop_evolintent_b,b8f3c23b899a616ef417706387efad6bbf9fdf70,latest on gamebanana
+bhop_exodus,56b0e7b03fb21efe3e4ba26472d03566d9e5b320,version from gamebanana (the other version (16cd4e...) removes lots of sprites)
+bhop_exquisite,ea6d4f107575f64227d8cf3a1046d5e8109ab60a,latest on gamebanana
+bhop_ffvii_mako_reactor,1432fd47741b81c21610d42e32e8118968a6c690,latest on gamebanana (mapversion 128 vs 156)
+bhop_flipypuppies,bc568c5c94391d4062cac56c7cfb6818e5eb3ef0,newer mapversion (20 vs 21)
 bhop_fool_2_css,6a21645e63a10892e130bc571f2828992308bbdc,latest on gamebanana
 bhop_forestbiome01,4b0988b274ab239048f7c5c066503247bb890560,latest on gamebanana
 bhop_freedompuppies,f6ef0afb656638557a0d4932028f16dcef0f5888,latest on gamebanana (the version with the door teleporter)
@@ -64,6 +74,7 @@ bhop_genoisgay,bc5faaf142d0b8fb7316d1a0880d582686cee6bd,latest on gamebanana
 bhop_getgo,89ac030fe593730f9efa0dbbebaf9920f3e21797,port of the tf2 version
 bhop_glxy,3180893265563a71ba6c931379c05cbf31349385,latest on gamebanana
 bhop_gopro,8b7e6a390d701d5f1814dafcba8e0ebfa05f768c,latest on gamebanana
+bhop_green_shade,17146c431ccfcdd09525d463d2268c638cc00fbf,latest on gamebanana
 bhop_grid_easy,c8e090029ce62095c7ba1bbba1c1c5f5b5232da4,latest on gamebanana
 bhop_haddock,852c6743d2cfda5325734fd248fdc101349a69bb,latest on gamebanana
 bhop_heck,3429de05ebe12e2ac1c05201a697a21d29ab0716,latest on gamebanana
@@ -178,6 +189,13 @@ surf_exile,10a23190fdad8542cf83b60e5eb434ba28c45411,original (not momentum-mod e
 surf_listless_ksf,da662b99daa0e76ed5de9a8b8d1e3faaf4b8c85c,latest on gamebanana (2022-12-07 1.2 b5 fix)
 surf_prismatic_ksf,8bd56711c9aba8c9f9701c122fce8686bb9880a7,latest on gamebana (2.0)
 surf_rookie,25f056b0825b02a26e0e5af5ca6684a5652fb51a,original (not momentum-mod edit)
+trikz_2_hard,747f419c39e9464db79bceaf361c9643df805fb1,latest on gamebanana
+trikz_affinity,84303771f4c2822ee001a260895bc347488da8fe,doesnt crash on start
+trikz_asux,6a572367d8a185d8a3f160ce75f6b1febc1599c5,latest on gamebanana (although its included in a trikz pack that was uploader after but thats a different and probably older version so whatever)
+trikz_concret,eca0d7ce29ca1c23af3cf3dca1bc7fc90f89f242,latest version on gamebanana
+trikz_extreme_final,820a72f7102edebe6fc6f0b0dc7b1fd941210353,latest version on gamebanana
+trikz_kyoto_fix,18496d9535a04ff7f63dcc532460fe3ce944985d,a new mapversion (140 vs 59) but also trikz_kyoto_final exists
+trikz_laele,8bc89b158b3f0ddaec8f6363875619ac2e6b9dee,latest on gamebanana
 xc_cliff_of_kamoon_fix,6b6aa05660172bba50249e8d54a43c4e4f623a54,an edit or something that fixes some lighting. also removes the funny helicopters :pensive:
 xc_de_dust2,92272490bbe484e37a29a3101152130d75e47880,original (has the minigame buttons)
 xc_piscine_final,a2ab2543d38de6ba3ba9a8058a4d11aae7c5f61a,packed version

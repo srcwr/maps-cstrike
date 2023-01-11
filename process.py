@@ -116,7 +116,10 @@ def create_thing(table, outfilename, canon, title):
     <tbody>
     """)
 
-    for row in cur.execute(f"SELECT mapname, filesize, filesize_bz2, m.sha1, gamebananaid, url FROM {table} m LEFT JOIN gamebanana g ON g.sha1 = m.sha1 LEFT JOIN links l ON l.sha1 = m.sha1 ORDER BY mapname;").fetchall():
+    groupy = ""
+    if canon:
+        groupy = "GROUP BY mapname"
+    for row in cur.execute(f"SELECT mapname, filesize, filesize_bz2, m.sha1, gamebananaid, url FROM {table} m LEFT JOIN gamebanana g ON g.sha1 = m.sha1 LEFT JOIN links l ON l.sha1 = m.sha1 {groupy} ORDER BY mapname;").fetchall():
         link = row[5]
         if link != None:
             link = f'<td><a href="{link}">clickme</a></td>'
