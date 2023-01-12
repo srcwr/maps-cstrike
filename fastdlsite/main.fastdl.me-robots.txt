@@ -1,0 +1,5 @@
+User-agent: *
+# Used on /maps/ & /hashed/. Use /maps/mapname.bsp.bz2 or /hashed/123123123hash/mapname.bsp.bz2 instead.
+Disallow: /h2/
+# Auto-generated dummy nav files
+Disallow: /maps/*.nav.bz2$
