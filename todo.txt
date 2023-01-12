@@ -7,6 +7,8 @@ Figure out what to do with:
 		- Adds lighting so it's not fullbright
 	bhop_platinum_fix
 		- Two different ports
+	bhop_whatisthis(659d99e10744df4cfa78db91ded72fd726dd09ce) & bhop_energy/bhop_whatisthis(200b1abd70bf0dc6868beaa817d8c5ea9f5e52a9)
+		- Two different ports of bkz_whatisthis. Use bhop_whatisthis (200b1..) as the name & remove energy?
 	kz_crate_delight
 		- Two different ports. Might need to be packed.
 	kz_genesis

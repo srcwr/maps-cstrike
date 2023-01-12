@@ -77,6 +77,9 @@ with open("canon.csv", encoding="utf-8") as f:
     #things = [[x.lower().strip() for x in line] for line in csv.reader(f)] # also newline='' in open
     things = [line.lower().strip().split(",")[:2] for line in f]
     things.pop(0) # remove "mapname,sha1,note"
+    for x in things:
+        if len(x[1]) != 40:
+            raise Exception(f"fuck you {x}")
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
 
