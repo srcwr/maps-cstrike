@@ -39,6 +39,9 @@ ON m.mapname = t.mapname
 
 ORDER BY m.mapname ASC, m.sha1 ASC
 
+# WHERE m.mapname LIKE '%bh%' OR m.mapname LIKE '%xc%' OR m.mapname LIKE '%kz%' OR m.mapname LIKE '%surf%' OR m.mapname LIKE '%trikz%'
+# ^^^ You can also put this before the ORDER BY
+
 
 
 SELECT m.mapname, m.sha1 FROM maps_canon m
