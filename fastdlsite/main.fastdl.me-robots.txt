@@ -2,4 +2,9 @@ User-agent: *
 # Used on /maps/ & /hashed/. Use /maps/mapname.bsp.bz2 or /hashed/123123123hash/mapname.bsp.bz2 instead.
 Disallow: /h2/
 # Auto-generated dummy nav files
-Disallow: /maps/*.nav.bz2$
+#Disallow: /maps/*.nav.bz2$
+# Web crawlers don't need to download these. TL;DR: Yes you can scrape but yandex you don't need to download these!!!
+Disallow: /*.bz2$
+
+User-agent: wget
+Allow: /*.bz2$
