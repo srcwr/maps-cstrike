@@ -9,8 +9,8 @@ import shutil
 from pathlib import Path
 from stat import *
 
-csvname = "unprocessed/misc2.csv"
-mapsfolder = "../todo"
+csvname = "unprocessed/misc3.csv"
+mapsfolder = "../todo-gb"
 
 if os.path.exists(csvname) and os.path.getsize(csvname) > 50:
     raise Exception("DONT OVERWRITE THAT CSV!")
@@ -18,7 +18,7 @@ if os.path.exists(csvname) and os.path.getsize(csvname) > 50:
 with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
     mycsv = csv.writer(csvfile)
     mycsv.writerow(["mapname","filesize","filesize_bz2","sha1","note"])
-    for filename in glob.glob(mapsfolder + "/**/*.bsp", recursive=True):
+    for filename in glob.iglob(mapsfolder + "/**/*.bsp", recursive=True):
         statttt = os.stat(filename)
         if S_ISDIR(statttt.st_mode):
             continue
@@ -45,7 +45,7 @@ with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
                 continue
             mm.seek(0)
             digest = hashlib.sha1(mm).hexdigest()
-            print("Hash {} -- {}".format(digest, filename))
+            #print("Hash {} -- {}".format(digest, filename))
             renameto = "../hashed/" + digest + ".bsp"
             exists = os.path.exists(renameto)
             if not exists:
@@ -56,6 +56,8 @@ with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
                     unused = fbz2.write(mm)
                 shutil.copystat(renameto, renameto+".bz2")
             mm.close()
+            #if exists:
+            #    continue
             filesize_bz2 = os.stat(renameto + ".bz2").st_size
             pp = Path(filename)
-            mycsv.writerow([pp.stem,filesize,filesize_bz2,digest,pp.parent])
+            mycsv.writerow([pp.stem,filesize,filesize_bz2,digest,str(pp.parent).replace("\\", "/").replace(mapsfolder+"/", "")])
