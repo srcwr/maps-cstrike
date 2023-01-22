@@ -41,7 +41,7 @@ bhop_classicaux,8fa26dd4999e797108117dbe78dd0ff61d2694c3,latest on gamebanana (u
 bhop_cleaned,b1a68a7f652ed0afdeaa112ea851868e17100b79,
 bhop_clove,ac8317979181238a3e3ec17cf36715b57b260c87,
 bhop_crappychristmas2,dcbfe090c9977da965eea79102b6f3f7a37ec256,fixed missing triggers
-bhop_crappychristmas2_fix,7624b0544017b8fba96286b1d1cef172f10ff088,aaaaaaaaaa
+bhop_crappychristmas2_fix,d94432d026e71a3c385624190d9f1c8fdba363e3,latest on gamebanana as of 202301222017
 bhop_crutle3_css,45556bfeb50aa09023393202a9d2996bb3bdaee9,
 bhop_crutle_css,d5f2dee34f6db22520e116b19f5a754a7f27ed63,
 bhop_cubefield_remastered,9dfbd5a2a348abebfcfa7ed862791a8a52794151,
@@ -188,7 +188,7 @@ de_nuke,0d440898066e4300c8bfd6a5910e66ea3caee283,latest included version
 de_piranesi,7a2882377c25f12aa0ef3d0cb40da255545c7687,latest included version
 de_port,c1441d4b0a2b735fa2129a5bf4b310ca58d2d607,latest included version
 de_prodigy,f1b25890403fba0cf2df5d901a2cb151984d4136,latest included version
-de_theatre,904d63049b6fd34cbc44764b67e611ffb5386afe,latest on gamebanana (a_4 -- 202301220014)
+de_theatre,d887740d54fe959dca82d9c5327792d7c26dd1f3,latest on gamebanana (a_5 -- 202301222017)
 de_tides,de38bc38b54c46aaf5f47626785021d00caac60d,latest included version
 de_train,151ddcd0e09e6c5172f1e1102329f4be38c615cc,latest included version
 kz_bhop_awake,95da268f166292d8fcabf1eef062026f2b57eedc,not sure which version this is but it doesnt matter because kz_bhop_awake_fix exists and kz_bhop_awake doesnt matter
