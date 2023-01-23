@@ -15,6 +15,11 @@ Originally intended for bhop/surf/xc/kz/trikz maps... and then it spiraled out o
 			- Otherwise otherwise otherwise pick a version of the map that's packed with textures.
 
 
+Sister repo at https://github.com/srcwr/maps-cstrike-more
+- For every bsp: has a csv with the packed file list & a dump of the entity lump.
+	- The entity lumps are compressed because the repo would've been 4 gigabytes otherwise...
+
+
 Some useful sql things...
 ```sql
 SELECT m.mapname, m.sha1 FROM maps_unfiltered m
