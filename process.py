@@ -84,7 +84,7 @@ with open("canon.csv", encoding="utf-8") as f:
 conn.commit() # fuck you for making me call you
 
 def create_thing(table, outfilename, canon, title, sqlwhere):
-    res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} GROUP BY sha1);").fetchone()
+    res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} {sqlwhere} GROUP BY sha1);").fetchone()
 
     with open("index_top.html", encoding="utf-8") as f:
         index_html = """
@@ -174,4 +174,4 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
 
 create_thing("maps_unfiltered", "hashed/index.html", False, "hashed/unfiltered maps", "")
 create_thing("maps_canon", "maps/index.html", True, "canon/filtered maps", "")
-create_thing("maps_canon", "69.html", True, "movement maps", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%'")
+create_thing("maps_canon", "69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%'")
