@@ -1,25 +1,19 @@
 import os.path
 import json
-import csv
+import sqlite3
 
 things = {}
-f = None
+
 try:
-    f = open("processed/maps.csv", "r", newline="")
+    db = sqlite3.connect("processed/maps.db")
 except:
-    f = open("../processed/maps.csv", "r", newline="")
+    db = sqlite3.connect("../processed/maps.db")
+cur = db.cursor()
+for row in cur.execute("SELECT mapname, filesize FROM maps_unfiltered"):
+    if not row[0] in things:
+        things[row[0]] = []
+    things[row[0]].append(int(row[1]))
 
-reader = csv.reader(f)
-
-for row in reader:
-    if row[1] == "filesize":
-        continue
-    name = row[0]
-    if not name in things:
-        things[name] = []
-    things[name].append(int(row[1]))
-
-f = None
 if os.path.exists("_thing"):
     file = open("_thing/_thing.json", "w")
 else:
