@@ -12,6 +12,8 @@ $json = json_decode(file_get_contents('php://input'), true, 3, JSON_THROW_ON_ERR
 
 foreach($json as $data) {
 	$name = preg_replace('/\.bsp$/', '', strtolower($data['Name']));
+	$name = str_replace(' ', '_', $name);
+	$name = str_replace('.', '_', $name);
 	$length = intval($data['Length']);
 	if (!isset($everything[$name]) || !in_array($length, $everything[$name])) {
 		$hadany = true;
