@@ -2,6 +2,6 @@ new.db
 new.db-journal
 _thing.json
 processed/*
-fastdl.me-3rdparty-subdomains.conf
-fastdl.me-test.conf
+*.conf
+!fastdl.me.conf
 transfer.sh

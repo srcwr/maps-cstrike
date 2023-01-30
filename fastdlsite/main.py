@@ -15,8 +15,8 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
-@app.route('/maps/<mapname>.bsp.bz2')
-def AAAAA(mapname):
+@app.route('/<mapsfolder>/<mapname>.bsp.bz2')
+def AAAAA(mapsfolder, mapname):
     cur = get_db().cursor()
     cur.execute("SELECT sha1, MAX(filesize_bz2) fbz2 FROM maps_canon WHERE mapname = ?", (mapname.lower(),))
     res = cur.fetchone()
