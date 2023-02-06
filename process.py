@@ -5,9 +5,12 @@ import gzip
 import minify_html
 import sqlite3
 import csv
+import shutil
 
+"""
 os.makedirs("processed/hashed", exist_ok=True)
 os.makedirs("processed/maps", exist_ok=True)
+"""
 
 conn = sqlite3.connect("processed/maps.db")
 cur = conn.cursor()
@@ -169,9 +172,31 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     outf.seek(0)
     outf.truncate(0)
     outf.write(content)
+    #"""
     with gzip.open(f"processed/{outfilename}.gz", "wt", encoding="utf-8") as g:
         g.write(content)
+    #"""
 
-create_thing("maps_unfiltered", "hashed/index.html", False, "hashed/unfiltered maps", "")
-create_thing("maps_canon", "maps/index.html", True, "canon/filtered maps", "")
-create_thing("maps_canon", "69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%'")
+try:
+    shutil.rmtree("processed/fastdl.me")
+except:
+    pass
+shutil.copytree("fastdlsite/fastdl.me", "processed/fastdl.me")
+
+try:
+    shutil.rmtree("processed/main.fastdl.me")
+except:
+    pass
+shutil.copytree("fastdlsite/main.fastdl.me", "processed/main.fastdl.me")
+shutil.copytree("../fastdl_opendir/materials", "processed/main.fastdl.me/materials")
+shutil.copytree("../fastdl_opendir/sound", "processed/main.fastdl.me/sound")
+
+# On Cloudflare: I have /maps/ rewritten to maps_index.html & /hashed/ rewritten to hashed_index.html....
+create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hashed/unfiltered maps", "")
+create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "")
+create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%'")
+
+# TODO: generate main.fastdl.me/index.html open directory pages
+
+#wrangler pages publish --project-name fdl --branch master processed/fastdl.me
+#wrangler pages publish --project-name mfdl --branch master processed/main.fastdl.me

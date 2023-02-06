@@ -3,5 +3,7 @@ new.db-journal
 _thing.json
 processed/*
 *.conf
+!cloudflare-realips.conf
 !fastdl.me.conf
+!fastdl.me-3rdparty-shared.conf
 transfer.sh
