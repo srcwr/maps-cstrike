@@ -1,10 +1,57 @@
 
 </tbody>
 </table>
+<dialog id="diaDialog">
+	<form method="dialog">
+		<div id="diaMapname">&#129361;</div>
+		<ul>
+		<li><a id="diaDownload" href="https://main.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2">Download</a></li>
+		<li><a id="diaFilelist" href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/" target="_blank" rel="noopener noreferrer">Packed file list</a></li>
+		<li><a id="diaSources" href="https://github.com/srcwr/maps-cstrike/search?q=f698fd3d702567d250af541d81e7488d6abf4de3" target="_blank" rel="noopener noreferrer">Scraped from...</a></li>
+		<li><a id="diaHotlink" href="https://main.fastdl.me/m2/bhop_badges.bsp.bz2">Short Hotlink</a></li>
+		</ul>
+		<p>Sometimes the `Scraped from` search doesn't show anything.
+		<br>Try reloading the page if that happens.
+		<br>Also the Gamebanana scrape csv is too big to be indexed.</p>
+		<button value="close">Close</button>
+	</form>
+</dialog>
 <script>
+const diaDialog = document.getElementById("diaDialog");
+const diaMapname = document.getElementById("diaMapname");
+const diaDownload = document.getElementById("diaDownload");
+const diaFilelist = document.getElementById("diaFilelist");
+const diaSources = document.getElementById("diaSources");
+const diaHotlink = document.getElementById("diaHotlink");
+
+if (document.title.includes("hashed"))
+	diaHotlink.parentNode.style.visibility = "hidden";
+
+var selectedRow = {};
+
+diaDialog.addEventListener("close", () => {
+	selectedRow.style.outline = "";
+});
+
+function download_mapname2(event) {
+	var mapname = event.target.innerText;
+	var hash = event.target.parentNode.parentNode.children[1].innerText;
+
+	selectedRow = event.target.parentNode.parentNode;
+	selectedRow.style.outline = "#ff0 solid 4px";
+
+	diaMapname.innerText = mapname;
+	diaDownload.href = `https://main.fastdl.me/h2/${hash}/${mapname}.bsp.bz2`;
+	diaFilelist.href = `https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/${hash}.csv`;
+	diaSources.href = `https://github.com/srcwr/maps-cstrike/search?q=${hash}`;
+	diaHotlink.href = `https://main.fastdl.me/m2/${mapname}.bsp.bz2`;
+	diaDialog.showModal();
+
+	event.preventDefault();
+	return false;
+}
 function download_mapname(event) {
     var mapname = event.target.innerText;
-    //var hash = event.target.parentNode.parentNode.children[1].children[0].innerText;
     var hash = event.target.parentNode.parentNode.children[1].innerText;
     var anchor = document.createElement("a");
     //anchor.href = "../hashed/" + hash /*+ "/" + mapname*/ + ".bsp.bz2";
