@@ -195,7 +195,7 @@ de_piranesi,7a2882377c25f12aa0ef3d0cb40da255545c7687,latest included version
 de_port,c1441d4b0a2b735fa2129a5bf4b310ca58d2d607,latest included version
 de_prodigy,f1b25890403fba0cf2df5d901a2cb151984d4136,latest included version
 de_theatre,f7b42dd1ffb11007f3cbb5cdf0506b9d116e78a3,latest on gamebanana (a_9 -- 202301241804)
-de_theatre_r,6758a4c4bb08bab2bafb221a84ecce422532ba5e,latest on gamebanana (b_3 -- 20230230950)
+de_theatre_r,70555309d5c5d63d6952e9ae744d014303a416c9,latest on gamebanana (b_4_1 -- 202302242050)
 de_tides,de38bc38b54c46aaf5f47626785021d00caac60d,latest included version
 de_train,151ddcd0e09e6c5172f1e1102329f4be38c615cc,latest included version
 dev_awp_alpha,1d4544484da143a30d519533b9f398d3f9080b2c,latest on gamebanana (v2 202301281633)
@@ -227,6 +227,7 @@ surf_eunoia,0269243e35fe99f01fadd7f957da35930d4168ef,original (not momentum-mod 
 surf_exclave_fix,46e82253eebc3e4e363464c6da47cdcfc6bf6cf2,original (not momentum-mod edit)
 surf_exile,10a23190fdad8542cf83b60e5eb434ba28c45411,original (not momentum-mod edit)
 surf_listless_ksf,da662b99daa0e76ed5de9a8b8d1e3faaf4b8c85c,latest on gamebanana (2022-12-07 1.2 b5 fix)
+surf_not_so_prosurf,8c41ab69dc0a1f2edfb759a55c0a829b692f813b,latest on gamebanana (202302242050)
 surf_outra,7e504086e75520d586afe009ef218709431db229,latest on gamebanana (202302230950)
 surf_prismatic_ksf,8bd56711c9aba8c9f9701c122fce8686bb9880a7,latest on gamebana (2.0)
 surf_rookie,25f056b0825b02a26e0e5af5ca6684a5652fb51a,original (not momentum-mod edit)
