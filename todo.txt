@@ -17,3 +17,5 @@ Figure out what to do with:
 		- One has a teleport destination for gate3_d. And the other has a big filesize. Not sure what the differences are...
 	kz_mix_multitude
 		- varying amount of unpacked-ness
+	kz_azlyco
+		- no textures :(
