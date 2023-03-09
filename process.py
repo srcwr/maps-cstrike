@@ -107,7 +107,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
         """.format(title, res[0], res[1], res[2])
 
     outf = open(f"processed/{outfilename}", "w+", encoding="utf-8")
-  
+
     outf.write(index_html + """
     <table id="list" class="sortable">
     <thead>
@@ -121,6 +121,10 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     </thead>
     <tbody>
     """)
+
+    outcsvffff = open(f"processed/{outfilename}.csv", "w+", newline="", encoding="utf-8")
+    mycsv = csv.writer(outcsvffff)
+    mycsv.writerow(["mapname","sha1","filesize","filesize_bz2","url"])
 
     groupy = ""
     fzy = "filesize_bz2"
@@ -136,14 +140,15 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
         {groupy}
         ORDER BY mapname;""").fetchall():
         link = row[5]
+        htmllink = ""
         if link != None:
-            link = f'<td><a href="{link}">clickme</a></td>'
+            htmllink = f'<td><a href="{link}">clickme</a></td>'
         else:
             gbid = row[4]
-            if gbid == None:
-                link = ""
-            else:
-                link = f'<td><a href="https://gamebanana.com/mods/{gbid}">{gbid}</a></td>'
+            if gbid != None:
+                link = "https://gamebanana.com/mods/" + str(gbid)
+                htmllink = f'<td><a href="{link}">{gbid}</a></td>'
+        mycsv.writerow([row[0], row[3], row[1], row[2], link])
         if canon:
             index_html = """
             <tr>
@@ -153,7 +158,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
             <td>{}</td>
             {}
             </tr>
-            """.format(html.escape(row[0]), row[3], row[1], row[2], link)
+            """.format(html.escape(row[0]), row[3], row[1], row[2], htmllink)
         else:
             #<td><a href="#">{}</a></td>
             index_html = """
@@ -164,7 +169,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
             <td>{}</td>
             {}
             </tr>
-            """.format(html.escape(row[0]), row[3], row[1], row[2], link)
+            """.format(html.escape(row[0]), row[3], row[1], row[2], htmllink)
         outf.write(index_html)
 
     outf.seek(0)
