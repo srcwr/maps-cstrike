@@ -190,13 +190,14 @@ de_cpl_mills,692fc8c915f850dffced326a23d0dfabe4000acb,latest on gamebanana
 de_dust,3695832fcda6f3e07e1ef738efac1125a7915235,latest included version
 de_dust2,7693e3f86618c4802b46be6482f16e5828b49165,latest included version
 de_inferno,128cb9ef3c09b0192f3a46443f45d7f1d3172f61,latest included version
+de_neonpolis,3efb54c2b8b6fec782bc4505d0149616a421c1ab,latest on gamebanana (as of 202303170250)
 de_nuke,0d440898066e4300c8bfd6a5910e66ea3caee283,latest included version
 de_nuke_khanh,8a185cfa023dd67a8bfb80c488864248b73e5179,latest version as of 202302051825
 de_piranesi,7a2882377c25f12aa0ef3d0cb40da255545c7687,latest included version
 de_port,c1441d4b0a2b735fa2129a5bf4b310ca58d2d607,latest included version
 de_prodigy,f1b25890403fba0cf2df5d901a2cb151984d4136,latest included version
 de_theatre,f7b42dd1ffb11007f3cbb5cdf0506b9d116e78a3,latest on gamebanana (a_9 -- 202301241804)
-de_theatre_r,1c2faa4ffb715f7f7140f7b848f643bbb3468772,latest on gamebanana (b_6_6 -- 202303160300)
+de_theatre_r,1da0699ebeffa47e4ff377a8dc32de52257dc392,latest on gamebanana (b_7 -- 202303170250)
 de_tides,de38bc38b54c46aaf5f47626785021d00caac60d,latest included version
 de_train,151ddcd0e09e6c5172f1e1102329f4be38c615cc,latest included version
 dev_awp_alpha,1d4544484da143a30d519533b9f398d3f9080b2c,latest on gamebanana (v2 202301281633)
@@ -245,6 +246,7 @@ trikz_extreme_final,820a72f7102edebe6fc6f0b0dc7b1fd941210353,latest version on g
 trikz_kyoto_fix,18496d9535a04ff7f63dcc532460fe3ce944985d,a new mapversion (140 vs 59) but also trikz_kyoto_final exists
 trikz_laele,8bc89b158b3f0ddaec8f6363875619ac2e6b9dee,latest on gamebanana
 trikz_nukor,a498bd49c29527708a1e78e3fe4ff271e4265255,latest on gamebanana (as of 202301171258)
+trikz_q,b352ee50643aaa29ccf598397bc82cd72f6cd120,latest on gamebanana (as of 202303170250)
 trikz_zen,0e497a33831b8abc9873f60bf6f3a8411272522c,latest on gamebanana
 xc_bhop_source,b54cf5cb5a01c22ebe3c7fa7804b5f8c7a45f2b0,latest on gamebanana
 xc_cliff_of_kamoon_fix,6b6aa05660172bba50249e8d54a43c4e4f623a54,an edit or something that fixes some lighting. also removes the funny helicopters :pensive:
