@@ -86,6 +86,11 @@ with open("canon.csv", encoding="utf-8") as f:
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
 
+recently_added = []
+with open("recently_added.csv", encoding="utf-8") as f:
+    recently_added = [line.lower().split(",")[:4] for line in f]
+    recently_added.pop(0) # remove "mapname,sha1,datetime,note"
+
 def create_thing(table, outfilename, canon, title, sqlwhere):
     res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} {sqlwhere} GROUP BY sha1);").fetchone()
 
@@ -105,6 +110,35 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
         <h3>BZ2 size: {:,} BYTES</h3>
         <h4>(sorting is slow... you have been warned...)</h4>
         """.format(title, res[0], res[1], res[2])
+
+    index_html += """
+    <br>
+    <h2>Recently added:</h2>
+    (manually updated -- may be forgotten sometimes) <a href="https://github.com/srcwr/maps-cstrike/commits/master">(full commit history)</a>
+    <table id="recentlyadded">
+    <thead>
+    <tr>
+    <th style="width:1%">Map name</th>
+    <th style="width:1%">Hash</th>
+    <th style="width:5%">Note</th>
+    <th style="width:1%">Datetime</th>
+    <th style="width:1%">List of packed files</th>
+    </tr>
+    </thead>
+    <tbody>
+    """
+    for x in recently_added:
+        index_html += """
+        <tr>
+        <td><a href="#">{}</a></td>
+        <td>{}</td>
+        <td>{}</td>
+        <td>{}</td>
+        <td><a href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/{}.csv">{}</a></td>
+        </tr>
+        """.format(html.escape(x[0]), x[1], x[2], x[3], x[1], html.escape(x[0]))
+
+    index_html += '</tbody></table><br><br><br>'
 
     outf = open(f"processed/{outfilename}", "w+", encoding="utf-8")
 

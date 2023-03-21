@@ -65,7 +65,9 @@ function download_mapname(event) {
     return false;
 }
 
-var rows = document.getElementById("list").children[1].children;
+const a = document.getElementById("list").children[1].children;
+const b = document.getElementById("recentlyadded").children[1].children;
+const rows = [...a, ...b];
 
 for (var i = 0; i < rows.length; i++) {
     rows[i].children[0].children[0].addEventListener("click", download_mapname);
