@@ -88,7 +88,7 @@ conn.commit() # fuck you for making me call you
 
 recently_added = []
 with open("recently_added.csv", encoding="utf-8") as f:
-    recently_added = [line.lower().split(",")[:4] for line in f]
+    recently_added = [line.lower().split(",")[:7] for line in f]
     recently_added.pop(0) # remove "mapname,sha1,datetime,note"
 
 def create_thing(table, outfilename, canon, title, sqlwhere):
@@ -136,7 +136,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
         <td>{}</td>
         <td><a href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/{}.csv">{}</a></td>
         </tr>
-        """.format(html.escape(x[0]), x[1], x[2], x[3], x[1], html.escape(x[0]))
+        """.format(html.escape(x[0]), x[3], x[5], x[6], x[3], html.escape(x[0]))
 
     index_html += '</tbody></table><br><br><br>'
 
