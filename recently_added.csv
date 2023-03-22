@@ -1,4 +1,5 @@
-mapname,sha1,datetime,note
+mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+aim_texture_qcss,1806509,789438,08676232ad89cfa58d0d94b9441212faa917b425,433505_952973_maps_edb85,<a href="https://gamebanana.com/mods/433505">gamebanana</a>,2023-03-22 02:35
 surf_autumn,46246908,17539348,cc1cf53a74a6c389e47fef87ccdd8ffe5c154c82,433360_952513_surf_autumn_61924,<a href="https://gamebanana.com/mods/433360">gamebanana</a>,2023-03-21 04:41
 bhop_chroma,225382,213211,d2e6809a81138e0bbae110ef4e77d62251d607c3,433099_951747_bhop_chroma,was already on here but now has a <a href="https://gamebanana.com/mods/433099">gamebanana page</a>,2023-03-20 01:58
 de_theatre_r,35361072,14803044,9e3859c2150f980e026cb0fdead5e9c930735466,421363_951769_de_theatre_b_9,<a href="https://gamebanana.com/mods/421363">gamebanana</a> - b_9,2023-03-20 01:58
