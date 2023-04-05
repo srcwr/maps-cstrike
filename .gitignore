@@ -1,5 +1,3 @@
-new.db
-new.db-journal
 _thing.json
 processed/*
 *.conf
@@ -7,3 +5,7 @@ processed/*
 !fastdl.me.conf
 !fastdl.me-3rdparty-shared.conf
 transfer.sh
+sha1.js
+
+# no spam thanks
+fastdlsite/check.fastdl.me/functions/form.js

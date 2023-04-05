@@ -6,6 +6,8 @@ import minify_html
 import sqlite3
 import csv
 import shutil
+import json
+import subprocess
 
 """
 os.makedirs("processed/hashed", exist_ok=True)
@@ -217,6 +219,19 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     #"""
 
 try:
+    shutil.rmtree("processed/check.fastdl.me")
+except:
+    pass
+shutil.copytree("fastdlsite/check.fastdl.me", "processed/check.fastdl.me")
+_things = {}
+for row in cur.execute("SELECT mapname, filesize FROM maps_unfiltered"):
+    if not row[0] in _things:
+        _things[row[0]] = []
+    _things[row[0]].append(int(row[1]))
+with open("processed/check.fastdl.me/_thing.json", "w") as f:
+    json.dump(_things, f)
+
+try:
     shutil.rmtree("processed/fastdl.me")
 except:
     pass
@@ -236,6 +251,14 @@ create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filter
 create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'")
 
 # TODO: generate main.fastdl.me/index.html open directory pages
+
+# what the fuck wrangler why won't my functions work otherwise
+cwd = os.getcwd()
+os.chdir("processed/check.fastdl.me")
+subprocess.run("wrangler pages publish --project-name check-fastdl --branch main   .", shell=True)
+os.chdir(cwd + "/processed/fastdl.me")
+subprocess.run("wrangler pages publish --project-name fdl          --branch master .", shell=True)
+os.chdir(cwd)
 
 #wrangler pages publish --project-name fdl --branch master processed/fastdl.me
 #wrangler pages publish --project-name mfdl --branch master processed/main.fastdl.me

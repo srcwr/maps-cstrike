@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>check.fastdl.me</title>
+	<meta name="description" content="check if a map exists on fastdl.me">
+	<style>
+		body, html {
+			background: #000;
+			color: #fff;
+			font-family: Monospace;
+			font-size: x-large;
+		}
+		a {
+			color: #4cf;
+		}
+		a:hover {
+			color: #e33;
+		}
+		#intest {
+			height: 200px;
+			width: 200px;
+		}
+		#booty {
+			background: darkgreen;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+<h1>check.fastdl.me</h1>
+<h3><a href="https://fastdl.me">homepage</a></h2>
+<h1>Submit map links</h1>
+<a href="https://gofile.io/uploadFiles">gofile.io</a> is a good place to upload map files to send a link<br><br>
+
+<textarea rows="10" cols="80" id="intext">Put links to maps here if you want me to add them (max 1800 chars)</textarea>
+<br>
+<button id="booty" onclick="butt()">Send</button>
+
+
+<h1>Commands for basic filename+filesize checks on your map folder</h1>
+<ul>
+	<li>Windows / Powershell
+		<ul>
+			<li>
+				<pre>(Invoke-WebRequest -Uri https://check.fastdl.me/nsjson -Body (Get-Childitem -file *.bsp | select length, name | ConvertTo-Json) -Method POST -UseBasicParsing).Content</pre>
+			</li>
+		</ul>
+	</li>
+	<li>Linux
+		<ul>
+			<li>
+				<pre>stat -c "%s %n" *.bsp | curl -H 'Content-Type: text/plain' --data-binary @- https://check.fastdl.me/nsplain</pre>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<h2>todo</h2>
+<ul>
+	<li>add some endpoints for checking sha1 hashes and sha1sum commands...</li>
+	<li>add file drag and drop thing to hash client-side and check...</li>
+</ul>
+
+<!--
+https://github.com/Caligatio/jsSHA
+https://github.com/Daninet/hash-wasm
+
+<div>
+	<noscript>This file hasher requires javascript (files are not uploaded)</noscript>
+	<input type="file" id="inputHasher" multiple accept=".bsp" />
+</div>
+-->
+
+<script>
+	function butt() {
+		let intext = document.getElementById("intext");
+		if (intext.value == "Put links to maps here if you want me to add them (max 1800 chars)" || intext.value.len < 5 || intext.value.len > 1800)
+			return;
+
+		document.getElementById("booty").disabled = true;
+		document.getElementById("booty").textContent = "Sending..."
+
+		fetch("https://check.fastdl.me/form", {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'text/plain'
+			},
+			body: intext.value,
+		})
+		.then(response => {
+			document.getElementById("booty").textContent = "sent!";
+			return response.json();
+		})
+		.then(response => console.log(JSON.stringify(response)))
+	}
+/*
+	let inputHasher = document.getElementById("inputHasher");
+	inputHasher.onchange = function() {
+		console.log(this.files);
+		for (const file of this.files) {
+			const hash = new jsSHA("SHA-1", "ARRAYBUFFER");
+			hash.update(file.arrayBuffer());
+			console.log(hash.getHash("HEX"));
+		}
+	};
+*/
+</script>
+<!--<script type="text/javascript" src="sha1.js"></script>-->
+</body>
