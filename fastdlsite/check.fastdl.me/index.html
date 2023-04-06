@@ -39,22 +39,17 @@
 <button id="booty" onclick="butt()">Send</button>
 
 
-<h1>Commands for basic filename+filesize checks on your map folder</h1>
+<h1>Commands for basic filename+filesize checks on your maps folder</h1>
+<!-- i hate html whitespace rules fucking my shit up -->
 <ul>
-	<li>Windows / Powershell
-		<ul>
-			<li>
-				<pre>(Invoke-WebRequest -Uri https://check.fastdl.me/nsjson -Body (Get-Childitem -file *.bsp | select length, name | ConvertTo-Json) -Method POST -UseBasicParsing).Content</pre>
-			</li>
-		</ul>
-	</li>
-	<li>Linux
-		<ul>
-			<li>
-				<pre>stat -c "%s %n" *.bsp | curl -H 'Content-Type: text/plain' --data-binary @- https://check.fastdl.me/nsplain</pre>
-			</li>
-		</ul>
-	</li>
+<li>Windows / Powershell<ul><li><pre>(Invoke-WebRequest -Uri https://check.fastdl.me/nsjson -Body (Get-Childitem -file *.bsp | select length, name | ConvertTo-Json) -Method POST -UseBasicParsing).Content</pre></li></ul></li>
+<li>Linux<ul><li><pre>stat -c "%s %n" *.bsp | curl --data-binary @- https://check.fastdl.me/nsplain</pre></li></ul></li>
+<li>Python<ul><li><pre>import glob, urllib.request, os
+print(urllib.request.urlopen(urllib.request.Request(
+	"https://check.fastdl.me/nsplain",
+	data='\n'.join([str(os.path.getsize(f)) + " " + f for f in glob.glob("*.bsp")]).encode(),
+	headers={"User-Agent": "check.py"}
+)).read().decode("utf-8"))</pre></li></ul></li>
 </ul>
 
 <h2>todo</h2>
