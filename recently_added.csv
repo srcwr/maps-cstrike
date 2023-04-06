@@ -1,11 +1,13 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+surf_fourcorners_b1,9886216,3225891,bff57a56605a432e9f608d9f24122549646285c7,436464_961711_surf_fourcorners_surf_fourcorners_b1,<a href="https://gamebanana.com/mods/436464">gamebanana</a> - a beta version of surf_fourcorners that kingyoshi also had,2023-04-06 12:45
+surf_botanica,34835844,34357128,e26cdd17c315077848a6ca46226f1c80108ce665,435140_961737_surf_botanica_cc663,<a href="https://gamebanana.com/mods/435140">gamebanana</a> - v2 for trigger fixes,2023-04-06 12:45
 central,889652,68580,4123112727e179451907ac10f8f789f69d45918a,436364_961352_central_79ab9,<a href="https://gamebanana.com/mods/436364">gamebanana</a>,2023-04-06 07:00
 de_across_the_street,104271657,53680217,1d122d47eaebd670299bbf16efa10d0d3624ca02,436330_961249_de_across_the_street,<a href="https://gamebanana.com/mods/436330">gamebanana</a>,2023-04-06 07:00
 de_fire_v3,3811344,509692,a4f494330428cbef7ac0d5dc1c63e273e875a222,436361_961344_de_fire_v3,<a href="https://gamebanana.com/mods/436361">gamebanana</a>,2023-04-06 07:00
 mg_btp_multigames_v1_b01,29919378,16815487,4c3ba5af835f66fd0a6366c4f4ff7e4baf52cd28,,malala had this in their folder,2023-04-06 07:00
 mg_btp_multigames_v1_b03,6252104,1748747,2e0924a6a3e37d567604ee193585111fb3650412,,malala had this in their folder,2023-04-06 07:00
 mg_btp_multigames_v2_1fix,3857665,1077709,6af4aa112f1ecc3fa000ef1fd6937b220aa1bd44,,malala had this in their folder,2023-04-06 07:00
-surf_fourcorners,11483792,3676497,79b4450d50fd571f85ecfdb5f0d9721d7d0d517e,,kingyoshi had this in their folder,2023-04-06 07:00
+surf_fourcorners,11483792,3676497,79b4450d50fd571f85ecfdb5f0d9721d7d0d517e,,<a href="https://gamebanana.com/mods/436464">gamebanana</a> - kingyoshi had this in their folder,2023-04-06 07:00
 surf_horsts_world_v02,2988920,818767,28a1ea6cbdc452d1ae6d9766e7d89f527a7df595,,kingyoshi had this in their folder,2023-04-06 07:00
 surf_kernick_v1,3632636,1246954,90788551e7d70a6ac188859e58aca3b3e5110758,,kingyoshi had this in their folder,2023-04-05 11:00
 surf_leet_xl_beta3,2535132,715414,7ef71db084a6130efce87b479fe0a267a6ab29cc,,kingyoshi had this in their folder,2023-04-05 11:00
@@ -20,7 +22,6 @@ ze_eerie_escape_b1,1821476,403740,2f947f8e85015d431b3db7091d481298d407a5a6,43562
 bhop_avloppet_fix,10232200,4088288,cf6cb84200f20490ba73f550d30a6d990692730b,optimized/smaller version by malala,optimized/smaller version of bhop_avloppet by malala,2023-04-01 02:20
 bhop_restricted,33975103,19478403,bb8395a7fcae69da41628d068c2e0e9f61fa8d32,435172_957953_bhop_restricted,<a href="https://gamebanana.com/mods/435172">gamebanana</a> - new ArcticPanda map :eyes:,2023-04-01 02:20
 mg_masogs_course_beta_2,14104940,4617085,ad50c1a6dd9e09bb5c0a1a027ac299e708848784,413632_957963_mg_masogs_course_beta_2_fix,<a href="https://gamebanana.com/mods/413632">gamebanana</a> - "Removed invisible wall to enter level 7",2023-04-01 02:20
-surf_botanica,34844302,34467079,3318a52427225fcdb4962acb14dea286b472dbf4,435140_958001_surf_botanica_e4827,<a href="https://gamebanana.com/mods/435140">gamebanana</a>,2023-04-01 02:20
 kz_sonora,16635896,8222022,93ff4fc119d27bb7440fcc2878f31f05b6e6073b,435056_957656_kz_sonora,<a href="https://gamebanana.com/mods/435056">gamebanana</a>,2023-03-31 01:07
 de_cratenuclearcss,4683380,1790114,7f9cd7a12b9e19d8a77df8ec35303dc11fbacdd6,434842_957028_de_cratenuclearcss,<a href="https://gamebanana.com/mods/434842">gamebanana</a> - textured version of de_crate,2023-03-30 01:37
 de_crate,2926364,993832,318f391e0c027fb8bd9dc36740f2ce415ede101c,434697_956529_de_crate,<a href="https://gamebanana.com/mods/434697">gamebanana</a>,2023-03-29 07:32
