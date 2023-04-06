@@ -1,4 +1,7 @@
 mapname,filesize,filesize_bz2,sha1,note
 bhop_avloppet_fix,10232200,4088288,cf6cb84200f20490ba73f550d30a6d990692730b,optimized/smaller version of bhop_avloppet by malala
 bhop_remia_fix,9403112,3855698,2dee7cbfc574072601c3d5f509352211b1ade01a,"removed 25MB of music + deleted some shitty bonus + optimized + smaller" -- by malala
+mg_btp_multigames_v1_b01,29919378,16815487,4c3ba5af835f66fd0a6366c4f4ff7e4baf52cd28,malala had this in their maps folder
+mg_btp_multigames_v1_b03,6252104,1748747,2e0924a6a3e37d567604ee193585111fb3650412,malala had this in their maps folder
+mg_btp_multigames_v2_1fix,3857665,1077709,6af4aa112f1ecc3fa000ef1fd6937b220aa1bd44,malala had this in their maps folder
 surf_mellow_v2,6289912,2610480,63910da3f5a119c3871969ffd7246d2369ca51e8,most servers have this as surf_mellow but its original name is surf_mellow_v2
