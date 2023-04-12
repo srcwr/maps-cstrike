@@ -122,8 +122,8 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     <tr>
     <th style="width:1%">Map name</th>
     <th style="width:1%">Hash</th>
-    <th style="width:4%">Note</th>
-    <th style="width:1%">Datetime</th>
+    <th style="width:15%">Note</th>
+    <th style="width:4%">Datetime</th>
     <th style="width:1%">List of packed files</th>
     </tr>
     </thead>
