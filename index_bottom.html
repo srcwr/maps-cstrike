@@ -51,27 +51,34 @@ function download_mapname2(event) {
 	return false;
 }
 function download_mapname(event) {
-    var mapname = event.target.innerText;
-    var hash = event.target.parentNode.parentNode.children[1].innerText;
-    var anchor = document.createElement("a");
-    //anchor.href = "../hashed/" + hash /*+ "/" + mapname*/ + ".bsp.bz2";
-    //anchor.href = "/hashed/" + hash + "/" + mapname + ".bsp.bz2";
+	if (event.target.tagName != "A") return;
+	if (event.target.getAttribute("href") != "#") return;
+	console.log(event.target);
+	var mapname = event.target.innerText;
+	var hash = event.target.parentNode.parentNode.children[1].innerText;
+	var anchor = document.createElement("a");
+	//anchor.href = "../hashed/" + hash /*+ "/" + mapname*/ + ".bsp.bz2";
+	//anchor.href = "/hashed/" + hash + "/" + mapname + ".bsp.bz2";
 	anchor.href = `https://main.fastdl.me/h2/${hash}/${mapname}.bsp.bz2`;
-    anchor.download = mapname + ".bsp.bz2";
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-    event.preventDefault();
-    return false;
+	anchor.download = mapname + ".bsp.bz2";
+	document.body.appendChild(anchor);
+	anchor.click();
+	document.body.removeChild(anchor);
+	event.preventDefault();
+	history.replaceState(null, null, ' '); // deletes the '#' from the URL magically somehow idk I didn't read the docs, thanks stackoverflow
+	return false;
 }
+window.onclick = download_mapname;
 
+/*
 const a = document.getElementById("list").children[1].children;
 const b = document.getElementById("recentlyadded").children[1].children;
 const rows = [...a, ...b];
 
 for (var i = 0; i < rows.length; i++) {
-    rows[i].children[0].children[0].addEventListener("click", download_mapname);
+	rows[i].children[0].children[0].addEventListener("click", download_mapname);
 }
+*/
 </script>
 <script>
 // https://github.com/tofsjonas/sortable/blob/main/sortable.js
