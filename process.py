@@ -89,9 +89,12 @@ with open("canon.csv", encoding="utf-8") as f:
 conn.commit() # fuck you for making me call you
 
 recently_added = []
-with open("recently_added.csv", encoding="utf-8") as f:
-    recently_added = [line.lower().split(",")[:7] for line in f]
-    recently_added.pop(0) # remove "mapname,sha1,datetime,note"
+with open("recently_added.csv", newline='', encoding="utf-8") as f:
+    cr = csv.reader(f)
+    for line in cr:
+        line[0] = line[0].lower().strip().replace('.', '_').replace(' ', '_').strip()
+        recently_added.append(line)
+    recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
 
 def create_thing(table, outfilename, canon, title, sqlwhere):
     res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} {sqlwhere} GROUP BY sha1);").fetchone()
