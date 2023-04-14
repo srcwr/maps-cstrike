@@ -162,7 +162,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     """)
 
     if "canon" in title or table == "maps_unfiltered":
-        outtextffff = open(f"processed/{outfilename}.txt", "w", encoding="utf-8")
+        outtextffff = open(f"processed/{outfilename}.txt", "w", newline="\n", encoding="utf-8")
 
     outcsvffff = open(f"processed/{outfilename}.csv", "w+", newline="", encoding="utf-8")
     mycsv = csv.writer(outcsvffff)
