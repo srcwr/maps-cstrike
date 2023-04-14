@@ -161,6 +161,9 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     <tbody>
     """)
 
+    if "canon" in title or table == "maps_unfiltered":
+        outtextffff = open(f"processed/{outfilename}.txt", "w", encoding="utf-8")
+
     outcsvffff = open(f"processed/{outfilename}.csv", "w+", newline="", encoding="utf-8")
     mycsv = csv.writer(outcsvffff)
     mycsv.writerow(["mapname","sha1","filesize","filesize_bz2","url"])
@@ -187,6 +190,11 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
             if gbid != None:
                 link = "https://gamebanana.com/mods/" + str(gbid)
                 htmllink = f'<td><a href="{link}">{gbid}</a></td>'
+        if "canon" in title:
+            outtextffff.write(row[0] + "\n")
+        elif table == "maps_unfiltered":
+            outtextffff.write(row[3] + "\n")
+
         mycsv.writerow([row[0], row[3], row[1], row[2], link])
         if canon:
             index_html = """
