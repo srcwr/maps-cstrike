@@ -163,6 +163,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
 
     if "canon" in title or table == "maps_unfiltered":
         outtextffff = open(f"processed/{outfilename}.txt", "w", newline="\n", encoding="utf-8")
+        hashies = set()
 
     outcsvffff = open(f"processed/{outfilename}.csv", "w+", newline="", encoding="utf-8")
     mycsv = csv.writer(outcsvffff)
@@ -193,7 +194,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
         if "canon" in title:
             outtextffff.write(row[0] + "\n")
         elif table == "maps_unfiltered":
-            outtextffff.write(row[3] + "\n")
+            hashies.add(row[3])
 
         mycsv.writerow([row[0], row[3], row[1], row[2], link])
         if canon:
@@ -218,6 +219,11 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
             </tr>
             """.format(html.escape(row[0]), row[3], row[1], row[2], htmllink)
         outf.write(index_html)
+
+    if table == "maps_unfiltered":
+        hashies = sorted(hashies)
+        for hash in hashies:
+            outtextffff.write(hash + "\n")
 
     outf.seek(0)
     content = minify_html.minify(outf.read() + open("index_bottom.html", encoding="utf-8").read(), minify_js=True, minify_css=True)
