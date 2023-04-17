@@ -27,36 +27,78 @@
 <h2><a href="https://main.fastdl.me/maps/">Directory list of canon/filtered maps</a> | <a href="https://main.fastdl.me/hashed/">Directory list of all hashed/unfiltered maps</a></h2>
 <h2><a href="https://main.fastdl.me/69.html">Smaller list of mostly bhop/trikz/kz/surf/xc maps</a></h2>
 <h2><a href="https://dnd.fastdl.me/">Temporary Dark and Darker mirror</a></h2>
+
 <h2>Contact:</h2>
 <ul>
 	<li>Email: <a href="mailto:hello@fastdl.me">hello@fastdl.me</a></li>
 </ul>
 <br>
 Everything from <a href="https://gamebanana.com/mods/cats/5535?_nPage=1&_sSort=Generic_NewAndUpdated">Gamebanana</a> is included and it continues to be periodically checked (manually) for new maps.
-<br>You can find map info dumps used by this website at <a href="https://github.com/srcwr/maps-cstrike">https://github.com/srcwr/maps-cstrike</a>
+<br>You can find map info dumps and website source code at <a href="https://github.com/srcwr/maps-cstrike">https://github.com/srcwr/maps-cstrike</a>
 <br>
 <br>
 How to request maps to be added/fixed:
 <ul>
+	<li><a href="https://check.fastdl.me">check.fastdl.me</a>
+		<ul>
+			<li>Contact form / upload &amp; submit links to missing maps.</li>
+			<li>Check for unique filename+filesize combinations in your maps folder.</li>
+		</ul>
+	</li>
 	<li>Post in the <a href="https://discord.gg/nP5YzB3">Sourcejump Discord server</a> or <a href="https://discord.gg/JB8rxyD6uZ">bhoptimer Discord server</a> (main)</li>
 	<li>Send an email.</li>
 </ul>
-<h2><a href="https://check.fastdl.me">check.fastdl.me</a></h2>
+
+<h3>Known missing maps we're looking for:</h3>
 <ul>
-	<li>Contact form / upload &amp; submit links to missing maps.</li>
-	<li>Check for unique filename+filesize combinations in your maps folder.</li>
+	<li>bhop_aabhnerd_stage1</li>
+	<li>bhop_alanlox</li>
+	<li>bhop_alanlox2</li>
+	<li>bhop_breakthis5</li>
+	<li>bhop_cobblestone_nolog_1
+		<ul><li>probably bhop_cobblestone with the lumps edited to remove the 'say'</li></ul></li>
+	<li>bhop_color_prikol</li>
+	<li>bhop_concrete
+		<ul><li>probably bhop_concrete_beta but renamed. seen on [CN]Teas Bunny-Hop</li></ul></li>
+	<li>bhop_dr_minecraft
+		<ul><li>probably dr_minecraft with a bhop_ prefix</li></ul></li>
+	<li>bhop_freedompuppiesjitedition
+		<ul><li><a href="https://gamebanana.com/mods/153790">trashed on gamebanana</a>. retextured freedompuppies presumably</li></ul></li>
+	<li>bhop_hot_desert
+		<ul><li>probably deathrun_hot_desert with a bhop_ prefix</li></ul></li>
+	<li>bhop_kterenahatu</li>
+	<li>bhop_mp_stairs_remake_b</li>
+	<li>bhop_niceopti</li>
+	<li>bhop_s_bonus1</li>
+	<li>bhop_strafe_black</li>
+	<li>bhop_tera</li>
+	<li>bhop_together_h
+		<ul><li>the long-sought legend</li></ul></li>
+	<li>cs_kiss_my_ass_r2</li>
 </ul>
+
 <h2>Questions:</h2>
 <ul>
-	<li><h3>Is it okay to scrape &amp; download everything?</h3>
-		<ul><li>Yes. Cloudflare R2 bandwidth is free.
-		<br>Use `/maps/mapname.bsp.bz2` or `/hashed/123123123.bsp.bz2`.
-		<br>Also `python process.py` from <a href="https://github.com/srcwr/maps-cstrike">maps-cstrike</a> will make a sqlite database for querying mapname->hash <a href="https://github.com/srcwr/maps-cstrike/blob/3c0625bd972bc958004038abda8aa8b4c30f3c42/fastdlsite/main.py#L21">[1]</a>.
-		</li></ul>
+	<li><h3>Is it okay to scrape?</h3>
+		<ul>
+		<li>Yes. Preferably use `/maps/mapname.bsp.bz2` or `/mapsredir/mapname.bsp.bz2` instead of `/m2/*` or `/h2/*`.a</li>
+		<li>CSV files for each page:
+			<ul>
+				<li><a href="https://main.fastdl.me/maps_index.html.csv">Directory list of canon/filtered maps</a></li>
+				<li><a href="https://main.fastdl.me/hashed_index.html.csv">Directory list of all hashed/unfiltered maps</a></li>
+				<li><a href="https://main.fastdl.me/69.html.csv">Smaller list of mostly bhop/trikz/kz/surf/xc maps</a></li>
+			</ul>
+		</li>
+		<li>Some text files of map/file names:
+			<ul>
+				<li><a href="https://main.fastdl.me/maps_index.html.txt">Canon/filtered</a></li>
+				<li><a href="https://main.fastdl.me/hashed_index.html.txt">All hashes</a></li>
+			</ul>
+		</li>
+		</ul>
 	</li>
 	<li><h3>Can I use this as my fastdl?</h3>
-		<ul><li>Yes, or you can make your fastdl server redirect maps to here.
-		<br>sv_downloadurl "http://main.fastdl.me/"
+		<ul><li>Yes. sv_downloadurl "http://main.fastdl.me/"
 		</li></ul>
 	</li>
 	<li><h3>Maybe host .bsp files too?</h3>
@@ -69,14 +111,7 @@ How to request maps to be added/fixed:
 					<li><a href="https://github.com/srcwr/maps-cstrike/blob/master/filters/">Removed maps csvs</a></li>
 				</ul>
 			</li>
-			<li>/hashed/: list of everything (old versions, corrupted files, etc)</li>
-		</ul>
-	</li>
-	<li><h3>Can I have <i>subdomain</i>.fastdl.me that does maps but redirects to <i>my</i> fastdl otherwise?</h3>
-		<ul>
-			<li>This is possible now. If you want one:
-			<br>Send me a preferred fastdl.me subdomain &amp; a link to a URL to redirect non-maps to.
-			</li>
+			<li>/hashed/: list of everything (old/broken versions, duplicate/incorrect names, etc)</li>
 		</ul>
 	</li>
 	<li><h3>Can you host a CS:GO or TF2 fastdl?</h3>
@@ -88,6 +123,7 @@ How to request maps to be added/fixed:
 		</ul>
 	</li>
 </ul>
+
 <h2>Other things:</h2>
 <ul>
 	<li><h3>If you want to download with wget/curl:</h3>
@@ -99,58 +135,27 @@ How to request maps to be added/fixed:
 	<li><h3>Every .nav file is currently a dummy .nav file.</h3>
 		<ul><li>I'll add the real .nav files where available soon:tm:.</li></ul>
 	</li>
-	<li><h3>Some CSVs:</h3>
-		<ul>
-			<li><a href="https://main.fastdl.me/maps_index.html.csv">Directory list of canon/filtered maps</a></li>
-			<li><a href="https://main.fastdl.me/hashed_index.html.csv">Directory list of all hashed/unfiltered maps</a></li>
-			<li><a href="https://main.fastdl.me/69.html.csv">Smaller list of mostly bhop/trikz/kz/surf/xc maps</a></li>
-		</ul>
-	</li>
-	<li><h3>Some text files of map names:</h3>
-		<ul>
-			<li><a href="https://main.fastdl.me/maps_index.html.txt">List of canon maps</a></li>
-			<li><a href="https://main.fastdl.me/hashed_index.html.txt">List of hashes</a></li>
-		</ul>
-	</li>
 	<li><h3>I rename maps sometimes when different people reuse the same mapname.</h3>
 		<ul><li>See <a href="https://github.com/srcwr/maps-cstrike/blob/master/unprocessed/renamed_by_me.csv">renamed_by_me.csv</a> / <a href="https://github.com/srcwr/maps-cstrike/blob/master/filters/removed_because_i_renamed_them.csv">removed_because_i_renamed_them.csv</a></li></ul>
 	</li>
-	<li><h3>Missing maps that we're looking for:</h3>
-		<ul>
-		<li>bhop_aabhnerd_stage1 -- unknown</li>
-		<li>bhop_alanlox -- some russian map</li>
-		<li>bhop_alanlox2 -- some russian map</li>
-		<li>bhop_breakthis5 -- unknown</li>
-		<li>bhop_cobblestone_nolog_1 -- probably cobblestone with the lumps edited to remove the 'say'</li>
-		<li>bhop_color_prikol -- seen from a russian server</li>
-		<li>bhop_concrete -- probably one of the bhop_concrete_beta maps but renamed. seen from [CN]Teas Bunny-Hop</li>
-		<li>bhop_dr_minecraft -- seen from a russian server -- probably dr_minecraft with a bhop_ prefix</li>
-		<li>bhop_freedompuppiesjitedition -- <a href="https://gamebanana.com/mods/153790">trashed on gamebanana</a>. retextured freedompuppies presumably</li>
-		<li>bhop_hot_desert -- seem from a russian server -- probably deathrun_hot_desert with a bhop_ prefix</li>
-		<li>bhop_kterenahatu -- unknown</li>
-		<li>bhop_mp_stairs_remake_b -- seen from a random russian server</li>
-		<li>bhop_niceopti -- seen from a random russian server</li>
-		<li>bhop_s_bonus1 -- seen from a russian server</li>
-		<li>bhop_strafe_black -- seen from a russian server</li>
-		<li>bhop_tera -- seen from a russian server</li>
-		<li>bhop_together_h -- the long-sought legend</li>
-		<li>cs_kiss_my_ass_r2 -- seen from a danish server?</li>
-		</ul>
-	</li>
 	<li><h3>Available URL samples:</h3>
 		<ul>
-			<li><a href="https://main.fastdl.me/">main.fastdl.me/</a>
+			<li><a href="https://main.fastdl.me/">main.fastdl.me</a>
 				<ul><li>Open directory with some generic sounds and materials for bhoptimer.</li></ul></li>
 			<li><a href="https://main.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2">main.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2</a>
-				<ul><li>Another one that might be useful with curl/wget:<br>
+				<ul><li>You can also suffix the mapname like this:<br>
 				<a href="https://main.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2">main.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2</a></li>
 				<li>Directory with every .bsp.bz2 archived.</li>
+				<li>This 302 redirects to the Cloudflare R2 bucket URL (<a href="https://mainr2.fastdl.me">mainr2.fastdl.me</a>).
+				<br>That subdomain might be changed in the future but it should be faster to hit `mainr2` for /hashed/ than waiting for the redirect from `main`.
+				<br>Note: `mainr2` doesn't support suffixing the mapname to the path though like `main` does.
 				</ul></li>
 			<li><a href="https://main.fastdl.me/maps/bhop_badges.bsp.bz2">main.fastdl.me/maps/bhop_badges.bsp.bz2</a>
 				<ul><li>Path that is used for fastdl.
 				<br><s>This 302 redirects to <a href="https://mainr2.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2">mainr2.fastdl.me/hashed/f698fd3d702567d250af541d81e7488d6abf4de3.bsp.bz2</a></s>
 				<br>Note: mainr2.fastdl.me could change.
-				<br>Note: <s>Also this might occasionally change from using 302 redirects to not (via Cloudflare Workers)</s><br>Currently using Cloudflare Workers
+				<br>Note: Also this might occasionally change from using 302 redirects to not (via Cloudflare Workers)
+				<br>Currently using Cloudflare Workers...
 				</li></ul>
 			</li>
 			<li><a href="https://main.fastdl.me/mapsredir/bhop_badges.bsp.bz2">main.fastdl.me/mapsredir/bhop_badges.bsp.bz2</a>
@@ -161,13 +166,11 @@ How to request maps to be added/fixed:
 			</li>
 			<li><a href="https://main.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2">main.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2</a>
 				<ul><li>Used by the /maps/ &amp; /hashed/ index pages to download hashed files with a good filename.
-				<br><s>This has a daily limit so don't scrape it please.</s>
 				</li></ul>
 			</li>
 			<li><a href="https://main.fastdl.me/m2/bhop_badges.bsp.bz2">main.fastdl.me/m2/bhop_badges.bsp.bz2</a>
 				<ul><li>Downloads the map as the filename (like /h2/).
 				<br>Useful for hotlinking files to download with a good filename.
-				<br><s>This has a daily limit so don't scrape it please.</s>
 				</li></ul>
 			</li>
 		</ul>
