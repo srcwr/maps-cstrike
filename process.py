@@ -161,9 +161,8 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     <tbody>
     """)
 
-    if "canon" in title or table == "maps_unfiltered":
-        outtextffff = open(f"processed/{outfilename}.txt", "w", newline="\n", encoding="utf-8")
-        hashies = set()
+    outtextffff = open(f"processed/{outfilename}.txt", "w", newline="\n", encoding="utf-8")
+    hashies = set()
 
     outcsvffff = open(f"processed/{outfilename}.csv", "w+", newline="", encoding="utf-8")
     mycsv = csv.writer(outcsvffff)
@@ -191,9 +190,9 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
             if gbid != None:
                 link = "https://gamebanana.com/mods/" + str(gbid)
                 htmllink = f'<td><a href="{link}">{gbid}</a></td>'
-        if "canon" in title:
+        if "canon" in table:
             outtextffff.write(row[0] + "\n")
-        elif table == "maps_unfiltered":
+        else:
             hashies.add(row[3])
 
         mycsv.writerow([row[0], row[3], row[1], row[2], link])
