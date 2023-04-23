@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: WTFPL
+# Copyright 2023 rtldg <rtldg@protonmail.com>
 
 import bz2
 import hashlib

@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2021-2023 Cloudflare, Inc.
+// Copyright 2023 rtldg <rtldg@protonmail.com>
+
 // wrangler pages publish --project-name mfdl --branch master .
 
 export async function onRequest(context) {
