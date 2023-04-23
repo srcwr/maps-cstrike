@@ -17,6 +17,12 @@ def close_connection(exception):
 
 @app.route('/<mapsfolder>/<mapname>.bsp.bz2')
 def AAAAA(mapsfolder, mapname):
+    if mapsfolder == "maps" or mapsfolder == "mapsredir":
+        return yo(mapsfolder, mapname, False)
+    else:
+        return yo(mapsfolder, mapname, True)
+
+def yo(mapsfolder, mapname, xaccel):
     cur = get_db().cursor()
     cur.execute("SELECT sha1, MAX(filesize_bz2) fbz2 FROM maps_canon WHERE mapname = ?", (mapname.lower(),))
     res = cur.fetchone()
@@ -25,9 +31,13 @@ def AAAAA(mapsfolder, mapname):
         redirurl = request.headers.get("redirurl")
         if redirurl == None or redirurl == "":
             return "", 404
-        else
+        else:
             return redirect(f"{redirurl}/maps/{mapname}.bsp.bz2", code=302)
     maphash = res[0]
+
+    if xaccel:
+        return "", 200, {"Content-Type": "application/x-bzip", "X-Accel-Redirect": f"/hashedyo/{maphash}.bsp.bz2"}
+
     return redirect(f"https://mainr2.fastdl.me/hashed/{maphash}.bsp.bz2", code=302)
 
 if __name__ == '__main__':
