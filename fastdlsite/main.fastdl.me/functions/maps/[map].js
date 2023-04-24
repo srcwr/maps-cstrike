@@ -16,7 +16,7 @@ export async function onRequest(context) {
 
     if (method != "GET" && method != "HEAD") return new Response(null, {status: 405});
 
-    const match = /^(.+).bsp.bz2$/.exec(file);
+    const match = /^(.+)\.bsp\.bz2$/.exec(file);
     if (match == null) return new Response(null, {status: 404});
 
     const mapname = match[1].toLowerCase();
