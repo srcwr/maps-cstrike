@@ -48,7 +48,7 @@ for filename in glob.glob("unprocessed/*.csv"):
     with open(filename, newline='', encoding="utf-8") as f:
         cr = csv.reader(f)
         for line in cr:
-            if line[0] == "mapname":
+            if line[0] == "mapname" or line[0][0] == "#":
                 continue
             thing = [x.lower() for x in line]
             thing[0] = thing[0].strip().replace('.', '_').replace(' ', '_') # because CS:S fails to download maps
