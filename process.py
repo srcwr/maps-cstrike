@@ -51,7 +51,7 @@ for filename in glob.glob("unprocessed/*.csv"):
             if line[0] == "mapname" or line[0][0] == "#":
                 continue
             thing = [x.lower() for x in line]
-            thing[0] = thing[0].strip().replace('.', '_').replace(' ', '_') # because CS:S fails to download maps
+            thing[0] = thing[0].strip().replace('.', '_') # because CS:S fails to download maps
             if len(thing) > 4:
                 if thing[4].startswith("http://") or thing[4].startswith("https://"):
                     links[thing[3]] = thing[4]
@@ -70,7 +70,7 @@ for filename in glob.glob("filters/*.csv"):
             if line[0] == "mapname" or line[0].startswith("#"):
                 continue
             thing = [x.lower() for x in line][:4]
-            thing[0] = thing[0].strip().replace('.', '_').replace(' ', '_').strip() # because CS:S fails to download maps
+            thing[0] = thing[0].strip().replace('.', '_').strip() # because CS:S fails to download maps
             unique.remove(tuple(thing))
             #if line == "mapname,filesize,filesize_bz2,sha1\n":
             #    continue
@@ -95,7 +95,7 @@ recently_added = []
 with open("recently_added.csv", newline='', encoding="utf-8") as f:
     cr = csv.reader(f)
     for line in cr:
-        line[0] = line[0].lower().strip().replace('.', '_').replace(' ', '_').strip()
+        line[0] = line[0].lower().strip().replace('.', '_').strip()
         recently_added.append(line)
     recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
 
@@ -270,6 +270,9 @@ create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filter
 create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'")
 
 # TODO: generate main.fastdl.me/index.html open directory pages
+
+#subprocess.run('sqlite3 processed/maps.db ".dump maps_canon"', stdout=open("processed/maps.sql", "w"))
+#subprocess.run("wrangler d1 execute fastdldb --file=processed/maps.sql", shell=True)
 
 # what the fuck wrangler why won't my functions work otherwise
 cwd = os.getcwd()
