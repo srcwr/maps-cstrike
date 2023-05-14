@@ -185,6 +185,7 @@ cs_office,5f8dd23bb0626fae600772c56c708100c09f2af3,latest included version
 cs_siege,d963d5a717d756b4bf8079d8a157b6b6cf0d65ef,original cs_siege remake fuck fuck idk what to do for now
 cs_site,5a5add94af6f96ab4a540119869e0a4f0728d8d9,latest on gamebanana (v1.1 2023-01-26 23:53)
 cs_stationarena_beta,d8796c58f26ee3402eaf0f17e5b1cf5aa4b3e9aa,non .bak version on gamebanana
+cs_training,a0c9b59629f4aca5f89470b4ebccd1348e7f52e6,latest on gamebanana as of 202305140000
 de_aztec,27cbddf495dacb879d92ab7e99ee07e8bd0bfcd4,latest included version
 de_cbble,28431023f76454c0d350c5c15f3fd71d54f95715,latest included version
 de_chateau,0b57fb003caff312866090b7a7b0bdf2e40145ef,latest included version
@@ -250,7 +251,7 @@ test_speakers,66f344061108c9ca59b6180f492e3a578748182f,latest included version
 trikz_2_hard,747f419c39e9464db79bceaf361c9643df805fb1,latest on gamebanana
 trikz_affinity,84303771f4c2822ee001a260895bc347488da8fe,doesnt crash on start
 trikz_arcadia_final,ee93276bfa2df917822e38e055ad8918548659d6,latest on gamebanana as of 202302110240
-trikz_arctic,9fd92b7f103a15faf3e5977bba24ab479889db44,latest on gamebanana as of 202305130040
+trikz_arctic,13e369e63ecb8c4250928f885e40bdae3d205c39,latest on gamebanana as of 202305140000
 trikz_asux,6a572367d8a185d8a3f160ce75f6b1febc1599c5,latest on gamebanana (although its included in a trikz pack that was uploader after but thats a different and probably older version so whatever)
 trikz_concret,eca0d7ce29ca1c23af3cf3dca1bc7fc90f89f242,latest version on gamebanana
 trikz_extreme_final,820a72f7102edebe6fc6f0b0dc7b1fd941210353,latest version on gamebanana
