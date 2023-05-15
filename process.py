@@ -135,12 +135,12 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     <th style="width:1%">Map name</th>
     <th style="width:1%">Hash</th>
     <th style="width:15%">Note</th>
-    <th style="width:4%">Datetime</th>
-    <th style="width:1%">List of packed files</th>
+    <th style="width:2%">Date added</th>
     </tr>
     </thead>
     <tbody>
     """
+    #<th style="width:1%">List of packed files</th>
     for x in recently_added:
         index_html += """
         <tr>
@@ -148,9 +148,9 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
         <td>{}</td>
         <td>{}</td>
         <td>{}</td>
-        <td><a href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/{}.csv">{}</a></td>
         </tr>
-        """.format(html.escape(x[0]), x[3], x[5], x[6], x[3], html.escape(x[0]))
+        """.format(html.escape(x[0]), x[3], x[5], x[6], x[3])
+        #<td><a href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/{}.csv">{}</a></td>
 
     index_html += '</tbody></table><br><br><br>'
 

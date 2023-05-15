@@ -5,10 +5,15 @@
 	<form method="dialog">
 		<div id="diaMapname">&#129361;</div>
 		<ul>
-		<li><a id="diaDownload" href="https://main.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2">Download</a></li>
-		<li><a id="diaFilelist" href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/" target="_blank" rel="noopener noreferrer">Packed file list</a></li>
-		<li><a id="diaSources" href="https://github.com/srcwr/maps-cstrike/search?q=f698fd3d702567d250af541d81e7488d6abf4de3" target="_blank" rel="noopener noreferrer">Scraped from...</a></li>
+		<li><a id="diaDownloadBz2" href="https://main.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2">Download .bsp.bz2</a></li>
+		<li><a id="diaDownloadBsp" href="https://main.fastdl.me/h2/f698fd3d702567d250af541d81e7488d6abf4de3/bhop_badges.bsp.bz2">Download .bsp (todo)</a></li>
+		<br>
 		<li><a id="diaHotlink" href="https://main.fastdl.me/m2/bhop_badges.bsp.bz2">Short Hotlink</a></li>
+		<br>
+		<li><a id="diaFilelist" href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/" target="_blank" rel="noopener noreferrer">Packed file list</a></li>
+		<li><a id="diaEntites" href="https://github.com/srcwr/maps-cstrike-more/blob/master/entitiesgz/" target="_blank" rel="noopener noreferrer">Entities (todo)</a></li>
+		<li><a id="diaSources" href="https://github.com/srcwr/maps-cstrike/search?q=f698fd3d702567d250af541d81e7488d6abf4de3" target="_blank" rel="noopener noreferrer">Scraped from...</a></li>
+		<br>
 		</ul>
 		<p>Sometimes the `Scraped from` search doesn't show anything.
 		<br>Try reloading the page if that happens.
@@ -19,8 +24,10 @@
 <script>
 const diaDialog = document.getElementById("diaDialog");
 const diaMapname = document.getElementById("diaMapname");
-const diaDownload = document.getElementById("diaDownload");
+const diaDownloadBz2 = document.getElementById("diaDownloadBz2");
+const diaDownloadBsp = document.getElementById("diaDownloadBsp");
 const diaFilelist = document.getElementById("diaFilelist");
+const diaEntites = document.getElementById("diaEntites");
 const diaSources = document.getElementById("diaSources");
 const diaHotlink = document.getElementById("diaHotlink");
 
@@ -34,6 +41,10 @@ diaDialog.addEventListener("close", () => {
 });
 
 function download_mapname2(event) {
+	if (event.target.tagName != "A") return;
+	if (event.target.getAttribute("href") != "#") return;
+	console.log(event.target);
+
 	var mapname = event.target.innerText;
 	var hash = event.target.parentNode.parentNode.children[1].innerText;
 
@@ -41,8 +52,10 @@ function download_mapname2(event) {
 	selectedRow.style.outline = "#ff0 solid 4px";
 
 	diaMapname.innerText = mapname;
-	diaDownload.href = `https://main.fastdl.me/h2/${hash}/${mapname}.bsp.bz2`;
+	diaDownloadBz2.href = `https://main.fastdl.me/h2/${hash}/${mapname}.bsp.bz2`;
+	//diaDownloadBsp.href = `https://main.fastdl.me/h2/${hash}/${mapname}.bsp.bz2`; // javascript to extract bsp...
 	diaFilelist.href = `https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/${hash}.csv`;
+	diaEntites.href = `https://github.com/srcwr/maps-cstrike-more/blob/master/entitiesgz/${hash}.cfg.gz`; // navigate to CF Worker's URL that downloads from GH & extracts gz?
 	diaSources.href = `https://github.com/srcwr/maps-cstrike/search?q=${hash}`;
 	diaHotlink.href = `https://main.fastdl.me/m2/${mapname}.bsp.bz2`;
 	diaDialog.showModal();
