@@ -96,6 +96,12 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
     cr = csv.reader(f)
     for line in cr:
         line[0] = line[0].lower().strip().replace('.', '_').strip()
+        splits = line[4].split('_')
+        if splits[0].isdigit() and splits[1].isdigit(): # might have false positives...
+            if len(line[5]) > 0:
+                line[5] = '<a href="https://gamebanana.com/mods/{}">gamebanana</a> - '.format(splits[0]) + line[5]
+            else:
+                line[5] = '<a href="https://gamebanana.com/mods/{}">gamebanana</a>'.format(splits[0])
         recently_added.append(line)
     recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
 
