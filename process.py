@@ -133,7 +133,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     <thead>
     <tr>
     <th style="width:1%">Map name</th>
-    <th style="width:1%">Hash</th>
+    <th style="width:1%">SHA-1 Hash</th>
     <th style="width:15%">Note</th>
     <th style="width:2%">Date added</th>
     </tr>
@@ -161,7 +161,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     <thead>
     <tr>
     <th style="width:1%">Map name</th>
-    <th style="width:5%">Hash</th>
+    <th style="width:5%">SHA-1 Hash</th>
     <th style="width:5%">Size bsp</th>
     <th style="width:5%">Size bz2</th>
     <th style="width:5%">Page</th>
