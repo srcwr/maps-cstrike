@@ -10,9 +10,11 @@ import os
 import shutil
 from pathlib import Path
 from stat import *
+from datetime import datetime
 
 csvname = "unprocessed/misc3.csv"
 mapsfolder = "../todo-gb"
+timestampFixer = False
 
 if os.path.exists(csvname) and os.path.getsize(csvname) > 50:
     raise Exception("DONT OVERWRITE THAT CSV!")
@@ -51,6 +53,10 @@ with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
             renameto = "../hashed/" + digest + ".bsp"
             exists = os.path.exists(renameto)
             if not exists:
+                if timestampFixer:
+                    print("wtf bad??? {} {}".format(filename, renameto))
+                    mm.close()
+                    continue
                 print("copying new! {} -> {}".format(filename, renameto))
                 shutil.copy2(filename, renameto)
                 with bz2.open(renameto + ".bz2", "wb") as fbz2:
@@ -58,8 +64,16 @@ with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
                     unused = fbz2.write(mm)
                 shutil.copystat(renameto, renameto+".bz2")
             mm.close()
-            #if exists:
-            #    continue
+            if timestampFixer:
+                mtimeThis = os.path.getmtime(filename)
+                mtimeHashed = os.path.getmtime(renameto)
+                if mtimeThis < mtimeHashed:
+                    print("timestamping {} from {} to {}".format(digest, datetime.utcfromtimestamp(mtimeHashed), datetime.utcfromtimestamp(mtimeThis)))
+                    os.utime(renameto, (mtimeThis, mtimeThis))
+                    os.utime(renameto+".bz2", (mtimeThis, mtimeThis))
+                continue
+            if exists:
+                continue
             filesize_bz2 = os.stat(renameto + ".bz2").st_size
             pp = Path(filename)
             mycsv.writerow([pp.stem,filesize,filesize_bz2,digest,str(pp.parent).replace("\\", "/").replace(mapsfolder+"/", "")])
