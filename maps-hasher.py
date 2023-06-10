@@ -15,6 +15,7 @@ from datetime import datetime
 csvname = "unprocessed/misc3.csv"
 mapsfolder = "../todo-gb"
 timestampFixer = False
+skipExistingHash = False
 
 if os.path.exists(csvname) and os.path.getsize(csvname) > 50:
     raise Exception("DONT OVERWRITE THAT CSV!")
@@ -72,7 +73,7 @@ with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
                     os.utime(renameto, (mtimeThis, mtimeThis))
                     os.utime(renameto+".bz2", (mtimeThis, mtimeThis))
                 continue
-            if exists:
+            if exists and skipExistingHash:
                 continue
             filesize_bz2 = os.stat(renameto + ".bz2").st_size
             pp = Path(filename)
