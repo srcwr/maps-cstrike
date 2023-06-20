@@ -58,7 +58,7 @@ for filename in glob.glob("unprocessed/*.csv"):
                 else:
                     # path & maybe gamebanana path...
                     splits = thing[4].split('_')
-                    if splits[0].isdigit() and splits[1].isdigit(): # might have false positives...
+                    if splits[0].isdigit() and splits[0] != "0" and splits[1].isdigit(): # might have false positives...
                         gamebanana[thing[3]] = (int(splits[0]), int(splits[1]))
             unique.add(tuple(thing[:4]))
 
@@ -97,7 +97,7 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
     for line in cr:
         line[0] = line[0].lower().strip().replace('.', '_').strip()
         splits = line[4].split('_')
-        if splits[0].isdigit() and splits[1].isdigit(): # might have false positives...
+        if splits[0].isdigit() and splits[0] != "0" and splits[1].isdigit(): # might have false positives...
             if len(line[5]) > 0:
                 line[5] = '<a href="https://gamebanana.com/mods/{}">gamebanana</a> - '.format(splits[0]) + line[5]
             else:
@@ -196,7 +196,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
             htmllink = f'<td><a href="{link}">clickme</a></td>'
         else:
             gbid = row[4]
-            if gbid != None:
+            if gbid != None and gbid != 0:
                 link = "https://gamebanana.com/mods/" + str(gbid)
                 htmllink = f'<td><a href="{link}">{gbid}</a></td>'
         if "canon" in table:
