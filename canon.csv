@@ -17,6 +17,7 @@ bhop_arcane_v1,7ee3c9ec7550d6a9e9282b92534174f9d3926b6d,
 bhop_ares,f1c56e442803d43ea21a92b2846a28432829c3a2,
 bhop_auto_omega,eb1be8a1169a8b5cd33c6d242f6d2f327042a3c1,
 bhop_aziz,b02612f9550f01c5ea6352463a36b816789a7d51,
+bhop_aztec_tf2,125851f12cd66c92432c1c1cca501ad223869961,dunno
 bhop_bakerinokoxleb,349e60ff852cf944ecd972f31233f60b0b1f272b,
 bhop_baper_gup,5e94a28b1c62f87c08b89946d69d69079aabccda,
 bhop_bfur3,3d2a14c999835d778b3f6df6296a14d7073a4bdb,
@@ -78,8 +79,10 @@ bhop_freedompuppies,f6ef0afb656638557a0d4932028f16dcef0f5888,latest on gamebanan
 bhop_fury_2,50fd308e9fa2b1aa6ed4793219901653f76ca643,latest on gamebanana (the version from ultima might be an older version)
 bhop_genoisgay,bc5faaf142d0b8fb7316d1a0880d582686cee6bd,latest on gamebanana
 bhop_getgo,89ac030fe593730f9efa0dbbebaf9920f3e21797,port of the tf2 version
+bhop_gloomy,f3284b0f8ac48e13a4bb5b329aed17c25f1b82f4,original bhop_gloomy. an early version of bhop_gloomylight also used this name (81d6f50e9223cea39cba884aa172d4a048a1da15)
 bhop_glxy,3180893265563a71ba6c931379c05cbf31349385,latest on gamebanana
 bhop_gopro,8b7e6a390d701d5f1814dafcba8e0ebfa05f768c,latest on gamebanana
+bhop_graymanufactured_beta,cf7a854794da15fad93e401a99b76335eef8e97d,latest on gamebanana
 bhop_green_shade,17146c431ccfcdd09525d463d2268c638cc00fbf,latest on gamebanana
 bhop_grid_easy,c8e090029ce62095c7ba1bbba1c1c5f5b5232da4,latest on gamebanana
 bhop_haddock,852c6743d2cfda5325734fd248fdc101349a69bb,latest on gamebanana
@@ -89,6 +92,7 @@ bhop_hexag0n,a2e9ae4cc802ec5bc8a3eaedc66a0ada6f0afab1,latest on gamebanana
 bhop_hextra-f,189f7292962d84a2c9591e6b6d8b9b63b912094f,latest on gamebanana
 bhop_hyable,012f5fd11d3c80dc6e46c89217b65eccec102603,latest on gamebanana
 bhop_illusions,51c7162e8607479083fa46d4d1b5d35eb720fa98,latest on gamebanana
+bhop_jib_jib,c5177f67a050bb2a95b6c5e45bcb7a516813ec89,latest on gamebanana
 bhop_jurfs_v2,bfc28ac5689bafcf59b7d1b6e69abbedafbfb9d6,latest on gamebanana
 bhop_keksik,7f8dcbc69c8475b4893c356b0d3ebc4d1786919d,there are two bsps in the zip from gamebanana. one with mapversion 107 in the entity lumps and one with mapversion 108 (this one)
 bhop_kitsune,8ab6f61a0a4627341349d8ab362adb01eca7ecfc,latest on gamebanana
@@ -115,6 +119,7 @@ bhop_noninscripsit,27e780ac3e7c585145eb50f0023008de5f4580b6,port of the tf2 vers
 bhop_not_dejavu,fe3364704cbf3de12f7699b98b913225215ddffd,latest on gamebanana (125629 vs 125628)
 bhop_null_fix,9443f5d39b82841345a998ed67980205374c2f95,the real/original version (nekoclimb edits some boosters & removes some triggers)
 bhop_nvm,b81b7054de294830d45e453097b4e26faae30c01,the version without porn
+bhop_ogel,7fab65b40bc047c1ebc72203884870e2dc00b587,latest on gamebanana
 bhop_olipoid,c0b82da0f49400a2470eca03333e113003176305,latest on gamebanana
 bhop_p07,76506ee25a724b6e186cd8a3cc42536fefab6d18,this is p07 not p07_v2
 bhop_p09,28d2a37073aba96f90fac20d904389a8511179a4,latest on gamebanana (v2)
