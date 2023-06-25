@@ -19,3 +19,10 @@ Figure out what to do with:
 		- varying amount of unpacked-ness
 	kz_azlyco
 		- no textures :(
+
+Other things I'll forgot I placed in this file but I'm cleaning out my discord notes channel:
+	- recheck renamed maps
+	- delete known bad or corrupted maps (like bhop_fuji,4096000,...)
+	- do something about bh_aztec_d_x8 & bh_aztec_8xl having the same hash or something...
+	- I had surf_zoomathon and surf_flatliners noted for some reason... find out why...
+
