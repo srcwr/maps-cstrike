@@ -193,6 +193,7 @@ cs_site,5a5add94af6f96ab4a540119869e0a4f0728d8d9,latest on gamebanana (v1.1 2023
 cs_stationarena_beta,d8796c58f26ee3402eaf0f17e5b1cf5aa4b3e9aa,non .bak version on gamebanana
 cs_training,a0c9b59629f4aca5f89470b4ebccd1348e7f52e6,latest on gamebanana as of 202305140000
 cs_underside,7cda297fecf9ffb0569d3caf54069ac01f9650ad,latest on gamebanana as of 202306122146 -- v1.1
+de_abyss,841edc8e554a70dc1477757ad759b8fab75a8317,latest on gamebanana as of 202307080118
 de_aztec,27cbddf495dacb879d92ab7e99ee07e8bd0bfcd4,latest included version
 de_cbble,28431023f76454c0d350c5c15f3fd71d54f95715,latest included version
 de_chateau,0b57fb003caff312866090b7a7b0bdf2e40145ef,latest included version
@@ -280,6 +281,7 @@ xc_piscine_final,a2ab2543d38de6ba3ba9a8058a4d11aae7c5f61a,packed version
 xc_temple,733daefa427febbe466d543348b3e66a5762aad9,latest on gamebanana (id 123811 is original. id 123812 is latest)
 ze_alien_shooter2_revisited_v2_4,b8407d1a49b83d8c27a0cf921b3bf58c40870986,latest on gamebanana (as of 202303050250)
 ze_crazy_escape_css2,5f25c0efdf094e6b0007ab00762dc910b06740bd,higher mapversion (1776 vs 1769)
+ze_eerie_escape_v3,7028a616c96c2e976efa8028dafdb525bb6f3748,latest on gamebanana as of 202307080118
 ze_exit_of_the_chaos_v1,7f2c3d8ca499e7675453f7aef45efaf5652b3cce,newer than 6e977200190bae73ecad3884b20574b2f4ff055d
 ze_lego_v1,49dfa1ad288371dca62944a8a7572598c58be847,higher mapversion than b17eeb9324b3a74c76093ca6ade51c56d6d65c97
 ze_safe_house_v3,fd098f1ffb2f9a20807ac035db2cb468cfeb8b1e,
