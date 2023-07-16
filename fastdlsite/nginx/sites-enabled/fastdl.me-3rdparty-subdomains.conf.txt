@@ -2,10 +2,10 @@
 server {
 	server_name fake3rdparty.fastdl.me;
 	set $redirurl "http://fakeexamplenotreal.site.nfoservers.com/server";
-	include /etc/nginx/conf.d2/fastdl.me-3rdparty-shared.conf;
+	include /etc/nginx/fastdl.me-3rdparty-shared.conf;
 }
 server {
 	server_name fake3rdparty555.fastdl.me;
 	set $redirurl "http://fakeexaasdfl.site.nfoservers.com/server";
-	include /etc/nginx/conf.d2/fastdl.me-3rdparty-shared.conf;
+	include /etc/nginx/fastdl.me-3rdparty-shared.conf;
 }
