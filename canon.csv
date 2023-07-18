@@ -204,6 +204,7 @@ de_cpl_mill,8e4d9409bd6fcfae3021b35e2e0ebf260cfaf06f,latest on gamebanana
 de_cpl_mills,692fc8c915f850dffced326a23d0dfabe4000acb,latest on gamebanana
 de_dust,3695832fcda6f3e07e1ef738efac1125a7915235,latest included version
 de_dust2,7693e3f86618c4802b46be6482f16e5828b49165,latest included version
+de_dusty,cc0e537ce29e42214f89c953c3978c9b95036dc2,latest on gamebanana as of 202307182207
 de_fire_v3,dcde818a96fcf749f3b5d4603eb83b60be664f8b,latest on gamebanana as of 202304080604
 de_inferno,128cb9ef3c09b0192f3a46443f45d7f1d3172f61,latest included version
 de_neonpolis,3efb54c2b8b6fec782bc4505d0149616a421c1ab,latest on gamebanana (as of 202303170250)
@@ -266,6 +267,7 @@ trikz_arctic,13e369e63ecb8c4250928f885e40bdae3d205c39,latest on gamebanana as of
 trikz_asux,6a572367d8a185d8a3f160ce75f6b1febc1599c5,latest on gamebanana (although its included in a trikz pack that was uploader after but thats a different and probably older version so whatever)
 trikz_concret,eca0d7ce29ca1c23af3cf3dca1bc7fc90f89f242,latest version on gamebanana
 trikz_extreme_final,820a72f7102edebe6fc6f0b0dc7b1fd941210353,latest version on gamebanana
+trikz_khaos,6efbc85a53657fe28b802d0a4fc901ec3bb6c0e0,latest on gamebanana as of 202307182207
 trikz_kyoto_fix,18496d9535a04ff7f63dcc532460fe3ce944985d,a new mapversion (140 vs 59) but also trikz_kyoto_final exists
 trikz_laele,8bc89b158b3f0ddaec8f6363875619ac2e6b9dee,latest on gamebanana
 trikz_myth2,9ff071163640f744bfff8ef8f106bfc8920ba1a5,latest on gamebanana (add triggers 202304030040)
