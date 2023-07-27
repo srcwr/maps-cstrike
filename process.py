@@ -95,6 +95,8 @@ recently_added = []
 with open("recently_added.csv", newline='', encoding="utf-8") as f:
     cr = csv.reader(f)
     for line in cr:
+        if line[0][0] == "#":
+            continue
         line[0] = line[0].lower().strip().replace('.', '_').strip()
         splits = line[4].split('_')
         if splits[0].isdigit() and splits[0] != "0" and splits[1].isdigit(): # might have false positives...
