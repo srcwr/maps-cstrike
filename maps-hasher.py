@@ -40,6 +40,8 @@ with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
                 thing = ""
                 if vbspver == b'VBSP\x15':
                     thing = "==== skipping CS:GO map " + filename
+                elif vbspver == b'VBSP\x19':
+                    thing = "==== skipping Momentum Mod / Strata Source map " + filename
                 elif vbspver[:4] == b'\x1E\x00\x00\x00' or vbspver[:4] == b'\x1D\x00\x00\x00':
                     thing = "==== skipping GoldSrc map? " + filename
                 else:
