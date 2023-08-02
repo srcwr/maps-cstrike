@@ -81,9 +81,9 @@ with open(csvname, "w", newline="", encoding="utf-8") as csvfile:
                         print("timestamping {} from {} to {}".format(digest, datetime.utcfromtimestamp(mtimeHashed), datetime.utcfromtimestamp(mtimeThis)))
                         os.utime(renameto, (mtimeThis, mtimeThis))
                         os.utime(renameto+".bz2", (mtimeThis, mtimeThis))
+                        continue
                     else:
                         print("older timestamp for {} from {} -- {} -> {}!".format(digest, filename, datetime.utcfromtimestamp(mtimeHashed), datetime.utcfromtimestamp(mtimeThis)))
-                continue
             if exists and skipExistingHash:
                 continue
             filesize_bz2 = os.stat(renameto + ".bz2").st_size
