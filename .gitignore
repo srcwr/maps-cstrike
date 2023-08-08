@@ -6,6 +6,3 @@ processed/*
 !fastdl.me-3rdparty-shared.conf
 transfer.sh
 sha1.js
-
-# no spam thanks
-fastdlsite/check.fastdl.me/functions/form.js
