@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>check.fastdl.me editor</title>
+	<meta name="description" content="check.fastdl.me editor">
+	<style>
+		body, html {
+			background: #000;
+			color: #fff;
+			font-family: Monospace;
+			font-size: x-large;
+		}
+		a {
+			color: #4cf;
+		}
+		a:hover {
+			color: #e33;
+		}
+		#intest {
+			height: 200px;
+			width: 200px;
+		}
+		#booty {
+			background: darkgreen;
+			color: white;
+		}
+		ul {
+			display: grid;
+			gap: 1em;
+		}
+	</style>
+</head>
+<body>
+<h1>check.fastdl.me editor</h1>
+<h3><a href="https://check.fastdl.me/">back</a></h2>
+<textarea rows="50" cols="200" id="intext">loading...</textarea>
+<br>
+<button id="booty" onclick="butt()">Send</button>
+
+<script>
+	function butt() {
+		let intext = document.getElementById("intext");
+		if (intext.value == "loading..." || window.location.hash.length < 5)
+			return;
+
+		document.getElementById("booty").disabled = true;
+		document.getElementById("booty").textContent = "Sending..."
+
+		fetch("https://check.fastdl.me/edit", {
+			method: 'POST',
+			headers: {
+				'X-Videos': window.location.hash.substring(1),
+			},
+			body: intext.value,
+		})
+		.then(response => {
+			if (response.ok) {
+				document.getElementById("booty").textContent = "sent!";
+				fetchMyAss();
+			} else {
+				document.getElementById("booty").textContent = "error :(";
+			}
+			return response.text();
+		})
+		.then(response => console.log(response))
+	}
+</script>
+<script>
+	function fetchMyAss() {
+		// i hate caching so so so so much
+		fetch("myass?editor="+Date.now(), {
+			method: 'POST',
+			body: "zzz",
+		})
+		.then((response) => response.text())
+		.then((text) => document.getElementById("intext").value = text);
+	}
+	fetchMyAss();
+</script>

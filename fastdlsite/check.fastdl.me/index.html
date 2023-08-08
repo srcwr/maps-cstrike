@@ -26,6 +26,10 @@
 			background: darkgreen;
 			color: white;
 		}
+		ul {
+			display: grid;
+			gap: 1em;
+		}
 	</style>
 </head>
 <body>
@@ -57,6 +61,16 @@ print(urllib.request.urlopen(urllib.request.Request(
 	<li>add file drag and drop thing to hash client-side and check...</li>
 </ul>
 
+<h2>Submission status</h2>
+<ul id="submissionStatus">Loading...</div>
+<!--
+<iframe id="submissionStatusFrame" title="submission status"
+	width="1000" height="1000"
+	src="myass"
+	_note="I don't want to get emails about cert renewals for making the bucket public access and I want to make sure it's not cached so I'm using a pages-function instead to pull from the bucket.">
+</iframe>
+-->
+
 <!--
 https://github.com/Caligatio/jsSHA
 https://github.com/Daninet/hash-wasm
@@ -85,10 +99,12 @@ https://github.com/Daninet/hash-wasm
 			body: intext.value,
 		})
 		.then(response => {
-			if (response.ok)
+			if (response.ok) {
 				document.getElementById("booty").textContent = "sent!";
-			else
+				fetchMyAss();
+			} else {
 				document.getElementById("booty").textContent = "error :(";
+			}
 			return response.json();
 		})
 		.then(response => console.log(JSON.stringify(response)))
@@ -106,4 +122,21 @@ https://github.com/Daninet/hash-wasm
 */
 </script>
 <!--<script type="text/javascript" src="sha1.js"></script>-->
-</body>
+
+<!-- I HATE CACHING I HATE CACHING I HATE CACHING -->
+
+<script>
+	function fetchMyAss() {
+		// i hate caching so so so so much
+		fetch("myass?fuck="+Date.now(), {
+			method: 'POST',
+			body: "zzz",
+		})
+		.then((response) => response.text())
+		.then((text) => document.getElementById("submissionStatus").innerHTML = text);
+	}
+	fetchMyAss();
+	// lol wtf cache bug https://stackoverflow.com/a/3984072
+	//var _theframe = document.getElementById("submissionStatusFrame");
+	//_theframe.contentWindow.location.href = _theframe.src + "?x=" + Date.now();
+</script>
