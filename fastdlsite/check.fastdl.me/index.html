@@ -35,14 +35,14 @@
 <body>
 <h1>check.fastdl.me</h1>
 <h3><a href="https://fastdl.me">homepage</a></h2>
-<h1>Submit map links</h1>
+<h2>Submit map links</h2>
 Upload maps to somewhere like <a href="https://gofile.io/uploadFiles">gofile.io</a> and the send the link with the form below:<br><br>
 <textarea rows="10" cols="80" id="intext">Put links to maps here if you want me to add them (max 1800 chars)</textarea>
 <br>
 <button id="booty" onclick="butt()">Send</button>
 
 
-<h1>Commands for basic filename+filesize checks on your maps folder</h1>
+<h2>Commands to check for unique mapname+filesize combinations</h2>
 <!-- i hate html whitespace rules fucking my shit up -->
 <ul>
 <li>Windows / Powershell<ul><li><pre>(Invoke-WebRequest -Uri https://check.fastdl.me/nsjson -Body (Get-Childitem -file *.bsp | select length, name | ConvertTo-Json) -Method POST -UseBasicParsing).Content</pre></li></ul></li>
@@ -54,6 +54,21 @@ print(urllib.request.urlopen(urllib.request.Request(
 	headers={"User-Agent": "check.py"}
 )).read().decode("utf-8"))</pre></li></ul></li>
 </ul>
+
+<h2>Python script for checking how your maps folder differs from /maps/</h2>
+<ul><li><pre>import glob, urllib.request, os, csv
+with urllib.request.urlopen("https://main.fastdl.me/maps_index.html.csv") as response:
+    csvlines = response.read().decode("utf-8").splitlines()[1:]
+lookup = {}
+for row in csv.reader(csvlines):
+    lookup[row[0]] = int(row[2])
+for filename in glob.glob("*.bsp"):
+    x = filename[:-4].lower()
+    if x not in lookup:
+        print(f"{filename} is not on main.fastdl.me/maps/")
+    elif os.path.getsize(filename) != lookup[x]:
+        print(f"different map size for {filename}")
+</pre></li></ul>
 
 <h2>todo</h2>
 <ul>
