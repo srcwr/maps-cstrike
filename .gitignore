@@ -6,3 +6,5 @@ processed/*
 !fastdl.me-3rdparty-shared.conf
 transfer.sh
 sha1.js
+*secret*
+__pycache__
