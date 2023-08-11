@@ -32,7 +32,7 @@ PURGETOKEN = open("secretpurge").read().strip()
 
 def webhook(doping, msg):
     data = {
-        "content": ("<&871096527202947094> " if doping else "") + msg,
+        "content": ("<@&871096527202947094> " if doping else "") + msg,
         "username": "autogb",
         "embeds": [],
     }
@@ -99,7 +99,7 @@ while True:
     if len(new_items) < 1:
         continue
 
-    os.system(f'git -C ../gamebanana-things commit --author="srcwrbot <bot@srcwr.com>" -m "{now} -automatic gamebanana"')
+    os.system(f'git -C ../gamebanana-things commit --author="srcwrbot <bot@srcwr.com>" -m "{now} - automatic gamebanana"')
     #os.system('git -C ../gamebanana-things push originbot")
 
     #new_items = ["0_0_xbhop_badges.7z"]
@@ -130,7 +130,7 @@ while True:
             for item in recently_added:
                 mycsv.writerow(item)
 
-    os.system("git add recently-added.csv unprocessed/gamebanana-automatic.csv")
+    os.system("git add recently_added.csv unprocessed/gamebanana-x-automatic.csv")
     os.system(f'git commit --author="srcwrbot <bot@srcwr.com>" -m "{now} - automatic gamebanana"')
 
     status = os.system("python process.py") # assume no exceptions... lol...
