@@ -105,11 +105,11 @@ while True:
     #new_items = ["0_0_xbhop_badges.7z"]
     for item in new_items:
         noext = Path(item).stem
-        status = os.system(f"7z x -y ../gamebanana-scrape/{item} -o../todo-auto/{noext}")
+        status = os.system(f"7z x -y ../gamebanana-scrape/{item} -o../todo-auto/{now}/{noext}")
         if status != 0:
             log_error(f"failed to extract {item}...")
 
-    newly_hashed = maps_hasher.main("unprocessed/gamebanana-x-automatic.csv", True, "../todo-auto", False, False)
+    newly_hashed = maps_hasher.main("unprocessed/gamebanana-x-automatic.csv", True, "../todo-auto/"+now, False, False)
     newly_hashed.sort()
 
     thread_rsync_hashed = Thread(target=rsync_hashed)
