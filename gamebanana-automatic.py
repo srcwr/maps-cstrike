@@ -1,3 +1,8 @@
+# SPDX-License-Identifier: WTFPL
+# Copyright 2023 rtldg <rtldg@protonmail.com>
+
+# why is this a mess? three repos, shit code, and various batch scripts...
+
 from datetime import datetime
 import sys
 import importlib
@@ -87,7 +92,7 @@ while True:
         new_items = peeker.main("../gamebanana-things", peeker_callback)
     except Exception as e:
         logging.error(traceback.format_exc())
-        log_error(True, "peeker failed... restart me when you can...")
+        log_error("peeker failed... restart me when you can...")
         break
         #continue
 
@@ -102,7 +107,7 @@ while True:
         noext = Path(item).stem
         status = os.system(f"7z x -y ../gamebanana-scrape/{item} -o../todo-auto/{noext}")
         if status != 0:
-            log_error(True, f"failed to extract {item}...")
+            log_error(f"failed to extract {item}...")
 
     newly_hashed = maps_hasher.main("unprocessed/gamebanana-x-automatic.csv", True, "../todo-auto", False, False)
     newly_hashed.sort()
@@ -130,7 +135,7 @@ while True:
 
     status = os.system("python process.py") # assume no exceptions... lol...
     if status != 0:
-        log_error(True, "process.py failed... restart me when you can...")
+        log_error("process.py failed... restart me when you can...")
 
     thread_rsync_hashed.join()
 
