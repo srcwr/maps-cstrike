@@ -130,7 +130,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
     index_html += """
     <br>
     <h2>Recently added:</h2>
-    (manually updated -- may be forgotten sometimes) <a href="https://github.com/srcwr/maps-cstrike/commits/master">(full commit history)</a>
+    <a href="https://github.com/srcwr/maps-cstrike/commits/master">(full commit history)</a>
     <table id="recentlyadded">
     <thead>
     <tr>
