@@ -2,6 +2,7 @@ mapname,filesize,filesize_bz2,sha1,note
 bhop_avloppet_fix,10232200,4088288,cf6cb84200f20490ba73f550d30a6d990692730b,optimized/smaller version of bhop_avloppet by malala
 bhop_redolent_2,18166385,6096827,a169c8408ae64d939ed3b9d13c017a18db380cc3,same as bhop_redolent apparently
 bhop_remia_fix,9403112,3855698,2dee7cbfc574072601c3d5f509352211b1ade01a,"removed 25MB of music + deleted some shitty bonus + optimized + smaller" -- by malala
+de_mirage_rc1_32fixedbymisiu29,10752352,3320363,0d686a6465bad4e3492b4c53d1f048418f4306af,
 mg_btp_multigames_v1_b01,29919378,16815487,4c3ba5af835f66fd0a6366c4f4ff7e4baf52cd28,malala had this in their maps folder
 mg_btp_multigames_v1_b03,6252104,1748747,2e0924a6a3e37d567604ee193585111fb3650412,malala had this in their maps folder
 mg_btp_multigames_v2_1fix,3857665,1077709,6af4aa112f1ecc3fa000ef1fd6937b220aa1bd44,malala had this in their maps folder
