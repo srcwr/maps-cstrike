@@ -68,7 +68,7 @@ def maps_cstrike_more(now):
     os.system("start /wait cmd /c ..\\maps-cstrike-more\\auto.cmd "+now) # lol...
 
 def peeker_callback(arg):
-    webhook(True, "new download at https://gamebanana.com/mods/"+arg.split('_')[0])
+    webhook(True, "new download at https://gamebanana.com/mods/"+arg.split('_')[0]+" "+arg)
 
 first = True
 while True:
