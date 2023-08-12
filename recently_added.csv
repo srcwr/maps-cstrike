@@ -1,5 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
-#de_nuke_plus,18228000,8735767,968dbc83a11cb8234bc67ffeb688f466a85614fc,436760_1035847_de_nuke_plus_66689/de_nuke_plus,automated upload,2023-08-12 14:23
+de_nuke_plus,18228000,8735767,968dbc83a11cb8234bc67ffeb688f466a85614fc,436760_1035847_de_nuke_plus_66689/de_nuke_plus,automated upload,2023-08-12 14:23
 de_conurbation,4824920,1557647,0155c0a700bc55c8183e3a059909c74540d16b41,461993_1035757_chilledmappack,automated upload,2023-08-12 10:00
 de_conurbation_night,5131104,1438888,074fb7abe23ef8a234e138db69ae0e9af30e6f9a,461993_1035757_chilledmappack,automated upload,2023-08-12 10:00
 de_providence,10000016,2849531,19232eefbed15daefa910a4793c8b9edf2cb9e7c,461993_1035757_chilledmappack,automated upload,2023-08-12 10:00
@@ -277,7 +277,6 @@ ze_JurassicPark_v3D1,108265436,37528883,7304b07564ed1e21c7466eba9aae9a98cf5dbfcd
 ze_JurassicPark_v3N1,126796604,37290872,727ee95af0985e0a6300ccdebf8b5df72012d685,413295_1003780_ze_jurassicpark_5eb27/ze_JurassicPark,,2023-06-18 20:42
 ze_JurassicPark_v3W1,108232052,36040250,db9d0fe49e3c3b0443704dd218c84710a4048c5d,413295_1003780_ze_jurassicpark_5eb27/ze_JurassicPark,,2023-06-18 20:42
 bhop_pure_alpha_notfixed,42357923,18733573,c4600350d954fb427d6cea892ca69305d82fbe44,0_43389_bhop_pure_alpha,,2023-06-17 01:26
-de_nuke_plus,20111271,8357238,43fe6fd8032619e7f8bd5b9063eeedfbeafb9181,436760_1001508_de_nuke_plus_b7be8/de_nuke_plus,,2023-06-15 20:40
 de_vertigo_css,72405984,27412180,b2c3129fc7cc390a65ad819cfbd97c74c66a794b,446765_1001751_de_vertigo_css/maps,,2023-06-15 20:40
 surf_lt_omnific_a18,110986296,19480164,54b26a4591cf2b67df3438d8723d1f60b5b48c01,449957_1001321_surf_lt_omnific_a18,alpha version of omnific that kingyoshi had,2023-06-14 15:07
 ba_jail_sovietwave_beta5,72057208,72176164,3dc1c5f16d4043920362f70232b36f36ee323942,449273_1000465_ba_jail_sovietwave_beta5,,2023-06-12 21:46
