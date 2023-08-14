@@ -135,6 +135,7 @@ bhop_phobos,15998356806dc92ab5ef21dacc1414ab83358ea0,reverted back to original b
 bhop_phobos_fix,deb72594285a2bf9cd9b1fb157b1eb23fdafc279,latest on gamebanana (202301102105) (bug fix for gasmask stage)
 bhop_precision_beta1,66738c0b9935b73c07bb3d98ac7f1e2e050ead09,the strafesonfleek version is a fullbright retexture for some reason
 bhop_pride,cef28fbac90ce76d64cf01ba26c46a0a07e8bc60,latest on gamebanana
+bhop_pringid,c225d71b54b5fff625f999a68f7a390fae20a8f1,latest on gamebanana as of 202308140645
 bhop_pumpkin_stem,15cd1d8174d83e4aa79c1d96bb89a0ad5c0bc1a5,latest on gamebanana (the other version removes the end doors & the scout)
 bhop_pure,5ac2cd4dd313a0bdca66f90860878abc20d2e238,latest on gamebanana
 bhop_pyxkeria,b89383c1f4ae7b675d8ebffa67c72729621cc6f3,this mapname has two ports from csgo but this one follows the wall textures better as far as I can tell so I picked this one plus its smaller
