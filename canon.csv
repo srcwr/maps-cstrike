@@ -154,6 +154,7 @@ bhop_sloop,ae2c2d8cea739a829dd1a81838377459064aade5,latest on gamebanana (packed
 bhop_spdmp_2hr,8f1e019cd6f41727dba07cf97ef6eeaa958d9072,latest on gamebanana
 bhop_spinachsucksatmapping2,83ea388873e898211c098fc79b12f083a0fb1c35,latest on gamebanana
 bhop_splrez,b6c582deae3add5894f966a120a3af2e89e8a863,the gamebanana version has an entity with an empty classname which makes it kill the server so this version is one that fixes that. alternatively you could use a stripper config on hammerid 79725
+bhop_strafe_nuclear,18d6edd877c3741261486f622c38371deb412e57,latest on gamebanana as of 202308160207
 bhop_strafeflow,4b9c72cafadc20cebd05677b66642d6065eba439,latest on gamebanana
 bhop_sumptuous,c0d4cc19f442e5aa53e142842f1b7cc139527a79,latest on gamebanana
 bhop_sunrise,c62b47381701bbe2f886a59344d0ef53fcc9c6c5,latest on gamebanana
