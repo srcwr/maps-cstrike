@@ -1,5 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
-#surf_rooftopsv2_ksf,24612285,14260451,bb12f956d15b521dd796eb01b9ca8e5ab1f0b5ad,463029_1039101_surf_rooftopsv2_ksf_fc787,automated upload,2023-08-18 12:28
+surf_rooftopsv2_ksf,24612285,14260451,bb12f956d15b521dd796eb01b9ca8e5ab1f0b5ad,463029_1039101_surf_rooftopsv2_ksf_fc787,updated version,2023-08-18 12:28
 ze_legend_of_astrum_v1,95714139,95889665,6bb00a71f636e8a1937e926a803b6216212bf41e,463153_1039068_ze_legend_of_astrum_v1,automated upload,2023-08-18 10:32
 bhop_001inbox,14971090,4263965,12a27e449b7a8c52db5a4d328da78eeb9c86cd0c,461054_1038946_bhop_001inbox_fbf31,automated upload (updated version again),2023-08-18 04:08
 bhop_mellowmood,105787594,33157372,ecd6a7e7016667b84c4ac6a05ca334243bf595ae,463108_1038935_bhop_mellowmood_9cd18,automated upload,2023-08-18 03:28
@@ -8,7 +8,6 @@ bhop_straight_lines,7762472,1230710,34903f924b69507041255058c34959695dff1ba7,463
 bhop_egyptian_boost,10217608,4925371,4d873edaeee4afa0efe5be4934fbdc7fb1b87ae3,463083_1038896_bhop_egyptian_boost,automated upload,2023-08-18 01:28
 bhop_squarev2,4769347,1094023,adb0d2e09e826ee287e934725cbe849a15a4f163,463081_1038886_bhop_squarev2,automated upload,2023-08-18 01:04
 bhop_graypulse_v2,32865785,10157301,e8b362be6553e3f745440401c04bf1651c64b606,463072_1038854_bhop_graypulse_v2,automated upload,2023-08-17 23:10
-surf_rooftopsv2_ksf,25148159,14765309,e7bc3abfdd8c74f4468124814d37135997e88f8c,463029_1038690_surf_rooftopsv2_ksf,automated upload,2023-08-17 17:05
 ze_nemesis_mirage_v1,166725141,87710284,74f127df4f3087261ba80a78253632b47f57c63e,462986_1038558_ze_nemesis_mirage_v1,automated upload,2023-08-17 11:15
 de_legohouse_qcss,15488952,6921908,a318aedcef8c56fc78ecb8ec58d8ece38b2fa5f7,462879_1038236_de_legohouse_qcss/de_legohouse_qcss,automated upload,2023-08-16 18:45
 kz_bhop_aamu3,32997199,33061052,e4ed44b930fec4ad498d01c32ce0468fd706649f,462828_1038072_kz_bhop_aamu3,automated upload,2023-08-16 12:19
