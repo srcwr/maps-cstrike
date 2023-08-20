@@ -201,6 +201,7 @@ cs_stationarena_beta,d8796c58f26ee3402eaf0f17e5b1cf5aa4b3e9aa,non .bak version o
 cs_training,a0c9b59629f4aca5f89470b4ebccd1348e7f52e6,latest on gamebanana as of 202305140000
 cs_underside,7cda297fecf9ffb0569d3caf54069ac01f9650ad,latest on gamebanana as of 202306122146 -- v1.1
 de_abyss,841edc8e554a70dc1477757ad759b8fab75a8317,latest on gamebanana as of 202307080118
+de_apollo,c614e4a0a09ec32d2a6831f6c78a83167952aa9e,use original de_apollo instead of csgo port of cs_apollo
 de_aztec,27cbddf495dacb879d92ab7e99ee07e8bd0bfcd4,latest included version
 de_cbble,28431023f76454c0d350c5c15f3fd71d54f95715,latest included version
 de_chateau,0b57fb003caff312866090b7a7b0bdf2e40145ef,latest included version
