@@ -20,21 +20,32 @@ def print_and_to_shit(s):
 def dumb_name(m):
     return m.strip().replace('.', '_')
 
-def main(csvname, append, mapsfolder, timestampFixer, skipExistingHash):
-    if not append and os.path.exists(csvname) and os.path.getsize(csvname) > 50:
+def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash):
+    if not automatic and os.path.exists(csvname) and os.path.getsize(csvname) > 50:
         raise Exception("DONT OVERWRITE THAT CSV!")
 
     existing_names = {}
-    if append:
+    existing_recents = {}
+    if automatic:
+        # this will fail if you haven't ran `python process.py` yet
         with open("processed/main.fastdl.me/hashed_index.html.csv", newline='', encoding="utf-8") as f:
-            cr = csv.reader(f)
-            for line in cr:
-                existing_names[dumb_name(line[0])] = True
+            for line in csv.reader(f):
+                existing_names[dumb_name(line[0])] = line[4] # url, hopefully from gb
+        # only allow clobbering existing map names for recently added gamebanana downloads...
+        with open("recently_added.csv", newline='', encoding="utf-8") as f:
+            for line in csv.reader(f):
+                if line[0] == "mapname":
+                    continue
+                existing_recents[line[0]] = line[4].split("_")[0]
+                if line[0] in existing_names:
+                    # lolololololol... this entire site is such a hack...
+                    if ("https://gamebanana.com/mods/"+line[4].split("_")[0]) == existing_names[line[0]]:
+                        del existing_names[line[0]]
 
     newly_hashed = []
-    with open(csvname, ("a" if append else "w"), newline="", encoding="utf-8") as csvfile:
+    with open(csvname, ("a" if automatic else "w"), newline="", encoding="utf-8") as csvfile:
         mycsv = csv.writer(csvfile)
-        if not append:
+        if not automatic:
             mycsv.writerow(["mapname","filesize","filesize_bz2","sha1","note"])
         for filename in glob.iglob(mapsfolder + "/**/*.bsp", recursive=True):
             statttt = os.stat(filename)
@@ -97,8 +108,9 @@ def main(csvname, append, mapsfolder, timestampFixer, skipExistingHash):
                 filesize_bz2 = os.stat(renameto + ".bz2").st_size
                 pp = Path(filename)
                 row = [pp.stem,filesize,filesize_bz2,digest,str(pp.parent).replace("\\", "/").replace(mapsfolder+"/", "")]
-                if append and dumb_name(row[0]) in existing_names:
-                    row[0] = "#" + row[0]
+                if automatic and dumb_name(row[0]) in existing_names:
+                    if existing_recents.get(dumb_name(row[0]), "mrbeast") != row[4].split("_")[0]:
+                        row[0] = "#" + row[0]
                 if not exists:
                     newly_hashed.append(row)
                 mycsv.writerow(row)

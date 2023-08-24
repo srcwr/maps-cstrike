@@ -11,6 +11,7 @@ import csv
 import shutil
 import json
 import subprocess
+import sys
 
 """
 os.makedirs("processed/hashed", exist_ok=True)
@@ -281,6 +282,10 @@ create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostl
 
 #subprocess.run('sqlite3 processed/maps.db ".dump maps_canon"', stdout=open("processed/maps.sql", "w"))
 #subprocess.run("wrangler d1 execute fastdldb --file=processed/maps.sql", shell=True)
+
+# me-check
+if not os.path.isfile("../secretwebhook") or (len(sys.argv) > 1 and sys.argv[1] == "0"):
+    sys.exit(0)
 
 # what the fuck wrangler why won't my functions work otherwise
 cwd = os.getcwd()
