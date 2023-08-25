@@ -139,7 +139,10 @@ while True:
             newly_hashed_mapname_only = [item[0] for item in newly_hashed]
             for item in recently_added:
                 if item[0] in newly_hashed_mapname_only:
-                    needs_canon[item[0]] = item[3]
+                    for x in newly_hashed: # bleh... just rotate the list into a dict instead...
+                        if item[0] == x[0]:
+                            needs_canon[item[0]] = x[3]
+                            break
                 else:
                     mycsv.writerow(item)
         if bool(needs_canon): # "empty dicts evaluate to false"...

@@ -17,8 +17,8 @@ def print_and_to_shit(s):
     with open("shit.txt", "a", encoding="utf-8") as shit:
         shit.write(s + "\n")
 
-def dumb_name(m):
-    return m.strip().replace('.', '_')
+def normal_name(m):
+    return m.strip().replace('.', '_').lower()
 
 def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash):
     if not automatic and os.path.exists(csvname) and os.path.getsize(csvname) > 50:
@@ -30,7 +30,7 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash):
         # this will fail if you haven't ran `python process.py` yet
         with open("processed/main.fastdl.me/hashed_index.html.csv", newline='', encoding="utf-8") as f:
             for line in csv.reader(f):
-                existing_names[dumb_name(line[0])] = line[4] # url, hopefully from gb
+                existing_names[normal_name(line[0])] = line[4] # url, hopefully from gb
         # only allow clobbering existing map names for recently added gamebanana downloads...
         with open("recently_added.csv", newline='', encoding="utf-8") as f:
             for line in csv.reader(f):
@@ -108,8 +108,8 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash):
                 filesize_bz2 = os.stat(renameto + ".bz2").st_size
                 pp = Path(filename)
                 row = [pp.stem,filesize,filesize_bz2,digest,str(pp.parent).replace("\\", "/").replace(mapsfolder+"/", "")]
-                if automatic and dumb_name(row[0]) in existing_names:
-                    if existing_recents.get(dumb_name(row[0]), "mrbeast") != row[4].split("_")[0]:
+                if automatic and normal_name(row[0]) in existing_names:
+                    if existing_recents.get(normal_name(row[0]), "mrbeast") != row[4].split("_")[0]:
                         row[0] = "#" + row[0]
                 if not exists:
                     newly_hashed.append(row)

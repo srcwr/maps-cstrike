@@ -41,6 +41,9 @@ CREATE INDEX sha1o on links(sha1);
 
 # TODO: remerge maps table & add `canon` column to table...
 
+def normal_name(m):
+    return m.strip().replace('.', '_').lower()
+
 gamebanana = {}
 links = {}
 
@@ -52,7 +55,7 @@ for filename in glob.glob("unprocessed/*.csv"):
             if line[0] == "mapname" or line[0][0] == "#":
                 continue
             thing = [x.lower() for x in line]
-            thing[0] = thing[0].strip().replace('.', '_') # because CS:S fails to download maps
+            thing[0] = normal_name(thing[0]) # because CS:S fails to download maps with '.'
             if len(thing) > 4:
                 if thing[4].startswith("http://") or thing[4].startswith("https://"):
                     links[thing[3]] = thing[4]
@@ -71,7 +74,7 @@ for filename in glob.glob("filters/*.csv"):
             if line[0] == "mapname" or line[0].startswith("#"):
                 continue
             thing = [x.lower() for x in line][:4]
-            thing[0] = thing[0].strip().replace('.', '_').strip() # because CS:S fails to download maps
+            thing[0] = normal_name(thing[0]) # because CS:S fails to download maps with '.'
             unique.remove(tuple(thing))
             #if line == "mapname,filesize,filesize_bz2,sha1\n":
             #    continue
@@ -98,7 +101,7 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
     for line in cr:
         if line[0][0] == "#":
             continue
-        line[0] = line[0].lower().strip().replace('.', '_').strip()
+        line[0] = normal_name(line[0])
         splits = line[4].split('_')
         if splits[0].isdigit() and splits[0] != "0" and splits[1].isdigit(): # might have false positives...
             if len(line[5]) > 0:
