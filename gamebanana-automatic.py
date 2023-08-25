@@ -15,6 +15,7 @@ import shutil
 import csv
 from pathlib import Path
 import requests
+import pdb # pdb.pm()
 
 maps_hasher = importlib.import_module("maps-hasher")
 
@@ -128,7 +129,7 @@ while True:
         with open("recently_added.csv", newline='', encoding="utf-8") as f:
             recently_added = [line for line in csv.reader(f)]
         recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
-        needs_canon = []
+        needs_canon = {}
         with open("recently_added.csv", "w", newline='', encoding="utf-8") as f:
             mycsv = csv.writer(f)
             mycsv.writerow(["mapname","filesize","filesize_bz2","sha1","note","recently_added_note","datetime"])
