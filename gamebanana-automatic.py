@@ -45,6 +45,9 @@ def webhook(doping, msg):
     else:
         print("Payload delivered successfully, code {}.".format(result.status_code))
 
+def normal_name(m):
+    return m.strip().replace('.', '_').lower()
+
 def log_error(error):
     print(error)
     with open("shit2.txt", "a", encoding="utf-8") as shit:
@@ -138,10 +141,11 @@ while True:
                 mycsv.writerow(item+["automated upload",now4csv])
             newly_hashed_mapname_only = [item[0] for item in newly_hashed]
             for item in recently_added:
-                if item[0] in newly_hashed_mapname_only:
+                mapname = normal_name(item[0])
+                if mapname in newly_hashed_mapname_only:
                     for x in newly_hashed: # bleh... just rotate the list into a dict instead...
-                        if item[0] == x[0]:
-                            needs_canon[item[0]] = x[3]
+                        if mapname == normal_name(x[0]):
+                            needs_canon[mapname] = x[3]
                             break
                 else:
                     mycsv.writerow(item)
