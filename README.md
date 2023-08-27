@@ -6,6 +6,59 @@ Originally intended for bhop/surf/xc/kz/trikz maps... and then it spiraled out o
 - movement/skill gamemode maps get the most love though... there's around 2000 rows of duplicate mapnames excluding bhop/surf/xc/kz/trikz/etc so... that will probably never be proactively dealt with for `/maps/` / `canon.csv`....
 	- feel free to request setting the correct version of a map though
 
+
+## WHAT IS WHAT
+- `_thing/`
+	- Old scripts for quickly checking if someone's `maps` folder has anything unique to upload
+- `fastdlsite/`
+	- [`check.fastdl.me`](https://check.fastdl.me/)
+		- Map submission form and commands to check your `maps` folder for unique things to upload
+	- [`fastdl.me`](https://fastdl.me/)
+		- The homepage
+	- `log-counter`
+		- Unused nginx log 'parser' to get the count of each map downloaded in a day
+	- [`main.fastdl.me`](https://main.fastdl.me/)
+		- Mainly placeholder files for keeping the directory structure.
+	- ['mainr2.fastdl.me`](https://mainr2.fastdl.me/)
+		- More placeholder files.
+	- `nginx`
+		- Most of the nginx website configuration for [main.fastdl.me](https://main.fastdl.me/)
+	- `main.py`
+		- The meat of the name-to-hash redirections for [main.fastdl.me](https://main.fastdl.me/)
+- `filters/`
+	- CSV files for removing dupes, bad maps, etc from the fastdl.me `/maps/` page
+- `processed/`
+	- Built website code after you run `python process.py`
+- `unprocessed/`
+	- CSV files for all the map scrapes & dumps used by fastdl.me
+- `canon.csv`
+	- CSV with which hash to use for particular map names. Needed for maps that update without changing the name for example
+- `gamebanana-automatic.py`
+	- Automatic gamebanana downloader & uploader script
+- `index_bottom.html`
+	- A template used by `process.py` when generating map folder HTML index files
+- `index_top.html`
+	- A template used by `process.py` when generating map folder HTML index files
+- `maps-hasher.py`
+	- The map hasher & dumper-to-CSV-files part of adding new maps.
+- `process.py`
+	- The step to parse all the CSV files to produce the website files & sqlite db to put into `processed/`
+- `recently_added.csv`
+	- List of recently added map files that is put at the top of map folder HTML index files
+- `shit.txt`
+	- Where `map-hasher.py` warnings and errors are dumped for later reference
+- `todo.txt`
+	- A poorly named file...
+- `transfer.sh`
+	- Script to transfer `processed/` to a VPS
+
+
+Sister repo at https://github.com/srcwr/maps-cstrike-more
+- For every bsp: has a csv with the packed file list & a dump of the entity lump.
+	- The entity lumps are compressed because the repo would've been 4 gigabytes otherwise...
+
+
+
 "How do you determine what map should be in canon.csv?"
 - First: don't use a version if it's corrupted/crashing :)
 - Use the latest version from gamebanana if possible.
@@ -13,11 +66,6 @@ Originally intended for bhop/surf/xc/kz/trikz maps... and then it spiraled out o
 	Then diff the entity lumps .cfg from that & check if one has a higher `mapversion` key at the top of the file.
 		- Otherwise one of the cfgs might have things removed if someone edited the map so generally pick the one that doesn't have things removed. This one is subjective because somethings *should* be removed because they're stupid or break multiplayer but generally using the original release is the "right" move.
 			- Otherwise otherwise otherwise pick a version of the map that's packed with textures.
-
-
-Sister repo at https://github.com/srcwr/maps-cstrike-more
-- For every bsp: has a csv with the packed file list & a dump of the entity lump.
-	- The entity lumps are compressed because the repo would've been 4 gigabytes otherwise...
 
 
 Some useful sql things...
