@@ -157,7 +157,7 @@ bhop_spdmp_2hr,8f1e019cd6f41727dba07cf97ef6eeaa958d9072,latest on gamebanana
 bhop_spinachsucksatmapping2,83ea388873e898211c098fc79b12f083a0fb1c35,latest on gamebanana
 bhop_splrez,b6c582deae3add5894f966a120a3af2e89e8a863,the gamebanana version has an entity with an empty classname which makes it kill the server so this version is one that fixes that. alternatively you could use a stripper config on hammerid 79725
 bhop_straa_babylon,6461e9591f34992bafd6dc8803d4ac03cf4e8e98,automatic canonization 202308260830
-bhop_strafe_nuclear,18d6edd877c3741261486f622c38371deb412e57,latest on gamebanana as of 202308160207
+bhop_strafe_nuclear,d83ed74d3deea8f2888928974dfebc27291824fd,automatic canonization 202308270802
 bhop_strafeflow,4b9c72cafadc20cebd05677b66642d6065eba439,latest on gamebanana
 bhop_sumptuous,c0d4cc19f442e5aa53e142842f1b7cc139527a79,latest on gamebanana
 bhop_sunrise,c62b47381701bbe2f886a59344d0ef53fcc9c6c5,latest on gamebanana
@@ -203,6 +203,7 @@ cs_site,5a5add94af6f96ab4a540119869e0a4f0728d8d9,latest on gamebanana (v1.1 2023
 cs_stationarena_beta,d8796c58f26ee3402eaf0f17e5b1cf5aa4b3e9aa,non .bak version on gamebanana
 cs_training,a0c9b59629f4aca5f89470b4ebccd1348e7f52e6,latest on gamebanana as of 202305140000
 cs_underside,7cda297fecf9ffb0569d3caf54069ac01f9650ad,latest on gamebanana as of 202306122146 -- v1.1
+de_912,32d1ac0c945698ba57f52b6fcaae77ac390dd86d,automatic canonization 202308270802
 de_abyss,841edc8e554a70dc1477757ad759b8fab75a8317,latest on gamebanana as of 202307080118
 de_apollo,c614e4a0a09ec32d2a6831f6c78a83167952aa9e,use original de_apollo instead of csgo port of cs_apollo
 de_aztec,27cbddf495dacb879d92ab7e99ee07e8bd0bfcd4,latest included version
@@ -214,7 +215,7 @@ de_cpl_mill,8e4d9409bd6fcfae3021b35e2e0ebf260cfaf06f,latest on gamebanana
 de_cpl_mills,692fc8c915f850dffced326a23d0dfabe4000acb,latest on gamebanana
 de_dust,3695832fcda6f3e07e1ef738efac1125a7915235,latest included version
 de_dust2,7693e3f86618c4802b46be6482f16e5828b49165,latest included version
-de_dusty,334ee35448d97a2a3e617ab9473c11835fab0c9c,latest on gamebanana as of 202307300704
+de_dusty,487d994a87a84da1cae7cfd72988ccc8f9eaff47,automatic canonization 202308270802
 de_fire_v3,dcde818a96fcf749f3b5d4603eb83b60be664f8b,latest on gamebanana as of 202304080604
 de_inferno,128cb9ef3c09b0192f3a46443f45d7f1d3172f61,latest included version
 de_neonpolis,3efb54c2b8b6fec782bc4505d0149616a421c1ab,latest on gamebanana (as of 202303170250)
