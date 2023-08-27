@@ -137,7 +137,7 @@ while True:
             mycsv = csv.writer(f)
             mycsv.writerow(["mapname","filesize","filesize_bz2","sha1","note","recently_added_note","datetime"])
             now4csv = today.strftime('%Y-%m-%d %H:%M')
-            for item in reversed(newly_hashed):
+            for item in newly_hashed:
                 mycsv.writerow(item+["automated upload",now4csv])
             newly_hashed_mapname_only = [item[0] for item in newly_hashed]
             for item in recently_added:
