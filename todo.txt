@@ -28,3 +28,14 @@ Other things I'll forgot I placed in this file but I'm cleaning out my discord n
 	- do something about bh_aztec_d_x8 & bh_aztec_8xl having the same hash or something...
 	- I had surf_zoomathon and surf_flatliners noted for some reason... find out why...
 
+
+extract fails:
+	354_44082_621__68
+	430_44060_449_warehouse_test
+	439346_970351_ze_classic_mashups_v6_4
+	34644_3834_069__1
+	261_44311_de_caarenarar
+	1553_47914_doom_iceberg
+	2196_47916_dust_house_prefab
+	2926_47933_mine1_2
+	3078_47915_glass_deskrar
