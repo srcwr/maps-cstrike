@@ -78,6 +78,8 @@ def transfer_processed_part2():
 
 def peeker_callback(arg):
     webhook(True, "new download at https://gamebanana.com/mods/"+arg.split('_')[0]+" "+arg)
+def fuck_you_callback(arg):
+    webhook(True, arg)
 
 first = True
 while True:
@@ -97,7 +99,7 @@ while True:
     os.system("git -C ../gamebanana-things add gamebanana-items")
 
     try:
-        new_items = peeker.main("../gamebanana-things", peeker_callback)
+        new_items = peeker.main("../gamebanana-things", peeker_callback, fuck_you_callback)
     except Exception as e:
         logging.error(traceback.format_exc())
         log_error("peeker failed... restart me when you can...")
