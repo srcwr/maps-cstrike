@@ -1,5 +1,6 @@
 mapname,sha1,note
 #bridge,8ccf551ced6f6bf710ffbb7578c6e4134db889ef,automatic canonization 202308290659
+#cannon,c50ed7fb22bb134e070811dbfe307f0c6763ca65,automatic canonization 202308290758
 aimbotz,0b870b1e28e688321c56568020c984423b9e0aa2,version 4.5 (202303250312)
 batavier_packed,6fb36d6446f1efab435bb6a17c0ca4ba19bd71fa,repack + compress or something idk
 bhop_001inbox,12a27e449b7a8c52db5a4d328da78eeb9c86cd0c,latest on gamebanana as of 202308180408
@@ -253,6 +254,7 @@ mg_3k_smash_lego_copter,75344cea55d857ec72749cf5bb736f5163c4a24a,latest on gameb
 mg_hellz_multigame_fix,c1cc38d296b02bcc16cde4b8bce4ad2c41384ad3,edits the mg_tp_rot func_rotating entity to start on since otherwise it never rotates
 mg_masogs_course_beta_2,ad50c1a6dd9e09bb5c0a1a027ac299e708848784,latest on gamebanana (202304010220)
 mg_ski_mountain_resort_fix,65c2399b7223ff7a640507756e37b477485a6c5c,latest on gamebanana (the gfl version removes the bombsite entity)
+prefab_landmine,562523494c9449f832356b05694b285864d91447,automatic canonization 202308290758
 scoutzknivez3,6336c1d5b661063c5394f7d815d0e8ff2d3c1ad1,this is actually a remake/edit
 surf_004_fix,c94e88c76ed08fdd80d25ac8e58505324b5f973d,original (not momentum-mod edit)
 surf_1day,3985067f4af3eb9a1504e823b4ab3849cdfea29d,original (not momentum-mod edit)
