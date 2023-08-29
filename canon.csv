@@ -1,4 +1,5 @@
 mapname,sha1,note
+#bridge,8ccf551ced6f6bf710ffbb7578c6e4134db889ef,automatic canonization 202308290659
 aimbotz,0b870b1e28e688321c56568020c984423b9e0aa2,version 4.5 (202303250312)
 batavier_packed,6fb36d6446f1efab435bb6a17c0ca4ba19bd71fa,repack + compress or something idk
 bhop_001inbox,12a27e449b7a8c52db5a4d328da78eeb9c86cd0c,latest on gamebanana as of 202308180408
@@ -232,6 +233,7 @@ de_train,151ddcd0e09e6c5172f1e1102329f4be38c615cc,latest included version
 de_vertigo_csgo,406ab5372551f996f0ea6b39ddd68b06a284ee38,probably the latest on gamebanana
 dev_awp_alpha,1d4544484da143a30d519533b9f398d3f9080b2c,latest on gamebanana (v2 202301281633)
 fy_theborder,f9ae4f3650d265f09cafb351bcb3c010817c1889,v15
+gg_skyward,eeb3d5c9f64facee13c0dc0a0531cce4102cd0e4,automatic canonization 202308290659
 kz_bhop_awake,95da268f166292d8fcabf1eef062026f2b57eedc,not sure which version this is but it doesnt matter because kz_bhop_awake_fix exists and kz_bhop_awake doesnt matter
 kz_bhop_cube,8d92f0f6fe541e53115f51c837b8d5a653897994,latest on gamebanana
 kz_bhop_rainbow,7e10dc1c39a914bfe522ac205d0b5de2ca006cd9,latest on gamebanana
