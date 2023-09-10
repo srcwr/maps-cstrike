@@ -109,6 +109,8 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
             else:
                 line[5] = '<a href="https://gamebanana.com/mods/{}">gamebanana</a>'.format(splits[0])
         recently_added.append(line)
+        if len(recently_added) > 155:
+            break
     recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
 
 def create_thing(table, outfilename, canon, title, sqlwhere):
