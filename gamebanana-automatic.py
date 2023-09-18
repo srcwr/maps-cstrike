@@ -75,6 +75,10 @@ def transfer_processed_part1():
     os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part1.cmd")
 def transfer_processed_part2():
     os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part2.cmd")
+def transfer_processed_part1_node2():
+    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part1_node2.cmd")
+def transfer_processed_part2_node2():
+    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part2_node2.cmd")
 
 def peeker_callback(arg):
     webhook(True, "new download at https://gamebanana.com/mods/"+arg.split('_')[0]+" "+arg)
@@ -174,6 +178,8 @@ while True:
     if status == 0:
         thread_transfer_processed_part1 = Thread(target=transfer_processed_part1)
         thread_transfer_processed_part1.start()
+        thread_transfer_processed_part1_node2 = Thread(target=transfer_processed_part1_node2)
+        thread_transfer_processed_part1_node2.start()
     else:
         log_error("process.py failed... restart me when you can...")
 
@@ -181,7 +187,9 @@ while True:
 
     if status == 0:
         thread_transfer_processed_part1.join()
+        thread_transfer_processed_part1_node2.join()
         transfer_processed_part2()
+        transfer_processed_part2_node2()
         purge_cloudflare_cache()
         os.system("git push originbot")
 
