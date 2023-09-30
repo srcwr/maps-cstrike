@@ -155,6 +155,51 @@
 	<li><h3>Every .nav file is currently a dummy .nav file.</h3>
 		<ul><li>I'll add the real .nav files where available soon:tm:.</li></ul>
 	</li>
+	<li><h3>Somewhat History</h3>
+		<ul>
+			<li><b>2019-XX</b>
+			<br>fastdl.me originates with plans to be an easy fastdl host. It was never finished so it went offline quickly.
+			<br>&nbsp;
+			</li>
+			<li><b>2022-05</b>
+			<br>I scrape acer's fastdl (hosted by sojourner) for a personal backup.
+			<br>&nbsp;
+			</li>
+			<li><b>2022-??</b>
+			<br>The shared hosting provider for acer's fastdl, blocks access to map directory list / index pages.
+			<br>This isn't too surprising since it was ~140GB of files that probably saw a couple hundred gigabytes of bandwidth each month.
+			<br>Map additions decreased in the prior months and download speeds were slow at times.
+			<br>TL;DR: death flags.
+			<br>&nbsp;
+			</li>
+			<li><b>2022-11</b>
+			<br>fastdl.me revives as a bhop/surf/xc/kz/trikz map archive/fastdl.
+			<br>The latest files from acer's fastdl were acquired to absorb / provide longer-lasting hosting.
+			<br>Around <a href="https://github.com/srcwr/maps-cstrike/tree/master/unprocessed">two-dozen sources of maps</a>, from fastdls &amp; community-outreach, collected and combined.
+			<br>&nbsp;
+			</li>
+			<li><b>2023-01</b>
+			<br>It's decided to include every map possible instead of 99% bhop/surf/xc/kz/trikz.
+			<br>Gamebanana's CS:S section is scraped and added.
+			<br>(This bumps the total unique map files from maybe around 14k to maybe around 48k)
+			<br>&nbsp;
+			</li>
+			<li><b>2023-01</b>
+			<br>Cloudflare HTTPS certificate issues. "main.x.fastdl.me" is migrated to "main.fastdl.me".
+			<br>&nbsp;
+			</li>
+			<li><b>2023-03</b>
+			<br>Originally fastdl.me had `/maps/*.bsp.bz2` HTTP redirecting to `/hashed/sha1hash.bsp.bz2`.
+			<br>This has pros and cons. The biggest con was that fastdl downloads break for some users.
+			<br>`/maps/*.bsp.bz2` was changed to use a Cloudflare Worker to resolve that.
+			<br>This still has pros and cons...
+			<br>&nbsp;
+			<li><b>2023-08</b>
+			<br>New Gamebanana map uploads automatically added (port God Fibzy made me finally implement this).
+			<br>&nbsp;
+			</li>
+		</ul>
+	</li>
 	<li><h3>Available URL samples:</h3>
 		<ul>
 			<li><a href="https://main.fastdl.me/">main.fastdl.me</a>
