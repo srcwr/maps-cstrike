@@ -230,6 +230,7 @@ de_dust2,7693e3f86618c4802b46be6482f16e5828b49165,latest included version
 de_dusty,487d994a87a84da1cae7cfd72988ccc8f9eaff47,automatic canonization 202308270802
 de_fire_v3,dcde818a96fcf749f3b5d4603eb83b60be664f8b,latest on gamebanana as of 202304080604
 de_inferno,128cb9ef3c09b0192f3a46443f45d7f1d3172f61,latest included version
+de_metro,68ca0f32b9cdde065956a34911460bcf7ccc0df6,newest de_metro on gamebanana but no idea what the de_metro from moxx is about
 de_neonpolis,3efb54c2b8b6fec782bc4505d0149616a421c1ab,latest on gamebanana (as of 202303170250)
 de_no_mercy_hospital,856a90bec622cbfb8a43525d1ebacaac36a02e82,completely fixed apparently (202303252326)
 de_nuke,0d440898066e4300c8bfd6a5910e66ea3caee283,latest included version
@@ -246,7 +247,10 @@ de_train,151ddcd0e09e6c5172f1e1102329f4be38c615cc,latest included version
 de_underground,2a0aebdc304dece118446bd8bcef092f8cd288aa,
 de_vertigo_csgo,406ab5372551f996f0ea6b39ddd68b06a284ee38,probably the latest on gamebanana
 dev_awp_alpha,1d4544484da143a30d519533b9f398d3f9080b2c,latest on gamebanana (v2 202301281633)
+deathrun_ramesses_revenge_v3,a94a6e761680902b929f252fc79d896ae4b5008f,a version from 2010 so probably the original
+fy_poolparty_v8,e19cb8e8a428fb4fad33efaaddae5c57f7bb2d27,
 fy_theborder,f9ae4f3650d265f09cafb351bcb3c010817c1889,v15
+gg_reflect,bd1cbff739c88e0b1b906c4e76a24a6d4f9318ff,gamebanana version
 gg_skyward,eeb3d5c9f64facee13c0dc0a0531cce4102cd0e4,automatic canonization 202308290659
 kz_bhop_awake,95da268f166292d8fcabf1eef062026f2b57eedc,not sure which version this is but it doesnt matter because kz_bhop_awake_fix exists and kz_bhop_awake doesnt matter
 kz_bhop_cube,8d92f0f6fe541e53115f51c837b8d5a653897994,latest on gamebanana
@@ -263,6 +267,7 @@ kz_smkestate,8b87ad4841fb8cac8899013db258793e790c4cdd,latest on gamebanana
 kz_sunlight,f4999ae70292b5fd5659ddef125f015d4777ac11,latest
 kz_xtremeblock,955ee17b39c2e3030191226dd1b3348f09f0eeab,packed version
 mg_3k_smash_lego_copter,75344cea55d857ec72749cf5bb736f5163c4a24a,latest on gamebanana (the hellclan version changes the velocity of some trigger_push entities)
+mg_creative_multigames_v8_fix,866a42ce7b627380e4605458fb7e341b12ce44d0,seems the original
 mg_hellz_multigame_fix,c1cc38d296b02bcc16cde4b8bce4ad2c41384ad3,edits the mg_tp_rot func_rotating entity to start on since otherwise it never rotates
 mg_masogs_course_beta_2,ad50c1a6dd9e09bb5c0a1a027ac299e708848784,latest on gamebanana (202304010220)
 mg_ski_mountain_resort_fix,65c2399b7223ff7a640507756e37b477485a6c5c,latest on gamebanana (the gfl version removes the bombsite entity)
@@ -272,6 +277,7 @@ surf_004_fix,c94e88c76ed08fdd80d25ac8e58505324b5f973d,original (not momentum-mod
 surf_1day,3985067f4af3eb9a1504e823b4ab3849cdfea29d,original (not momentum-mod edit)
 surf_25_lighters,8bae34664dfe647cfc6eb72829edb3b9a70ef5b9,original (not momentum-mod edit)
 surf_4dimensional,bf36f3ad4d2f7031b6bcf65c6d4567c455812af4,original (not momentum-mod edit)
+surf_and_destroy,6eb7f9630c1323ac58bb0afe1cbf75b69aaea03c,gamebanana version
 surf_botanica,75ce5a02d330454ca23dfc2832b3930db1ad97b3,latest on gamebanana (as of 202304080604 -- v3)
 surf_chungus_fungus,aaa507c602aa92c1d6d4297e0c539ff5b1dddf64,latest on gamebanana (as of 202303062235)
 surf_endeavor,c58c4546724673b49a8923a6beff8dc917d3afa5,latest on gamebanana (as of 202301151308)
@@ -285,6 +291,7 @@ surf_injection_njv,6d5a17f8bb713091ccf52855d93879cb79e1bd13,version i had from k
 surf_kaaba,94f1e49dbfd066c0e509ca04fa4878dd81f3bfa6,automatic canonization 202308290429
 surf_listless_ksf,da662b99daa0e76ed5de9a8b8d1e3faaf4b8c85c,latest on gamebanana (2022-12-07 1.2 b5 fix)
 surf_molstration,a550c0b955a6e6a64af247ad1daa7057c97f8f9b,
+surf_n_bhop_beta1,1ee1d5cafce3eab1a9c369ed4867a080db02a2b5,
 surf_not_so_prosurf,f295680a28f3a82fdd7115217b00459c5cc1319f,latest on gamebanana (as of 202303230618)
 surf_ny_advance,e7af489ceae0b8ee6776d3b711ae5d0d0cc4fc6b,version from gamebanana
 surf_outra,7e504086e75520d586afe009ef218709431db229,latest on gamebanana (202302230950)
