@@ -1,6 +1,9 @@
 mapname,sha1,note
 #bridge,8ccf551ced6f6bf710ffbb7578c6e4134db889ef,automatic canonization 202308290659
 #cannon,c50ed7fb22bb134e070811dbfe307f0c6763ca65,automatic canonization 202308290758
+#de_dustcity -- bleh
+#de_metro -- bleh
+afp_de_western,a61c67dcb12614f23a17aaef2d63a06afe8b851b,gamebanana version
 aimbotz,0b870b1e28e688321c56568020c984423b9e0aa2,version 4.5 (202303250312)
 batavier_packed,6fb36d6446f1efab435bb6a17c0ca4ba19bd71fa,repack + compress or something idk
 bhop_001inbox,12a27e449b7a8c52db5a4d328da78eeb9c86cd0c,latest on gamebanana as of 202308180408
@@ -212,9 +215,11 @@ de_912,32d1ac0c945698ba57f52b6fcaae77ac390dd86d,automatic canonization 202308270
 de_abyss,841edc8e554a70dc1477757ad759b8fab75a8317,latest on gamebanana as of 202307080118
 de_apollo,c614e4a0a09ec32d2a6831f6c78a83167952aa9e,use original de_apollo instead of csgo port of cs_apollo
 de_arabic_lost,57b48cb0b88adf856e54ab565871895785f86fa8,latest on gamebanana as of 202310082021
+de_aurelia,5779d68eb6412c97ea0b106f8a8cd756346e7ffd,gamebanana version
 de_aztec,27cbddf495dacb879d92ab7e99ee07e8bd0bfcd4,latest included version
 de_cbble,28431023f76454c0d350c5c15f3fd71d54f95715,latest included version
 de_chateau,0b57fb003caff312866090b7a7b0bdf2e40145ef,latest included version
+de_cinema,7fe9f3c93434a0a4b038e82af06748ca2abf32e7,gamebanana version
 de_contra,5eac721746632d41f5e096aa9037ff02c553198d,latest on gamebanana
 de_coolmap01,9570b2b631c3c5ad6e9ce637ce5b30d1031bfe0f,automatic canonization 202309161925
 de_corridors,c3abffc6bbea37d49459f7e178a1733d7e53f9ab,the larger version
@@ -229,9 +234,11 @@ de_neonpolis,3efb54c2b8b6fec782bc4505d0149616a421c1ab,latest on gamebanana (as o
 de_no_mercy_hospital,856a90bec622cbfb8a43525d1ebacaac36a02e82,completely fixed apparently (202303252326)
 de_nuke,0d440898066e4300c8bfd6a5910e66ea3caee283,latest included version
 de_nuke_khanh,1bf667ec118325c697d06157ec591bef865d4636,latest version as of aaaa
+de_orilla_house,1723776e41301c7f19598c7da7efc4654bbc196f,gamebanana version
 de_piranesi,7a2882377c25f12aa0ef3d0cb40da255545c7687,latest included version
 de_port,c1441d4b0a2b735fa2129a5bf4b310ca58d2d607,latest included version
 de_prodigy,f1b25890403fba0cf2df5d901a2cb151984d4136,latest included version
+de_ruins,df4ef46bc62a2e152ca323bb2c1f8aed5b27c3d5,gamebanana version (though there's a few de_ruins that aren't this...)
 de_theatre,f7b42dd1ffb11007f3cbb5cdf0506b9d116e78a3,latest on gamebanana (a_9 -- 202301241804)
 de_theatre_r,55be1abb4b21a9decff5c68b8e6034e4eb5b14b0,latest on gamebanana (b_10 -- 202303262124)
 de_tides,de38bc38b54c46aaf5f47626785021d00caac60d,latest included version
@@ -271,16 +278,23 @@ surf_endeavor,c58c4546724673b49a8923a6beff8dc917d3afa5,latest on gamebanana (as 
 surf_eunoia,0269243e35fe99f01fadd7f957da35930d4168ef,original (not momentum-mod edit)
 surf_exclave_fix,46e82253eebc3e4e363464c6da47cdcfc6bf6cf2,original (not momentum-mod edit)
 surf_exile,10a23190fdad8542cf83b60e5eb434ba28c45411,original (not momentum-mod edit)
+surf_flappybird,fa55def798930fb73353c63c52f7b470b6b60596,gamebanana version
 surf_gigapede,9ccd82c2b86bb35aeec78681c884d38104f00dfc,automatic canonization 202308290614
+surf_halfpipe_v2,678a256432d6b709af4142ae0303939638a683e0,gamebanana version
+surf_injection_njv,6d5a17f8bb713091ccf52855d93879cb79e1bd13,version i had from ksf
 surf_kaaba,94f1e49dbfd066c0e509ca04fa4878dd81f3bfa6,automatic canonization 202308290429
 surf_listless_ksf,da662b99daa0e76ed5de9a8b8d1e3faaf4b8c85c,latest on gamebanana (2022-12-07 1.2 b5 fix)
+surf_molstration,a550c0b955a6e6a64af247ad1daa7057c97f8f9b,
 surf_not_so_prosurf,f295680a28f3a82fdd7115217b00459c5cc1319f,latest on gamebanana (as of 202303230618)
 surf_ny_advance,e7af489ceae0b8ee6776d3b711ae5d0d0cc4fc6b,version from gamebanana
 surf_outra,7e504086e75520d586afe009ef218709431db229,latest on gamebanana (202302230950)
+surf_pinkbash,1db21f9df1469afb87fe074d86cbce31d1c8f74e,gamebanana version
 surf_prismatic_ksf,8bd56711c9aba8c9f9701c122fce8686bb9880a7,latest on gamebanana (2.0)=
 surf_rooftopsv2_ksf,bb12f956d15b521dd796eb01b9ca8e5ab1f0b5ad,latest on gamebanana 202308181230
 surf_rookie,25f056b0825b02a26e0e5af5ca6684a5652fb51a,original (not momentum-mod edit)
+surf_sensation,e3cd6183068cf769cb9502dd4c7a37d65d85f256,gamebanana version
 surf_shibboleth,131d92aa41ec20178f7a94205efeac3d0fbf314a,latest on gamebanana as of 202302221633
+surf_wazor,5d390325b4a143bbbbb5d0641624ce5afcd85374,gamebanana version
 surf_zenith,babb69ef7688cb99bee7adae701b39a7fa5d4551,bspzipped version
 test_hardware,42b5b03fb1982756f47b29caac42b324cc197544,latest included version
 test_speakers,66f344061108c9ca59b6180f492e3a578748182f,latest included version
@@ -316,3 +330,6 @@ ze_exit_of_the_chaos_v1,7f2c3d8ca499e7675453f7aef45efaf5652b3cce,newer than 6e97
 ze_lego_v1,49dfa1ad288371dca62944a8a7572598c58be847,higher mapversion than b17eeb9324b3a74c76093ca6ade51c56d6d65c97
 ze_safe_house_v3,fd098f1ffb2f9a20807ac035db2cb468cfeb8b1e,
 ze_sorrento_escape_v5,75f01f5ba9e443fadfa78a300cf831ba7bed7c5f,adds another trigger_hurt in the water so fuck it why not
+ze_sorrtento_resonate_v1,842b52d767addfe448c186b0dc7217e1a9b8dc4d,gamebanana version
+zm_bunker_v1,2dd69ac5469734d21b70ebbf2f9ad8a70b5109e8,gamebanana version
+zm_lockdown,c114fef61c71e24facd8be5992532a828a17537b,gamebanana version
