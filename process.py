@@ -87,7 +87,7 @@ cur.executemany("INSERT INTO links VALUES(?,?);", [(a,b) for a, b in links.items
 
 with open("canon.csv", encoding="utf-8") as f:
     #things = [[x.lower().strip() for x in line] for line in csv.reader(f)] # also newline='' in open
-    things = [line.lower().strip().split(",")[:2] for line in f]
+    things = [line.lower().strip().split(",")[:2] for line in f if line[0] != "#"]
     things.pop(0) # remove "mapname,sha1,note"
     for x in things:
         if len(x[1]) != 40:
