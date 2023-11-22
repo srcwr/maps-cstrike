@@ -19,7 +19,7 @@ Originally intended for bhop/surf/xc/kz/trikz maps... and then it spiraled out o
 		- Unused nginx log 'parser' to get the count of each map downloaded in a day
 	- [`main.fastdl.me`](https://main.fastdl.me/)
 		- Mainly placeholder files for keeping the directory structure.
-	- ['mainr2.fastdl.me`](https://mainr2.fastdl.me/)
+	- [`mainr2.fastdl.me`](https://mainr2.fastdl.me/)
 		- More placeholder files.
 	- `nginx`
 		- Most of the nginx website configuration for [main.fastdl.me](https://main.fastdl.me/)
