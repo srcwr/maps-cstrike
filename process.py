@@ -23,11 +23,13 @@ cur = conn.cursor()
 cur.executescript("""
 DROP TABLE IF EXISTS maps_unfiltered;
 DROP TABLE IF EXISTS maps_canon;
+DROP TABLE IF EXISTS maps_czarchasm;
 DROP TABLE IF EXISTS gamebanana;
 DROP TABLE IF EXISTS links;
 
 CREATE TABLE maps_unfiltered (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 CREATE TABLE maps_canon (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
+CREATE TABLE maps_czarchasm (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 CREATE TABLE gamebanana (sha1 TEXT NOT NULL, gamebananaid INT NOT NULL, gamebananafileid INT NOT NULL);
 CREATE TABLE links (sha1 TEXT NOT NULL, url TEXT NOT NULL);
 
@@ -35,6 +37,8 @@ CREATE INDEX mapnameu ON maps_unfiltered(mapname);
 CREATE INDEX sha1m on maps_unfiltered(sha1);
 CREATE INDEX mapnamec ON maps_canon(mapname);
 CREATE INDEX sha1c on maps_canon(sha1);
+CREATE INDEX mapnamecz ON maps_czarchasm(mapname);
+CREATE INDEX sha1cz on maps_czarchasm(sha1);
 CREATE INDEX sha1g on gamebanana(sha1);
 CREATE INDEX sha1o on links(sha1);
 """)
@@ -44,44 +48,57 @@ CREATE INDEX sha1o on links(sha1);
 def normal_name(m):
     return m.strip().replace('.', '_').lower()
 
-gamebanana = {}
-links = {}
 
-unique = set()
-for filename in glob.glob("unprocessed/*.csv"):
-    with open(filename, newline='', encoding="utf-8") as f:
-        cr = csv.reader(f)
-        for line in cr:
-            if line[0] == "mapname" or line[0][0] == "#":
-                continue
-            thing = [x.lower() for x in line]
-            thing[0] = normal_name(thing[0]) # because CS:S fails to download maps with '.'
-            if len(thing) > 4:
-                if thing[4].startswith("http://") or thing[4].startswith("https://"):
-                    links[thing[3]] = thing[4]
-                else:
-                    # path & maybe gamebanana path...
-                    splits = thing[4].split('_')
-                    if splits[0].isdigit() and splits[0] != "0" and splits[1].isdigit(): # might have false positives...
-                        gamebanana[thing[3]] = (int(splits[0]), int(splits[1]))
-            unique.add(tuple(thing[:4]))
+def glob_unprocessed_csvs(pattern):
+    #i = 0
+    gamebanana = {}
+    links = {}
+    unique = set()
+    for filename in glob.glob(pattern):
+        with open(filename, newline='', encoding="utf-8") as f:
+            cr = csv.reader(f)
+            for line in cr:
+                if line[0] == "mapname" or line[0][0] == "#":
+                    continue
+                thing = [x.lower() for x in line]
+                thing[0] = normal_name(thing[0]) # because CS:S fails to download maps with '.'
+                if len(thing) > 4:
+                    if thing[4].startswith("http://") or thing[4].startswith("https://"):
+                        links[thing[3]] = thing[4]
+                    else:
+                        # path & maybe gamebanana path...
+                        splits = thing[4].split('_')
+                        if splits[0].isdigit() and splits[0] != "0" and splits[1].isdigit(): # might have false positives...
+                            gamebanana[thing[3]] = (int(splits[0]), int(splits[1]))
+                #i += 1
+                unique.add(tuple(thing[:4]))
+    #print(i, len(unique))
+    return (gamebanana, links, unique)
+
+(gamebanana, links, unique) = glob_unprocessed_csvs("unprocessed/*.csv")
+(_, _, czarchasm_unique) = glob_unprocessed_csvs("unprocessed/hashed_bsps_czar_p*.csv")
+
+def glob_filters(pattern, mapset):
+    for filename in glob.glob(pattern):
+        with open(filename, newline='', encoding="utf-8") as f:
+            cr = csv.reader(f)
+            for line in cr:
+                if line[0] == "mapname" or line[0].startswith("#"):
+                    continue
+                thing = [x.lower() for x in line][:4]
+                thing[0] = normal_name(thing[0]) # because CS:S fails to download maps with '.'
+                mapset.remove(tuple(thing))
+                #if line == "mapname,filesize,filesize_bz2,sha1\n":
+                #    continue
+                #unique.remove(line.lower().strip())
 
 unfiltered = set(unique)
-for filename in glob.glob("filters/*.csv"):
-    with open(filename, newline='', encoding="utf-8") as f:
-        cr = csv.reader(f)
-        for line in cr:
-            if line[0] == "mapname" or line[0].startswith("#"):
-                continue
-            thing = [x.lower() for x in line][:4]
-            thing[0] = normal_name(thing[0]) # because CS:S fails to download maps with '.'
-            unique.remove(tuple(thing))
-            #if line == "mapname,filesize,filesize_bz2,sha1\n":
-            #    continue
-            #unique.remove(line.lower().strip())
+glob_filters("filters/*.csv", unique)
+glob_filters("filters/custom/czarchasm_filter.csv", czarchasm_unique)
 
 cur.executemany("INSERT INTO maps_unfiltered VALUES(?,?,?,?);", unfiltered)
 cur.executemany("INSERT INTO maps_canon VALUES(?,?,?,?);", unique)
+cur.executemany("INSERT INTO maps_czarchasm VALUES(?,?,?,?);", czarchasm_unique)
 cur.executemany("INSERT INTO gamebanana VALUES(?,?,?);", [(a,b,c) for a, (b, c) in gamebanana.items()])
 cur.executemany("INSERT INTO links VALUES(?,?);", [(a,b) for a, b in links.items()])
 
@@ -94,6 +111,7 @@ with open("canon.csv", encoding="utf-8") as f:
             raise Exception(f"fuck you {x}")
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
+cur.execute("VACUUM")
 
 recently_added = []
 with open("recently_added.csv", newline='', encoding="utf-8") as f:
@@ -113,7 +131,7 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
             break
     recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
 
-def create_thing(table, outfilename, canon, title, sqlwhere):
+def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added):
     res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} {sqlwhere} GROUP BY sha1);").fetchone()
 
     with open("index_top.html", encoding="utf-8") as f:
@@ -133,34 +151,35 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
         <h4>(sorting is slow... you have been warned...)</h4>
         """.format(title, res[0], res[1], res[2])
 
-    index_html += """
-    <br>
-    <h2>Recently added:</h2>
-    <a href="https://github.com/srcwr/maps-cstrike/commits/master">(full commit history)</a>
-    <table id="recentlyadded">
-    <thead>
-    <tr>
-    <th style="width:1%">Map name</th>
-    <th style="width:1%">SHA-1 Hash</th>
-    <th style="width:15%">Note</th>
-    <th style="width:2%">Date added</th>
-    </tr>
-    </thead>
-    <tbody>
-    """
-    #<th style="width:1%">List of packed files</th>
-    for x in recently_added:
+    if not omit_recently_added:
         index_html += """
+        <br>
+        <h2>Recently added:</h2>
+        <a href="https://github.com/srcwr/maps-cstrike/commits/master">(full commit history)</a>
+        <table id="recentlyadded">
+        <thead>
         <tr>
-        <td><a href="#">{}</a></td>
-        <td>{}</td>
-        <td>{}</td>
-        <td>{}</td>
+        <th style="width:1%">Map name</th>
+        <th style="width:1%">SHA-1 Hash</th>
+        <th style="width:15%">Note</th>
+        <th style="width:2%">Date added</th>
         </tr>
-        """.format(html.escape(x[0]), x[3], x[5], x[6], x[3])
-        #<td><a href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/{}.csv">{}</a></td>
+        </thead>
+        <tbody>
+        """
+        #<th style="width:1%">List of packed files</th>
+        for x in recently_added:
+            index_html += """
+            <tr>
+            <td><a href="#">{}</a></td>
+            <td>{}</td>
+            <td>{}</td>
+            <td>{}</td>
+            </tr>
+            """.format(html.escape(x[0]), x[3], x[5], x[6], x[3])
+            #<td><a href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/{}.csv">{}</a></td>
 
-    index_html += '</tbody></table><br><br><br>'
+        index_html += '</tbody></table><br><br><br>'
 
     outf = open(f"processed/{outfilename}", "w+", encoding="utf-8")
 
@@ -207,7 +226,8 @@ def create_thing(table, outfilename, canon, title, sqlwhere):
             if gbid != None and gbid != 0:
                 link = "https://gamebanana.com/mods/" + str(gbid)
                 htmllink = f'<td><a href="{link}">{gbid}</a></td>'
-        if "canon" in table:
+        #if "canon" in table:
+        if canon:
             outtextffff.write(row[0] + "\n")
         else:
             hashies.add(row[3])
@@ -279,9 +299,10 @@ shutil.copytree("../fastdl_opendir/materials", "processed/main.fastdl.me/materia
 shutil.copytree("../fastdl_opendir/sound", "processed/main.fastdl.me/sound")
 
 # On Cloudflare: I have /maps/ rewritten to maps_index.html & /hashed/ rewritten to hashed_index.html....
-create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hashed/unfiltered maps", "")
-create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "")
-create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'")
+create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hashed/unfiltered maps", "", False)
+create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "", False)
+create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False)
+create_thing("maps_czarchasm", "main.fastdl.me/maps_czarchasm.html", True, 'mirror of CS:S maps from <a href="https://czarchasm.club/fastdl/">czarchasm.club</a>', "", True)
 
 # TODO: generate main.fastdl.me/index.html open directory pages
 
