@@ -1,6 +1,4 @@
 // SPDX-License-Identifier: WTFPL
-// Copyright 2023 rtldg <rtldg@protonmail.com>
-// This file is part of fastdl.me (https://github.com/srcwr/maps-cstrike/)
 
 // wrangler pages publish --project-name check-fastdl --branch main .
 

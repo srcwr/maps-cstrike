@@ -301,6 +301,8 @@ except:
 shutil.copytree("fastdlsite/main.fastdl.me", "processed/main.fastdl.me")
 shutil.copytree("../fastdl_opendir/materials", "processed/main.fastdl.me/materials")
 shutil.copytree("../fastdl_opendir/sound", "processed/main.fastdl.me/sound")
+shutil.copy("WTFPL.txt", "processed/main.fastdl.me/WTFPL.txt")
+shutil.copy("WTFPL.txt", "processed/fastdl.me/WTFPL.txt")
 
 # On Cloudflare: I have /maps/ rewritten to maps_index.html & /hashed/ rewritten to hashed_index.html....
 create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hashed/unfiltered maps", "", False, False)

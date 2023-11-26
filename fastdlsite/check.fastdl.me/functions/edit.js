@@ -1,6 +1,4 @@
 // SPDX-License-Identifier: WTFPL
-// Copyright 2023 rtldg <rtldg@protonmail.com>
-// This file is part of fastdl.me (https://github.com/srcwr/maps-cstrike/)
 
 export async function onRequestPost(ctx) {
     if (ctx.request.headers.get("X-Videos") != ctx.env.EDIT_PASS)

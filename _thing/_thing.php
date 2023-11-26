@@ -1,4 +1,5 @@
 <?php
+// SPDX-License-Identifier: WTFPL
 
 // (Invoke-WebRequest -Uri http://mofu.mofumofu.site.nfoservers.com/_thing.php -Body (Get-Childitem -file *.bsp | select length, name | ConvertTo-Json) -Method POST -UseBasicParsing).Content
 

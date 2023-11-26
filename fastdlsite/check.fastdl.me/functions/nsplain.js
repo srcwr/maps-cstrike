@@ -1,6 +1,4 @@
 // SPDX-License-Identifier: WTFPL
-// Copyright 2023 rtldg <rtldg@protonmail.com>
-// This file is part of fastdl.me (https://github.com/srcwr/maps-cstrike/)
 
 export async function onRequestPost(ctx) {
     const frick = new URL(ctx.request.url);

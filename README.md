@@ -6,6 +6,8 @@ Originally intended for bhop/surf/xc/kz/trikz maps... and then it spiraled out o
 - movement/skill gamemode maps get the most love though... there's around 2000 rows of duplicate mapnames excluding bhop/surf/xc/kz/trikz/etc so... that will probably never be proactively dealt with for `/maps/` / `canon.csv`....
 	- feel free to request setting the correct version of a map though
 
+## LICENSE
+Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE](http://www.wtfpl.net/txt/copying/) unless otherwise specified in the file.
 
 ## WHAT IS WHAT
 - `_thing/`

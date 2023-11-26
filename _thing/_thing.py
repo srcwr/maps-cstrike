@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: WTFPL
+
 import os.path
 import json
 import sqlite3
