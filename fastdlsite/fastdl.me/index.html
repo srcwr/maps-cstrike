@@ -37,7 +37,9 @@
 		</ul>
 	</li>
 	<li>Post in the <a href="https://discord.gg/nP5YzB3">Sourcejump Discord server</a> or <a href="https://discord.gg/JB8rxyD6uZ">bhoptimer Discord server</a> (main)</li>
-	<li>Just upload it to <a href="https://gamebanana.com/mods/cats/5535?_nPage=1&_sSort=Generic_NewAndUpdated">Gamebanana</a> lol as every map posted is added to this site.</li>
+	<li>Upload it to <a href="https://gamebanana.com/mods/cats/5535?_nPage=1&_sSort=Generic_NewAndUpdated">Gamebanana</a> as every map posted there is then added to this site.
+		<ul><li>(it's good for your map to have a "homepage", which it can, if it's on Gamebanana)</li></ul>
+	</li>
 </ul>
 
 <h3>Source-code &amp; repositories:</h3>
@@ -99,6 +101,12 @@
 				<li><a href="https://main.fastdl.me/69.html.txt">mostly bhop/trikz/kz/surf/xc</a></li>
 			</ul>
 		</li>
+		<li><h3>If you want to download with wget/curl:</h3>
+			<ul>
+				<li>wget http://main.fastdl.me/maps/bhop_badges.bsp.bz2</li>
+				<li>curl -L -O http://main.fastdl.me/maps/bhop_badges.bsp.bz2</li>
+			</ul>
+		</li>
 		</ul>
 	</li>
 	<li><h3>Can I use this as my fastdl?</h3>
@@ -121,9 +129,9 @@
 	<li><h3>Can you host a CS:GO or TF2 fastdl?</h3>
 		<ul>
 			<li>I'm not personally interested in hosting maps for these right now as it'd cost more money.
-			<br>(CS:GO will be effectively dead once CS2 is released too...)
+			<br>(CS:GO is effectively dead now that CS2 is released... hopefully everybody saved maps they wanted)
 			<br>Here's a cool TF2 map archive though: <a href="https://maps.mevl2.duckdns.org/">https://maps.mevl2.duckdns.org/</a> (more games at <a href="https://ar.mevl2.duckdns.org/">https://ar.mevl2.duckdns.org/</a>)
-			<br>And here's a cool, curated GMOD-oriented bhop fastdl: <a href="https://czarchasm.club/fastdl/">https://czarchasm.club/fastdl/</a>
+			<br>And here's a mirror of a cool, curated GMOD-oriented bhop fastdl (czarchasm): <a href="https://main.fastdl.me/maps_czarchasm.html">html</a> / <a href="https://main.fastdl.me/maps_czarchasm.html.csv">csv</a>
 			</li>
 		</ul>
 	</li>
@@ -138,7 +146,7 @@
 					<li>Perhaps it's sometimes related to ISP filtering / country firewalls / dropped connections.</li>
 					<li>I also had a Linux gaming CS:S friend who couldn't download maps when /maps/ redirected to /hashed/.
 					<br>I'm not sure why this was a problem but making /maps/ not use HTTP redirects solved it for them.</li>
-					<li>Cloudflare server updates kill requests that run longer than 30 seconds. <a href="https://developers.cloudflare.com/workers/platform/limits/#duration">Source</a></li>
+					<li>Cloudflare server-updates kill requests that run longer than 30 seconds. <a href="https://developers.cloudflare.com/workers/platform/limits/#duration">Source</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -147,15 +155,11 @@
 
 <h2>Other things:</h2>
 <ul>
-	<li><h3>If you want to download with wget/curl:</h3>
-		<ul>
-			<li>wget http://main.fastdl.me/maps/bhop_badges.bsp.bz2</li>
-			<li>curl -L -O http://main.fastdl.me/maps/bhop_badges.bsp.bz2</li>
-		</ul>
+	<li><h3>Old versions of 7-Zip are known to have problems extracting these .bz2 files.</h3>
+		<ul><li>Just update it :)</li></ul>
 	</li>
-	<li><h3>Sometimes old 7-Zip versions don't extract these .bz2 files so you might have to update it.</h3></li>
 	<li><h3>Every .nav file is currently a dummy .nav file.</h3>
-		<ul><li>I'll add the real .nav files where available soon:tm:.</li></ul>
+		<ul><li>I'll add the real .nav files where available soon:tm: (or will I?).</li></ul>
 	</li>
 	<li><h3>Somewhat History</h3>
 		<ul>
@@ -169,7 +173,7 @@
 			</li>
 			<li><b>2022-??</b>
 			<br>The shared hosting provider for acer's fastdl, blocks access to map directory list / index pages.
-			<br>This isn't too surprising since it was ~140GB of files that probably saw a couple hundred gigabytes of bandwidth each month.
+			<br>This isn't too surprising since it was ~140GB of files that probably saw a couple dozen gigabytes of bandwidth each month.
 			<br>Map additions decreased in the prior months and download speeds were slow at times.
 			<br>TL;DR: death flags.
 			<br>&nbsp;
@@ -177,7 +181,7 @@
 			<li><b>2022-11</b>
 			<br>fastdl.me revives as a bhop/surf/xc/kz/trikz map archive/fastdl.
 			<br>The latest files from acer's fastdl were acquired to absorb / provide longer-lasting hosting.
-			<br>Around <a href="https://github.com/srcwr/maps-cstrike/tree/master/unprocessed">two-dozen sources of maps</a>, from fastdls &amp; community-outreach, collected and combined.
+			<br>Around <a href="https://github.com/srcwr/maps-cstrike/tree/master/unprocessed">two-dozen sources of maps</a>, from fastdls &amp; community-outreach, are collected and combined.
 			<br>&nbsp;
 			</li>
 			<li><b>2023-01</b>
@@ -197,7 +201,7 @@
 			<br>This still has pros and cons...
 			<br>&nbsp;
 			<li><b>2023-08</b>
-			<br>New Gamebanana map uploads automatically added (port God Fibzy made me finally implement this).
+			<br>New map-uploads on Gamebanana are now automatically added (port god Fibzy caused this to finally happen).
 			<br>&nbsp;
 			</li>
 			<li><b>2023-11-23~</b>
@@ -246,5 +250,6 @@
 			</li>
 		</ul>
 	</li>
+	<li><h3>😀 😃 😄 😁 😆 😅 😂 🤣 🥲 🥹 ☺️ 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 🤨 🧐 🤓 😎 🥸 🤩 🥳 😏 😒 😞 😔 😟 😕 🙁 ☹️ 😣 😖 😫 😩 🥺 😢 😭 😮‍💨 😤 😠 😡 🤬 🤯 😳 🥵 🥶 😱 😨 😰 😥 😓 🫣 🤗 🫡 🤔 🫢 🤭 🤫 🤥 😶 😶‍🌫️ 😐 😑 😬 🫨 🫠 🙄 😯 😦 😧 😮 😲 🥱 😴 🤤 😪 😵 😵‍💫 🫥 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠️ 👽 👾 🤖 🎃 😺 😸 😹 😻 😼 😽 🙀 😿 😾 ✢ ✣ ✤ ✥ ✦ ✧ ★ ☆ ✯ ✡︎ ✩ ✪ ✫ ✬ ✭ ✮ ✶ ✷ ✵ ✸ ✹ → ⇒ ⟹ ⇨ ⇾ ➾ ⇢ ☛ ☞ ➔ ➜ t h e g a m e ➙ ➛ ➝ ➞ ♠︎ ♣︎ ♥︎ ♦︎ ♤ ♧ ♡ ♢ ♚ ♛ ♜ ♝ ♞ ♟ ♔ ♕ ♖ ♗ ♘ ♙ ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ 🂠 ⚈ ⚉ ⚆ ⚇ 𓀀 𓀁 𓀂 𓀃 𓀄 𓀅 𓀆 𓀇 𓀈 𓀉 𓀊 𓀋 𓀌 𓀍 𓀎 𓀏 𓀐 𓀑 𓀒 𓀓 𓀔 𓀕 𓀖 𓀗 𓀘 𓀙 𓀚 𓀛 𓀜 𓀝</h3></li>
 </ul>
 </body>

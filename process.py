@@ -131,7 +131,7 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
             break
     recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
 
-def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added):
+def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added, txt_as_urls):
     res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} {sqlwhere} GROUP BY sha1);").fetchone()
 
     with open("index_top.html", encoding="utf-8") as f:
@@ -149,7 +149,9 @@ def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added
         <h3>Unpacked size: {:,} BYTES</h3>
         <h3>BZ2 size: {:,} BYTES</h3>
         <h4>(sorting is slow... you have been warned...)</h4>
-        """.format(title, res[0], res[1], res[2])
+        links to other versions of this list: <a href="https://{}.txt">txt</a> / <a href="https://{}.csv">csv</a>
+        <br>&nbsp;
+        """.format(title, res[0], res[1], res[2], outfilename, outfilename)
 
     if not omit_recently_added:
         index_html += """
@@ -226,8 +228,10 @@ def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added
             if gbid != None and gbid != 0:
                 link = "https://gamebanana.com/mods/" + str(gbid)
                 htmllink = f'<td><a href="{link}">{gbid}</a></td>'
+        if txt_as_urls:
+            outtextffff.write(f"http://main.fastdl.me/hashed/{row[3]}/{row[0]}.bsp.bz2\n")
         #if "canon" in table:
-        if canon:
+        elif canon:
             outtextffff.write(row[0] + "\n")
         else:
             hashies.add(row[3])
@@ -299,10 +303,10 @@ shutil.copytree("../fastdl_opendir/materials", "processed/main.fastdl.me/materia
 shutil.copytree("../fastdl_opendir/sound", "processed/main.fastdl.me/sound")
 
 # On Cloudflare: I have /maps/ rewritten to maps_index.html & /hashed/ rewritten to hashed_index.html....
-create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hashed/unfiltered maps", "", False)
-create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "", False)
-create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False)
-create_thing("maps_czarchasm", "main.fastdl.me/maps_czarchasm.html", True, 'mirror of CS:S maps from <a href="https://czarchasm.club/fastdl/">czarchasm.club</a>', "", True)
+create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hashed/unfiltered maps", "", False, False)
+create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "", False, False)
+create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False, False)
+create_thing("maps_czarchasm", "main.fastdl.me/maps_czarchasm.html", True, 'mirror of maps from <a href="https://czarchasm.club/">czarchasm.club</a>', "", True, True)
 
 # TODO: generate main.fastdl.me/index.html open directory pages
 
