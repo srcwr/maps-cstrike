@@ -8,7 +8,7 @@ app = Flask(__name__)
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        db = g._database = sqlite3.connect("/data/public/yeah7/maps.db") # hardcoding...
+        db = g._database = sqlite3.connect("/fastdl/maps.db") # hardcoding...
     return db
 
 @app.teardown_appcontext

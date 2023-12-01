@@ -17,6 +17,19 @@ Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WH
 		- Map submission form and commands to check your `maps` folder for unique things to upload
 	- [`fastdl.me`](https://fastdl.me/)
 		- The homepage
+	- `fastdlpy/`
+		- `99-cloudflared.conf`
+			- some sysctls I put on to silence some cloudflared warnings
+		- `fastdlpy.service`
+			- a systemd service file for fastdlpy
+		- `main.py`
+			- The meat of the name-to-hash redirections for [main.fastdl.me](https://main.fastdl.me/)
+		- `main2.py`
+			- Currently unused but basically the same thing but instead for a server that is hosting the .bsp.bz2 itself
+		- `requirements.txt`
+			- pip requirements yada yada
+		- `setup-venv.sh`
+			- quicker venv setup so I don't have to remember every time
 	- `log-counter`
 		- Unused nginx log 'parser' to get the count of each map downloaded in a day
 	- [`main.fastdl.me`](https://main.fastdl.me/)
@@ -25,8 +38,6 @@ Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WH
 		- More placeholder files.
 	- `nginx`
 		- Most of the nginx website configuration for [main.fastdl.me](https://main.fastdl.me/)
-	- `main.py`
-		- The meat of the name-to-hash redirections for [main.fastdl.me](https://main.fastdl.me/)
 - `filters/`
 	- CSV files for removing dupes, bad maps, etc from the fastdl.me `/maps/` page
 - `processed/`

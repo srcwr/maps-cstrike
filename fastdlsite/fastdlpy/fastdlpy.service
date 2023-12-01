@@ -1,0 +1,14 @@
+# /etc/systemd/system/fastdlpy.service ?
+[Unit]
+Description=Gunicorn instance to serve fastdlpy
+After=network.target
+
+[Service]
+User=fastdl
+Group=www-data
+WorkingDirectory=/home/fastdl/fastdlpy
+Environment="PATH=/home/fastdl/fastdlpy/venv/bin"
+ExecStart=/home/fastdl/fastdlpy/venv/bin/gunicorn --workers 3 --bind unix:/tmp/fastdlpy.sock -m 007 main:app
+
+[Install]
+WantedBy=multi-user.target
