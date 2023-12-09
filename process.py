@@ -293,6 +293,8 @@ try:
 except:
     pass
 shutil.copytree("fastdlsite/fastdl.me", "processed/fastdl.me")
+with open("processed/fastdl.me/index.html", "wb") as f:
+    f.write(open("fastdlsite/fastdl.me/index.html", "rb").read().replace(b'<!-- embed the privacy policy here -->', open("fastdlsite/embedded-privacy-policy.html", "rb").read()))
 
 try:
     shutil.rmtree("processed/main.fastdl.me")
