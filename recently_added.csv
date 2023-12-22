@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_cbble_2023_viktor,28745164,7775373,afa1e3aef0f26e099866bf0101f5ed004dc24a28,485479_1107247_de_cbble_2023_viktor/cstrike/maps,automated upload,2023-12-22 14:35
 cs_bank_16,8044995,1992833,cb66ba327821ab93cb3530f68f31875320aa1d88,485086_1106219_cs_bank_addon/maps,automated upload,2023-12-20 18:47
 #cs_assault_mini,4873130,1885130,d00b508322d84d11607964445406ae6f8bd612e6,485129_1106184_cs_assault_mini/cs_assault_mini/maps,automated upload,2023-12-20 17:37
 surf_heights_v1,9151036,2587384,0f6b2330012116d2b35a19debaa8f8d0d61d46b9,484996_1105716_surf_heights_v1,automated upload,2023-12-20 00:13
@@ -8,7 +9,6 @@ mg_sky_climb,55027273,55238844,dec3dabb43e0016eb12deb37dfd59f4d8cdae20c,449608_1
 cs_bloodstrike_bf4,21714320,12441241,7337580bea787154caf1f2f0ac7799669a5b3da3,484557_1104299_cs_bloodstrike_bf4/cs_bloodstrike_bf4/maps,automated upload,2023-12-17 11:12
 surf_conca,27654640,8801121,ad866431d14b226d955046c6857455ae0a5dbc7c,484483_1104035_surf_conca,automated upload,2023-12-17 02:10
 bhop_circle_course,16510507,3563424,d215ca5938377ff5ec2e84b153405b291a242608,a port of mg_circle_course with teleportors instead of trigger_hurts (sent from finn),a port of mg_circle_course with teleportors instead of trigger_hurts (sent from finn),2023-12-16 18:21
-de_cbble_2023_viktor,19126344,7620696,4c3c8acfde1a4147ddf30590bcb5261de606b730,484340_1103534_de_cbble_2023_viktor,automated upload,2023-12-16 08:06
 surf_topology,71834610,71735513,1c2312a80fa0b8b4d7da85ae42966d9476739d86,484086_1102645_surf_topology,automated upload,2023-12-14 20:15
 nfn_grenades,195608,29385,554648f05b10d4422b3b6276e0fc8a86366faa91,483262_1101710_nfn_grenades_2,automated upload,2023-12-12 14:52
 gg_station,31912959,11894611,54dae46ed1e6d988ab96b71619a2c9fc11a41f1e,483505_1101111_gg_station_fixed_,automated upload,2023-12-12 06:57
