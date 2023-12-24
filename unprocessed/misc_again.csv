@@ -1,5 +1,6 @@
 mapname,filesize,filesize_bz2,sha1,note
 bhop_2021_aux_part1,129367956,49502666,7378115fc3c99ff1465d2bccfb4605b8da032913,plar or something
+bhop_acrophobia,66413157,23297242,38a1aba53efbf3b9ca20aa710987077c74d0ec7f,bhop edit/port by finn of mg_acrophobia_run_v1
 bhop_avloppet_fix,10232200,4088288,cf6cb84200f20490ba73f550d30a6d990692730b,optimized/smaller version of bhop_avloppet by malala
 bhop_circle_course,16510507,3563424,d215ca5938377ff5ec2e84b153405b291a242608,a port of mg_circle_course with teleportors instead of trigger_hurts (sent from finn)
 bhop_muchfastbonus,13993152,4999558,3454aa7c4e1fa728cfa0b2185f3701da0a50abcf,sirhep
