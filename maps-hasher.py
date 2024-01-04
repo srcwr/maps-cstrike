@@ -118,6 +118,8 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash):
 
 if __name__ == "__main__":
     main("unprocessed/misc3.csv", False, "../todo-gb", False, False)
+    #main("unprocessed/unloze-css_ze-unique.csv", False, "C:/shared/unloze/css_ze", False, True)
+    #main("unprocessed/unloze-css_ze-all.csv", False, "C:/shared/unloze/css_ze", True, False)
     #main("unprocessed/moxx-terabox-unique.csv", False, "F:/terabox/cstrike_all/a", False, True)
     #main("unprocessed/moxx-terabox-all.csv", False, "F:/terabox/cstrike_all/a", True, False)
     #main("unprocessed/moxx-terabox-archives.csv", False, "F:/terabox/cstrike_all/archives", True, False)
