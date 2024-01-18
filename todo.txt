@@ -1,3 +1,5 @@
+scrape https://gamebanana.com/mods/cats/5305
+
 Figure out what to do with:
 	bhop_winter_fix,2688471,822439,3d19b027307bbce87b8d52bd4b10c884858df0d3
 		- This ISN'T bhop_winter_fix. It's bhop_winter with a fucked skybox but not fullbright
