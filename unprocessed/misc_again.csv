@@ -8,14 +8,25 @@ bhop_redolent_2,18166385,6096827,a169c8408ae64d939ed3b9d13c017a18db380cc3,same a
 bhop_remia_fix,9403112,3855698,2dee7cbfc574072601c3d5f509352211b1ade01a,"removed 25MB of music + deleted some shitty bonus + optimized + smaller" -- by malala
 de_mirage_rc1_32fixedbymisiu29,10752352,3320363,0d686a6465bad4e3492b4c53d1f048418f4306af,
 de_orville,3774769,1418620,57171c36bcb894652b67d74bf36a7ed94f8fd7de,
+gm_abstraction,41856464,10407305,71c87fb65db0d455704e684a16f4bdc5107cff46
+gm_audiosurf,41601774,23377204,d16de88d62eeed267b627ffaac8d91694c335192,60922_302340_gm_audiosurf_2
 # okay, I'm gonna be honest: I didn't actually download it to check if it's the same hash. But surely... right?
 gm_bigcity,59632572,17221371,79114882b9d31e7c04f7a8fafa29d8725735ab89,https://steamcommunity.com/sharedfiles/filedetails/?id=105982362
+gm_indoorkart,15027649,4070817,278e8ddab83ec71155152761fb0cd4580d34bc0c,61578_315900_gm_indoorkart
+gm_mainland,17680508,6849471,483ad65ec6c5418581bad7b8e61dfe1c08f126d1,https://steamcommunity.com/sharedfiles/filedetails/?id=104493582
+gm_phantasmagoria,10534364,4395717,2fa42946bd9c4765f3932a181bccec89359c839f,https://steamcommunity.com/sharedfiles/filedetails/?id=680354057
+gm_red_keep,238344888,77726387,a2b0bfecf01f0c5c0557384b1a6d55c3c07f6a9b,https://steamcommunity.com/sharedfiles/filedetails/?id=679611640
+gm_supersizeroom_v2,56429124,20069015,0924af0a5487b19f22424d0910bef35702863887,https://steamcommunity.com/sharedfiles/filedetails/?id=104793138
 jb_sky_climb,55040519,55250576,1a375aec46c5ca8b1809af78c8f8b7f57634e98e,449608_1000262_mg_sky_climb
 mg_bob,8354340,644916,537cb4ba144b5e58993b65461206327cd77084ab,sent from nuko and frens
 mg_btp_multigames_v1_b01,29919378,16815487,4c3ba5af835f66fd0a6366c4f4ff7e4baf52cd28,malala had this in their maps folder
 mg_btp_multigames_v1_b03,6252104,1748747,2e0924a6a3e37d567604ee193585111fb3650412,malala had this in their maps folder
 mg_btp_multigames_v2_1fix,3857665,1077709,6af4aa112f1ecc3fa000ef1fd6937b220aa1bd44,malala had this in their maps folder
 mg_sky_climb,55027273,55238844,dec3dabb43e0016eb12deb37dfd59f4d8cdae20c,449608_1000262_mg_sky_climb
+# okay, I'm gonna be honest: I didn't actually download it to check if it's the same hash. But surely... right?
+rf_silenthill,245746115,106162337,eddf56f1f62978325a7dbea90de885f55b928fa9,https://steamcommunity.com/sharedfiles/filedetails/?id=152652719
+rp_amsterville,48638219,19614319,7ebea0cde3e9cf32cfaef332e21c472d8b89a0f1,
+rp_lakeland,39993602,18579596,b3011370cc004d85a14f53ebd3db0e393af15edb,
 semele_bonus,3898743,3911686,a44cb488d3300309679a417726e1ea82c664bf48,
 surf_bonkness,23386846,23223539,0df62fe92c0dd854ca51ec3c4960754531211fdb,
 surf_dicks_v4,20966680,8192313,dd5e4fb4724d27ecb2fb752c1470d72b9e4aea48,
@@ -26,3 +37,4 @@ surf_minigolf_test2,48266617,48287421,af0bccd57570154886e2f7bdc44734f87d991597,
 surf_pantheon_beta,149252551,63480086,dba45bc2ae31db34bb3f970a62c67dc3616a815d,
 surf_please_play_me_peepo,10972867,10887187,a638e46a26a77b9eff04a963bf1bcf5565b8c483,
 surf_sidness_lightingbeta,15980500,5529877,ec14eac7cf27f06175dd7d2c20a9b57dc3276003,from ksf or something
+zs_abstraction,41856464,10407305,71c87fb65db0d455704e684a16f4bdc5107cff4,???
