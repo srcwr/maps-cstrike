@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  tunnel:
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+  nginxfat:
+    build: nginxfat
+    restart: unless-stopped
+    volumes:
+      - ${PROCESSED_DIR}:/data
+      - ${LOGS_DIR}:/var/log/nginx
+      - ./nginx/cloudflare-realips.conf:/etc/nginx/cloudflare-realips.conf:ro
+      - ./nginx/fastdl.me-3rdparty-shared.conf:/etc/nginx/fastdl.me-3rdparty-shared.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/secret-headers.conf:/etc/nginx/secret-headers.conf:ro
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled:ro
+  fastdlpy:
+    build: fastdlpy
+    restart: unless-stopped
+    stop_grace_period: 2s
+    volumes:
+      - ${DB_DIR}:/data
