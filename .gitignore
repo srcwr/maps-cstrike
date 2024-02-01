@@ -6,6 +6,7 @@ processed/*
 !fastdl.me.conf
 !fastdl.me-3rdparty-shared.conf
 !nginx.conf
+!proxy_params.conf
 
 transfer.sh
 

@@ -8,10 +8,10 @@ services:
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
   nginxfat:
-    build: nginxfat
+    image: nginx
     restart: unless-stopped
     volumes:
-      - ${PROCESSED_DIR}:/data
+      - ${PROCESSED_DIR}:/data:ro
       - ${LOGS_DIR}:/var/log/nginx
       - ./nginx/cloudflare-realips.conf:/etc/nginx/cloudflare-realips.conf:ro
       - ./nginx/fastdl.me-3rdparty-shared.conf:/etc/nginx/fastdl.me-3rdparty-shared.conf:ro
@@ -23,4 +23,4 @@ services:
     restart: unless-stopped
     stop_grace_period: 2s
     volumes:
-      - ${DB_DIR}:/data
+      - ${PROCESSED_DIR}:/data:ro
