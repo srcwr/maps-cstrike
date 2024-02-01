@@ -71,14 +71,19 @@ def rsync_hashed():
 def maps_cstrike_more(now):
     os.system("start /wait cmd /c ..\\maps-cstrike-more\\auto.cmd "+now) # lol...
 
-def transfer_processed_part1():
-    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part1.cmd")
-def transfer_processed_part2():
-    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part2.cmd")
+# this fucking sucks....
+def transfer_processed_part1_node1():
+    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part1_node1.cmd")
+def transfer_processed_part2_node1():
+    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part2_node1.cmd")
 def transfer_processed_part1_node2():
     os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part1_node2.cmd")
 def transfer_processed_part2_node2():
     os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part2_node2.cmd")
+def transfer_processed_part1_node3():
+    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part1_node3.cmd")
+def transfer_processed_part2_node3():
+    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part2_node3.cmd")
 
 def peeker_callback(arg):
     webhook(True, "new download at https://gamebanana.com/mods/"+arg.split('_')[0]+" "+arg)
@@ -176,20 +181,24 @@ while True:
 
     status = os.system("python process.py")
     if status == 0:
-        thread_transfer_processed_part1 = Thread(target=transfer_processed_part1)
-        thread_transfer_processed_part1.start()
+        thread_transfer_processed_part1_node1 = Thread(target=transfer_processed_part1_node1)
+        thread_transfer_processed_part1_node1.start()
         thread_transfer_processed_part1_node2 = Thread(target=transfer_processed_part1_node2)
         thread_transfer_processed_part1_node2.start()
+        thread_transfer_processed_part1_node3 = Thread(target=transfer_processed_part1_node3)
+        thread_transfer_processed_part1_node3.start()
     else:
         log_error("process.py failed... restart me when you can...")
 
     thread_rsync_hashed.join()
 
     if status == 0:
-        thread_transfer_processed_part1.join()
+        thread_transfer_processed_part1_node1.join()
         thread_transfer_processed_part1_node2.join()
-        transfer_processed_part2()
+        thread_transfer_processed_part1_node3.join()
+        transfer_processed_part2_node1()
         transfer_processed_part2_node2()
+        transfer_processed_part2_node3()
         purge_cloudflare_cache()
         os.system("git push originbot")
 

@@ -7,7 +7,7 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-  nginxfat:
+  nginx:
     image: nginx
     restart: unless-stopped
     volumes:

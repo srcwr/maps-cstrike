@@ -8,6 +8,8 @@ processed/*
 !nginx.conf
 !proxy_params.conf
 
+logs
+
 transfer.sh
 
 sha1.js
