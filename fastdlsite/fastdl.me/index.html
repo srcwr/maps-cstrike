@@ -135,7 +135,7 @@ real reviews from real people:
 			<li>/hashed/: list of everything (old/broken versions, duplicate/incorrect names, etc)</li>
 		</ul>
 	</li>
-	<li><h3>Can you host a CS:GO or TF2 fastdl?</h3>
+	<li><h3>Can fastdl.me host maps for CS:GO or TF2?</h3>
 		<ul>
 			<li>I'm not personally interested in hosting maps for these right now as it'd cost more money.
 			<br>(CS:GO is effectively dead now that CS2 is released... hopefully everybody saved maps they wanted)
@@ -160,6 +160,38 @@ real reviews from real people:
 			</li>
 		</ul>
 	</li>
+	<li><h3>"Can you upload some custom files/assets?" (e.g. sounds, textures, models)</h3>
+		<ul>
+			<li>I'd prefer not to.
+			<br>If you put them on your own fastdl/http server then you can redirect `/maps/` to fastdl.me.
+			<br>Here are some example configs:
+			</li>
+			<li><pre># <a href="https://caddyserver.com/">caddy</a> (/etc/caddy/Caddyfile)
+http://fastdl.example.org {
+	root * /path/to/your/assets
+	file_server browse
+	handle /maps/* {
+		redir http://main.fastdl.me/maps/{file}
+	}
+}</pre>
+			</li>
+			<li><pre># <a href="https://nginx.org/">nginx</a> (/etc/nginx/sites-enabled/fastdl.example.org.conf) (untested)
+server {
+	listen 80;
+	server_name fastdl.example.org;
+	root /path/to/your/assets;
+
+	location / {
+		autoindex on;
+		try_files $uri $uri/ $uri/index.html =404;
+	}
+
+	location ~ /maps/(.*)$ {
+		return 302 http://main.fastdl.me/maps/$1;
+	}
+}
+		</ul>
+	</li>
 </ul>
 
 <h2>Other things:</h2>
@@ -182,7 +214,7 @@ real reviews from real people:
 			</li>
 			<li><b>2022-??</b>
 			<br>The shared hosting provider for acer's fastdl, blocks access to map directory list / index pages.
-			<br>This isn't too surprising since it was ~140GB of files that probably saw a couple dozen gigabytes of bandwidth each month.
+			<br>This isn't too surprising since it was ~140GB of files that probably saw a lot of bandwidth usage each month.
 			<br>Map additions decreased in the prior months and download speeds were slow at times.
 			<br>TL;DR: death flags.
 			<br>&nbsp;
@@ -220,8 +252,6 @@ real reviews from real people:
 			<br>&nbsp;
 			</li>
 		</ul>
-	</li>
-	<li><h3>misc</h3>
 		<ul>
 			<li><b>2023-12-27 10:17</b> (5am for me)
 			<br>I'm woken up by website-down notifications.
@@ -237,6 +267,22 @@ real reviews from real people:
 			<br>The outdated backup VM database was noticed and fixed after around 15 minutes.
 			<br>
 			<br>Host provider's panel is finally available after another 15 minutes and shows the main node was stuck on the initramfs shell waiting for a manual fsck.
+			<br>&nbsp;
+			</li>
+			<li><b>2024-01-21</b>
+			<br>Same storage "exploded" again. Manual fsck required. 5 hours of downtime?
+			<br>&nbsp;
+			</li>
+			<li><b>2024-01-29</b>
+			<br>Same storage "exploded" again. Manual fsck required. 9 hours of downtime?
+			<br>&nbsp;
+			</li>
+			<li><b>2024-02-01</b>
+			<br>Migration (the third!) &amp; dockerization.
+			<br>Server goes down once, shame on the provider.
+			<br>Server goes down twice, shame on the provider?
+			<br>Server goes down a third time, shame on me, I should've seen that coming...
+			<br>I still don't know why that drive kept "exploding" but there's <i>no way</i> it was my fault.
 			<br>&nbsp;
 			</li>
 		</ul>
