@@ -20,9 +20,15 @@ def print_and_to_shit(s):
 def normal_name(m):
     return m.strip().replace('.', '_').lower()
 
-def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash):
+def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash, canonClobberCheck):
     if not automatic and os.path.exists(csvname) and os.path.getsize(csvname) > 50:
         raise Exception("DONT OVERWRITE THAT CSV!")
+
+    existing_canon = {}
+    if canonClobberCheck:
+        with open("processed/main.fastdl.me/maps_index.html.csv", newline='', encoding="utf-8") as f:
+            for line in csv.reader(f):
+                existing_canon[normal_name(line[0])] = line[1]
 
     existing_names = {}
     existing_recents = {}
@@ -111,13 +117,16 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash):
                 if automatic and normal_name(row[0]) in existing_names:
                     if existing_recents.get(normal_name(row[0]), "mrbeast") != row[4].split("_")[0]:
                         row[0] = "#" + row[0]
+                if canonClobberCheck and not automatic:
+                    if row[0] in existing_canon and existing_canon[row[0]] != row[3]:
+                        print_and_to_shit(f">>>> name collision {digest} {filename} (existing: {row[0]} & {existing_canon[row[0]]}")
                 if not exists:
                     newly_hashed.append(row)
                 mycsv.writerow(row)
     return newly_hashed
 
 if __name__ == "__main__":
-    main("unprocessed/misc3.csv", False, "../todo-gb", False, False)
+    main("unprocessed/misc3.csv", False, "../todo-gb/shit", False, False, True)
     #main("unprocessed/unloze-css_ze-unique.csv", False, "C:/shared/unloze/css_ze", False, True)
     #main("unprocessed/unloze-css_ze-all.csv", False, "C:/shared/unloze/css_ze", True, False)
     #main("unprocessed/moxx-terabox-unique.csv", False, "F:/terabox/cstrike_all/a", False, True)
