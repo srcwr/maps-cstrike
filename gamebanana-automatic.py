@@ -128,7 +128,7 @@ while True:
         if status != 0:
             log_error(f"failed to extract {item}...")
 
-    newly_hashed = maps_hasher.main("unprocessed/gamebanana-x-automatic.csv", True, "../todo-auto/"+now, False, False)
+    newly_hashed = maps_hasher.main("unprocessed/gamebanana-x-automatic.csv", True, "../todo-auto/"+now, False, False, True)
     newly_hashed.sort()
 
     thread_rsync_hashed = Thread(target=rsync_hashed)
