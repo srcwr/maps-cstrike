@@ -24,12 +24,14 @@ cur.executescript("""
 DROP TABLE IF EXISTS maps_unfiltered;
 DROP TABLE IF EXISTS maps_canon;
 DROP TABLE IF EXISTS maps_czarchasm;
+DROP TABLE IF EXISTS maps_ksfthings;
 DROP TABLE IF EXISTS gamebanana;
 DROP TABLE IF EXISTS links;
 
 CREATE TABLE maps_unfiltered (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 CREATE TABLE maps_canon (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 CREATE TABLE maps_czarchasm (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
+CREATE TABLE maps_ksfthings (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 CREATE TABLE gamebanana (sha1 TEXT NOT NULL, gamebananaid INT NOT NULL, gamebananafileid INT NOT NULL);
 CREATE TABLE links (sha1 TEXT NOT NULL, url TEXT NOT NULL);
 
@@ -39,6 +41,8 @@ CREATE INDEX mapnamec ON maps_canon(mapname);
 CREATE INDEX sha1c on maps_canon(sha1);
 CREATE INDEX mapnamecz ON maps_czarchasm(mapname);
 CREATE INDEX sha1cz on maps_czarchasm(sha1);
+CREATE INDEX mapnameksf ON maps_ksfthings(mapname);
+CREATE INDEX sha1ksf on maps_ksfthings(sha1);
 CREATE INDEX sha1g on gamebanana(sha1);
 CREATE INDEX sha1o on links(sha1);
 """)
@@ -77,6 +81,7 @@ def glob_unprocessed_csvs(pattern):
 
 (gamebanana, links, unique) = glob_unprocessed_csvs("unprocessed/*.csv")
 (_, _, czarchasm_unique) = glob_unprocessed_csvs("unprocessed/hashed_bsps_czar_p*.csv")
+(_, _, ksfthings) = glob_unprocessed_csvs("unprocessed/ksf - github.com OuiSURF Surf_Maps.csv")
 
 def glob_filters(pattern, mapset):
     for filename in glob.glob(pattern):
@@ -99,6 +104,7 @@ glob_filters("filters/custom/czarchasm_filter.csv", czarchasm_unique)
 cur.executemany("INSERT INTO maps_unfiltered VALUES(?,?,?,?);", unfiltered)
 cur.executemany("INSERT INTO maps_canon VALUES(?,?,?,?);", unique)
 cur.executemany("INSERT INTO maps_czarchasm VALUES(?,?,?,?);", czarchasm_unique)
+cur.executemany("INSERT INTO maps_ksfthings VALUES(?,?,?,?);", ksfthings)
 cur.executemany("INSERT INTO gamebanana VALUES(?,?,?);", [(a,b,c) for a, (b, c) in gamebanana.items()])
 cur.executemany("INSERT INTO links VALUES(?,?);", [(a,b) for a, b in links.items()])
 
@@ -311,6 +317,7 @@ create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hash
 create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "", False, False)
 create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False, False)
 create_thing("maps_czarchasm", "main.fastdl.me/maps_czarchasm.html", True, 'mirror of maps from <a href="https://czarchasm.club/">czarchasm.club</a>', "", True, True)
+create_thing("maps_ksfthings", "main.fastdl.me/maps_ksfthings.html", False, 'mirror of ksf maps from <a href="https://github.com/OuiSURF/Surf_Maps">https://github.com/OuiSURF/Surf_Maps</a>', "", True, True)
 
 # TODO: generate main.fastdl.me/index.html open directory pages
 
