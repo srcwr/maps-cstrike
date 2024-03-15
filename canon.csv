@@ -385,7 +385,7 @@ test_hardware,42b5b03fb1982756f47b29caac42b324cc197544,latest included version
 test_speakers,66f344061108c9ca59b6180f492e3a578748182f,latest included version
 trikz_2_hard,747f419c39e9464db79bceaf361c9643df805fb1,latest on gamebanana
 trikz_affinity,84303771f4c2822ee001a260895bc347488da8fe,doesnt crash on start
-trikz_ages,3eb007a4b2d2f098c628ca9fb5e10dd96bb152d2,automatic canonization 202403151210
+trikz_ages,d2e195cb3d14e32544d1b8c14cf6bc8580203ea1,automatic canonization 202403152102
 trikz_arcadia_final,ee93276bfa2df917822e38e055ad8918548659d6,latest on gamebanana as of 202302110240
 trikz_arctic,13e369e63ecb8c4250928f885e40bdae3d205c39,latest on gamebanana as of 202305140000
 trikz_asux,6a572367d8a185d8a3f160ce75f6b1febc1599c5,latest on gamebanana (although its included in a trikz pack that was uploader after but thats a different and probably older version so whatever)
