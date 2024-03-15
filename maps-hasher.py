@@ -26,7 +26,7 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash, canon
 
     existing_canon = {}
     if canonClobberCheck:
-        canonClobber = open("canonClobber.csv", encoding="utf-8")
+        canonClobber = open("canonClobber.csv", "a", encoding="utf-8")
         with open("processed/main.fastdl.me/maps_index.html.csv", newline='', encoding="utf-8") as f:
             for line in csv.reader(f):
                 existing_canon[normal_name(line[0])] = line[1]

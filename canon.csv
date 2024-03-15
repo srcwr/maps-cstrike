@@ -337,8 +337,8 @@ surf_eunoia,0269243e35fe99f01fadd7f957da35930d4168ef,original (not momentum-mod 
 surf_exclave_fix,46e82253eebc3e4e363464c6da47cdcfc6bf6cf2,original (not momentum-mod edit)
 surf_exile,10a23190fdad8542cf83b60e5eb434ba28c45411,original (not momentum-mod edit)
 surf_extremex,95db47329d0f0ca326fce420925138383e3f1bf5,
-surf_flappybird,fa55def798930fb73353c63c52f7b470b6b60596,gamebanana version
 surf_fire_eye,122aa18fba1170eeffd8d51ba1aa8cece9de4788,gamebanana
+surf_flappybird,fa55def798930fb73353c63c52f7b470b6b60596,gamebanana version
 surf_for_all,387ee41385090f6e7aa5d90e7f1c609f8ed89a56,gamebanana
 surf_gigapede,9ccd82c2b86bb35aeec78681c884d38104f00dfc,automatic canonization 202308290614
 surf_halfpipe_v2,678a256432d6b709af4142ae0303939638a683e0,gamebanana version
@@ -384,6 +384,7 @@ test_hardware,42b5b03fb1982756f47b29caac42b324cc197544,latest included version
 test_speakers,66f344061108c9ca59b6180f492e3a578748182f,latest included version
 trikz_2_hard,747f419c39e9464db79bceaf361c9643df805fb1,latest on gamebanana
 trikz_affinity,84303771f4c2822ee001a260895bc347488da8fe,doesnt crash on start
+trikz_ages,3eb007a4b2d2f098c628ca9fb5e10dd96bb152d2,automatic canonization 202403151210
 trikz_arcadia_final,ee93276bfa2df917822e38e055ad8918548659d6,latest on gamebanana as of 202302110240
 trikz_arctic,13e369e63ecb8c4250928f885e40bdae3d205c39,latest on gamebanana as of 202305140000
 trikz_asux,6a572367d8a185d8a3f160ce75f6b1febc1599c5,latest on gamebanana (although its included in a trikz pack that was uploader after but thats a different and probably older version so whatever)
