@@ -41,3 +41,12 @@ extract fails:
 	2196_47916_dust_house_prefab
 	2926_47933_mine1_2
 	3078_47915_glass_deskrar
+
+```
+https://ar.mevl2.duckdns.org/css/maps/
+
+[...temp0.childNodes].filter(function(o) {
+  if (o.childNodes[0].textContent != "." && o.childNodes[0].textContent != "..")
+  return o.children[2].textContent.includes("03-2024");
+}).map((o) => o.children[0].children[0].href)
+```

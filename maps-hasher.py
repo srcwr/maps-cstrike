@@ -26,6 +26,7 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash, canon
 
     existing_canon = {}
     if canonClobberCheck:
+        canonClobber = open("canonClobber.csv", encoding="utf-8")
         with open("processed/main.fastdl.me/maps_index.html.csv", newline='', encoding="utf-8") as f:
             for line in csv.reader(f):
                 existing_canon[normal_name(line[0])] = line[1]
@@ -119,10 +120,13 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash, canon
                         row[0] = "#" + row[0]
                 if canonClobberCheck and not automatic:
                     if row[0] in existing_canon and existing_canon[row[0]] != row[3]:
-                        print_and_to_shit(f">>>> name collision {digest} {filename} (existing: {row[0]} & {existing_canon[row[0]]}")
+                        canonClobber.write(f"{row[0]},{existing_canon[row[0]]},\n")
+                        print_and_to_shit(f"  ^^^^ name collision {digest} {filename} (existing: {row[0]} & {existing_canon[row[0]]}")
                 if not exists:
                     newly_hashed.append(row)
                 mycsv.writerow(row)
+    if canonClobber != None:
+        canonClobber.close()
     return newly_hashed
 
 if __name__ == "__main__":
