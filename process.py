@@ -140,6 +140,8 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
 def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added, txt_as_urls):
     res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} {sqlwhere} GROUP BY sha1);").fetchone()
 
+    hcpath = outfilename.rsplit(".", maxsplit=1)[0].rsplit("/", maxsplit=1)[1]
+
     with open("index_top.html", encoding="utf-8") as f:
         index_html = """
         <!DOCTYPE html>
@@ -150,6 +152,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added
         <title>fastdl.me {}</title>
         """.format(title) + f.read() + """
         <h1>fastdl.me {}</h1>
+        page hit count: <img height=14 width=92 alt=hc src="https://hc.fastdl.me/hc/{}.jpg"><br>
         <h2><a href="https://fastdl.me">homepage</a></h2>
         <h3>Number of maps: {}</h3>
         <h3>Unpacked size: {:,} BYTES</h3>
@@ -157,7 +160,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added
         <h4>(sorting is slow... you have been warned...)</h4>
         links to other versions of this list: <a href="https://{}.txt">txt</a> / <a href="https://{}.csv">csv</a>
         <br>&nbsp;
-        """.format(title, res[0], res[1], res[2], outfilename, outfilename)
+        """.format(title, hcpath, res[0], res[1], res[2], outfilename, outfilename)
 
     if not omit_recently_added:
         index_html += """
