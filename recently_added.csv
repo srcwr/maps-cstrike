@@ -2,7 +2,7 @@ mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
 am_1v1,57233453,19728378,adddabfb6b30c3896e2ad9a5fde5bb875c45b4ef,503353_1163465_am_1v1_58972,automated upload,2024-03-27 17:16
 am_1v1_mdg,91779578,31609531,aee733f7f0ffff7ad1c2645aa1eeaa22512bb28a,503353_1163465_am_1v1_58972,automated upload,2024-03-27 17:16
 fy_orville,1048460,440330,f73ebf6d74c9347b767169c4a1d0070d65bf7a05,494769_1163280_orville_fy,automated upload,2024-03-27 09:41
-#bhop_speedrun_fibzy,51510704,12389748,5c07ddb1c96016cbd7a98e0f682ffbb6239e9cfe,126053_1162083_bhop_speedrun_fibzy,automated upload,2024-03-25 12:07
+bhop_speedrun_fibzy,51510704,12389748,5c07ddb1c96016cbd7a98e0f682ffbb6239e9cfe,126053_1162083_bhop_speedrun_fibzy,automated upload,2024-03-25 12:07
 bhop_fibzy_v2,126597296,50754218,f26c803c3b0249f836d90dcc6899d9b2b24b43d1,502859_1162015_bhop_fibzy_v2_c42e9,automated upload,2024-03-25 09:40
 mp_css_construct,29431972,8520602,5150261ccf82c730195fda18b3e60c15c3721ab9,502920_1161990_mp_css_construct/mp_css_construct/maps,automated upload,2024-03-25 07:51
 bhop_derealization,15532649,6269219,748858e8234b67d491a00e8dbaae4582901d2c17,502853_1161817_bhop_derealization,automated upload,2024-03-24 23:31
@@ -88,7 +88,7 @@ bhop_esip,37503916,14338590,b53c74e728c9759e98ade64bf2825982dd7f9b1d,498500_1148
 trikz_rapture,152144748,60680421,a909c31667f008ba406ab044ceacde79828e8170,498380_1147907_trikz_rapture_f7579,automated upload,2024-02-29 16:25
 bhop_kaleidoscope_v6,3573324,767571,3d7de208595d9305fc7b7a13e2cf796ff53eaf04,498176_1147901_bhop_kaleidoscope_v6,automated upload,2024-02-29 16:03
 bhop_kaleidoscope_v5,3573068,766898,3ca5db0e7b16933bcc8e2eb9c4bf04e074daea72,498176_1147890_bhop_kaleidoscope_v5,automated upload,2024-02-29 15:44
-#aim_Wintermaze_2016_VX,100273336,23834425,07b6ec1cd5f2fba6ab16779632dbbb0ead583471,490045_1147888_aim_wintermaze_2016_vx_57410/aim_wintermaze_2016_vx/steam/steamapps/common/Counter-Strike Source/cstrike/maps,automated upload,2024-02-29 15:32
+aim_Wintermaze_2016_VX,100273336,23834425,07b6ec1cd5f2fba6ab16779632dbbb0ead583471,490045_1147888_aim_wintermaze_2016_vx_57410/aim_wintermaze_2016_vx/steam/steamapps/common/Counter-Strike Source/cstrike/maps,automated upload,2024-02-29 15:32
 bhop_kaleidoscope_v4,3492752,750959,92607749fa342179f01e1c0cd52c563a04970392,498176_1147870_bhop_kaleidoscope_v4,automated upload,2024-02-29 14:20
 surf_fwyh,10290232,10298664,01b39a7fcfb6e5edc22af57287b4591e6ad3cd02,498339_1147686_surf_fwyh,automated upload,2024-02-29 01:42
 ze_rooftop_rogue_v1_4,283004321,151167335,171aa3113baaff2f5b8e64d4b41e12e91a41a42e,448447_1147634_ze_rooftop_rogue_v1_4,automated upload,2024-02-28 23:47
@@ -153,7 +153,7 @@ surf_leet_turbo_32,2317396,604419,07e11543e1a722243654a44b38577410b174dcfa,,send
 surf_pro_leet,7870556,531327,50b260696b9702f7cc27807de9773d4139dda98d,,send from kingyoshi,2024-02-08 02:31
 surf_zones_Xtreme,13989692,2763962,68d9d034cc485f72bda07187c7161fd70712535c,,send from kingyoshi,2024-02-08 02:31
 fy_Dust_Doors,1734008,768245,5860425a12de290c0b535b893298c99098a8a707,494462_1135357_fy_dust_doors/maps,automated upload,2024-02-07 19:30
-aim_Wintermaze_2016_VX,100427396,23841685,76d56a16e038936aab2143a5341cd85ea09fa7ea,490045_1135288_aim_wintermaze_2016_vx_14b7c/steam/steamapps/common/Counter-Strike Source/cstrike/maps,automated upload,2024-02-07 16:40
+#aim_Wintermaze_2016_VX,100427396,23841685,76d56a16e038936aab2143a5341cd85ea09fa7ea,490045_1135288_aim_wintermaze_2016_vx_14b7c/steam/steamapps/common/Counter-Strike Source/cstrike/maps,automated upload,2024-02-07 16:40
 de_train_night,41556183,18093101,9cfa043d9e3f660b1ae8ec70998a5d0c2af175bc,494246_1134698_de_train_night/de_train_night,automated upload,2024-02-06 16:23
 #gg_dust2,18331580,5572467,7c77003c5ad7cc488fed0acf55ee609e9a5ed21a,494174_1134337_gg_dust2,automated upload,2024-02-06 02:39
 kz_bhop_terraniux,103153476,63871725,982e883ac01210b2f50520bf9c8b3f1dd5bfdac5,494027_1133784_kz_bhop_terraniux,automated upload,2024-02-05 03:33
@@ -194,7 +194,7 @@ bhop_nxo_strafe_fix,4147225,4148195,3de7994175f33f323713a0e9e91aed042a1408c7,491
 jbmod_place_css,46753742,46954896,bff9f39c3440039a11c15bf6af806e1828169ee1,491431_1125938_jbmod_place_css,automated upload,2024-01-21 17:11
 aim_krest v1 point 2,1326712,286328,834e502a30397f4300be0fb63149eae56a82c53c,491404_1125901_aim_krest_v1_point_2,automated upload,2024-01-21 15:41
 aim_krest,1322780,280547,5a3ead6648c7f48f41d3ea42d35966318a871b50,491404_1125861_aim_krest_8d2d2,automated upload,2024-01-21 14:04
-#de_fastline,11948745,5562971,5b9e44b5cc0b2815886a1d10ee6c8a9b8ea15a97,491341_1125811_fastline_cb1f1,automated upload,2024-01-21 12:52
+de_fastline,11948745,5562971,5b9e44b5cc0b2815886a1d10ee6c8a9b8ea15a97,491341_1125811_fastline_cb1f1,automated upload,2024-01-21 12:52
 de_westwood_sp_st,64723777,35725713,b5f099927b6fe1ef43fbf1682e71e3a997211b66,491371_1125781_de_westwood_sp_st/de_westwood_sp_st,automated upload,2024-01-21 12:06
 hns_towers_v1,6200567,6216103,3847d0b5d60472ef5644f1eab4915c6b66437eb0,491296_1125544_hns_towers_v1,automated upload,2024-01-21 02:50
 cs_underside,926449,677942,ea5c9d693174253da4a51762fed8c96c9e5e3bcc,449504_1125489_postupdate,automated upload,2024-01-21 00:32
@@ -208,7 +208,7 @@ bhop_tiles,6696260,116498,94f267495f29cc5be1a488fc3eaac45e4f347e88,490337_112233
 surf_nibiru,28508568,28501192,ba55a4216aa0a3b4a371f42c4cab301402e392a0,490313_1122281_surf_nibiru_a6b43,automated upload,2024-01-15 03:28
 aim_mini_cbble,926796,323268,9a9643e0d71ad754001391034d81f0fc79d54e48,490201_1121894_aim_mini_cbble,automated upload,2024-01-14 14:28
 bhop_bunnytown31,970440,972484,3506fb0c77df444727a8d36e82da9efded1cbf15,489976_1121601_bhop_bunnytown31_58e64,automated upload,2024-01-14 01:13
-aim_Wintermaze_2016_VX,92864424,23258169,61e068563b526df5aa16050d07c147f26ad1ea31,490045_1121375_aim_wintermaze_2016_vx/aim_Wintermaze_2016_VX/steam/steamapps/common/Counter-Strike Source/cstrike/maps,automated upload,2024-01-13 18:12
+#aim_Wintermaze_2016_VX,92864424,23258169,61e068563b526df5aa16050d07c147f26ad1ea31,490045_1121375_aim_wintermaze_2016_vx/aim_Wintermaze_2016_VX/steam/steamapps/common/Counter-Strike Source/cstrike/maps,automated upload,2024-01-13 18:12
 jb_troubles_final9,61955345,62145155,12a0868c091cbd620865a8a475b48fe6391e71d1,480473_1121046_jb_troubles_final9,automated upload,2024-01-13 01:03
 cs_assault_dark,23276567,10068406,45a36d008adbeb933d6dd1a6d2326035ec04fc6d,489841_1120774_cs_assault_dark/cs_assault_dark,automated upload,2024-01-12 20:06
 de_street1,2767500,836024,d06e879efb5175012d516a49f557ed27a3c2014a,488145_1120240_gg_destreet1,automated upload,2024-01-11 17:56
