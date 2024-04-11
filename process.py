@@ -150,7 +150,7 @@ def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width">
         <title>fastdl.me {}</title>
-        """.format(title) + f.read() + """
+        """.format(title.replace("<br>", " ")) + f.read() + """
         <h1>fastdl.me {}</h1>
         page hit count: <img height=14 width=92 alt=hc src="https://hc.fastdl.me/hc/{}.jpg"><br>
         <h2><a href="https://fastdl.me">homepage</a></h2>
@@ -320,7 +320,7 @@ create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hash
 create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "", False, False)
 create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False, False)
 create_thing("maps_czarchasm", "main.fastdl.me/maps_czarchasm.html", True, 'mirror of maps from <a href="https://czarchasm.club/">czarchasm.club</a>', "", True, True)
-create_thing("maps_ksfthings", "main.fastdl.me/maps_ksfthings.html", False, 'mirror of ksf maps from <a href="https://github.com/OuiSURF/Surf_Maps">https://github.com/OuiSURF/Surf_Maps</a>', "", True, True)
+create_thing("maps_ksfthings", "main.fastdl.me/maps_ksfthings.html", False, 'mirror of ksf maps<br>from <a href="https://github.com/OuiSURF/Surf_Maps">https://github.com/OuiSURF/Surf_Maps</a><br>(up till 2024-04-06)', "", True, True)
 
 # TODO: generate main.fastdl.me/index.html open directory pages
 
