@@ -157,7 +157,6 @@ def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added
         <h3>Number of maps: {}</h3>
         <h3>Unpacked size: {:,} BYTES</h3>
         <h3>BZ2 size: {:,} BYTES</h3>
-        <h4>(sorting is slow... you have been warned...)</h4>
         links to other versions of this list: <a href="https://{}.txt">txt</a> / <a href="https://{}.csv">csv</a>
         <br>&nbsp;
         """.format(title, hcpath, res[0], res[1], res[2], outfilename, outfilename)
@@ -190,11 +189,12 @@ def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added
             """.format(html.escape(x[0]), x[3], x[5], x[6], x[3])
             #<td><a href="https://github.com/srcwr/maps-cstrike-more/blob/master/filelist/{}.csv">{}</a></td>
 
-        index_html += '</tbody></table><br><br><br>'
+        index_html += '</tbody></table>'
 
     outf = open(f"processed/{outfilename}", "w+", encoding="utf-8")
 
     outf.write(index_html + """
+    <h4>(sorting is slow... you have been warned...)</h4>
     <table id="list" class="sortable">
     <thead>
     <tr>
