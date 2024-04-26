@@ -18,7 +18,7 @@ os.makedirs("processed/hashed", exist_ok=True)
 os.makedirs("processed/maps", exist_ok=True)
 """
 
-conn = sqlite3.connect("processed/maps.db")
+conn = sqlite3.connect(":memory:")
 cur = conn.cursor()
 cur.executescript("""
 DROP TABLE IF EXISTS maps_unfiltered;
@@ -117,7 +117,7 @@ with open("canon.csv", encoding="utf-8") as f:
             raise Exception(f"fuck you {x}")
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
-cur.execute("VACUUM")
+cur.execute("VACUUM INTO 'processed/maps.db'")
 
 recently_added = []
 with open("recently_added.csv", newline='', encoding="utf-8") as f:
