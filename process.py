@@ -117,6 +117,10 @@ with open("canon.csv", encoding="utf-8") as f:
             raise Exception(f"fuck you {x}")
     cur.executemany("DELETE FROM maps_canon WHERE mapname = ? AND sha1 != ?;", things)
 conn.commit() # fuck you for making me call you
+try:
+    os.remove("processed/maps.db")
+except:
+    pass
 cur.execute("VACUUM INTO 'processed/maps.db'")
 
 recently_added = []
