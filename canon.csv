@@ -152,6 +152,7 @@ bhop_p07,76506ee25a724b6e186cd8a3cc42536fefab6d18,this is p07 not p07_v2
 bhop_p09,28d2a37073aba96f90fac20d904389a8511179a4,latest on gamebanana (v2)
 bhop_padd,f30806bce63f79766218089d55420dbac3f51a75,higher mapversion (151 vs 152)
 bhop_patq_texture,b38b649f9538086128d46275cf5c54d18dd336e8,latest on gamebanana
+bhop_peachtime,08fe73b87dee242d8bdda4504cb91dea994db395,automatic canonization 202405031747
 bhop_perspective,a3abac550998c3ec9ee459809b0879131859655d,latest on gamebanana
 bhop_pharma,1cb6a283087f288c226b08f78f437a461e453c3e,latest on gamebanana
 bhop_phobos,15998356806dc92ab5ef21dacc1414ab83358ea0,reverted back to original because the fix version was renamed to bhop_phobos_fix
