@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: WTFPL
 
-from flask import Flask,redirect,g,abort,request
+from flask import Flask,redirect,g,request
 import sqlite3
 
 app = Flask(__name__)
