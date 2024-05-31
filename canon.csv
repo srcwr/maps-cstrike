@@ -76,6 +76,7 @@ bhop_decay,4334431c7cdbe10c923083001fd6b56803e0046e,automatic canonization 20240
 bhop_degree,e719b20a3cf21c4f0aa1d3ed4ad49fbea7911013,latest on gamebanana
 bhop_despondent,3ab7981d4cdf8d19f4d935251207d09b167948a5,latest on gamebanana
 bhop_devvy,3c716186ae4ce101b81fe5c36e4f905932529df6,latest on gamebanana (v05)
+bhop_dimensions,e79d337358dd88a68e484d4ccc1dd1bc946e7111,
 bhop_diremaul,0a163f1a5607c87aa4264cd352ec031d11d4bba0,latest on gamebanana (v2 with booster fix)
 bhop_domzk,3d41e94fcd07cdede1da4026074ee31075424569,latest on gamebanana (the e79f80... version might be packed for gmod or something)
 bhop_dual_fast,c7189a701623b0e18cf87270c5842c0ae51438ba,original version (the version with the func_buttons you need to stripper out)
@@ -96,9 +97,11 @@ bhop_exquisite,ea6d4f107575f64227d8cf3a1046d5e8109ab60a,latest on gamebanana
 bhop_ffvii_mako_reactor,1432fd47741b81c21610d42e32e8118968a6c690,latest on gamebanana (mapversion 128 vs 156)
 bhop_fibzy_v2,f26c803c3b0249f836d90dcc6899d9b2b24b43d1,automatic canonization 202403250940
 bhop_flipypuppies,bc568c5c94391d4062cac56c7cfb6818e5eb3ef0,newer mapversion (20 vs 21)
+bhop_floccidrift,c874fcdbd6b9c9c7ee6129dae772bf72985bf7b7,latest on gamebanana
 bhop_floodwaters,b0f4b3a67631e841e66a8ca7b1e241af8dc3cda7,automatic canonization 202403011450
 bhop_fool_2_css,6a21645e63a10892e130bc571f2828992308bbdc,latest on gamebanana
 bhop_forestbiome01,4b0988b274ab239048f7c5c066503247bb890560,latest on gamebanana
+bhop_fosi_unfinished,8667d3833c2639716447d3998d0195a528c2e831,latest on gamebanana
 bhop_freedompuppies,f6ef0afb656638557a0d4932028f16dcef0f5888,latest on gamebanana (the version with the door teleporter)
 bhop_friskv2_css,d8fbd4b07a32d3e3d8f82bcb97e2c8aef61d7418,gamebanana
 bhop_furax,6c235b43f4ea9e4e365139e1fc1d091bd852e705,the lolgomin port because servers already have it and the differences between ports is just textures at the end and teleporter size
