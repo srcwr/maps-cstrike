@@ -322,7 +322,7 @@ shutil.copy("WTFPL.txt", "processed/fastdl.me/WTFPL.txt")
 # On Cloudflare: I have /maps/ rewritten to maps_index.html & /hashed/ rewritten to hashed_index.html....
 create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hashed/unfiltered maps", "", False, False)
 create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "", False, False)
-create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False, False)
+create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'tsurf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False, False)
 create_thing("maps_czarchasm", "main.fastdl.me/maps_czarchasm.html", True, 'mirror of maps from <a href="https://czarchasm.club/">czarchasm.club</a>', "", True, True)
 create_thing("maps_ksfthings", "main.fastdl.me/maps_ksfthings.html", False, 'mirror of ksf maps<br>from <a href="https://github.com/OuiSURF/Surf_Maps">https://github.com/OuiSURF/Surf_Maps</a><br>(up till 2024-05-30)', "", True, True)
 
