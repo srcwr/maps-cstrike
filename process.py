@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: WTFPL
-# Copyright 2022-2023 rtldg <rtldg@protonmail.com>
+# Copyright 2022-2024 rtldg <rtldg@protonmail.com>
 
 import os
 import glob
