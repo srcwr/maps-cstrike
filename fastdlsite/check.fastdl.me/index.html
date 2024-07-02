@@ -38,7 +38,7 @@ page hit count: <img height=14 width=92 alt=hc src="https://hc.fastdl.me/hc/chec
 <h3><a href="https://fastdl.me">homepage</a></h2>
 <h2>Submit map links</h2>
 Upload maps to somewhere like <a href="https://gofile.io/uploadFiles">gofile.io</a> and the send the link with the form below:<br>(also a generic contact form for sending messages)<br><br>
-<textarea rows="10" cols="80" id="intext">Put links to maps here if you want me to add them (max 1800 chars)</textarea>
+<textarea rows="10" cols="80" minlength=5 maxlength=1800 id="intext">Put links to maps here if you want me to add them (max 1800 chars)</textarea>
 <br>
 <button id="booty" onclick="butt()">Send</button>
 
@@ -100,7 +100,7 @@ https://github.com/Daninet/hash-wasm
 <script>
 	function butt() {
 		let intext = document.getElementById("intext");
-		if (intext.value == "Put links to maps here if you want me to add them (max 1800 chars)" || intext.value.len < 5 || intext.value.len > 1800)
+		if (intext.value == "Put links to maps here if you want me to add them (max 1800 chars)")
 			return;
 
 		document.getElementById("booty").disabled = true;
