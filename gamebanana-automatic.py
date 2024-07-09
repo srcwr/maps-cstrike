@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: WTFPL
-# Copyright 2023 rtldg <rtldg@protonmail.com>
+# Copyright 2023-2024 rtldg <rtldg@protonmail.com>
 
 # why is this a mess? three repos, shit code, and various batch scripts...
 
@@ -181,8 +181,8 @@ while True:
 
     status = os.system("python process.py")
     if status == 0:
-        thread_transfer_processed_part1_node1 = Thread(target=transfer_processed_part1_node1)
-        thread_transfer_processed_part1_node1.start()
+        #thread_transfer_processed_part1_node1 = Thread(target=transfer_processed_part1_node1)
+        #thread_transfer_processed_part1_node1.start()
         thread_transfer_processed_part1_node2 = Thread(target=transfer_processed_part1_node2)
         thread_transfer_processed_part1_node2.start()
         thread_transfer_processed_part1_node3 = Thread(target=transfer_processed_part1_node3)
@@ -193,10 +193,10 @@ while True:
     thread_rsync_hashed.join()
 
     if status == 0:
-        thread_transfer_processed_part1_node1.join()
+        #thread_transfer_processed_part1_node1.join()
         thread_transfer_processed_part1_node2.join()
         thread_transfer_processed_part1_node3.join()
-        transfer_processed_part2_node1()
+        #transfer_processed_part2_node1()
         transfer_processed_part2_node2()
         transfer_processed_part2_node3()
         purge_cloudflare_cache()
