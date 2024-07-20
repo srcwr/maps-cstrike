@@ -1,7 +1,9 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+#fy_rooms,4353496,132230,da8bccfb73883900bb39a440f99fa009ede8dd2b,529150_1240190_fy_rooms_lite_e4a44/cstrike/maps,automated upload,2024-07-20 08:13
+#fy_rooms,54017430,54231717,43187276ffd8142f885a7e4325a741bb947cf91b,529150_1240193_fy_rooms_fixed/cstrike/maps,automated upload,2024-07-20 08:13
+fy_rooms_buyzone_tidy,4175032,115422,b341e4428966ae375cbcaae95d1669c73cd428cb,529150_1240190_fy_rooms_lite_e4a44/cstrike/maps,automated upload,2024-07-20 08:13
+fy_rooms_buyzone_tidy,54211305,54425070,70570a8eb8c0c40549fb85cbcd216df7617cff95,529150_1240193_fy_rooms_fixed/cstrike/maps,automated upload,2024-07-20 08:13
 zm_silent_hill_v1,77305972,53194086,75b1560f88c6a96488387c63fb5d659987ccab01,529220_1239966_zm_silent_hill/zm_silent_hill/cstrike/maps,automated upload,2024-07-19 22:02
-#fy_rooms,4313016,131752,21436bb04c77916dbc583b46bb05490e7726dfad,529150_1239795_fy_rooms_src_dbb91,automated upload,2024-07-19 17:28
-#fy_rooms,54056471,54271293,3c720ac06d7077fc8555f47452bd7a793cc2bbf3,529150_1239794_fy_rooms_7ec70/cstrike/maps,automated upload,2024-07-19 17:28
 fy_rooms_buyzone,4179380,116224,aa564ca548d9533512a769fc169ebbf4a298d97a,529150_1239795_fy_rooms_src_dbb91,automated upload,2024-07-19 17:28
 fy_rooms_buyzone,54197435,54414312,96d46696e4fae08f5deee1a17a7cfadc22e359dd,529150_1239794_fy_rooms_7ec70/cstrike/maps,automated upload,2024-07-19 17:28
 de_sandstone_la06g3_v7,9282952,3680248,7b9cd11c4edfacaff577a5ef6e35c5a5d585f826,529118_1239699_de-sandstone2,automated upload,2024-07-19 13:57
