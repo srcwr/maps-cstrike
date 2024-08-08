@@ -1,0 +1,32 @@
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.host_ipv4: ${PUBLIC_IP}
+services:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    #environment:
+    #  - PUBLIC_IP=${PUBLIC_IP}
+    cap_add:
+      - NET_ADMIN # used to resize UDP buffers for QUIC/HTTP3 iirc
+    volumes:
+      - ${PROCESSED_DIR}:/www:ro
+      - /mnt/moon/fastdl/r2:/moon:ro
+      #- ${LOGS_DIR}:/var/log/caddy
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      #- ./Caddyfile_3rdparty:/etc/caddy/Caddyfile_3rdparty
+      - ./caddy_config:/config
+      - ./caddy_data:/data
+    ports:
+      - "${PUBLIC_IP}:80:80"
+      - "${PUBLIC_IP}:443:443"
+      - "${PUBLIC_IP}:443:443/udp"
+  fastdlpy:
+    build: fastdlpy_nocf
+    restart: unless-stopped
+    stop_grace_period: 2s
+    volumes:
+      - ${PROCESSED_DIR}:/www:ro
+      - /mnt/moon/fastdl/r2/hashed:/hashed:ro # Caddy's rewrite is nicer if we use /hashed I think...

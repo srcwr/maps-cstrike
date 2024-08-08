@@ -1,0 +1,139 @@
+{
+	#debug
+	#default_bind {env.PUBLIC_IP}
+	#auto_https disable_redirects
+	email {env.ACME_EMAIL}
+	#acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+	servers {
+		timeouts {
+			read_body   10s
+			read_header 5s
+		}
+		#metrics # Prometheus https://caddyserver.com/docs/metrics
+	}
+}
+
+# Copied from https://github.com/caddyserver/caddy/issues/6354 # TODO:
+(proxy_and_xaccel) {
+	reverse_proxy fastdlpy:55155 {
+		@sendfile header X-Accel-Redirect *
+		handle_response @sendfile {
+			copy_response_headers {
+				include X-Accel-Redirect
+			}
+
+			rewrite {http.response.header.X-Accel-Redirect}
+			root /moon/
+			file_server
+		}
+	}
+}
+
+(shared) {
+	root /www/main.fastdl.me
+	encode zstd gzip
+
+	# TODO: https://caddyserver.com/docs/caddyfile/directives/log
+
+	# We probably can't do anything fancy to hide the log messages for these...
+	#@ignoreThese {
+	#	path ^.*\.(ttf|ttf\.bz2|ain|ain\.bz2)$
+	#}
+	#handle @ignoreThese {
+	#	respond 404
+	#}
+
+
+	handle /mapsredir/*.bsp.bz2 {
+		import proxy_and_xaccel
+	}
+	handle /maps/*.bsp.bz2 {
+		import proxy_and_xaccel
+	}
+
+
+	handle /maps/*.nav.bz2 {
+		rewrite /dummy.nav.bz2
+	}
+
+
+	handle /*.csv {
+		header {
+			Content-Type text/plain
+		}
+	}
+
+
+	file_server browse {
+		#precompressed
+	}
+}
+
+
+(moon) {
+	import shared
+
+	# https://caddyserver.com/docs/caddyfile/matchers#path-regexp
+	# {re.1} = first capture group...
+	#@hashedWithoutMapname
+	#@hashedWithMapname path_regexp \/hashed\/(.*)/(.*)\.bsp\.bz2
+	#handle @hashedWithMapname {
+	#	import proxy_and_xaccel
+	#}
+	handle /hashed/* {
+		import proxy_and_xaccel
+		#root /moon/
+	}
+	handle /h2/* {
+		import proxy_and_xaccel
+	}
+	handle /m2/* {
+		import proxy_and_xaccel
+	}
+
+
+	handle /h2/ {
+		redir https://{host}/hashed/
+	}
+	handle /m2/ {
+		redir https://{host}/maps/
+	}
+
+
+	handle /hashed/ {
+		rewrite /hashed_index.html
+	}
+	handle /maps/ {
+		rewrite /maps_index.html
+	}
+}
+
+
+(thirdparty) {
+	import shared
+	handle /maps/ {
+		redir https://moon.fastdl.me/maps/
+	}
+}
+#import Caddyfile_3rdparty
+
+http://moon.fastdl.me {
+	import moon
+}
+#https://moon.fastdl.me {
+#	import moon
+#}
+
+# TODO: Setup moonbucket.fastdl.me too which we redirect to instead of mainr2?
+
+#fastdl.me {
+#	root /www/fastdl.me
+#	file_server
+#}
+
+#check.fastdl.me {
+#	root /www/check.fastdl.me
+#	file_server
+#}
+
+

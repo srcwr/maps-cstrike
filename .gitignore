@@ -19,6 +19,8 @@ __pycache__
 venv
 
 *.env
+caddy_config
+caddy_data
 
 *.exe
 
