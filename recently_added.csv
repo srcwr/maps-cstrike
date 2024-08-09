@@ -1,4 +1,16 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+#fy_rooms,2707789,2680913,e79d4c821b765bb4437665885e3bc3b03f220db0,529150_1254689_fy_rooms_6b8c2/maps,automated upload,2024-08-09 05:52
+#fy_rooms,7700048,134414,f35a076b011fed98e3d930d23459900ef9c9b8ee,529150_1254688_fy_rooms_src_14708,automated upload,2024-08-09 05:52
+fy_rooms_buyzone,2418458,2393440,8deff3fde0c015e667affdb5dadc03760e609dd4,529150_1254689_fy_rooms_6b8c2/maps,automated upload,2024-08-09 05:52
+fy_rooms_buyzone,7568980,119002,2b67c65b889a6f82a7ddfa6fc3d23249cfe4c781,529150_1254688_fy_rooms_src_14708,automated upload,2024-08-09 05:52
+fy_rooms_buyzone_s,2693328,2658333,b5d76e5c97523f6002c55ef89e352fd915cb7e5b,529150_1254689_fy_rooms_6b8c2/maps,automated upload,2024-08-09 05:52
+fy_rooms_buyzone_s,7555164,117323,9de9fb40dcc24c1f116d9510b8c0008e1e206a8f,529150_1254688_fy_rooms_src_14708,automated upload,2024-08-09 05:52
+fy_rooms_buyzone_tidy,2991401,2963624,304a84462b3b22c8dc32c4fb87b0cd3e2a339b99,529150_1254689_fy_rooms_6b8c2/maps,automated upload,2024-08-09 05:52
+fy_rooms_buyzone_tidy,7557732,116251,496b129ab8956f3a740169cf3641c2b71c00fa02,529150_1254688_fy_rooms_src_14708,automated upload,2024-08-09 05:52
+fy_rooms_buyzone_tidy_s,2549625,2515349,273b020958bf39c6613a710d2db4f3d3cfecd2f0,529150_1254689_fy_rooms_6b8c2/maps,automated upload,2024-08-09 05:52
+fy_rooms_buyzone_tidy_s,7541124,114958,fe0e73af28da1c3f54e917a05e56cf355df644e9,529150_1254688_fy_rooms_src_14708,automated upload,2024-08-09 05:52
+fy_rooms_s,2784967,2750282,bc4530b64f531f05853b8df562569bf7244f9b3d,529150_1254689_fy_rooms_6b8c2/maps,automated upload,2024-08-09 05:52
+fy_rooms_s,7688584,133126,97adb084aed48a7298614470de2120276bdb73bd,529150_1254688_fy_rooms_src_14708,automated upload,2024-08-09 05:52
 aim_claustrum,349216,125553,dfab1adb2bb4a14cafac1265ac6fba5390939b0e,533666_1253449_aim_claustrum_11,automated upload,2024-08-07 14:56
 de_kipyatok,386550204,133609014,c466521e24b5e6caa1078d33d840374519086893,530296_1253319_de_kipyatok_13/de_kipyatok 1.3/de_kipyatok 1.3,automated upload,2024-08-07 11:31
 mc water,1114076,421703,5f5c3546ee60ff0988e186b12c3becbb59387522,533398_1252257_minecraft_e7f88/minecraft/cstrike/maps,automated upload,2024-08-05 22:54
@@ -35,17 +47,11 @@ surf_2pacisalive,56617680,19702434,c9896022a4753db9367776692ac9868d7f4cd65a,,new
 surf_monkeys2,53495040,53397052,e2bb084f79494b70795767a82f0fb4b19a25b031,529575_1241060_surf_monkeys2_0a80b,automated upload,2024-07-21 11:28
 de_valley,4542612,1684014,31e0a26e9f8abdfc75834b63003776c6ad9c12ee,529486_1240747_de_valley,automated upload,2024-07-20 23:36
 bhop_valestriel,97902109,15830239,765d3370e99d1bd19e7072222a4c79a2a5c4870c,529456_1240575_bhop_valestriel_7c646,automated upload,2024-07-20 21:30
-#fy_rooms,4372132,132539,5b5a84b58a2a3a153129fd7e755d43a88a7375b9,529150_1240488_fy_rooms_src_ver2,automated upload,2024-07-20 16:56
-#fy_rooms,53677478,53891706,b45016d4069f12a4924f6b44d5962898c0bc2ff2,529150_1240491_fy_rooms_ver2/cstrike/maps,automated upload,2024-07-20 16:56
 jb_jblock_new_summer_v6,40214441,40174450,1a03f46e796e563a55eee0542bbe5cc80cb0e870,jblock.africa,from jblock.africa via check.fastdl.me,2024-07-20 13:06
 jb_rv_razor_fina1,43951587,43970017,f39db8fcd8f987c656268ed70777e49142428cdc,jblock.africa,from jblock.africa via check.fastdl.me,2024-07-20 13:06
 jb_rv_razor_final_2,46499884,46385560,f7189c9503ad92c877a3bb84671be3eec2539663,jblock.africa,from jblock.africa via check.fastdl.me,2024-07-20 13:06
 jb_troubles_final11,84068491,83883550,ca073cb30e845ad0b39a899254d379b11abc4f64,jblock.africa,from jblock.africa via check.fastdl.me,2024-07-20 13:06
-fy_rooms_buyzone_tidy,4175032,115422,b341e4428966ae375cbcaae95d1669c73cd428cb,529150_1240190_fy_rooms_lite_e4a44/cstrike/maps,automated upload,2024-07-20 08:13
-fy_rooms_buyzone_tidy,54211305,54425070,70570a8eb8c0c40549fb85cbcd216df7617cff95,529150_1240193_fy_rooms_fixed/cstrike/maps,automated upload,2024-07-20 08:13
 zm_silent_hill_v1,77305972,53194086,75b1560f88c6a96488387c63fb5d659987ccab01,529220_1239966_zm_silent_hill/zm_silent_hill/cstrike/maps,automated upload,2024-07-19 22:02
-fy_rooms_buyzone,4179380,116224,aa564ca548d9533512a769fc169ebbf4a298d97a,529150_1239795_fy_rooms_src_dbb91,automated upload,2024-07-19 17:28
-fy_rooms_buyzone,54197435,54414312,96d46696e4fae08f5deee1a17a7cfadc22e359dd,529150_1239794_fy_rooms_7ec70/cstrike/maps,automated upload,2024-07-19 17:28
 de_sandstone_la06g3_v7,9282952,3680248,7b9cd11c4edfacaff577a5ef6e35c5a5d585f826,529118_1239699_de-sandstone2,automated upload,2024-07-19 13:57
 cs_italy_night,26133781,9444103,b2a49a6df2780380ea864584c3be7693d8fa9e3c,528394_1237635_cs_italy_night/cs_italy_night,automated upload,2024-07-16 12:24
 de_lava_islands,36644030,9838753,7ac28c07b864ec60023a7d3fbb3bc622ef18981d,528230_1237029_de_lava_islands,automated upload,2024-07-16 00:54
