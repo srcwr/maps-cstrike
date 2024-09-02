@@ -92,7 +92,7 @@ bhop_dust_v2,53c3df856a7a96d220b968d0a1c0255da18fd5d9,original/gamebanana versio
 bhop_easyhop_benghaziedition,5f9ab07f986ccb5fedf96dfc2de8d11f00429027,fixes a missing texture apparently
 bhop_eazy_sr,f33a9cc844f6d60a1ac71c3845ba1089816ae6f3,newer mapversion in entity lumps (7 vs 4)
 bhop_eject,12e7123b86b210e47bc57d787806720e85276179,latest on gamebanana
-bhop_elamaa,1f5da4fbf2deaf69058a514544ce2834d605ce46,automatic canonization 202409011747
+bhop_elamaa,79d24d946a33d188178062ea4133272808c31893,automatic canonization 202409021404
 bhop_electric,448256ae3d1bec3f6fbf8441fb58804f15257f75,latest on gamebanana (and newest mapversion (27 vs 28 vs 30))
 bhop_ennui,b95cf7e82c9a23b951a2cb42351fcc5bbb73854b,automatic canonization 202309010521
 bhop_epiphany2,30272187b8cc9af949a7279c666b7bde39009238,latest on gamebanana (first level skip fix)
