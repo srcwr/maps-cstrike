@@ -86,7 +86,7 @@ def transfer_processed_part2_node3():
     os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\transfer_part2_node3.cmd")
 
 def peeker_callback(arg):
-    webhook(True, "new download at https://gamebanana.com/mods/"+arg.split('_')[0]+" "+arg)
+    webhook(True, "new download at https://gamebanana.com/mods/"+arg.split('_')[0]+" `"+arg+"`")
 def fuck_you_callback(arg):
     webhook(True, arg)
 
