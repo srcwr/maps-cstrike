@@ -13,16 +13,12 @@
 	}
 }
 
-# Copied from https://github.com/caddyserver/caddy/issues/6354 # TODO:
+# Copied from https://github.com/caddyserver/caddy/issues/6354
 (proxy_and_xaccel) {
 	reverse_proxy fastdlpy:55155 {
 		@sendfile header X-Accel-Redirect *
 		handle_response @sendfile {
-			copy_response_headers {
-				include X-Accel-Redirect
-			}
-
-			rewrite {http.response.header.X-Accel-Redirect}
+			rewrite {http.reverse_proxy.header.X-Accel-Redirect}
 			root /moon/
 			file_server
 		}
