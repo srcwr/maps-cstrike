@@ -141,6 +141,27 @@ with open("recently_added.csv", newline='', encoding="utf-8") as f:
             break
     recently_added.pop(0) # remove "mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime"
 
+"""
+def create_json(table, outfilename):
+    map = {}
+    for pair in cur.execute(f"SELECT mapname, sha1 FROM {table}"):
+        map[pair[0]] = pair[1]
+    outtextffff = open(f"processed/{outfilename}.txt", "w", newline="\n", encoding="utf-8")
+    outtextffff.write(json.dumps(map, separators=(',', ':')))
+
+def create_binary(table, outfilename):
+    map = {}
+    for pair in cur.execute(f"SELECT mapname, sha1 FROM {table}"):
+        map[pair[0]] = pair[1]
+    map = dict(sorted(map.items()))
+    outtextffff = open(f"processed/{outfilename}.txt", "wb")
+    for pair in map:
+        outtextffff.write(b'\0')
+        outtextffff.write(pair[0].encode())
+        outtextffff.write(b'\0')
+        outtextffff.write(bytes.fromhex(pair[1]))
+"""
+
 def create_thing(table, outfilename, canon, title, sqlwhere, omit_recently_added, txt_as_urls):
     res = cur.execute(f"SELECT COUNT(*), SUM(s1), SUM(s2) FROM (SELECT SUM(filesize) s1, SUM(filesize_bz2) s2 FROM {table} {sqlwhere} GROUP BY sha1);").fetchone()
 
@@ -324,7 +345,7 @@ create_thing("maps_unfiltered", "main.fastdl.me/hashed_index.html", False, "hash
 create_thing("maps_canon", "main.fastdl.me/maps_index.html", True, "canon/filtered maps", "", False, False)
 create_thing("maps_canon", "main.fastdl.me/69.html", True, "movement maps (mostly)", "WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'tsurf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'", False, False)
 create_thing("maps_czarchasm", "main.fastdl.me/maps_czarchasm.html", True, 'mirror of maps from <a href="https://czarchasm.club/">czarchasm.club</a>', "", True, True)
-create_thing("maps_ksfthings", "main.fastdl.me/maps_ksfthings.html", False, 'mirror of ksf maps<br>from <a href="https://github.com/OuiSURF/Surf_Maps">https://github.com/OuiSURF/Surf_Maps</a><br>(up till 2024-09-06)', "", True, True)
+create_thing("maps_ksfthings", "main.fastdl.me/maps_ksfthings.html", False, 'mirror of ksf maps<br>from <a href="https://github.com/OuiSURF/Surf_Maps">https://github.com/OuiSURF/Surf_Maps</a><br>(up till 2024-10-13)', "", True, True)
 
 # TODO: generate main.fastdl.me/index.html open directory pages
 
@@ -345,3 +366,6 @@ os.chdir(cwd)
 
 #wrangler pages publish --project-name fdl --branch master processed/fastdl.me
 #wrangler pages publish --project-name mfdl --branch master processed/main.fastdl.me
+
+#create_json("maps_canon", "canon.json")
+#create_binary("maps_canon", "canon.bin")
