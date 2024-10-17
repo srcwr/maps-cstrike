@@ -71,6 +71,9 @@ for filename in glob.glob("*.bsp"):
         print(f"different map size for {filename}")
 </pre></li></ul>
 
+<h2>curl command to check an open index for unique mapnames</h2>
+<ul><li><pre>curl -X POST -d "http://&lt;URL_THAT_HAS_MAPS_HERE&gt;/maps/" https://check.fastdl.me/index_checker</pre></li></ul>
+
 <h2>todo</h2>
 <ul>
 	<li>add some endpoints for checking sha1 hashes and sha1sum commands...</li>
