@@ -59,8 +59,7 @@ export async function onRequestPost(ctx) {
 
 	const pageText = await resp.text();
 
-	const bspbz2 = />([^>]+\.bsp\.bz2)</g;
-	const matches = pageText.match(bspbz2);
+	const matches = pageText.match(/"([^"]+\.bsp\.bz2)"/g);
 
 	const seen = {};
 	let output = "";
