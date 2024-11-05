@@ -66,7 +66,7 @@ def purge_cloudflare_cache():
     pass
 
 def rsync_hashed():
-    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\cwrsync.cmd") # lol... wsl rsync spins forever so....
+    os.system("start /wait cmd /c ..\\cwrsync_6.2.7_x64_free\\rclone_local_bucket.cmd") # lol... wsl rsync spins forever so....
 
 def maps_cstrike_more(now):
     os.system("start /wait cmd /c ..\\maps-cstrike-more\\auto.cmd "+now) # lol...
@@ -201,6 +201,7 @@ while True:
         transfer_processed_part2_node3()
         purge_cloudflare_cache()
         os.system("git push originbot")
+        os.system("git -C ../gamebanana-things push originbot")
 
     thread_maps_cstrike_more.join()
 
