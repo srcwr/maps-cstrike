@@ -2,4 +2,4 @@ mapname,filesize,filesize_bz2,sha1
 bhop_raw,23982736,9814844,15148527e5b4f2a1d2f877ab5e2416e7281c29f7
 mg_last_man_alive_v1,10521381,3844035,47e0fa50d7170e056ec92cbfd4414698f13d2304
 surf_indecent_beta,27603834,3562820,86fa464c7be88fddbe289bbe54fb36506494612a
-xc_eliteforce_fix,11457998,3716407,6617be149e392aefdd32b2fad197b3b7f6800aa1
+#xc_eliteforce_fix,11457998,3716407,6617be149e392aefdd32b2fad197b3b7f6800aa1,seems fine now? I wonder how this ended up here...
