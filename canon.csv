@@ -209,6 +209,7 @@ bhop_synthetic_fix,9ad3b316be5c586e05c9476d4740a6ab18e8cd4f,latest on gamebanana
 bhop_tbd,d6fb7fc56076d4b9419e00741f69049fc3575185,latest on gamebanana
 bhop_tectum,96d9d583fb336a38f5b688b0f883015ad3e28d1d,fixes missing tree model
 bhop_tedious,861b2471296a80cc83debf560bc9f85ddd6f25ae,latest on gamebanana (the other version has broken textures)
+bhop_terral,7ce7cac34a6811ef9855f146157ad4ddd3d668c3,automatic canonization 202411200829
 bhop_thc_gold,1bb715b9c7fceaf8ce5f50aa9d80f4270b9b9022,from gamebanana. the chicago trikz bb one does stuff to the game_player_equip
 bhop_the_journey_lyned6,3cab4c49737d682dfb0a564efcf2da87c315e0cb,latest on gamebanana
 bhop_thebigleap,1e08471ae98365f2f0077cc7eea4efaba594315b,latest on gamebanana (v4)
