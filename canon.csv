@@ -176,6 +176,7 @@ bhop_perspective,a3abac550998c3ec9ee459809b0879131859655d,latest on gamebanana
 bhop_pharma,1cb6a283087f288c226b08f78f437a461e453c3e,latest on gamebanana
 bhop_phobos,15998356806dc92ab5ef21dacc1414ab83358ea0,reverted back to original because the fix version was renamed to bhop_phobos_fix
 bhop_phobos_fix,deb72594285a2bf9cd9b1fb157b1eb23fdafc279,latest on gamebanana (202301102105) (bug fix for gasmask stage)
+bhop_pohn_not_idiot,89b9c416619f2252047048862ce87749efca2985,automatic canonization 202411240151
 bhop_precision_beta1,66738c0b9935b73c07bb3d98ac7f1e2e050ead09,the strafesonfleek version is a fullbright retexture for some reason
 bhop_pride,cef28fbac90ce76d64cf01ba26c46a0a07e8bc60,latest on gamebanana
 bhop_pringid,c225d71b54b5fff625f999a68f7a390fae20a8f1,latest on gamebanana as of 202308140645
