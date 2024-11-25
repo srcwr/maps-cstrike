@@ -2,3 +2,4 @@ mapname,filesize,filesize_bz2,sha1
 bhop_dr_iceworld,11712176,4535056,783ac843612f793d4fdb4c354d639dbcc080e52e
 bhop_dr_simpsons_final,10655804,4270398,259e062ded0aa9eead364d0939dd72ba727b96f0
 kz_aggressive_strafe_fix,60277229,59967511,e2918efe8cc2f456cb95d58ddd4effd4b52cc9cb,converted the singlehops to func doors for more consistency/less glitchiness
+kz_orangepipe,4433132,2372461,01c7379f6e498e1b5bbcd508f74960c95b39e1d6,
