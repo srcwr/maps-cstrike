@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+bhop_weld,50637372,12380824,9c0da756c76416b078db386020d5a9dc2525411a,558587_1331005_bhop_weld,automated upload,2024-11-27 04:14
 jb_kwejsi_b,61911308,61986300,4aece0f2e750a5fa43fcf4a0834a3bfc0d980893,558553_1330922_jb_kwejsi_b,automated upload,2024-11-27 00:15
 kz_orangepipe,4433132,2372461,01c7379f6e498e1b5bbcd508f74960c95b39e1d6,,from malala,2024-11-25 18:32
 kz_aggressive_strafe_fix,60277229,59967511,e2918efe8cc2f456cb95d58ddd4effd4b52cc9cb,,from malala - converted the singlehops to func doors for more consistency/less glitchiness,2024-11-25 18:26
