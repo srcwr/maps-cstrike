@@ -9,6 +9,9 @@ Originally intended for bhop/surf/xc/kz/trikz maps... and then it spiraled out o
 ## LICENSE
 Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE](http://www.wtfpl.net/txt/copying/) unless otherwise specified in the file.
 
+## TODO
+The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcwr/gamebanana-things)) is not the most robust. If the connection fails during a download then that entire queue will be thrown away, and to fix you have to delete all the recently downloaded archives. That's not too hard to fix but TODO. Also the gamebanana API endpoint is old, because documentation on endpoints suck, so we miss new archives when: it's off the first page or two, which happens when (1) an item is unprivated (2) an item is given a new item but not a new version. Those are caught with random manual multi-page rechecks for new files. One day these will surely:tm: be fixed.
+
 ## WHAT IS WHAT
 - `_thing/`
 	- Old scripts for quickly checking if someone's `maps` folder has anything unique to upload
