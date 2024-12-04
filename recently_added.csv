@@ -1,5 +1,11 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
-#surf_board_this,98698606,98528479,2242bf79c3f84d36755f06239183adbedb11848c,541052_0_surf_board_this,"ksf maps from <a href=""https://github.com/OuiSURF/Surf_Maps"">OuiSURF/Surf_Maps</a> - newer version of surf_board_this (<a href=""https://www.youtube.com/watch?v=PPzHk-iTT9E"">showcase video</a>)",2024-12-04 15:46
+#surf_board_this,136041611,136164339,3e7f517b710b8e01337e756255204659f2da7d0a,541052_1322370_surf_board_this_2b7ce,automated upload,2024-12-04 16:45
+de_downbad,11363920,3169235,19c58fa4f25204bfb824ab2ff3df3c55f7fcb77d,509974_1235608_de_downbad1_3_rev1/de_downbad/cstrike/maps,automated upload,2024-12-04 16:45
+de_jeffreybricks,1255076,401198,0765d6f3e5cb613b7d4ddfac8c4e05e64e9a8698,469261_1058587_de_jeffreybricks_56c81,automated upload,2024-12-04 16:45
+hns_rv_esip_e1,18918849,18929161,65cff6aa91551a20b472fc3afafe4707cd774536,499748_1210503_hns_rv_esip_e1,automated upload,2024-12-04 16:45
+ka_soccer_rainyday_v5,32972273,17129139,3dc6dc1dd36d1587bcccd045612ca415fdefa1fa,504891_1278221_ka_soccer_rainyday_v5,automated upload,2024-12-04 16:45
+surf_tropic_ksf,19786701,19833145,b2dd4d03739e715459a2d675aac66f76386dfd67,474009_1141384_surf_tropic_ksf_final_,automated upload,2024-12-04 16:45
+ze_deathrun_v4_fix,105658509,63042882,513908257dde2e7c9b80ca65a214da4dd3914164,480988_1205960_ze_deathrun_v4_fix,automated upload,2024-12-04 16:45
 bhop_dumb_blocks_5,29676627,5625074,b6e52d94e82f281450d2d5fb7b692658af13da1e,560246_1336029_bhop_dumb_blocks_5,automated upload,2024-12-04 15:42
 bhop_dumb_blocks_4,32731399,5977433,937323d3d0917ca068a7a0b9b782a4ddad189c48,560036_1335431_bhop_dumb_blocks_4,automated upload,2024-12-03 14:35
 bhop_dumb_blocks,27819726,5449058,d89b69dcfcf208f71f7cea3fee7d6a225a85f764,559908_1335034_bhop_dumb_blocks,automated upload,2024-12-02 20:02
@@ -284,7 +290,6 @@ de_meanstreet_zultimate,90221605,51050798,70fdcd24d426cac854bed2198192668f0fb259
 surf_crucible,107476069,107779090,deb392fa53e8f65cc680c77168a7fa4d9d4fc4ba,,"ksf maps from <a href=""https://github.com/OuiSURF/Surf_Maps"">OuiSURF/Surf_Maps</a> (thank you check.fastdl.me person)",2024-09-10 01:58
 surf_twist,55282678,55479502,d731e7f2d81334f8cfb398c2a21776c73598433c,,"ksf maps from <a href=""https://github.com/OuiSURF/Surf_Maps"">OuiSURF/Surf_Maps</a> (thank you check.fastdl.me person)",2024-09-10 01:58
 de_multidoor_tnk_v1,11486448,2199791,8f7310aafb6365334fee5efca567bf42d9b147f8,541158_1276665_de_multidoor_tnk_v1/de_multidoor_tnk_v1,automated upload,2024-09-09 12:44
-#surf_board_this,137122941,137161168,56f1763103f25ed3a6d5acce344f32a1b33c5cd5,541052_1276360_surf_board_this,"automated upload - <a href=""https://www.youtube.com/watch?v=PPzHk-iTT9E"">showcase video</a>",2024-09-08 22:04
 bhop_cheesemania,89624880,50879940,cae3a55482e16b90336962293a16f418b0c0dd26,541040_1276348_bhop_cheesemania_8025f,automated upload,2024-09-08 21:47
 ba_jail_hellsgamers_fx7c,38678661,10654932,94aed3050c04d5d85666087ef9c204996af7d368,jblock.africa,from jblock.africa via check.fastdl.me,2024-09-07 17:46
 ba_jail_jbx_alcatraz_final,48834871,9703430,48a05f693b1598965ac5ddd5e0cbd31eaaa7ad58,jblock.africa,from jblock.africa via check.fastdl.me,2024-09-07 17:46
@@ -641,7 +646,6 @@ menger_sponge_full,48978460,19916450,92132f06ded26cd5e5316872700344e75b251d07,50
 menger_sponge_full_300,48978392,19917610,f94fad451bf82c703391171b3f7c650086d21ace,509712_1184128_menger_sponge_6d234/!Self-made_Maps/maps,automated upload,2024-04-29 05:06
 de_septic,1991952,826455,69084bb9716b6a4082f7e64c2d5a3991f17f94e0,510020_1183546_de_septic_34639,automated upload,2024-04-28 08:54
 bhop_strafe_alviin_four,58350465,23203599,844a53892e04d76eb72fe7f523ba867deb34c61e,510149_1183301_bhop_strafe_alviin_four_f93bd,automated upload,2024-04-27 22:53
-de_downbad,11259280,3128695,6b08128b34f3e1a508d077e8cf266c3f36291e69,509974_1182913_de_downbad/cstrike/maps,automated upload,2024-04-27 12:57
 de_oilretex v2,9023988,3312652,584fc803a4e4a7474a9eaa7b212321d4a50490f6,509748_1182344_de_oil/de oil,automated upload,2024-04-26 19:24
 trikz_ocean2,96538960,35514406,697e1a713f908f0c8beab899380e47b8cd2e3cab,509164_1182095_trikz_ocean2_4f59d,automated upload,2024-04-26 09:21
 gg_dust64_combo_mk_2,233940,26820,b25f37c0b535441c6b45226566f0caf708fdf16a,509509_1181678_gg_dust64_combo_mk_2,automated upload,2024-04-25 17:11
@@ -1272,7 +1276,6 @@ surf_through_hell,51298851,51333594,f1b491ae32f980c5dd4678eae6e040afcc45886c,474
 mg_freebuy,3365388,156224,6cdcc29dcb65dbb70e6b028e88883abeb42242b4,474408_1073360_mg_freebuy,automated upload,2023-10-17 20:28
 ze_aethership_v1,96073021,95585619,9090ba20c4a7ea7bc8c55eb65d43e5cdd2e91e27,474381_1073284_ze_aethership_v1,automated upload,2023-10-17 17:39
 mg_adev,13214928,5093536,9ba680ce7e916cc84f3e0e54adab838f2e179bb1,474259_1073227_mg_adev_dcdae/mg_adev,automated upload,2023-10-17 13:02
-surf_tropic_ksf,21049312,21005379,4f4c2448c6c9c2e4f042b591f67df2a4e0ea38ba,474009_1072242_surf_tropic_ksf_2_submit_,automated upload,2023-10-15 10:29
 mg_savetheisland_course,14814080,4435930,666e774604e82b0772246c13bfea067fe35ad28a,473917_1071970_mg_savetheisland_course,automated upload,2023-10-14 21:01
 ze_surf_sky_blue_v1,77482871,52412313,5611ea1fb68e95b897ea357a1b53bb7f8695b727,473869_1071794_ze_surf_sky_blue_v1,automated upload,2023-10-14 16:25
 bhop_vietkz,37422244,17791663,2e20211fbf31d7fd226de8f9b4c10c3310ab5158,473795_1071597_bhop_vietkz,automated upload,2023-10-14 06:08
@@ -1311,7 +1314,6 @@ bhop_uncanny,487720476,178069801,8f79eebf1589ddfd73cea22e8d06b51c8b40c4f4,469207
 de_oil,8496888,3137405,237a220e5ce44864738ff4b86095f78d0c8fb40e,469329_1057771_oil,automated upload,2023-09-18 08:01
 bhop_2021_aux_part1,129367956,49502666,7378115fc3c99ff1465d2bccfb4605b8da032913,plar or something,plar or something,2023-09-18 02:22
 de_favela_mdg,172268571,68931114,a338306a19a619dcd14ca5e78e2693ce763f879d,469293_1057664_de_favela_mdg,automated upload,2023-09-18 01:45
-de_jeffreybricks,1257648,403190,407c7932b31c3ba61a5d9fe35a80969b8237cc4a,469261_1057559_de_jeffreybricks,automated upload,2023-09-17 22:46
 cc_prototype,8695080,3259008,03f41520a7fd8d7485ea4d20aea10b55460f3903,469246_1057530_prototype_5fd8d,automated upload,2023-09-17 21:15
 zm_Rig_v4D1,70946284,26612405,54740cc83647da795f67edbc53a3c055fe4c30ed,311037_1057264_zm_rig_ac1e6/zm_Rig,automated upload,2023-09-17 13:39
 zm_Rig_v4E1,71796968,27087257,059f667c5a35070327ae22c166b279a539cedf37,311037_1057264_zm_rig_ac1e6/zm_Rig,automated upload,2023-09-17 13:39
