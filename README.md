@@ -10,7 +10,7 @@ Originally intended for bhop/surf/xc/kz/trikz maps... and then it spiraled out o
 Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE](http://www.wtfpl.net/txt/copying/) unless otherwise specified in the file.
 
 ## TODO
-The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcwr/gamebanana-things)) is not the most robust. If the connection fails during a download then that entire queue will be thrown away, and to fix you have to delete all the recently downloaded archives. That's not too hard to fix but TODO. Also the gamebanana API endpoint is old, because documentation on endpoints suck, so we miss new archives when: it's off the first page or two, which happens when (1) an item is unprivated (2) an item is given a new item but not a new version. Those are caught with random manual multi-page rechecks for new files. One day these will surely:tm: be fixed.
+The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcwr/gamebanana-things)) is not the most robust. If the connection fails during a download then that entire queue will be thrown away, and to fix you have to delete all the recently downloaded archives. That's not too hard to fix but TODO. Also the gamebanana API endpoint is old, because documentation on endpoints suck, so we miss new archives when: it's off the first page or two, which happens when (1) an item is unprivated (2) an item is given a new file but not a new version. Those are caught with random manual multi-page rechecks for new files. One day these will surely:tm: be fixed.
 
 ## WHAT IS WHAT
 - `_thing/`
@@ -33,14 +33,26 @@ The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcw
 			- pip requirements yada yada
 		- `setup-venv.sh`
 			- quicker venv setup so I don't have to remember every time
-	- `log-counter`
+	- `fastdlpy_nocf/'
+		- non-cloudflare version of fastdlpy. Could probably just be merged with fastdlpy and use environment-variables to configure it instead.
+	- `log-counter/`
 		- Unused nginx log 'parser' to get the count of each map downloaded in a day
 	- [`main.fastdl.me`](https://main.fastdl.me/)
 		- Mainly placeholder files for keeping the directory structure.
 	- [`mainr2.fastdl.me`](https://mainr2.fastdl.me/)
 		- More placeholder files.
-	- `nginx`
+	- `nginx/`
 		- Most of the nginx website configuration for [main.fastdl.me](https://main.fastdl.me/)
+	- `nginx_nocf/`
+		- non-cloudflare version of the nginx configs. Old and won't be used.
+	- `venus.fastdl.me/`
+		- HTML files for the subdomain that serves [RawInput2BunnyhopAPE](https://github.com/rtldg/RawInput2BunnyhopAPE) `.bsp` checksums.
+	- `compose.yml`
+		- Docker compose file for spinning up a fastdl node.
+	- `compose.yml`
+		- Docker compose file for spinning up a non-cloudflare fastdl node.
+	- `embedded-privacy-policy.html`
+		- Basic minimal privacy policy that's appended to pages.
 - `filters/`
 	- CSV files for removing dupes, bad maps, etc from the fastdl.me `/maps/` page
 - `processed/`
