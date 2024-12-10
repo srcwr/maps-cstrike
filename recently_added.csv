@@ -1,4 +1,8 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+gg_majorsnow,5443444,5321358,44902241ccc7d39efaf7820ee1a48a207ee23f12,559872_1339779_gg_majorsnow_v2/Compressed,automated upload,2024-12-10 22:24
+gg_majorsnow,12308184,5859901,eb58f99eedfb0d114e7388c5b57da92c90f192e4,559872_1339779_gg_majorsnow_v2/Uncompressed,automated upload,2024-12-10 22:24
+gg_majorsnow_nw,5286463,5164267,4767f4e626ff20bd92f02ded36bf3bbfe7eaf061,559872_1339779_gg_majorsnow_v2/Compressed,automated upload,2024-12-10 22:24
+gg_majorsnow_nw,11686742,5689378,52aa3bca06a712fe6c49d4028c15adcd35f3e02c,559872_1339779_gg_majorsnow_v2/Uncompressed,automated upload,2024-12-10 22:24
 xc_metal_fix,8679692,3168856,2e1980f6ebac068c6d32ac0b805b21d8d067c79f,,from malala,2024-12-10 22:22
 de_soyjak,11987376,2277127,cb0cec4bd4ae11c760087bf4b3c8266e0f1c96b0,561348_1339323_de_soyjak,automated upload,2024-12-10 00:19
 de_ccsbase_barash_v2,6831400,2659183,517d4da27309991b4423b4260d89bea4b561d3d6,561311_1339208_de_ccsbase_barash_v2,automated upload,2024-12-09 21:26
@@ -40,7 +44,6 @@ surf_board_this,98698606,98528479,2242bf79c3f84d36755f06239183adbedb11848c,54105
 bhop_dumb_blocks_5,29676627,5625074,b6e52d94e82f281450d2d5fb7b692658af13da1e,560246_1336029_bhop_dumb_blocks_5,automated upload,2024-12-04 15:42
 bhop_dumb_blocks_4,32731399,5977433,937323d3d0917ca068a7a0b9b782a4ddad189c48,560036_1335431_bhop_dumb_blocks_4,automated upload,2024-12-03 14:35
 bhop_dumb_blocks,27819726,5449058,d89b69dcfcf208f71f7cea3fee7d6a225a85f764,559908_1335034_bhop_dumb_blocks,automated upload,2024-12-02 20:02
-gg_majorsnow,3257395,3128010,aac13d59b367e92a8f165edc4546b37b7b8f9917,559872_1334945_gg_majorsnow,automated upload,2024-12-02 17:09
 de_satellite_cf_new,25955376,9299051,3609ddef133d5712fb0e2e90fa7c2cdaf9ea61ab,559840_1334787_de_satellite_cf_new,automated upload,2024-12-02 12:46
 de_sarab_newyear2025,11722660,4214887,b8d68e908a765b895bc9b9b4539a8966ddebf5ae,559449_1333618_de_sarab_newyear2025,automated upload,2024-11-30 21:10
 de_ashen,32863049,12333653,623acbab0f7308ea667be323b85913782e09bfb8,550249_1333353_de_ashen_v6_a85b2/maps,automated upload,2024-11-30 14:00
