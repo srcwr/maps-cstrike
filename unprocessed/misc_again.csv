@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note
+2313_serf_markc_gater,1915772,871006,32fba3927c146a9e030056e491888089341cb967,
 bhop_2021_aux_part1,129367956,49502666,7378115fc3c99ff1465d2bccfb4605b8da032913,plar or something
 bhop_acrophobia,66413157,23297242,38a1aba53efbf3b9ca20aa710987077c74d0ec7f,bhop edit/port by finn of mg_acrophobia_run_v1
 bhop_avloppet_fix,10232200,4088288,cf6cb84200f20490ba73f550d30a6d990692730b,optimized/smaller version of bhop_avloppet by malala
@@ -45,6 +46,7 @@ surf_pantheon_beta,149252551,63480086,dba45bc2ae31db34bb3f970a62c67dc3616a815d,
 surf_please_play_me_peepo,10972867,10887187,a638e46a26a77b9eff04a963bf1bcf5565b8c483,
 surf_sidness_lightingbeta,15980500,5529877,ec14eac7cf27f06175dd7d2c20a9b57dc3276003,from ksf or something
 surf_strafehelltest,19120,17220,cf785bd7b2068cb953c139f14decf41cd8cef693,from ksf discord
+surf_torque_beta3,18763055,5321387,18d00d1b3ab3d8364ee7559ac2ca0ee2c9720c28,
 surf_utopia_2,13170948,13220545,0c3d8b4183a1b1cdbbf6cd548a42c2a4260fac26,
 yv00ra,45218783,45229652,be851457862b71010e1a189fe5a7876b00d45a6d,
 zs_abstraction,41856464,10407305,71c87fb65db0d455704e684a16f4bdc5107cff4,???
