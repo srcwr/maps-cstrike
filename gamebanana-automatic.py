@@ -1,5 +1,12 @@
 # SPDX-License-Identifier: WTFPL
-# Copyright 2023-2024 rtldg <rtldg@protonmail.com>
+# Copyright 2023-2025 rtldg <rtldg@protonmail.com>
+
+# /// script
+# dependencies = [
+#   "GitPython",
+#   "requests",
+# ]
+# ///
 
 # why is this a mess? three repos, shit code, and various batch scripts...
 
@@ -179,7 +186,7 @@ while True:
     os.system("git add recently_added.csv unprocessed/gamebanana-x-automatic.csv canon.csv")
     os.system(f'git commit --author="srcwrbot <bot@srcwr.com>" -m "{now} - automatic gamebanana"')
 
-    status = os.system("python process.py")
+    status = os.system("uv run process.py")
     if status == 0:
         thread_transfer_processed_part1_node1 = Thread(target=transfer_processed_part1_node1)
         thread_transfer_processed_part1_node1.start()

@@ -1,5 +1,12 @@
 # SPDX-License-Identifier: WTFPL
-# Copyright 2022-2024 rtldg <rtldg@protonmail.com>
+# Copyright 2022-2025 rtldg <rtldg@protonmail.com>
+
+# /// script
+# requires-python = ">=3.10,<3.13"
+# dependencies = [
+#   "minify-html==0.15.0",
+# ]
+# ///
 
 import os
 import glob
