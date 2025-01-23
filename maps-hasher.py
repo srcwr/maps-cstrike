@@ -114,7 +114,10 @@ def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash, canon
                     continue
                 filesize_bz2 = os.stat(renameto + ".bz2").st_size
                 pp = Path(filename)
-                row = [pp.stem,filesize,filesize_bz2,digest,str(pp.parent).replace("\\", "/").replace(mapsfolder+"/", "")]
+                stem = pp.stem
+                if stem.startswith("#") and len(stem) > 1:
+                    stem = stem[1:]
+                row = [stem,filesize,filesize_bz2,digest,str(pp.parent).replace("\\", "/").replace(mapsfolder+"/", "")]
                 if automatic and normal_name(row[0]) in existing_names:
                     if existing_recents.get(normal_name(row[0]), "mrbeast") != row[4].split("_")[0]:
                         row[0] = "#" + row[0]
