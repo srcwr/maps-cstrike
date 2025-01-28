@@ -19,7 +19,7 @@ def close_connection(exception):
 
 @app.route('/<mapsfolder>/<mapname>.bsp.bz2')
 def AAAAA(mapsfolder, mapname):
-    if mapsfolder == "maps" or mapsfolder == "mapsredir":
+    if mapsfolder == "maps" or mapsfolder == "mapsredir" or mapsfolder == "m2":
         return yo(mapsfolder, mapname, False)
     else:
         return yo(mapsfolder, mapname, True)
