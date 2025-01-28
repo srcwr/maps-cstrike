@@ -8,14 +8,20 @@ services:
   nginx:
     image: nginx
     restart: unless-stopped
+    environment:
+      - NODE_ID=${NODE_ID}
+      - REAL_WORKER_HEADER=${REAL_WORKER_HEADER}
+      - REAL_IP_HEADER=${REAL_IP_HEADER}
+      - REAL_FORWARDED_PROTO_HEADER=${REAL_FORWARDED_PROTO_HEADER}
+      - REAL_COUNTRY_HEADER=${REAL_COUNTRY_HEADER}
     volumes:
       - ${PROCESSED_DIR}:/data:ro
       - ${LOGS_DIR}:/var/log/nginx
       - ./nginx/fastdl.me-3rdparty-shared.conf:/etc/nginx/fastdl.me-3rdparty-shared.conf:ro
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/proxy_params.conf:/etc/nginx/proxy_params.conf:ro
-      - ./nginx/secret-headers.conf:/etc/nginx/secret-headers.conf:ro
       - ./nginx/sites-enabled:/etc/nginx/sites-enabled:ro
+      - ./nginx/templates:/etc/nginx/templates:ro
   fastdlpy:
     build: fastdlpy
     restart: unless-stopped
