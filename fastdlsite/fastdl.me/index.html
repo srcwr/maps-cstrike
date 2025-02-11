@@ -161,7 +161,20 @@ real reviews from real people:
 				<ul>
 					<li>Sometimes the server doesn't receive the request.</li>
 					<li>Sometimes the server receives the request but then the download dies mid-connection.</li>
-					<li>Perhaps it's sometimes related to ISP filtering / country firewalls / dropped connections.</li>
+					<li>Perhaps it's sometimes related to ISP filtering / country firewalls / dropped connections.
+						<ul>
+							<li>Try these in Powershell to find out if it's a firewall issue:
+								<ul>
+									<li>iwr https://main.fastdl.me</li>
+									<li>iwr http://main.fastdl.me</li>
+								</ul></li>
+							<li>If it's a firewall issue then you could try:
+								<ul>
+									<li>Installing a DNS-over-HTTPS client (such as <a href="https://yogadns.com/">YogaDNS</a>).</li>
+									<li>Whitelisting main.fastdl.me in your "firewall settings".</li>
+									<li>Asking your firewall administrators very nicely to whitelist main.fastdl.me :)</li>
+								</ul></li>
+						</ul></li>
 					<li>I also had a Linux gaming CS:S friend who couldn't download maps when /maps/ redirected to /hashed/.
 					<br>I'm not sure why this was a problem but making /maps/ not use HTTP redirects solved it for them.</li>
 					<li>Cloudflare server-updates kill requests that run longer than 30 seconds. <a href="https://developers.cloudflare.com/workers/platform/limits/#duration">Source</a></li>
