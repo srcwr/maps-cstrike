@@ -30,6 +30,11 @@
 			display: grid;
 			gap: 1em;
 		}
+		#inbrowserh2 {
+			background: linear-gradient(to right, #ccff5a, #fdabc6, #ff00b3, #e7ef08, #26c6da, #65ba69, #eeff41, #f9a825, #ff5722);
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 	</style>
 </head>
 <body>
@@ -41,6 +46,12 @@ Upload maps to somewhere like <a href="https://gofile.io/uploadFiles">gofile.io<
 <textarea rows="10" cols="80" minlength=5 maxlength=1800 id="intext">Put links to maps here if you want me to add them (max 1800 chars)</textarea>
 <br>
 <button id="booty" onclick="butt()">Send</button>
+
+
+<h2 id="inbrowserh2">Check your maps folder for unique mapname+filesize combinations in browser</h2>
+<input id="selectMultipleFilesInput" type="file" accept=".bsp" multiple style="display:none" />
+<button id="selectMultipleFilesButton" type="button">Select some maps...</button>
+<pre id="selectMultipleFilesOutput">waiting...</pre>
 
 
 <h2>Commands to check for unique mapname+filesize combinations</h2>
@@ -81,7 +92,7 @@ for filename in glob.glob("*.bsp"):
 </ul>
 
 <h2>Submission status</h2>
-<ul id="submissionStatus">Loading...</div>
+<ul id="submissionStatus">Loading...</ul>
 <!--
 <iframe id="submissionStatusFrame" title="submission status"
 	width="1000" height="1000"
@@ -158,4 +169,72 @@ https://github.com/Daninet/hash-wasm
 	// lol wtf cache bug https://stackoverflow.com/a/3984072
 	//var _theframe = document.getElementById("submissionStatusFrame");
 	//_theframe.contentWindow.location.href = _theframe.src + "?x=" + Date.now();
+</script>
+
+<script>
+	function lateLoadMyThings() {
+		window.lateLoadMyThings = ()=>{};
+		let script = document.createElement("script");
+		script.src = "https://check.fastdl.me/jszip.min.js";
+		document.documentElement.firstChild.appendChild(script);
+		script = document.createElement("script");
+		script.src = "https://check.fastdl.me/FileSaver.min.js";
+		document.documentElement.firstChild.appendChild(script);
+		window._thing = {};
+		fetch("_thing.json").then((response) => response.json()).then((obj) => window._thing = obj);
+	}
+	const selectMultipleFilesButton = document.getElementById("selectMultipleFilesButton");
+	const selectMultipleFilesInput = document.getElementById("selectMultipleFilesInput");
+	selectMultipleFilesButton.addEventListener("click", () => {
+		window.lateLoadMyThings();
+		selectMultipleFilesInput.click();
+	});
+	selectMultipleFilesInput.addEventListener("change", () => {
+		let unique = [];
+		for (const file of selectMultipleFilesInput.files) {
+			const filtered_name = file.name.slice(0, -4).toLowerCase().replace(".", "_").replace(" ", "_");
+			if (!_thing[filtered_name] || !_thing[filtered_name].includes(file.size)) {
+				unique.push(file);
+			}
+		}
+
+		if (unique.length == 0) {
+			document.getElementById("selectMultipleFilesOutput").innerText = "no unique mapname+filesize combinations :(\n\n";
+			return;
+		}
+
+		let outputText = "Unique mapname+filesize combinations:\n\n";
+		for (const file of unique) {
+			outputText += file.name;
+			outputText += "\n";
+		}
+		outputText += "\n";
+		document.getElementById("selectMultipleFilesOutput").innerText = outputText;
+
+		const zip = new JSZip();
+		console.log(unique);
+		let files_added = 0;
+		let total_files = unique.length;
+		for (const file of unique) {
+			const reader = new FileReader();
+			reader.readAsArrayBuffer(file);
+			reader.onload = () => {
+				zip.file(
+					file.name,
+					reader.result,
+					{
+						binary: true,
+						compression: "STORE",
+						streamFiles: true,
+					}
+				);
+				if (++files_added == total_files) {
+					zip.generateAsync({type: "blob"}).then((content) => {
+						document.getElementById("selectMultipleFilesOutput").innerText += "\nSaved maps.zip which you can upload & submit\n\n";
+						saveAs(content, "maps.zip");
+					});
+				}
+			};
+		}
+	}, false);
 </script>
