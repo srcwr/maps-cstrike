@@ -366,9 +366,9 @@ if not os.path.isfile("../secretwebhook") or (len(sys.argv) > 1 and sys.argv[1] 
 # what the fuck wrangler why won't my functions work otherwise
 cwd = os.getcwd()
 os.chdir("processed/check.fastdl.me")
-subprocess.run("npx --yes wrangler pages deploy --project-name check-fastdl --branch main   .", shell=True)
+subprocess.run("npx --yes wrangler pages deploy --commit-dirty=true --project-name check-fastdl --branch main   .", shell=True)
 os.chdir(cwd + "/processed/fastdl.me")
-subprocess.run("npx --yes wrangler pages deploy --project-name fdl          --branch master .", shell=True)
+subprocess.run("npx --yes wrangler pages deploy --commit-dirty=true --project-name fdl          --branch master .", shell=True)
 os.chdir(cwd)
 
 #wrangler pages publish --project-name fdl --branch master processed/fastdl.me
