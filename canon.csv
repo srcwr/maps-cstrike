@@ -196,6 +196,7 @@ bhop_pure,5ac2cd4dd313a0bdca66f90860878abc20d2e238,latest on gamebanana
 bhop_pyxkeria,b89383c1f4ae7b675d8ebffa67c72729621cc6f3,this mapname has two ports from csgo but this one follows the wall textures better as far as I can tell so I picked this one plus its smaller
 bhop_quaker,9926c15e6b7c1483ac235b8faf384bf027dd1562,latest on gamebanana
 bhop_rand0m_gm,01f64a77b925201bb8bb7dd6664fbc09e6b3c693,version without empty classname entities or something. maybe a port from the gmod version. it works is the point
+bhop_reddawn,448deeae96eee3556ca90f26a0929f070a586f9b,automatic canonization 202504080948
 bhop_rgbglow_sr,0068a2a943c4996d110308820261fdecd53b6b7a,latest on gamebanana
 bhop_rikudo,b20b2df537ed249430a255f961cb78550db88412,latest on gamebanana
 bhop_rings_final,66470c36dfb60257d2ceae5214a97848ad8393eb,latest on gamebanana (still sucks)
