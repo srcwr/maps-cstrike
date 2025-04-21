@@ -6,9 +6,9 @@ mapname,sha1,note
 #de_castle,4d01bf88d621e8001ba684e46a421294850f0171,automatic canonization 202407011759
 #de_docks,c83e9c6db080b76ab6e1e8d3b6a765d071ef42f5,automatic canonization 202407062150
 #de_dust3,f85b25fbb395d12d8e0c111cfde65bd9ae3cbad5,automatic canonization 202502061047
-#de_dustcity -- bleh
+#de_dustcity -- bleh,0,0
 #de_fastline,5b9e44b5cc0b2815886a1d10ee6c8a9b8ea15a97,automatic canonization 202401211252
-#de_metro -- bleh
+#de_metro -- bleh,0,0
 #de_station,24cd23da806c251399221233294c32ff9fcf6aea,automatic canonization 202406191904
 #de_studio,7c893c2c1bd9fdab8dea7e7b80a5c99955fdda34,automatic canonization 202501130955
 #fy_garage,bda5dc14b2deead73d3f4f7ffde82b2bcda0d115,automatic canonization 202410261234

@@ -1,6 +1,6 @@
-mapname,filesize,filesize_bz2,sha1
-bhop_airflow_v2_fix,1422588,421826,6181e6aa22cd7b751d5b494c0303f7f380e81496
-bhop_patq_texture,4442284,1767733,a2414527ef6dba5a8566af4c2a2f7b62da092ac6
+mapname,filesize,filesize_bz2,sha1,note
+bhop_airflow_v2_fix,1422588,421826,6181e6aa22cd7b751d5b494c0303f7f380e81496,
+bhop_patq_texture,4442284,1767733,a2414527ef6dba5a8566af4c2a2f7b62da092ac6,
 bhop_ancient,10246988,4492109,79cf7c8f48a2c4e3ef3a6d17cd331f034784bb54,Old maps
 bhop_bunnytown31,941678,942923,5512417aa9a1729aa2a12b1847b53c71f51fb073,Old maps
 bhop_despondent,16630937,6424326,aeca5fcdc6bcfef2106eabd2a702841548bfb39b,Old maps

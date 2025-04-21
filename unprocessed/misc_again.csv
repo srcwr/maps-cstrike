@@ -16,9 +16,9 @@ cs_sonicschoolhouse,4303831,4225280,b7b0e51df65da253d9a20da76725b660a7bd9ccc,100
 cs_sonicschoolhouse_nighttime,4283340,4231292,9da107c594cae8c97d738d377481abc52f80ab84,100467_0_cs_sonicschoolhouse_nighttime -- extracted from vpk & packed & compressed
 de_mirage_rc1_32fixedbymisiu29,10752352,3320363,0d686a6465bad4e3492b4c53d1f048418f4306af,
 de_orville,3774769,1418620,57171c36bcb894652b67d74bf36a7ed94f8fd7de,
-gm_abstraction,41856464,10407305,71c87fb65db0d455704e684a16f4bdc5107cff46
+gm_abstraction,41856464,10407305,71c87fb65db0d455704e684a16f4bdc5107cff46,
 gm_audiosurf,41601774,23377204,d16de88d62eeed267b627ffaac8d91694c335192,60922_302340_gm_audiosurf_2
-# okay, I'm gonna be honest: I didn't actually download it to check if it's the same hash. But surely... right?
+#note,0,0,0,I'm gonna be honest: I didn't actually download it to check if it's the same hash. But surely... right?
 gm_bigcity,59632572,17221371,79114882b9d31e7c04f7a8fafa29d8725735ab89,https://steamcommunity.com/sharedfiles/filedetails/?id=105982362
 gm_indoorkart,15027649,4070817,278e8ddab83ec71155152761fb0cd4580d34bc0c,61578_315900_gm_indoorkart
 gm_mainland,17680508,6849471,483ad65ec6c5418581bad7b8e61dfe1c08f126d1,https://steamcommunity.com/sharedfiles/filedetails/?id=104493582
@@ -32,7 +32,7 @@ mg_btp_multigames_v1_b01,29919378,16815487,4c3ba5af835f66fd0a6366c4f4ff7e4baf52c
 mg_btp_multigames_v1_b03,6252104,1748747,2e0924a6a3e37d567604ee193585111fb3650412,malala had this in their maps folder
 mg_btp_multigames_v2_1fix,3857665,1077709,6af4aa112f1ecc3fa000ef1fd6937b220aa1bd44,malala had this in their maps folder
 mg_sky_climb,55027273,55238844,dec3dabb43e0016eb12deb37dfd59f4d8cdae20c,449608_1000262_mg_sky_climb
-# okay, I'm gonna be honest: I didn't actually download it to check if it's the same hash. But surely... right?
+#note,0,0,0,I'm gonna be honest: I didn't actually download it to check if it's the same hash. But surely... right?
 rf_silenthill,245746115,106162337,eddf56f1f62978325a7dbea90de885f55b928fa9,https://steamcommunity.com/sharedfiles/filedetails/?id=152652719
 rp_amsterville,48638219,19614319,7ebea0cde3e9cf32cfaef332e21c472d8b89a0f1,
 rp_lakeland,39993602,18579596,b3011370cc004d85a14f53ebd3db0e393af15edb,

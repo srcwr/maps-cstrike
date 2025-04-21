@@ -11,6 +11,6 @@ bhop_bmg2_roady,8648849,8679946,e9c6e57eb17bb6fccf5e7d42c17dfbcc324ae6f0,
 bhop_bmg2_suki,20130919,7518462,87e25ff9e28ee096f5fb2fd0c2966f8b97f96bec,
 bhop_bmg2_teleasd,38404620,4588917,fcc6a36c3d5b3530dbb8540fdabafefcf9af4566,
 bhop_bmg2_trickster,10782448,3794327,e594aea2906620d03667f0a6a9431b5f8fa3799c,
-# ==== not a CS:S map? bhop_bmg2_aux.bsp
-# ==== not a CS:S map? bhop_bmg2_ice_slide_b01.bsp (panzer's map)
-# ==== skipping CS:GO map bhop_bmg2_sayt.bsp
+#bhop_bmg2_aux,0,0,0,not a CS:S map? (momentum mod prob)
+#bhop_bmg2_ice_slide_b01,0,0,0,not a CS:S map? (momentum mod prob) (panzer's map)
+#bhop_bmg2_sayt,0,0,0,skipping CS:GO map
