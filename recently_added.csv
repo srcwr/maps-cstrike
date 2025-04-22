@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+#cs_house,443848,89227,fbce6640c24f9845867c2e08315a43b670aa5fe8,589939_1425848_cs_house_a5b6b/cs_house,automated upload,2025-04-22 15:28
 mg_mario_galaxy_v2_fix,26075883,26156656,b170876a745e1499542e04add0db4f88d62a7373,589882_1425639_mg_mario_galaxy_v2_fix,automated upload,2025-04-22 05:09
 emo_map,234816,20500,e292a26e0105484c974d5474a65e41cebf1eacf5,589854_1425583_emo_map,automated upload,2025-04-22 04:33
 mg_colors_course_v2,2126115,2128453,b7c3e9cb504591b456f18f021170bb528350ca07,589836_1425509_mg_colors_course_v2,automated upload,2025-04-22 00:57
@@ -541,7 +542,6 @@ jb_kwejsi_b,61911308,61986300,4aece0f2e750a5fa43fcf4a0834a3bfc0d980893,558553_13
 kz_orangepipe,4433132,2372461,01c7379f6e498e1b5bbcd508f74960c95b39e1d6,,from malala,2024-11-25 18:32
 kz_aggressive_strafe_fix,60277229,59967511,e2918efe8cc2f456cb95d58ddd4effd4b52cc9cb,,from malala - converted the singlehops to func doors for more consistency/less glitchiness,2024-11-25 18:26
 de_mirage_tsu_v2,11263716,3212423,c0fcb52f00209f385aa0f9b579496de1031c96c5,558119_1329550_de_mirage_tsu_v2_74c5f,automated upload,2024-11-25 00:50
-#cs_house,2907680,1096200,3b9b81164fbae2c0e97a109cbbcb1cd11b8d6095,558013_1329195_cs_house/cs_house,automated upload,2024-11-24 17:09
 cs_house_mp,2908516,1096129,475907afd62cd10437d49b3293f64c39c4a427e0,558013_1329195_cs_house/cs_house,automated upload,2024-11-24 17:09
 bhop_pohn_not_idiot,72118158,17653884,89b9c416619f2252047048862ce87749efca2985,553705_1328819_bhop_pohn_not_idiot_1acd8,automated upload,2024-11-24 01:51
 de_forget_gop,24077178,6403012,be8c24afc867776da3812adc6dac1b9d6c66abeb,557668_1328175_de_forget_gop/de_forget_gop,automated upload,2024-11-23 07:25
