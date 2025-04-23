@@ -363,6 +363,8 @@ create_thing("maps_ksfthings", "main.fastdl.me/maps_ksfthings.html", False, 'mir
 if not os.path.isfile("../secretwebhook") or (len(sys.argv) > 1 and sys.argv[1] == "0"):
     sys.exit(0)
 
+subprocess.run("temp_purge_thing.bat", shell=True)
+
 # what the fuck wrangler why won't my functions work otherwise
 cwd = os.getcwd()
 os.chdir("processed/check.fastdl.me")

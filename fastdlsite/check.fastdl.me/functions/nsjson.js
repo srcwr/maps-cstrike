@@ -1,9 +1,14 @@
 // SPDX-License-Identifier: WTFPL
 
 export async function onRequestPost(ctx) {
-    const frick = new URL(ctx.request.url);
-    frick.pathname = "_thing.json";
-    const everything = await (await ctx.env.ASSETS.fetch(frick)).json();
+	let everything;
+	try {
+		const resp = await fetch("https://venus.fastdl.me/mapnames_and_filesizes.json");
+		if (!resp.ok) return new Response(`failed to fetch ${resp.url}`, {status: 500});
+		everything = await resp.json();
+	} catch (e) {
+		return new Response(`failed to read fetch mapnames_and_filesizes.json as json...`, {status: 500});
+	}
 
     const json = await ctx.request.json();
     var output = "";
