@@ -413,7 +413,7 @@ ttt_barons_v2_b3,3115268,1058198,b48ad2c59011e8b3ee5610b7b9e887b7455901a8,,gmod 
 ttt_bb_teenroom_v1,29914691,29777340,bb3e9ed45aa1b8f6b28f59a78778015f1e78b161,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
 ttt_building,1328300,319616,ed33a085bf2aa4e56993bccbbbd1066cb9a491aa,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
 ttt_camel_v2,16351158,1890989,c6f2d279ed611d39a04609314549dd02c3212dac,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
-ttt_canyon_a2,8177688,4268384,d9853202610a33beb2a9bfb6715fe5f3119946d9,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
+ttt_canyon_a2,8177688,4268384,d9853202610a33beb2a9bfb6715fe5f3119946d9,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
 ttt_cluedo_b5,7049160,2534006,a05e1f4663c3d500af23eff399a89cd23d53438b,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
 ttt_district_a5,15128100,5845521,329b928122b294b85c1d21ffb5f1bde1a6995dd9,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
 ttt_dreamcruise_v1,7229908,2134220,19860fcc3a09ecf170247032e77b8cea6ff584b9,,gmod ttt maps that jblock.africa sent,2025-01-08 05:10
@@ -540,11 +540,11 @@ fy_buzzkill_poolday_v2,21247152,5457958,71be308f179a47d5de99f0348f69db2f66662575
 zm_hind_v,28084609,15395715,af5369b1b72f55515f0b7faaeb83727bdf598fed,400815_1183705_zm_hind_v_aff98,automatic gamebanana,2024-12-04 16:59
 zm_hind_v_bc18,28109211,15414590,2c89ab68f2f5b273335a792a8e0a424465edf523,400815_1183706_zm_hind_v_bc18_cbce9,automatic gamebanana,2024-12-04 16:59
 zm_box_v5_5,93690843,63300724,6fe00544d8a84d3d52945058bdb9e17cc304ec95,404519_1305974_zm_box_v5_5,automatic gamebanana,2024-12-04 16:59
-dev-1v1,540992,114252,5d37ca65f8b71f4c5c65e8698fac8b7946633809,410084_1080118_dev-1vs1_ffbbc/dev-1vs1,automatic gamebanana,2024-12-04 16:59,automatic gamebanana,2024-12-04 16:59
+dev-1v1,540992,114252,5d37ca65f8b71f4c5c65e8698fac8b7946633809,410084_1080118_dev-1vs1_ffbbc/dev-1vs1,automatic gamebanana,2024-12-04 16:59
 zm_nide_france_v,26916042,10575897,c321468436fd08c3aae270a73f982b8aed781f47,428737_1183412_zm_nide_france_v_42f0c,automatic gamebanana,2024-12-04 16:59
 zm_france_Halloween_v,41419572,19625667,fa249924150c47ead9c209e00e12776427ca1650,428737_1183413_zm_france_halloween_v,automatic gamebanana,2024-12-04 16:59
 zm_france_original,39740774,21683139,56fb6af87837a34e95d42aedcf2befc98f34e625,428737_1183415_zm_france_original,automatic gamebanana,2024-12-04 16:59
-zm_france_bc18,39830098,21684520,1d9a07e8ac58908140035c1fa274e98b0a91bcf6,428737_1183417_zm_france_bc18_3f415,automatic gamebanana,2024-12-04 16:59,automatic gamebanana,2024-12-04 16:59
+zm_france_bc18,39830098,21684520,1d9a07e8ac58908140035c1fa274e98b0a91bcf6,428737_1183417_zm_france_bc18_3f415,automatic gamebanana,2024-12-04 16:59
 tr_shootingrange_csco,43682852,22597037,5de2a427e521111df6ab64a0eabc097fd5e60fc8,442685_1135085_tr_shootingrange_csco,automatic gamebanana,2024-12-04 16:59
 zm_red_alert_95_bc18,9185798,6879924,1fa33297856e3e9dd1eb6e0352077dc8d9901f98,448252_1183637_zm_red_alert_95_bc18,automatic gamebanana,2024-12-04 16:59
 zm_red_alert_95_v,9178546,6876519,9637a03a2e3e56c4d4d429b0e989e610d4bc4fcb,448252_1183638_zm_red_alert_95_v,automatic gamebanana,2024-12-04 16:59
@@ -1489,7 +1489,7 @@ surf_spin_0_0,51663342,18456931,f46150c1eb0f267c07411cfd22ca5cb898a7b1cc,,sent v
 #gg_aztec,9969709,3513754,99922d967c8310d8129ef994ef60f82e19cc0948,489188_1118502_gg_aztec_ae2b0,automated upload,2024-01-08 17:31
 jb_troubles_final7,58636730,58799790,9b55efd552c020e4254afa8fd18d06a59d142402,480473_1118198_jb_troubles_final7,automated upload,2024-01-08 04:17
 jb_troubles_final6,58863413,59029177,3aa3ff95d7b4eff41912098800f9dfbd1a2e6e60,480473_1118158_jb_troubles_final6_cdb32,automated upload,2024-01-08 03:10
-trikz_colors_noblack3,30975600,9121922,0d691b9c497a7d0940754804888de0eb2fdd0324,bits chicago beautifully intricate trikz server,sent by awesomerly,2024-01-08 03:30,sent by awesomerly,2024-01-08 03:30
+trikz_colors_noblack3,30975600,9121922,0d691b9c497a7d0940754804888de0eb2fdd0324,bits chicago beautifully intricate trikz server,sent by awesomerly,2024-01-08 03:30
 trikz_lazy,19881056,5572876,161d15e2a1ab852a8ce0c22b4b552393c3309b78,bits chicago beautifully intricate trikz server,sent by awesomerly,2024-01-08 03:30
 trikz_stolen_final,117588570,49810685,f248223a3111a7e53f6b9509fedae8c2af7b6175,bits chicago beautifully intricate trikz server,sent by awesomerly,2024-01-08 03:30
 trikz_suicidal,93876859,30731159,bf2c609c3573af09c34473b3fa80cbd83d3e7b75,bits chicago beautifully intricate trikz server,sent by awesomerly,2024-01-08 03:30
