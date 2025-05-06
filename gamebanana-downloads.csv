@@ -42265,7 +42265,7 @@ modid,downloadid,filename,downloaded,processed
 407039,882795,ze_emerald_b4.rar,1,1
 407085,877704,de_kabul2_2022.zip,1,1
 407085,1069626,de_kabul2_2022.rar,1,1
-407085,1417908,de_kabul2_2022_50424.rar,1,0
+407085,1417908,de_kabul2_2022_50424.rar,1,1
 407101,877742,zm_box_halloween_v1.zip,1,1
 407192,892498,surf_prismatic_ksf_f7022.zip,1,1
 407194,878027,surf_assail.zip,1,1
@@ -42554,7 +42554,7 @@ modid,downloadid,filename,downloaded,processed
 431470,947236,rv_southbank_oldtime.zip,1,1
 431506,947319,zm_crossroads.7z,1,1
 431766,948000,zm_unpanic.7z,1,1
-431766,1415151,zm_unpanic_c9dff.7z,1,0
+431766,1415151,zm_unpanic_c9dff.7z,1,1
 431911,948394,ps1_texture.rar,1,1
 431962,948496,bhop_agentti_oranssi_v17.zip,1,1
 431962,948519,bhop_agentti_oranssi_v17_2b92d.zip,1,1
@@ -42801,7 +42801,7 @@ modid,downloadid,filename,downloaded,processed
 449504,1124922,post_update.zip,1,1
 449504,1125489,postupdate.zip,1,1
 449504,1254435,postupdate2.zip,1,1
-449504,1423471,undersidev2.zip,1,0
+449504,1423471,undersidev2.zip,1,1
 449608,1000262,mg_sky_climb.7z,1,1
 449957,1001321,surf_lt_omnific_a18.zip,1,1
 450335,1002634,trikz_aarbilegend_13575.rar,1,1
@@ -43797,7 +43797,7 @@ modid,downloadid,filename,downloaded,processed
 517398,1207354,de_shturm11_bot_3fac7.rar,1,1
 517398,1207355,de_shturm_11_51dd4.rar,1,1
 517420,1205885,dm_hangar_bbd33.zip,1,1
-517420,1413523,dm_hangar.rar,1,0
+517420,1413523,dm_hangar.rar,1,1
 517988,1207531,ze_esther_cc_zi2.7z,1,1
 517988,1235521,ze_esther_cc_zi2_vmf.7z,1,1
 518465,1209083,dm_questions_10_e4702.rar,1,1
@@ -44097,7 +44097,7 @@ modid,downloadid,filename,downloaded,processed
 544557,1287623,kz_halicarnassusbsp.zip,1,1
 544594,1287740,ze_surf_charge_v2_f2.rar,1,1
 544594,1314173,ze_surf_charge_v3_f2_1.rar,1,1
-544594,1430067,ze_surf_charge_ez_fck_v0.rar,1,0
+544594,1430067,ze_surf_charge_ez_fck_v0.rar,1,1
 545149,1289336,de_cbble_2024_viktor.rar,1,1
 545237,1289569,surf_1998_beta2a_xc.rar,1,1
 545237,1403080,surf_1998.zip,1,1
@@ -44484,7 +44484,7 @@ modid,downloadid,filename,downloaded,processed
 579568,1394558,trikz_uproar2.rar,1,1
 579621,1394696,cs_dusty_ce277.zip,1,1
 579621,1408386,cs_dusty_c5486.zip,1,1
-579621,1414676,cs_dusty_17e2c.zip,1,0
+579621,1414676,cs_dusty_17e2c.zip,1,1
 579679,1394884,gg_mk_minicraft.rar,1,1
 579681,1394888,gg_mk_sinnlos1_1_wood.rar,1,1
 579683,1394890,de_mk_aztec_temple.rar,1,1
@@ -44593,7 +44593,7 @@ modid,downloadid,filename,downloaded,processed
 588524,1421416,readme_398ef.rar,1,1
 588524,1421419,de_simphony.rar,1,1
 588524,1425290,de_simphony_v2.rar,1,1
-588524,1430192,de_simphony_v2_fix.rar,1,0
+588524,1430192,de_simphony_v2_fix.rar,1,1
 588673,1421949,crutonpack.rar,1,1
 588720,1422089,jb_vipinthemix_rv8.zip,1,1
 588722,1422118,cs_docks_2025.7z,1,1

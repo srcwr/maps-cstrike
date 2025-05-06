@@ -1,4 +1,10 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_simphony_v2_fix,16346068,3196794,efd814689b6cc17a42b19a9c870cc0985f1fb23c,588524_1430192_de_simphony_v2_fix.rar/de_simphony_v2_fix/de_simphony_v2_fix.bsp,automated upload,2025-05-06 08:48
+cs_dusty,44085732,19948594,702259fd34b15a685deba159a9c5101e817f34c0,579621_1414676_cs_dusty_17e2c.zip/cs_dusty.bsp,automated upload,2025-05-06 08:48
+ze_surf_charge_ez_fck_v0,103557964,52677935,c6691833105c1511803f31354cf8ffe8520c19d7,544594_1430067_ze_surf_charge_ez_fck_v0.rar/ze_surf_charge_ez_fck_v0.bsp,automated upload,2025-05-06 08:48
+#dm_hangar,12844868,5816703,ecf5958d26ed7d6b37db52eb6ddd945f9a08be1c,517420_1413523_dm_hangar.rar/dm_hangar/maps/dm_hangar.bsp,automated upload,2025-05-06 08:48
+cs_underside,19286117,19362442,bb3515e11e567c2aa6195ebea92256fac0e5a13e,449504_1423471_undersidev2.zip/underside/Underside/postupdate3/cs_underside.bsp,automated upload,2025-05-06 08:48
+de_kabul2_2022,7380208,2736090,7f590221d5f451b1538513882252b90b29a1af1a,407085_1417908_de_kabul2_2022_50424.rar/de_kabul2_2022.bsp,automated upload,2025-05-06 08:48
 surf_shy,67193564,22922862,3e30ea3bb212f6479fd9a265e91ae775b98632e3,,"ksf maps from <a href=""https://github.com/OuiSURF/Surf_Maps"">OuiSURF/Surf_Maps</a>",2025-05-06 06:09
 surf_irynxmoxx_bonus1,15872163,5476842,9c6b462f78e5ece05971ec9e10c25a12bf35dba5,,,2025-05-06 02:44
 de_eagleeye,3738524,1393331,98ddc8328d943d964a6183838ad17f559eb97e7e,592670_1433895_de_eagleeye_25ba6,automated upload,2025-05-05 15:31
@@ -112,7 +118,6 @@ bhop_bhop_bhop,89181784,36618477,83466f984a007f3286e4a4c7bdd710f452442e6f,584632
 de_ventilation_systems_for_bots,3143908,586604,c97ca56185ffbb42e349e99b0ad66848cd2e927c,562226_1404117_de_ventilation_systems_for_bots_ea7f5,automated upload,2025-03-29 10:18
 ka_soccer_island_v1,37657812,12393603,6303dd65ffe7f2e45bbf3b6dce919fdd48d20222,501728_1364679_ka_soccer_island_v1,automated upload,2025-03-29 09:40
 ka_soccer_simpsons_v2,18443964,6341693,09026433d51d1cbf8cf5c437e7b160175f29888e,502629_1364675_ka_soccer_simpsons_v2,automated upload,2025-03-29 09:40
-cs_dusty,31193484,9839924,e21e573bf32196b2f1757a5936c33650f0320bd3,579621_1408386_cs_dusty_c5486,automated upload,2025-03-29 09:36
 de_ventilation_systems,2980716,567207,82ccbb6e226620ea35a720e4d4a5d8ad193427cd,562226_1404116_de_ventilation_systems_76752,automated upload,2025-03-29 09:36
 ka_soccer_ploschadka_b2,188753080,92583059,eaa7389e805e5656cc8155d2879d51aed9e0e42a,579907_1409651_ka_soccer_ploschadka_b2,automated upload,2025-03-29 09:36
 surf_weirdcore,9154762,9114771,cafa3dba12813e68756db951cecdd04bdd635ff7,546883_1368817_surf_weirdcore,automated upload,2025-03-29 09:36
@@ -548,7 +553,6 @@ zm_france_bc18,39830098,21684520,1d9a07e8ac58908140035c1fa274e98b0a91bcf6,428737
 tr_shootingrange_csco,43682852,22597037,5de2a427e521111df6ab64a0eabc097fd5e60fc8,442685_1135085_tr_shootingrange_csco,automatic gamebanana,2024-12-04 16:59
 zm_red_alert_95_bc18,9185798,6879924,1fa33297856e3e9dd1eb6e0352077dc8d9901f98,448252_1183637_zm_red_alert_95_bc18,automatic gamebanana,2024-12-04 16:59
 zm_red_alert_95_v,9178546,6876519,9637a03a2e3e56c4d4d429b0e989e610d4bc4fcb,448252_1183638_zm_red_alert_95_v,automatic gamebanana,2024-12-04 16:59
-cs_underside,3265242,3061544,828e286a628f51fb6a27f8a588e9ca10725f9b73,449504_1254435_postupdate2,automatic gamebanana,2024-12-04 16:59
 de_gossamer,556266472,285379216,d686f9bf972ccb89ab38da8fec79ca85e9e72f6d,453898_1212661_de_gossamer_65963/maps,automatic gamebanana,2024-12-04 16:59
 de_downbad,11363920,3169235,19c58fa4f25204bfb824ab2ff3df3c55f7fcb77d,509974_1235608_de_downbad1_3_rev1/de_downbad/cstrike/maps,automated upload,2024-12-04 16:45
 de_jeffreybricks,1255076,401198,0765d6f3e5cb613b7d4ddfac8c4e05e64e9a8698,469261_1058587_de_jeffreybricks_56c81,automated upload,2024-12-04 16:45
@@ -1095,7 +1099,6 @@ xc_minecraft4_css,55931139,9525796,4987080f332881fd79c7f2aadccb678d9e3cecbe,,sni
 xc_psykeeys_v2_fix,11570927,2568906,8f3fa75869cd0547a5dddfc453f696ce8655c59c,,sniper scrape,2024-06-01 19:09
 xc_robinson_v2,43246402,16205688,c2ef75f977c5476007d113d0f106ae5032550aff,,sniper scrape,2024-06-01 19:09
 xc_unity_lite,77583778,31645138,2a83a539224f0656c7ee472cfb8616d6be2e4277,,sniper scrape,2024-06-01 19:09
-#dm_hangar,13225788,5606251,f8afbe802099fa79ffec15f7d2e65b57fac8bb23,517420_1205885_dm_hangar_bbd33,automated upload,2024-06-01 12:38
 surf_ben10,143401444,143219663,f20a089157b45acbc062409b28ad562a1241a29f,,"ksf maps from <a href=""https://github.com/OuiSURF/Surf_Maps"">OuiSURF/Surf_Maps</a>",2024-05-31 03:01
 surf_race,79392804,79496673,c98924b1a7b6be855f0aa87ec6f19e2714421105,,"ksf maps from <a href=""https://github.com/OuiSURF/Surf_Maps"">OuiSURF/Surf_Maps</a>",2024-05-31 03:01
 ze_arid_lands_of_king_theba_b1_0,147332956,55364192,a273d70ce2df0e6ceae6d9de180df22dd7e78639,,sniper scrape,2024-05-31 02:48
@@ -1468,7 +1471,6 @@ aim_krest,1322780,280547,5a3ead6648c7f48f41d3ea42d35966318a871b50,491404_1125861
 de_fastline,11948745,5562971,5b9e44b5cc0b2815886a1d10ee6c8a9b8ea15a97,491341_1125811_fastline_cb1f1,automated upload,2024-01-21 12:52
 de_westwood_sp_st,64723777,35725713,b5f099927b6fe1ef43fbf1682e71e3a997211b66,491371_1125781_de_westwood_sp_st/de_westwood_sp_st,automated upload,2024-01-21 12:06
 hns_towers_v1,6200567,6216103,3847d0b5d60472ef5644f1eab4915c6b66437eb0,491296_1125544_hns_towers_v1,automated upload,2024-01-21 02:50
-cs_underside,926449,677942,ea5c9d693174253da4a51762fed8c96c9e5e3bcc,449504_1125489_postupdate,automated upload,2024-01-21 00:32
 hns_rains,2523389,2523685,4c317e16f388f24e9acbc90ab2957f5893ae8c36,491094_1124914_hns_rains,automated upload,2024-01-20 00:23
 kz_bhop_solitude,172180609,172720514,9cde8773f999b709a62549ab957fa4b11ddb8031,490394_1124394_kz_bhop_solitude_ba310,automated upload,2024-01-19 02:43
 bhop_fly_pizdec,2183624,2175697,d8873687a2de3078d5df4604e751c90d5f60da75,490854_1124145_bhop_fly_pizdec,automated upload,2024-01-18 15:10
@@ -1829,7 +1831,6 @@ kz_dirtblock,53155415,53340083,e9b308539ac8e21c34ea6e7da786dabc11118e0e,473271_1
 kz_extreme,85489418,85495816,cac438ffdbaef470d66167a13e3c9c23184ff465,473271_1069908_kz_2406e,automated upload,2023-10-11 01:17
 kz_sequoia,77094422,77044449,8ded64c84ff786f94c69c7b27c9b125c6fed3ce1,473271_1069908_kz_2406e,automated upload,2023-10-11 01:17
 surf_greek_ksf,17646622,17644158,d0073c6102e68042bf597376a8fb8d500b6b4ea8,473202_1069656_surf_greek_ksf_gamebanana_,automated upload,2023-10-10 13:17
-de_kabul2_2022,7375364,2739860,dbf259bd48611553e849aecd5c215a15920c4fd8,407085_1069626_de_kabul2_2022,automated upload,2023-10-10 11:40
 de_dust2_csgo_new_v2,308174828,143062480,916e7f1c8115178c44ebbecbaf0ba84c418f3b8b,465843_1068574_de_dust2_csgo_new_v2,automated upload,2023-10-08 13:54
 de_arabic_lost,9496064,2807949,57b48cb0b88adf856e54ab565871895785f86fa8,405414_1068490_de_arabic_lost,updated,2023-10-08 09:13
 de_marquis_csgo,293436244,141145015,d1c3e323c8f9eafdf1310eede4dd4a0bbbfdb1ef,472702_1068149_de_marquis_csgo/de_marquis_csgo/maps,automated upload,2023-10-07 21:43
