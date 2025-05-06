@@ -326,7 +326,7 @@ for row in cur.execute("SELECT mapname, filesize FROM maps_unfiltered"):
     if not row[0] in _things:
         _things[row[0]] = []
     _things[row[0]].append(int(row[1]))
-with open("processed/check.fastdl.me/_thing.json", "w") as f:
+with open("processed/mapnames_and_filesizes.json", "w") as f:
     json.dump(_things, f)
 
 try:

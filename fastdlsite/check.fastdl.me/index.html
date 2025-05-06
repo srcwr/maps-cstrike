@@ -180,8 +180,8 @@ https://github.com/Daninet/hash-wasm
 		script = document.createElement("script");
 		script.src = "https://check.fastdl.me/FileSaver.min.js";
 		document.documentElement.firstChild.appendChild(script);
-		window._thing = {};
-		fetch("_thing.json").then((response) => response.json()).then((obj) => window._thing = obj);
+		window.mapnames_and_filesizes = {};
+		fetch("https://venus.fastdl.me/mapnames_and_filesizes.json").then((response) => response.json()).then((obj) => window.mapnames_and_filesizes = obj);
 	}
 	const selectMultipleFilesButton = document.getElementById("selectMultipleFilesButton");
 	const selectMultipleFilesInput = document.getElementById("selectMultipleFilesInput");
@@ -193,7 +193,7 @@ https://github.com/Daninet/hash-wasm
 		let unique = [];
 		for (const file of selectMultipleFilesInput.files) {
 			const filtered_name = file.name.slice(0, -4).toLowerCase().replace(".", "_").replace(" ", "_");
-			if (!_thing[filtered_name] || !_thing[filtered_name].includes(file.size)) {
+			if (!mapnames_and_filesizes[filtered_name] || !mapnames_and_filesizes[filtered_name].includes(file.size)) {
 				unique.push(file);
 			}
 		}
