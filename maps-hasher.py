@@ -21,7 +21,7 @@ def normal_name(m):
     return m.strip().replace('.', '_').lower()
 
 def main(csvname, automatic, mapsfolder, timestampFixer, skipExistingHash, canonClobberCheck):
-    if not automatic and os.path.exists(csvname) and os.path.getsize(csvname) > 50:
+    if not automatic and os.path.exists(csvname) and os.path.getsize(csvname) > 75:
         raise Exception("DONT OVERWRITE THAT CSV!")
 
     existing_canon = {}
