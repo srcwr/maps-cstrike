@@ -1,2 +1,0 @@
-minify-html == 0.15.0 # needed by process
-requests

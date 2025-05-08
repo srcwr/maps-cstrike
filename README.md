@@ -13,8 +13,6 @@ Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WH
 The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcwr/gamebanana-things)) is not the most robust. If the connection fails during a download then that entire queue will be thrown away, and to fix you have to delete all the recently downloaded archives. That's not too hard to fix but TODO. Also the gamebanana API endpoint is old, because documentation on endpoints suck, so we miss new archives when: it's off the first page or two, which happens when (1) an item is unprivated (2) an item is given a new file but not a new version. Those are caught with random manual multi-page rechecks for new files. One day these will surely:tm: be fixed.
 
 ## WHAT IS WHAT
-- `_thing/`
-	- Old scripts for quickly checking if someone's `maps` folder has anything unique to upload
 - `fastdlsite/`
 	- [`check.fastdl.me`](https://check.fastdl.me/)
 		- Map submission form and commands to check your `maps` folder for unique things to upload
@@ -23,20 +21,12 @@ The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcw
 	- `fastdlpy/`
 		- `99-cloudflared.conf`
 			- some sysctls I put on to silence some cloudflared warnings
-		- `fastdlpy.service`
-			- a systemd service file for fastdlpy
 		- `main.py`
 			- The meat of the name-to-hash redirections for [main.fastdl.me](https://main.fastdl.me/)
-		- `main2.py`
-			- Currently unused but basically the same thing but instead for a server that is hosting the .bsp.bz2 itself
 		- `requirements.txt`
 			- pip requirements yada yada
-		- `setup-venv.sh`
-			- quicker venv setup so I don't have to remember every time
 	- `fastdlpy_nocf/`
 		- non-cloudflare version of fastdlpy. Could probably just be merged with fastdlpy and use environment-variables to configure it instead.
-	- `log-counter/`
-		- Unused nginx log 'parser' to get the count of each map downloaded in a day
 	- [`main.fastdl.me`](https://main.fastdl.me/)
 		- Mainly placeholder files for keeping the directory structure.
 	- [`mainr2.fastdl.me`](https://mainr2.fastdl.me/)
@@ -46,10 +36,10 @@ The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcw
 	- `nginx_nocf/`
 		- non-cloudflare version of the nginx configs. Old and won't be used.
 	- `venus.fastdl.me/`
-		- HTML files for the subdomain that serves [RawInput2BunnyhopAPE](https://github.com/rtldg/RawInput2BunnyhopAPE) `.bsp` checksums.
+		- HTML files for the subdomain that serves some static files.
 	- `compose.yml`
 		- Docker compose file for spinning up a fastdl node.
-	- `compose.yml`
+	- `compose_nocf.yml`
 		- Docker compose file for spinning up a non-cloudflare fastdl node.
 	- `embedded-privacy-policy.html`
 		- Basic minimal privacy policy that's appended to pages.
@@ -73,12 +63,8 @@ The gamebanana scraper (gamebanana-automatic.py & [this](https://github.com/srcw
 	- The step to parse all the CSV files to produce the website files & sqlite db to put into `processed/`
 - `recently_added.csv`
 	- List of recently added map files that is put at the top of map folder HTML index files
-- `shit.txt`
-	- Where `map-hasher.py` warnings and errors are dumped for later reference
 - `todo.txt`
 	- A poorly named file...
-- `transfer.sh`
-	- Script to transfer `processed/` to a VPS
 
 
 Sister repo at https://github.com/srcwr/maps-cstrike-more
