@@ -1,5 +1,8 @@
 _thing.json
 
+target
+flamegraph.svg
+
 processed/*
 
 *.conf
