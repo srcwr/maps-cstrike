@@ -1,0 +1,8 @@
+[workspace]
+resolver = "3"
+members = ["mainframe"]
+default-members = ["mainframe"]
+
+[profile.release]
+#lto = true
+debug = true
