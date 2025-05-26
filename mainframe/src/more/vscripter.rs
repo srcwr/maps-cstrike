@@ -17,7 +17,7 @@ struct Row {
 pub(crate) fn in_entities(entities: &[u8]) -> bool {
 	// bytes::Regex for this because this shit is stupid as fuck and Entities Lumps use random ANSI code pages...
 	static RE_ENTITIES: LazyLock<regex::bytes::Regex> = LazyLock::new(|| {
-		regex::bytes::RegexBuilder::new("(script |script_execute|RunScriptCode|RunScriptFile|CallScriptFunction)")
+		regex::bytes::RegexBuilder::new("(script |script_execute|RunScriptCode|RunScriptFile|CallScriptFunction|\"vscripts\")")
 			.case_insensitive(true)
 			.build()
 			.unwrap()
