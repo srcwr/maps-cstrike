@@ -55,5 +55,5 @@ pub(super) struct AFiles1 {
 
 #[derive(Serialize, Deserialize)]
 pub(super) struct ApiV11Mod {
-	pub _aFiles: Vec<AFiles1>,
+	pub _aFiles: Option<Vec<AFiles1>>,
 }

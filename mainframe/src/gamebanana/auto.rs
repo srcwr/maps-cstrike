@@ -137,7 +137,7 @@ async fn fetch_mod(
 
 	let mut inserted_new_row = false;
 
-	{
+	if let Some(files) = files {
 		let downloads = Arc::get_mut(downloads).unwrap();
 		for file in files {
 			if let btree_map::Entry::Vacant(vacant_entry) = downloads.entry((modid, file._idRow)) {
