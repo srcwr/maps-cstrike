@@ -30,7 +30,7 @@ rand = "0.9.1"
 rayon = "1.10.0"
 regex = "1.11.1"
 reqwest = { version = "0.12", default-features = false, features = ["brotli", "gzip", "http2", "json", "multipart", "rustls-tls", "stream"] }
-rusqlite = { version = "0.35.0", features = ["bundled"] }
+rusqlite = { version = "0.36.0", features = ["bundled"] }
 rusty-s3 = "0.7"
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["float_roundtrip"] }
@@ -39,6 +39,6 @@ sha1 = "0.10.6"
 thiserror = "2"
 thousands = "0.2.0"
 tokio = { version = "1", features = ["full"] }
-tokio-rusqlite = { git = "https://github.com/srcwr/tokio-rusqlite.git", rev = "2f502097c1929b65988a1fd3ffdff49469849862", features = ["bundled"] } # using a fork to bump the rusqlite version from 0.32.0 to 0.35.0
+tokio-rusqlite = { git = "https://github.com/srcwr/tokio-rusqlite.git", rev = "4b93d60536510f857fb0d0eac625f35994bbfab8", features = ["bundled"] } # using a fork to bump the rusqlite version from 0.32.0 to 0.36.0
 vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "fe421c3e6601caec9c774074d89fa9ab78e3b91c", default-features = false } # a fork to improve some things for us
 zip = { version = "4.0.0", default-features = false, features = ["lzma"] }
