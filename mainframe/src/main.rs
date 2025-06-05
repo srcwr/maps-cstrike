@@ -126,11 +126,15 @@ pub struct GlobalSettings {
 	/// gamebanana category ids
 	pub gb_categories: Vec<GamebananaID>,
 	/// Max of 50.
+	pub gb_maxperpage: NonZeroUsize,
+	///
 	pub gb_perpage: NonZeroUsize,
 	///
 	pub gb_numtofetch: NonZeroUsize,
 	///
 	pub gb_itemoffset: usize,
+	/// Added because caching is ruining my life...
+	pub gb_walkto: usize,
 
 	///
 	pub gb_wait_regular: f32,

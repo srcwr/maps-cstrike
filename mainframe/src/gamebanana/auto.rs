@@ -3,7 +3,7 @@
 
 use std::{
 	collections::{BTreeMap, HashMap, btree_map},
-	sync::Arc,
+	sync::{Arc, LazyLock, Mutex},
 	time::Duration,
 };
 
@@ -23,6 +23,19 @@ enum LoopControl {
 async fn get_index_records() -> Vec<ARecords1> {
 	let start_page = SETTINGS.gb_itemoffset / SETTINGS.gb_perpage + 1;
 	let last_page = SETTINGS.gb_numtofetch.get() / SETTINGS.gb_perpage + start_page;
+	let mut perpage = SETTINGS.gb_perpage.get();
+
+	if SETTINGS.gb_itemoffset == 0 {
+		// this stupid little bitch is used to walk up from 5 to 50 items per index. THis is because of annoying gamebanana caching...
+		static WALK: LazyLock<Mutex<usize>> = LazyLock::new(|| Mutex::new(SETTINGS.gb_perpage.get()));
+		let mut x = WALK.lock().unwrap();
+		perpage = *x;
+		if *x == SETTINGS.gb_maxperpage.get() {
+			*x = SETTINGS.gb_perpage.get();
+		} else {
+			*x += 1;
+		}
+	}
 
 	let mut records = vec![];
 	for page in start_page..last_page {
@@ -30,11 +43,9 @@ async fn get_index_records() -> Vec<ARecords1> {
 			tokio::time::sleep(Duration::from_secs(1)).await;
 
 			let url = format!(
-				"https://gamebanana.com/apiv11/Mod/Index?_nPerpage={}&_sSort=Generic_LatestModified&_aFilters%5BGeneric_Category%5D={}&_nPage={}&cachebuster={}",
-				SETTINGS.gb_perpage,
-				category,
-				page,
-				rand::random::<u64>()
+				"https://gamebanana.com/apiv11/Mod/Index?_nPerpage={perpage}&_sSort=Generic_LatestModified&_aFilters%5BGeneric_Category%5D={category}&cachebuster={}{}",
+				rand::random::<u64>(),
+				if page == 1 { String::new() } else { format!("&_nPage={page}") },
 			);
 			//println!("fetching {url}");
 			let resp = match CLIENT.get(&url).send().await {
