@@ -237,11 +237,12 @@ async fn run_inner(
 			stem.remove(0);
 		}
 
-		let parent = entry
-			.strip_prefix(mapsfolder.parent().unwrap())?
-			.to_str()
-			.unwrap()
-			.replace('\\', "/");
+		let parent = if mode == Mode::Manual {
+			entry.parent().unwrap().strip_prefix(&mapsfolder)?
+		} else {
+			entry.strip_prefix(mapsfolder.parent().unwrap())?
+		};
+		let parent = parent.to_str().unwrap().replace('\\', "/");
 
 		if mode == Mode::Automatic {
 			let normalized = normalize_mapname(&stem);
