@@ -221,10 +221,10 @@ async fn run_inner(
 						new_modified
 					);
 				}
+			}
 
-				if skip_existing_hash {
-					continue;
-				}
+			if skip_existing_hash {
+				continue;
 			}
 		}
 

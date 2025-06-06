@@ -51,8 +51,11 @@ enum Commands {
 	},
 	// maps-cstrike
 	Mapshasher {
+		#[arg(short, long)]
 		timestamp_fixer: bool,
+		#[arg(short, long)]
 		skip_existing_hash: bool,
+		#[arg(short, long)]
 		canon_clobber_check: bool,
 	},
 	Autogb,
@@ -67,7 +70,6 @@ enum Commands {
 	Dumper,
 	LumpChecksummer,
 	OriginalFilename,
-	#[clap(subcommand)]
 	Timestamper,
 	Venus,
 	Vscripter,
