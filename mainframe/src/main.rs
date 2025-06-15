@@ -49,6 +49,7 @@ enum Commands {
 	SemiManual {
 		timestamp: i64,
 	},
+	ProcessAndTransfer,
 	// maps-cstrike
 	Mapshasher {
 		#[arg(short, long)]
@@ -226,6 +227,15 @@ async fn async_main() -> anyhow::Result<()> {
 		Commands::SemiManual { timestamp } => {
 			let timestamp = sanity_check_timestamp(timestamp)?;
 			base::semimanual::run(timestamp, None, None).await?;
+		}
+		Commands::ProcessAndTransfer => {
+			base::process::run().await?;
+			let _ = base::nodes::transfer()
+				.join_all()
+				.await
+				.into_iter()
+				.collect::<anyhow::Result<Vec<_>>>()?;
+			cloudflare::purge_cache(None).await?;
 		}
 		// maps-cstrike
 		Commands::Mapshasher {
