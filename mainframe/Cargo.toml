@@ -8,7 +8,7 @@ repository = "https://github.com/srcwr/maps-cstrike/tree/main/mainframe"
 
 [dependencies]
 anyhow = { version = "1", features = ["backtrace"] }
-bzip2 = { version = "0.5", default-features = false, features = ["libbz2-rs-sys"] }
+bzip2 = { version = "0.6" }
 clap = { version = "4.5", features = ["derive"] }
 compact_str = {version = "0.9.0", features = ["serde"] }
 const-hex = "1.14.0"
@@ -41,4 +41,4 @@ thousands = "0.2.0"
 tokio = { version = "1", features = ["full"] }
 tokio-rusqlite = { git = "https://github.com/srcwr/tokio-rusqlite.git", rev = "4b93d60536510f857fb0d0eac625f35994bbfab8", features = ["bundled"] } # using a fork to bump the rusqlite version from 0.32.0 to 0.36.0
 vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "fe421c3e6601caec9c774074d89fa9ab78e3b91c", default-features = false } # a fork to improve some things for us
-zip = { version = "4.0.0", default-features = false, features = ["lzma"] }
+zip = { version = "4.1.0", default-features = false, features = ["lzma"] }
