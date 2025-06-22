@@ -25,7 +25,7 @@ fn normalize_mapname(s: &str) -> String {
 }
 
 use std::{
-	collections::BTreeSet,
+	collections::{BTreeSet, HashMap},
 	num::NonZeroUsize,
 	path::{Path, PathBuf},
 	sync::LazyLock,
@@ -80,6 +80,13 @@ enum Commands {
 }
 
 #[derive(Deserialize)]
+pub struct BucketSettings {
+	pub name: String,
+	pub s3_access_key_id: String,
+	pub s3_access_key_secret: String,
+}
+
+#[derive(Deserialize)]
 pub struct GlobalSettings {
 	/// the committer's name to use for commits
 	pub git_name: String,
@@ -92,16 +99,10 @@ pub struct GlobalSettings {
 	pub cf_zone: String,
 	/// a token that has `Cache Purge:Purge` permissions on your zone
 	pub cf_purgetoken: String,
-	/// the bucket name used for uploading some static files (lump_checksums.csv & mapnames_and_filesizes.json) to
-	pub s3_bucket_venus: String,
-	/// the bucket that we upload .bsp.bz2 files to
-	pub s3_bucket_hashed: String,
+	/// fuck documenting
+	pub buckets: HashMap<String, BucketSettings>,
 	/// the account id used in r2 (which is the same as the cloudflare "account" id)
 	pub r2_account_id: String,
-	/// self-explanatory
-	pub s3_access_key_id: String,
-	/// self-explanatory
-	pub s3_access_key_secret: String,
 
 	/// the discord webhook to post new downloads to
 	pub discord_webhook: String,

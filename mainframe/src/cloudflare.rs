@@ -10,14 +10,17 @@ use tokio::task::JoinSet;
 use crate::{Bsps, CLIENT, SETTINGS, hash_to_hex, hex_to_hash};
 
 // https://docs.rs/rusty-s3/latest/rusty_s3/
-pub(crate) async fn r2_upload(localpath: &Path, bucket: &str, remotepath: &str, content_type: &str) -> anyhow::Result<()> {
+pub(crate) async fn r2_upload(localpath: &Path, bucketname: &str, remotepath: &str, content_type: &str) -> anyhow::Result<()> {
 	let bucket = Bucket::new(
 		format!("https://{}.r2.cloudflarestorage.com", SETTINGS.r2_account_id).parse()?,
 		rusty_s3::UrlStyle::Path,
-		bucket.to_string(),
+		SETTINGS.buckets[bucketname].name.clone(),
 		"auto",
 	)?;
-	let credentials = Credentials::new(SETTINGS.s3_access_key_id.clone(), SETTINGS.s3_access_key_secret.clone());
+	let credentials = Credentials::new(
+		SETTINGS.buckets[bucketname].s3_access_key_id.clone(),
+		SETTINGS.buckets[bucketname].s3_access_key_secret.clone(),
+	);
 	let signed_url = bucket
 		.put_object(Some(&credentials), remotepath)
 		.sign(Duration::from_secs(120));
@@ -27,7 +30,8 @@ pub(crate) async fn r2_upload(localpath: &Path, bucket: &str, remotepath: &str, 
 		// TODO: stream this & also have a progress callback...
 		.body(tokio::fs::read(localpath).await?)
 		.send()
-		.await?;
+		.await?
+		.error_for_status()?;
 	Ok(())
 }
 
@@ -143,10 +147,13 @@ pub(crate) async fn sync_r2_bz2s() -> anyhow::Result<()> {
 			let bucket = Bucket::new(
 				format!("https://{}.r2.cloudflarestorage.com", SETTINGS.r2_account_id).parse()?,
 				rusty_s3::UrlStyle::Path,
-				SETTINGS.s3_bucket_hashed.to_owned(),
+				SETTINGS.buckets["hashed"].name.clone(),
 				"auto",
 			)?;
-			let credentials = Credentials::new(SETTINGS.s3_access_key_id.clone(), SETTINGS.s3_access_key_secret.clone());
+			let credentials = Credentials::new(
+				SETTINGS.buckets["hashed"].s3_access_key_id.clone(),
+				SETTINGS.buckets["hashed"].s3_access_key_secret.clone(),
+			);
 
 			let mut list_objects_v2 = bucket.list_objects_v2(Some(&credentials));
 			list_objects_v2.with_prefix(format!("hashed/{shard}"));
@@ -199,7 +206,7 @@ pub(crate) async fn sync_r2_bz2s() -> anyhow::Result<()> {
 		let localpath = SETTINGS.dir_hashed.join(format!("{hash}.bsp.bz2"));
 		let remotepath = format!("hashed/{hash}.bsp.bz2");
 		println!("uploading {hash}.bsp.bz2...");
-		r2_upload(&localpath, &SETTINGS.s3_bucket_hashed, &remotepath, "application/x-bzip").await?;
+		r2_upload(&localpath, "hashed", &remotepath, "application/x-bzip").await?;
 	}
 
 	Ok(())

@@ -8,7 +8,7 @@ use crate::SETTINGS;
 pub(crate) async fn upload_lump_checksums() -> anyhow::Result<()> {
 	crate::cloudflare::r2_upload(
 		&SETTINGS.dir_maps_cstrike_more.join("lump_checksums.csv"),
-		&SETTINGS.s3_bucket_venus,
+		"venus",
 		"lump_checksums.csv",
 		"text/plain",
 	)
@@ -18,7 +18,7 @@ pub(crate) async fn upload_lump_checksums() -> anyhow::Result<()> {
 pub(crate) async fn upload_mapnames_and_filesizes() -> anyhow::Result<()> {
 	crate::cloudflare::r2_upload(
 		&SETTINGS.dir_maps_cstrike.join("processed/mapnames_and_filesizes.json"),
-		&SETTINGS.s3_bucket_venus,
+		"venus",
 		"mapnames_and_filesizes.json",
 		"application/json",
 	)

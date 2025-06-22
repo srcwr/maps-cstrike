@@ -295,12 +295,11 @@ async fn process_item(
 	// start uploading .bsp.bz2 files to r2...
 	for sha1 in newly_hashed.iter().map(|r| r.sha1.clone()).unique() {
 		let localpath = SETTINGS.dir_hashed.join(format!("{sha1}.bsp.bz2"));
-		let bucket = SETTINGS.s3_bucket_hashed.clone();
 		let remotepath = format!("hashed/{sha1}.bsp.bz2");
 		let tries = 5;
 		bz2_upload_tasks.spawn(async move {
 			for i in 0..tries {
-				match cloudflare::r2_upload(&localpath, &bucket, &remotepath, "application/x-bzip").await {
+				match cloudflare::r2_upload(&localpath, "hashed", &remotepath, "application/x-bzip").await {
 					Ok(()) => {
 						return Ok(());
 					}
