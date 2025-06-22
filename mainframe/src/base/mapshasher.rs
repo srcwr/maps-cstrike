@@ -127,8 +127,29 @@ async fn run_inner(
 			println!("==== empty file {}", entry.display());
 			continue;
 		}
+		// the smallest known bsp (from gb) is 12k bytes
+		if filesize < 5_000 {
+			println!("==== file too small ({filesize} bytes) {}", entry.display());
+			continue;
+		}
 
 		let content = Arc::new(tokio::fs::read(&entry).await?);
+
+		let vbspver = &content[0..5];
+
+		if vbspver != b"VBSP\x13" && vbspver != b"VBSP\x14" {
+			if vbspver == b"VBSP\x15" {
+				println!("==== skipping CS:GO map {}", entry.display());
+			} else if vbspver == b"VBSP\x19" {
+				println!("==== skipping Momentum Mod / Strata Source map {}", entry.display());
+			} else if &vbspver[0..4] == b"\x1E\x00\x00\x00" || &vbspver[0..4] == b"\x1D\x00\x00\x00" {
+				println!("==== skipping GoldSrc Map? {}", entry.display());
+			} else {
+				println!("==== not a CS:S map? {}", entry.display());
+			}
+			continue;
+		}
+
 		// arguably unnecessary to use spawn_blocking here...
 		let digest = tokio::task::spawn_blocking({
 			let content = Arc::clone(&content);
