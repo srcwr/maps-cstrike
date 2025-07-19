@@ -104,6 +104,7 @@ pub(crate) async fn dumpher() -> anyhow::Result<Bsps> {
 			continue;
 		}
 
+		// TODO: rework to read & unzip bz2s...
 		let content = Arc::new(tokio::fs::read(&SETTINGS.dir_hashed.join(format!("{hash}.bsp"))).await?);
 		let bsp = match vbsp::bspfile::BspFile::new(&content) {
 			Err(e) => {

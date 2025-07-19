@@ -207,10 +207,13 @@ async fn run_inner(
 			copy_task.await.unwrap()?;
 			filesize_bz2 = bz2_task.await.unwrap()?;
 		} else {
+			// TODO: Read size from processed files instead... Kind of a hassle though.
+			/*
 			if tokio::fs::metadata(&hashedbsppath).await?.len() != filesize {
 				println!("?????? HASH COLLISION WOW {} {}", digest, entry.display());
 				continue;
 			}
+			*/
 
 			let bz2_metadata = tokio::fs::metadata(&hashedbz2path).await?;
 			filesize_bz2 = bz2_metadata.len();

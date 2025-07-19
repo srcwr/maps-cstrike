@@ -16,6 +16,7 @@ struct LumpChecksumsRow {
 }
 
 fn get_checksum(hash: &BspHash) -> anyhow::Result<String> {
+	// TODO: rework to read & unzip bz2s...
 	let content = std::fs::read(SETTINGS.dir_hashed.join(format!("{}.bsp", hash_to_hex(hash))))?;
 	let bspfile = vbsp::bspfile::BspFile::new(&content)?;
 
