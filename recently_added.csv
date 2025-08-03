@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+bhop_referral,60385445,16118127,a08d5c2413b532741effbe6ea94560af179b222b,560616_1490169_bhop_referral_b4310.zip/bhop_referral.bsp,automated upload,2025-08-03 12:53
 de_dust2_A,18390664,6308519,9636e03712902a7d3103c0ef77ddfb301a44be36,599134_1490160_de_dust_a_46094.zip/de_dust_A/de_dust2_A.bsp,automated upload,2025-08-03 12:28
 gg_ledok_military_sklad,33053416,11471259,6622f7a64268faed9697e9c68489a4d79acc5ca3,611069_1489520_gg_ledok_military_sklad.rar/gg_ledok_military_sklad.bsp,automated upload,2025-08-02 10:17
 de_kipyatok_remake,246338131,89105502,71057d8d82ba4ab7bc8ad7a27e25d9a3d974cbfb,611042_1489453_de_kipyatok_remake.zip/de_kipyatok_remake/maps/de_kipyatok_remake.bsp,automated upload,2025-08-02 06:17
@@ -884,7 +885,6 @@ bhop_outback_shore,192336168,44526264,8a0cfe6901f677c9ee9e5daf9cca07c7a3a17e98,5
 de_sbk,318301273,108794408,b951127b25c3fa9d0d7360cb073f827ff3bde97b,561122_1338612_de_sbk/de_sbk,automated upload,2024-12-08 21:39
 surf_simpsons2,81914132,81203659,a62963aaf04c701553bcda3ddb0e8294e50a8fe9,,"ksf maps from <a href=""https://github.com/OuiSURF/Surf_Maps"">OuiSURF/Surf_Maps</a> (<a href=""https://www.youtube.com/watch?v=F7A1mrJipb0"">showcase video</a>)",2024-12-08 17:00
 hellcastle,11511348,2204542,b2f7569523c92f206296f403fb928ab48ec331cd,560955_1338180_hellcastle_81388,automated upload,2024-12-08 04:31
-bhop_referral,209254376,38023561,6f0c9c3ad284c62ec83dac837efcb76c6bf7c94a,560616_1337160_bhop_referral,automated upload,2024-12-06 15:51
 bhop_foliage_fix,46700050,10276449,c0ca9f41af2a145def9aa8d57ba4ea64bcf27acf,372230_1336277_bhop_foliage_fix,automated upload,2024-12-05 01:14
 bhop_dumb_blocks_2,28429714,5530142,691ea518ab16620215d077ee50541827c2934373,560322_1336264_bhop_dumb_blocks_2,automated upload,2024-12-05 00:34
 gg_corner_barash_v2,13667852,5003237,feff4d4284e5917bce67dc58b73faad842fef977,374342_1175266_gg_corner_barash_v2,automatic gamebanana,2024-12-04 16:59
