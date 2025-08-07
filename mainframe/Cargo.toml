@@ -31,7 +31,7 @@ rayon = "1.10.0"
 regex = "1.11.1"
 reqwest = { version = "0.12", default-features = false, features = ["brotli", "gzip", "http2", "json", "multipart", "rustls-tls", "stream"] }
 rusqlite = { version = "0.37.0", features = ["bundled"] }
-rusty-s3 = "0.7"
+rusty-s3 = "0.8"
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["float_roundtrip"] }
 serde_with = "3.12"
