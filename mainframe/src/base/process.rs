@@ -662,7 +662,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 				true,
 				"movement maps (mostly)",
 				"movement maps (mostly)",
-				"WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'tsurf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%'",
+				"WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'surf%' OR mapname LIKE 'tsurf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop% OR mapname LIKE '%hns%''",
 				recently_added,
 				false,
 			)
