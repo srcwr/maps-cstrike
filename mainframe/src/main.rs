@@ -110,6 +110,8 @@ pub struct GlobalSettings {
 	pub discord_ping: String,
 	/// the discord username used for messages posted via webhook
 	pub discord_username: String,
+	/// the bot token used for member bots...
+	pub discord_bottoken: String,
 
 	/// the full path to the maps-cstrike repo on disk
 	pub dir_maps_cstrike: PathBuf,

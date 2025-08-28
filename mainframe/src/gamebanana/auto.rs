@@ -10,7 +10,7 @@ use std::{
 use itertools::Itertools;
 use tokio::task::JoinSet;
 
-use crate::{Bsps, CLIENT, SETTINGS, base, cloudflare, discord, hex_to_hash, normalize_mapname};
+use crate::{Bsps, CLIENT, SETTINGS, base, cloudflare, discord, gamebanana::discordbot, hex_to_hash, normalize_mapname};
 
 use super::types::{ARecords1, ApiV11Mod, ApiV11ModIndex};
 
@@ -394,6 +394,8 @@ async fn process_item(
 }
 
 pub(crate) async fn run() -> anyhow::Result<()> {
+	tokio::spawn(discordbot::lurk());
+
 	let mut downloads = Arc::new(crate::csv::load_downloads().await?);
 	let mut modified_times = Arc::new(crate::csv::load_modified_times().await?);
 
