@@ -2,7 +2,7 @@
 // Copyright 2025 rtldg <rtldg@protonmail.com>
 
 #[cfg(windows)]
-use std::os::windows::fs::{FileTimesExt, MetadataExt};
+use std::os::windows::fs::FileTimesExt;
 
 use std::{collections::HashMap, io::Write, path::Path, sync::Arc};
 
@@ -122,7 +122,7 @@ async fn run_inner(
 		if metadata.is_dir() {
 			continue;
 		}
-		let filesize = metadata.file_size();
+		let filesize = metadata.len();
 		if filesize == 0 {
 			println!("==== empty file {}", entry.display());
 			continue;
@@ -172,12 +172,15 @@ async fn run_inner(
 			*/
 			println!("copying new! {} -> {}", entry.display(), hashedbsppath.display());
 
-			let mut filetimes = std::fs::FileTimes::new().set_modified(metadata.modified()?);
-			filetimes = if cfg!(windows) {
-				filetimes.set_created(metadata.created()?)
-			} else {
-				filetimes
-			};
+			#[cfg(target_os="windows")]
+			fn fill_filetimes(metadata: &std::fs::Metadata) -> anyhow::Result<std::fs::FileTimes> {
+				Ok(std::fs::FileTimes::new().set_modified(metadata.modified()?).set_created(metadata.created()?))
+			}
+			#[cfg(not(target_os="windows"))]
+			fn fill_filetimes(metadata: &std::fs::Metadata) -> anyhow::Result<std::fs::FileTimes> {
+				Ok(std::fs::FileTimes::new().set_modified(metadata.modified()?))
+			}
+			let filetimes = fill_filetimes(&metadata)?;
 
 			let copy_task = tokio::task::spawn_blocking({
 				let content = Arc::clone(&content);
