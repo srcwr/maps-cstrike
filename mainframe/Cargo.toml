@@ -42,4 +42,4 @@ tokio = { version = "1", features = ["full"] }
 tokio-rusqlite = { git = "https://github.com/srcwr/tokio-rusqlite.git", rev = "89cf4a083c4922e10f9b53648d3f03a5b2a7a40b", features = ["bundled"] } # using a fork to bump the rusqlite version from 0.32.0 to 0.37.0
 twilight-gateway = { version = "0.16", features = ["simd-json"] }
 vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "fe421c3e6601caec9c774074d89fa9ab78e3b91c", default-features = false } # a fork to improve some things for us
-zip = { version = "4.1.0", default-features = false, features = ["lzma"] }
+zip = { version = "5", default-features = false, features = ["lzma"] }
