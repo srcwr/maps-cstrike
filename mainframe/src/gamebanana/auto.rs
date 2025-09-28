@@ -317,6 +317,7 @@ async fn process_item(
 
 	// do some automatic canonization stuff....
 	// TODO: (low) doesn't really handle new maps stealing names...
+	// TODO: (higher) okay, maybe that should be dealt with at some point lol..
 	if !newly_hashed.is_empty() {
 		for item in &newly_hashed {
 			new_bsps.insert(hex_to_hash(&item.sha1));
