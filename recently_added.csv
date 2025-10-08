@@ -1,4 +1,6 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_bureau,19974172,8240143,6e0a127e87124e19eeb0a423d8f6bec67209af3d,602717_1534595_de_bureau_v104.rar/de_bureau.bsp,automated upload,2025-10-08 20:24
+de_lesina,26701960,9419656,369acf387502426d6c52f96f0fad6e622dbd1391,574008_1534591_de_lesina_v132.rar/de_lesina.bsp,automated upload,2025-10-08 20:24
 de_sarab,13145020,4615383,4413c3789e74227a0b1dc677e9025ad42f28a4ae,549255_1534589_de_sarab_v105.rar/de_sarab.bsp,automated upload,2025-10-08 20:17
 bhop_monumentalism3,45090268,9094878,dc3ed17bf9d4d2dd43d70320db0b0a6eb0219b1a,625554_1534093_bhop_monumentalism3.zip/bhop_monumentalism3/bhop_monumentalism3.bsp,automated upload,2025-10-07 22:59
 surf_excess,19844592,19748780,2a903124ba63fcde0f18210b7017fdb5e5afb4c5,ksf.surf,"from <a href=""https://ksf.surf/maps"">ksf.surf</a>",2025-10-07 19:00
@@ -191,7 +193,6 @@ mg_mufasa2_fixed,4170184,4187317,20c47277c4d40fcd8e1ee836715c41c769d400a4,595349
 #bhop_acino,2377880,1282838,14177ab9cbbdae2c4c41b6c2a604ea9369bf34fa,603823_1468309_bhop_acino.zip/bhop_acino.bsp,automated upload,2025-06-30 01:15
 de_holiday_home_v2,82674156,32679759,ff24bdd26ee2d95110f8488a09fb7cb9640b356a,603683_1467891_de_holiday_home_v2.rar/de_holiday_home_v2.bsp,automated upload,2025-06-29 11:54
 zm_terminator_disco_rld,36755551,30384788,1d7f2612416304fdbbe5469b53e6eae56b79d0e3,132909_1467492_zm_terminator_disco_rld_86d35.zip/zm_terminator_disco_rld.bsp,automated upload,2025-06-28 18:49
-de_bureau,19991456,8263943,0f41366880a9865326dc9fb2543f16db2a12fe86,602717_1467319_de_bureau_v103.rar/de_bureau.bsp,automated upload,2025-06-28 13:05
 bhop_tangent,22617323,2665932,c39fb8d0542f57816d5f98465b47052dd4e93a9e,603415_1467151_bhop_tangent.zip/bhop_tangent.bsp,automated upload,2025-06-28 04:10
 mg_mario_galaxy_v2_fixed1,26061972,26142347,78c24796306126e421e8a2d2fc68d688418d83c9,589882_1467109_mg_mario_galaxy_v2_fixed1_24190.7z/mg_mario_galaxy_v2_fixed1.bsp,automated upload,2025-06-28 02:37
 cs_militia_hrcs,162602248,163141670,02dfce8f6cd7698e9335b9b4b7b9cb7b037ea4a4,603354_1466946_cs_militia_hrcs.7z/cs_militia_hrcs.bsp,automated upload,2025-06-27 21:13
@@ -568,7 +569,6 @@ kz_fu_darkblock_h,5820400,1138270,eda47934a2b75aa5a7d053dbff0a7965a4350e80,58684
 bhop_tomb,76434844,26250118,763972f679fe28783e4a6805fc311d5fc14750e4,586311_1416351_bhop_tomb_c0921,automated upload,2025-04-06 17:42
 bhop_cyphisonia,13829268,13856320,c52c4d0983a3e2bb2837697a0ae9ac5c0a9f76ca,586804_1416318_bhop_cyphisonia,automated upload,2025-04-06 16:59
 surf_kartune,126516387,126641180,104da9942b07e7c9e1ca68fec0046864747ecd65,586778_1416185_surf_kartune,automated upload,2025-04-06 12:56
-de_lesina,26690428,9412064,27da7fda7c562cb34300c31ab5dbcedf2d02f291,574008_1416147_de_lesina_v131_,automated upload,2025-04-06 11:38
 zm_small_castle_v1,65103323,65138887,b5d72af68067d49821ea517f4b21d4ec0fb82b09,586501_1415472_zm_small_castle_v1_b1b2b/MAP,automated upload,2025-04-05 14:43
 surf_technical,91571627,91812250,00de773e13d5da99d8efff5a1eed79ffd3c07a1d,586293_1414948_surf_technical,automated upload,2025-04-04 21:29
 bhop_adventure_2,20694274,20673328,d7f2505b97bf7f806880a5f8f4fb19603a47ba09,586266_1414862_bhop_adventure_2,automated upload,2025-04-04 19:03
