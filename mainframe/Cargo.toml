@@ -4,7 +4,7 @@ version = "0.9.0"
 edition = "2024"
 authors = ["rtldg <rtldg@protonmail.com>"]
 license = "WTFPL"
-repository = "https://github.com/srcwr/maps-cstrike/tree/main/mainframe"
+repository = "https://github.com/srcwr/maps-cstrike/tree/master/mainframe"
 
 [dependencies]
 anyhow = { version = "1", features = ["backtrace"] }
