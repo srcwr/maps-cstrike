@@ -172,11 +172,13 @@ async fn run_inner(
 			*/
 			println!("copying new! {} -> {}", entry.display(), hashedbsppath.display());
 
-			#[cfg(target_os="windows")]
+			#[cfg(target_os = "windows")]
 			fn fill_filetimes(metadata: &std::fs::Metadata) -> anyhow::Result<std::fs::FileTimes> {
-				Ok(std::fs::FileTimes::new().set_modified(metadata.modified()?).set_created(metadata.created()?))
+				Ok(std::fs::FileTimes::new()
+					.set_modified(metadata.modified()?)
+					.set_created(metadata.created()?))
 			}
-			#[cfg(not(target_os="windows"))]
+			#[cfg(not(target_os = "windows"))]
 			fn fill_filetimes(metadata: &std::fs::Metadata) -> anyhow::Result<std::fs::FileTimes> {
 				Ok(std::fs::FileTimes::new().set_modified(metadata.modified()?))
 			}
