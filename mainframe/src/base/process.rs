@@ -111,8 +111,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			CREATE TABLE gamebanana (sha1 TEXT NOT NULL, gamebananaid INT NOT NULL, gamebananafileid INT NOT NULL);
 			CREATE TABLE links (sha1 TEXT NOT NULL, url TEXT NOT NULL);
 			",
-		)?;
-		Ok(())
+		)
 	})
 	.await?;
 
@@ -173,7 +172,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		}
 		drop(stmt);
 		tx.commit()?;
-		Ok(())
+		Ok::<(), rusqlite::Error>(())
 	})
 	.await?;
 
@@ -193,8 +192,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			CREATE INDEX sha1g on gamebanana(sha1);
 			CREATE INDEX sha1o on links(sha1);
 			",
-		)?;
-		Ok(())
+		)
 	});
 	let canon_rows = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("canon.csv"))?
 		.deserialize::<CanonCsvRow>()
@@ -213,7 +211,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		}
 		drop(stmt);
 		tx.commit()?;
-		Ok(())
+		Ok::<(), rusqlite::Error>(())
 	})
 	.await?;
 
@@ -224,7 +222,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		let mut stmt = conn.prepare("VACUUM INTO ?;")?;
 		let _ = stmt.execute((mapsdb.to_string_lossy(),))?;
 		println!("vacuum done {}", Instant::now().duration_since(start).as_secs_f64());
-		Ok(())
+		Ok::<(), rusqlite::Error>(())
 	});
 
 	//println!("recently added {}", Instant::now().duration_since(start).as_secs_f64());
@@ -281,7 +279,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 				let filesize: usize = row.get(1)?;
 				things.entry(mapname).or_default().push(filesize);
 			}
-			Ok(things)
+			Ok::<_, rusqlite::Error>(things)
 		})
 		.await?;
 	let mut json = vec![];
