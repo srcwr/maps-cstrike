@@ -78,6 +78,7 @@ pub(crate) async fn upload_pages() -> anyhow::Result<()> {
 				"main",
 				".",
 			])
+			.env("CLOUDFLARE_ACCOUNT_ID", SETTINGS.r2_account_id.clone())
 			.current_dir(dir)
 			.stdin(Stdio::null())
 			.stdout(Stdio::null())
@@ -100,6 +101,7 @@ pub(crate) async fn upload_pages() -> anyhow::Result<()> {
 				"master",
 				".",
 			])
+			.env("CLOUDFLARE_ACCOUNT_ID", SETTINGS.r2_account_id.clone())
 			.current_dir(dir)
 			.stdin(Stdio::null())
 			.stdout(Stdio::null())
