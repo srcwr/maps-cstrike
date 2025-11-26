@@ -6,7 +6,7 @@ use std::{
 	collections::{BTreeMap, HashMap},
 };
 
-use jiff::{Timestamp, ToSpan, civil::DateTime, tz::TimeZone};
+use jiff::{SpanRelativeTo, Timestamp, ToSpan, civil::DateTime, tz::TimeZone};
 use serde::{Deserialize, Serialize};
 
 use crate::{BspHash, Bsps, SETTINGS, hash_to_hex, hex_to_hash};
@@ -34,13 +34,11 @@ pub(crate) fn run(bsps: Option<&Bsps>) -> anyhow::Result<()> {
 	}
 	drop(in_csv);
 
-	// TODO: (low) option to sync .bsp timestamps with .bsp.bz2 file...
-
 	let mut new_maps: HashMap<BspHash, (Timestamp, Timestamp)> = HashMap::new();
 
 	if let Some(bsps) = bsps {
 		for bsp in bsps {
-			let filename = SETTINGS.dir_hashed.join(format!("{}.bsp", hash_to_hex(bsp)));
+			let filename = SETTINGS.dir_hashed.join(format!("{}.bsp.bz2", hash_to_hex(bsp)));
 			let metadata = std::fs::metadata(&filename)?;
 			let _ = new_maps.insert(*bsp, (metadata.modified()?.try_into()?, metadata.created()?.try_into()?));
 		}
@@ -48,10 +46,10 @@ pub(crate) fn run(bsps: Option<&Bsps>) -> anyhow::Result<()> {
 		for entry in std::fs::read_dir(&SETTINGS.dir_hashed)? {
 			let entry = entry?;
 			if let Some(ext) = entry.path().extension() {
-				if ext.eq_ignore_ascii_case("bsp") {
+				if ext.eq_ignore_ascii_case("bz2") {
 					let metadata = entry.metadata()?;
 					let _ = new_maps.insert(
-						hex_to_hash(entry.path().file_stem().unwrap().to_str().unwrap()),
+						hex_to_hash(entry.path().file_stem().unwrap().to_str().unwrap().trim_end_matches(".bsp")),
 						(metadata.modified()?.try_into()?, metadata.created()?.try_into()?),
 					);
 				}
@@ -64,12 +62,16 @@ pub(crate) fn run(bsps: Option<&Bsps>) -> anyhow::Result<()> {
 			// dogshit to stop clobbering tens-of-thousands of rows because jiff & python format microseconds differently
 			if (new_mod.to_zoned(TimeZone::UTC).datetime() - orig_mod.parse::<DateTime>()?)
 				.abs()
-				.compare(2.seconds())?
+				.compare((2.seconds(), SpanRelativeTo::days_are_24_hours()))?
 				== Ordering::Less
-				&& (new_create.to_zoned(TimeZone::UTC).datetime() - orig_create.parse::<DateTime>()?)
-					.abs()
-					.compare(2.seconds())?
-					== Ordering::Less
+			{
+				continue;
+			}
+			// moving files to different drives blew up my creation timestamps :^) TODO
+			if (new_create.to_zoned(TimeZone::UTC).datetime() - orig_create.parse::<DateTime>()?)
+				.abs()
+				.compare((2.seconds(), SpanRelativeTo::days_are_24_hours()))?
+				== Ordering::Greater
 			{
 				continue;
 			}
