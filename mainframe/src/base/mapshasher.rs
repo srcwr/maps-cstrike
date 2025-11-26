@@ -230,10 +230,12 @@ async fn run_inner(
 				if timestamp_fixer {
 					println!("timestamping {} from {:#?} to {:#?}", digest, bz2_modified, new_modified);
 					let times = std::fs::FileTimes::new().set_modified(new_modified);
-					std::fs::OpenOptions::new()
-						.write(true)
-						.open(&hashedbsppath)?
-						.set_times(times)?;
+					if std::fs::exists(&hashedbsppath)? {
+						std::fs::OpenOptions::new()
+							.write(true)
+							.open(&hashedbsppath)?
+							.set_times(times)?;
+					}
 					std::fs::OpenOptions::new()
 						.write(true)
 						.open(&hashedbz2path)?
