@@ -1,0 +1,15 @@
+services:
+  tunnel:
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run --protocol http2
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+  formpy:
+    build: .
+    restart: unless-stopped
+    stop_grace_period: 2s
+    environment:
+      - WEBHOOKPATH=${WEBHOOKPATH}
+    volumes:
+      - ./forms:/data/forms
