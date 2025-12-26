@@ -34,6 +34,8 @@ Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WH
 		- non-cloudflare version of the nginx configs. Old and won't be used.
 	- `venus.fastdl.me/`
 		- HTML files for the subdomain that serves some static files.
+	- `Caddyfile`
+		- HTTP server config as an alternate to `nginx_nocf/`.
 	- `compose.yml`
 		- Docker compose file for spinning up a fastdl node.
 	- `compose_nocf.yml`
@@ -42,6 +44,8 @@ Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WH
 		- Basic minimal privacy policy that's appended to pages.
 - `filters/`
 	- CSV files for removing dupes, bad maps, etc from the fastdl.me `/maps/` page
+- `mainframe/`
+	- Rust program that processes all the map submissions, automatic gamebanana uploads, HTML generation, etc.
 - `processed/`
 	- Built website code after you run `python process.py`
 - `unprocessed/`
@@ -49,15 +53,17 @@ Code, .html files, .txt files, and datasets (CSVs) are licensed under the [DO WH
 - `canon.csv`
 	- CSV with which hash to use for particular map names. Needed for maps that update without changing the name for example
 - `gamebanana-automatic.py`
-	- Automatic gamebanana downloader & uploader script
+	- (OLD) Automatic gamebanana downloader & uploader script
+- `gamebanana-downloads.csv` & `gamebanana-modified-times.csv`
+	- Used the `mainframe/` to download new gamebanana uploads.
 - `index_bottom.html`
 	- A template used by `process.py` when generating map folder HTML index files
 - `index_top.html`
 	- A template used by `process.py` when generating map folder HTML index files
 - `maps-hasher.py`
-	- The map hasher & dumper-to-CSV-files part of adding new maps.
+	- (OLD) The map hasher & dumper-to-CSV-files part of adding new maps.
 - `process.py`
-	- The step to parse all the CSV files to produce the website files & sqlite db to put into `processed/`
+	- (OLD) The step to parse all the CSV files to produce the website files & sqlite db to put into `processed/`
 - `recently_added.csv`
 	- List of recently added map files that is put at the top of map folder HTML index files
 - `todo.txt`
