@@ -32,7 +32,29 @@ export async function onRequestPost(ctx) {
 
     let submissions = await ctx.env.CHECK_FASTDL_BUCKET.get("S U B M I S S I O N S.html");
     await ctx.env.CHECK_FASTDL_BUCKET.put("S U B M I S S I O N S.html",
-        `<li>${now}<br><i>Not yet viewed</i></li>\n` + await submissions.text())
+                                          `<li>${now}<br><i>Not yet viewed</i></li>\n` + await submissions.text());
+
+    const whresp = await fetch(ctx.env.NOTIFWEBHOOKURL, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: "check.fastdl.me",
+            avatar_url: "",
+            content: now + '\nnew submission',
+            tts: false,
+            flags: 4, // SUPPRESS_EMBEDS
+            allowed_mentions: {
+                parse: []
+            },
+        }),
+    });
+
+    let submissions = await ctx.env.CHECK_FASTDL_BUCKET.get("S U B M I S S I O N S.html");
+    await ctx.env.CHECK_FASTDL_BUCKET.put("S U B M I S S I O N S.html",
+        `<li>${now}<br><i>Not yet viewed</i></li>\n` + await submissions.text());
 
     return new Response(/* defaults to 200 */);
 }

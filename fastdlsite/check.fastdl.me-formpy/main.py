@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.post(os.environ["WEBHOOKPATH"])
 def AAAAA():
     j = request.get_json()
-    with open(strftime("/date/forms/%Y%m%d %H%M%S.txt"), encoding="utf-8") as f:
+    with open(strftime("/data/forms/%Y%m%d_%H%M%S.txt"), "w", encoding="utf-8") as f:
         f.write(j["content"])
     return jsonify({"yip": "pie"}), 200
 
