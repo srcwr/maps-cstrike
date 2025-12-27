@@ -27,6 +27,8 @@ export async function onRequestPost(ctx) {
         }),
     });
 
+    console.log({"wh": "formpy", "resp": whresp});
+
     if (!whresp.ok)
         return new Response(null, {status: 500});
 
@@ -34,7 +36,7 @@ export async function onRequestPost(ctx) {
     await ctx.env.CHECK_FASTDL_BUCKET.put("S U B M I S S I O N S.html",
                                           `<li>${now}<br><i>Not yet viewed</i></li>\n` + await submissions.text());
 
-    const whresp = await fetch(ctx.env.NOTIFWEBHOOKURL, {
+    const nwhresp = await fetch(ctx.env.NOTIFWEBHOOKURL, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -52,9 +54,7 @@ export async function onRequestPost(ctx) {
         }),
     });
 
-    let submissions = await ctx.env.CHECK_FASTDL_BUCKET.get("S U B M I S S I O N S.html");
-    await ctx.env.CHECK_FASTDL_BUCKET.put("S U B M I S S I O N S.html",
-        `<li>${now}<br><i>Not yet viewed</i></li>\n` + await submissions.text());
+    console.log({"wh": "notif", "resp": nwhresp});
 
     return new Response(/* defaults to 200 */);
 }
