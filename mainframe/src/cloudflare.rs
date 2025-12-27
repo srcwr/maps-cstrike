@@ -58,25 +58,27 @@ pub(crate) async fn purge_cache(urls: Option<&[&str]>) -> anyhow::Result<()> {
 }
 
 pub(crate) async fn upload_pages() -> anyhow::Result<()> {
-	#[cfg(windows)]
-	const NPX: &str = "npx.cmd";
-	#[cfg(not(windows))]
-	const NPX: &str = "npx";
-
 	let a = tokio::spawn(async {
 		let dir = dunce::canonicalize(SETTINGS.dir_maps_cstrike.join("processed/check.fastdl.me"))?;
-		tokio::process::Command::new(NPX)
+		tokio::process::Command::new("nix-shell")
 			.args([
-				"--yes",
-				"wrangler",
-				"pages",
-				"deploy",
-				"--commit-dirty=true",
-				"--project-name",
-				"check-fastdl",
-				"--branch",
-				"main",
-				".",
+				"-p",
+				"nodejs_24",
+				"--run",
+				&[
+					"npx",
+					"--yes",
+					"wrangler",
+					"pages",
+					"deploy",
+					"--commit-dirty=true",
+					"--project-name",
+					"check-fastdl",
+					"--branch",
+					"main",
+					".",
+				]
+				.join(" "),
 			])
 			.env("CLOUDFLARE_ACCOUNT_ID", SETTINGS.r2_account_id.clone())
 			.current_dir(dir)
@@ -88,18 +90,25 @@ pub(crate) async fn upload_pages() -> anyhow::Result<()> {
 	});
 	let b = tokio::spawn(async {
 		let dir = dunce::canonicalize(SETTINGS.dir_maps_cstrike.join("processed/fastdl.me"))?;
-		tokio::process::Command::new(NPX)
+		tokio::process::Command::new("nix-shell")
 			.args([
-				"--yes",
-				"wrangler",
-				"pages",
-				"deploy",
-				"--commit-dirty=true",
-				"--project-name",
-				"fdl",
-				"--branch",
-				"master",
-				".",
+				"-p",
+				"nodejs_24",
+				"--run",
+				&[
+					"npx",
+					"--yes",
+					"wrangler",
+					"pages",
+					"deploy",
+					"--commit-dirty=true",
+					"--project-name",
+					"fdl",
+					"--branch",
+					"master",
+					".",
+				]
+				.join(" "),
 			])
 			.env("CLOUDFLARE_ACCOUNT_ID", SETTINGS.r2_account_id.clone())
 			.current_dir(dir)
