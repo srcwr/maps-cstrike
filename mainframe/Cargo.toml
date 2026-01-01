@@ -29,7 +29,7 @@ libmimalloc-sys = { version = "*", features = ["extended"] }
 rand = "0.9.1"
 rayon = "1.10.0"
 regex = "1.11.1"
-reqwest = { version = "0.12", default-features = false, features = ["brotli", "gzip", "http2", "json", "multipart", "rustls-tls", "stream"] }
+reqwest = { version = "0.13", default-features = false, features = ["brotli", "gzip", "http2", "json", "multipart", "native-tls", "stream"] }
 rusqlite = { version = "0.37.0", features = ["bundled"] }
 rusty-s3 = "0.8"
 serde = { version = "1", features = ["derive"] }
@@ -42,4 +42,4 @@ tokio = { version = "1", features = ["full"] }
 tokio-rusqlite = { version = "0.7", features = ["bundled"] }
 twilight-gateway = { version = "0.17", features = ["simd-json"] }
 vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "fe421c3e6601caec9c774074d89fa9ab78e3b91c", default-features = false } # a fork to improve some things for us
-zip = { version = "6", default-features = false, features = ["lzma"] }
+zip = { version = "7", default-features = false, features = ["lzma"] }
