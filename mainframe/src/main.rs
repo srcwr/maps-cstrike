@@ -220,7 +220,7 @@ async fn async_main() -> anyhow::Result<()> {
 	// cargo flamegraph -- process
 
 	let sanity_check_timestamp = |timestamp: i64| {
-		assert!(timestamp > 2025_05_04_0000 && timestamp < 2030_01_01_0000);
+		assert!(timestamp > 2026_01_01_0000 && timestamp < 2027_01_01_0001);
 		jiff::Timestamp::strptime("%Y%m%d%H%M%z", format!("{timestamp}+0000"))
 	};
 
