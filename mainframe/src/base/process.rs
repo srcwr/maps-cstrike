@@ -233,6 +233,9 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		if row.mapname.starts_with('#') {
 			continue;
 		}
+		if let Some(dt) = &row.datetime {
+			anyhow::ensure!(dt.len() == 16 && dt.parse::<jiff::civil::DateTime>().is_ok());
+		}
 		row.mapname = normalize_mapname(&row.mapname);
 		if let Some((modid, _)) = get_gamebanana_info(row.note.as_deref().unwrap_or("")) {
 			if let Some(recently_added_note) = row.recently_added_note {
