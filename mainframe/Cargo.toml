@@ -29,7 +29,7 @@ libmimalloc-sys = { version = "*", features = ["extended"] }
 rand = "0.9.1"
 rayon = "1.10.0"
 regex = "1.11.1"
-reqwest = { version = "0.13", default-features = false, features = ["brotli", "gzip", "http2", "json", "multipart", "native-tls", "stream"] }
+reqwest = { version = "0.13", features = ["brotli", "gzip", "json", "multipart", "stream"] }
 rusqlite = { version = "0.37.0", features = ["bundled"] }
 rusty-s3 = "0.8"
 serde = { version = "1", features = ["derive"] }
