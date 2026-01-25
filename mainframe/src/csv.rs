@@ -23,6 +23,18 @@ pub struct UnprocessedCsvRow {
 	pub datetime: Option<compact_str::CompactString>,
 }
 
+#[derive(Serialize, Deserialize, Hash, PartialEq, Eq, Clone, Debug, PartialOrd, Ord)]
+// also for canon.csv
+pub struct UnprocessedCsvRowShort {
+	//#[serde(deserialize_with = "normalize_mapname_column")] // dangerous... (fricked with my recently_added.csv...)
+	pub mapname: String,
+	pub filesize: u64,
+	pub filesize_bz2: u64,
+	pub sha1: String,
+	#[serde(alias = "url")]
+	pub note: Option<String>,
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct ProcessedCsvRow<'a> {
 	pub mapname: &'a str,
@@ -53,7 +65,7 @@ pub struct FilelistRow {
 	pub compressed: u64,
 }
 
-#[derive(Serialize, Deserialize, PartialEq, Eq, Clone, PartialOrd, Ord)]
+#[derive(Serialize, Deserialize, PartialEq, Eq, Clone, PartialOrd, Ord, Debug)]
 pub struct CanonCsvRow {
 	#[serde(deserialize_with = "normalize_mapname_column")]
 	pub mapname: String,

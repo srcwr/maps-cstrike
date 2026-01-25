@@ -24,6 +24,8 @@ fn normalize_mapname(s: &str) -> String {
 	s.trim().to_ascii_lowercase().replace('.', "_")
 }
 
+// TODO: function to sort by mapname that matches
+
 use std::{
 	collections::{BTreeSet, HashMap},
 	num::NonZeroUsize,
@@ -64,6 +66,10 @@ enum Commands {
 	Gbdls,
 	Cfpages,
 	TransferToNodes,
+	Ezcanon {
+		name: String,
+		hash: String,
+	},
 	// maps-cstrike-more
 	Auto2 {
 		timestamp: i64,
@@ -270,6 +276,9 @@ async fn async_main() -> anyhow::Result<()> {
 				.await
 				.into_iter()
 				.collect::<anyhow::Result<Vec<_>>>()?;
+		}
+		Commands::Ezcanon { name, hash } => {
+			base::ezcanon::run(&name, &hash).await?;
 		}
 		// maps-cstrike-more
 		Commands::Auto2 { timestamp } => {
