@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 
 pub type GamebananaID = u64;
 
+/*
 #[derive(Serialize, Deserialize)]
 pub struct AMetadata1 {
 	pub _bIsComplete: bool,
@@ -19,6 +20,7 @@ pub struct ASubmitter1 {
 	pub _sName: String,
 	pub _sProfileUrl: String,
 }
+*/
 #[derive(Serialize, Deserialize)]
 pub struct ARecords1 {
 	//pub _aSubmitter: ASubmitter1,
