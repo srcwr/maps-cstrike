@@ -21,13 +21,16 @@ pub async fn run(name: &str, hash: &str) -> anyhow::Result<()> {
 		let mut out_recently_added_csv = csv::Writer::from_writer(vec![]);
 		let mut in_recently_added_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("recently_added.csv"))?;
 		for row in in_recently_added_csv.deserialize::<UnprocessedCsvRow>() {
-			let row = row?;
+			let mut row = row?;
 			let mapname = row.mapname.trim_start_matches('#');
 			let mapname = normalize_mapname(&mapname);
 			if mapname == name {
 				if row.sha1 != hash {
 					println!("removing {row:?}");
 					continue;
+				}
+				if row.mapname.starts_with('#') {
+					row.mapname.remove(0);
 				}
 			}
 			out_recently_added_csv.serialize(row)?;
