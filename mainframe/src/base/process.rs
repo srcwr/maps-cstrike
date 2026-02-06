@@ -133,8 +133,13 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 	let UnprocessedCsvsInfo {
 		gamebanana: _,
 		links: _,
-		unique: ksfthings,
+		unique: ksf_ouisurf,
 	} = glob_unprocessed_csvs("unprocessed/ksf - github.com OuiSURF Surf_Maps.csv")?;
+	let UnprocessedCsvsInfo {
+		gamebanana: _,
+		links: _,
+		unique: ksf_dot_surf,
+	} = glob_unprocessed_csvs("unprocessed/ksf.surf.csv")?;
 
 	println!("filter csvs {}", Instant::now().duration_since(start).as_secs_f64());
 	let unfiltered = unique.clone();
@@ -158,7 +163,8 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		insert_maps(&tx, "maps_unfiltered", &unfiltered)?;
 		insert_maps(&tx, "maps_canon", &unique)?;
 		insert_maps(&tx, "maps_czarchasm", &czarchasm_unique)?;
-		insert_maps(&tx, "maps_ksfthings", &ksfthings)?;
+		insert_maps(&tx, "maps_ksfthings", &ksf_ouisurf)?;
+		insert_maps(&tx, "maps_ksfthings", &ksf_dot_surf)?;
 		let mut stmt = tx.prepare("INSERT INTO gamebanana VALUES(?,?,?);")?;
 		for r in gamebanana.iter() {
 			let (sha1, (modid, downloadid)) = r.pair();
@@ -695,10 +701,10 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 				"main.fastdl.me/maps_ksfthings.html",
 				true,
 				&format!(
-					"mirror of ksf maps from https://github.com/OuiSURF/Surf_Maps (up till {last_ksfthings_update})"
+					"mirror of ksf maps from https://github.com/OuiSURF/Surf_Maps (up till {last_ksfthings_update}) and https://ksf.surf/maps"
 				),
 				&format!(
-					"mirror of ksf maps<br>from <a href=\"https://github.com/OuiSURF/Surf_Maps\">https://github.com/OuiSURF/Surf_Maps</a><br>(up till {last_ksfthings_update})"
+					"mirror of ksf maps<br>from <a href=\"https://github.com/OuiSURF/Surf_Maps\">https://github.com/OuiSURF/Surf_Maps</a><br>(up till {last_ksfthings_update})<br>and <a href=\"https://ksf.surf/maps\">https://ksf.surf/maps</a>"
 				),
 				"",
 				None,
