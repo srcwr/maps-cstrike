@@ -1,4 +1,10 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+surf_1024,150852228,151194716,4a0a09891d51df047a5bd0ac5d911ee9294d7af3,,from ksf.surf,2025-02-06 04:53
+surf_anomaly,173294107,173771677,efbc60d33f0ae2a782a89b178479b56ab84f75ae,,from ksf.surf,2025-02-06 04:53
+surf_centipedes,36299671,36255384,e9d70c6dfbe748f3e733980743bac007748c7b2d,,from ksf.surf,2025-02-06 04:53
+surf_disappointed,74853736,74810918,5c30dedb51b32e841632b596f24f264b59484d87,,from ksf.surf,2025-02-06 04:53
+surf_haze,29105088,29074784,9f556e422db744662bb871d1055e985f552b2b18,,from ksf.surf,2025-02-06 04:53
+surf_zae,26406351,26414212,e4302ef98a212c86738a96e458f38d29c29554d0,,from ksf.surf,2025-02-06 04:53
 #cs_autoparts,80819495,80809206,dc21a7a2dafca755bcc10cef5a1e1abf1a2529cf,628659_1618335_autoparts.rar/cs_autoparts.bsp,automated upload,2026-02-06 03:13
 #de_autoparts,84343555,84346034,a433e2bf77076db6840995d7d5de261ad8bfc31f,628659_1618335_autoparts.rar/de_autoparts.bsp,automated upload,2026-02-06 03:13
 cs_nipperhouse_extended,22192335,22009974,3bf2f347964e4ad9e7f66a7ac2930203ba12f2a9,590049_1618315_cs_nipper_house_extended.rar/cs_nipperhouse_extended.bsp,automated upload,2026-02-06 02:35
