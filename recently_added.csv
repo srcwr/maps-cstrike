@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+tr_MWII,154642418,97347551,8fe96d294c7cc769fac0fe4456e4de0233685550,650022_1618434_new_mwii_map.rar/maps/tr_MWII.bsp,automated upload,2026-02-06 08:10
 surf_1024,150852228,151194716,4a0a09891d51df047a5bd0ac5d911ee9294d7af3,,from ksf.surf,2025-02-06 04:53
 surf_anomaly,173294107,173771677,efbc60d33f0ae2a782a89b178479b56ab84f75ae,,from ksf.surf,2025-02-06 04:53
 surf_centipedes,36299671,36255384,e9d70c6dfbe748f3e733980743bac007748c7b2d,,from ksf.surf,2025-02-06 04:53
@@ -26,7 +27,6 @@ de_train_fullbright,11013524,1820333,d12f1cb50b5376cb38719ab256c9e27ba03780be,65
 fy_kittybuzzy_r2,3204700,1014765,6adc3174ca897a9075e3e7d35c6acde6a2eb0ee2,650235_1615384_fy-kittybuzzy-r2-gameserver.zip/maps/fy_kittybuzzy_r2.bsp,automated upload,2026-02-02 01:06
 de_dodo_v1,3550320,1484931,0e1450f7ba43299bfbd55555beb8c94aba68bead,650164_1615141_de_dodo_v1.zip/de_dodo_v1.bsp,automated upload,2026-02-01 20:17
 Loolio,1729368,131383,0f46f0ae7f4ee37069d3cb10a557fa483d98ab3b,650124_1615031_loolio.zip/Loolio.bsp,automated upload,2026-02-01 18:13
-tr_MWII,179406666,114457531,a280c51b462607e79c6366f07b3888d14a8b24e0,650022_1614660_mwii_map.rar/maps/tr_MWII.bsp,automated upload,2026-02-01 05:21
 bhop_tastycrousty,68657510,14121311,b3eb19d7e43c18f7bbaa3d2f6650858aaf3b38e3,649649_1613573_bhop_tastycrousty.rar/bhop_tastycrousty.bsp,automated upload,2026-01-30 21:05
 surf_matrix_reloaded_fix,66741084,20738361,d0185f5f1fbaeaae57f1086b870624056c523b1f,649553_1613324_surf_matrix_reloaded_fix.7z/surf_matrix_reloaded_fix.bsp,automated upload,2026-01-30 12:42
 de_littlestjames_2,23726712,15761753,f9a8fd111b326a817f3dc1fade4d8360277a334d,649508_1613159_de_littlestjames_2.7z/de_littlestjames_2.bsp,automated upload,2026-01-30 03:34
