@@ -87,7 +87,7 @@ pub async fn run(name: &str, hash: &str) -> anyhow::Result<()> {
 			}
 			out_canon_rows.push(row);
 		}
-		out_canon_rows.sort_by(|a,b| a.mapname.cmp(&b.mapname));
+		out_canon_rows.sort_by(|a, b| a.mapname.cmp(&b.mapname));
 		let mut out_canon_csv = csv::Writer::from_writer(vec![]);
 		for row in out_canon_rows {
 			out_canon_csv.serialize(row)?;
