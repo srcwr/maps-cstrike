@@ -346,6 +346,8 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		title_plaintext: &str,
 		title_html: &str,
 		sqlwhere: &str,
+		// effectively the same as sqlwhere, but I don't want to remove sqlwhere because then I have to manually filter some results...
+		recently_added_name_highlights: Option<&str>,
 		recently_added: Option<Arc<Vec<UnprocessedCsvRow>>>,
 		txt_as_urls: bool,
 	) -> anyhow::Result<()> {
@@ -416,17 +418,26 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			"##
 			)?;
 			//<th style="width:1%">List of packed files</th>
+			let re = recently_added_name_highlights.map(|s| regex::RegexBuilder::new(s).case_insensitive(true).build().unwrap());
 			for row in recently_added.iter() {
+				let style = if let Some(re) = &re
+					&& re.is_match(&row.mapname)
+				{
+					" class=\"rahighlights\""
+				} else {
+					""
+				};
 				writedoc!(
 					&mut index_html,
 					r##"
-					<tr>
+					<tr{}>
 					<td><a href="#">{}</a></td>
 					<td>{}</td>
 					<td>{}</td>
 					<td>{}</td>
 					</tr>
 				"##,
+					style,
 					html_escape::encode_safe(&row.mapname),
 					row.sha1,
 					row.recently_added_note.as_deref().unwrap_or_default(),
@@ -638,6 +649,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 				"hashed/unfiltered maps",
 				"hashed/unfiltered maps",
 				"",
+				None,
 				recently_added,
 				false,
 			)
@@ -654,6 +666,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 				"canon/filtered maps",
 				"canon/filtered maps",
 				"",
+				None,
 				recently_added,
 				false,
 			)
@@ -670,6 +683,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 				"movement maps (mostly)",
 				"movement maps (mostly)",
 				"WHERE mapname LIKE 'bh%' OR mapname LIKE 'xc\\_%' ESCAPE '\\' OR mapname LIKE 'kz%' OR mapname LIKE 'bkz%' OR mapname LIKE 'surf%' OR mapname LIKE 'tsurf%' OR mapname LIKE 'trikz%' OR mapname LIKE 'jump%' OR mapname LIKE 'climb%' OR mapname LIKE 'fu\\_%' ESCAPE '\\' OR mapname LIKE '%hop%' OR mapname LIKE '%hns%'",
+				Some("(bh.*|xc_.*|kz.*|bkz.*|surf.*|tsurf.*|trikz.*|jump.*|climb.*|fu_.*|.*hop.*|.*hns.*)"),
 				recently_added,
 				false,
 			)
@@ -684,6 +698,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			"mirror of maps from czarchasm.club",
 			"mirror of maps from <a href=\"https://czarchasm.club/\">czarchasm.club</a>",
 			"",
+			None,
 			None,
 			true,
 		)
@@ -707,6 +722,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 					"mirror of ksf maps<br>from <a href=\"https://github.com/OuiSURF/Surf_Maps\">https://github.com/OuiSURF/Surf_Maps</a><br>(up till {last_ksfthings_update})<br>and <a href=\"https://ksf.surf/maps\">https://ksf.surf/maps</a>"
 				),
 				"",
+				None,
 				None,
 				true,
 			)

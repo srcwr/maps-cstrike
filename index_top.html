@@ -5,7 +5,10 @@
 			font-family: Monospace;
 			font-size: x-large;
 		}
-		tr:nth-child(even) {
+		tr.rahighlights {
+			background: darkgreen;
+		}
+		tr:nth-child(even):not(.rahighlights) {
 			background: #333;
 		}
 		tr:hover {
