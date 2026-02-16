@@ -201,6 +201,7 @@ bhop_pringid,c225d71b54b5fff625f999a68f7a390fae20a8f1,latest on gamebanana as of
 bhop_pumpkin_stem,15cd1d8174d83e4aa79c1d96bb89a0ad5c0bc1a5,latest on gamebanana (the other version removes the end doors & the scout)
 bhop_pure,5ac2cd4dd313a0bdca66f90860878abc20d2e238,latest on gamebanana
 bhop_pyxkeria,b89383c1f4ae7b675d8ebffa67c72729621cc6f3,this mapname has two ports from csgo but this one follows the wall textures better as far as I can tell so I picked this one plus its smaller
+bhop_q3,17cb27ad942f8150a3d0d7a69ec320cc979dbf23,automatic canonization 202602161833
 bhop_quaker,9926c15e6b7c1483ac235b8faf384bf027dd1562,latest on gamebanana
 bhop_rand0m_gm,01f64a77b925201bb8bb7dd6664fbc09e6b3c693,version without empty classname entities or something. maybe a port from the gmod version. it works is the point
 bhop_reddawn,448deeae96eee3556ca90f26a0929f070a586f9b,automatic canonization 202504080948
