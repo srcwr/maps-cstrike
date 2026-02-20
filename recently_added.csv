@@ -1,4 +1,6 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_dust2_B,14845828,5283798,25527952ae1c1b07033ad37d49cc20f6bff1f0d3,599898_1629794_de_dust2_b_4965d.zip/de_dust2_B.bsp,automated upload,2026-02-20 03:06
+de_dust2_B_classic,14828892,5273511,dfe63a232c02043cef068881831c4890bc3d3c9d,599898_1629793_de_dust2_b_classic_75dde.zip/de_dust2_B_classic.bsp,automated upload,2026-02-20 03:06
 Coneseum,3850964,1906618,0ee3867d59f5cb0a29995f356f5035cc63f6feae,654560_1629682_coneseum.zip/CONESEUM/maps/Coneseum.bsp,automated upload,2026-02-20 00:26
 de_atl,28946292,14725204,cf4dac9f9f66100cb4b67d88547ed5ac6a4ad800,654434_1629348_de_atl.rar/de_atl.bsp,automated upload,2026-02-19 15:19
 bhop_banshee_boardwalk,34249036,6959521,f9a198403dc7606f76e5b0340e68fd3b0de35d8b,654235_1628625_bhop_banshee_boardwalk.rar/bhop_banshee_boardwalk.bsp,automated upload,2026-02-18 17:14
@@ -589,7 +591,6 @@ gg_mk_metr,6394181,3481759,3bcb8ddf3a587285100fdeccca438fef6cc569c8,601138_14603
 gg_mk_den,11992295,4907051,94665183b126d2d99bcd7d33c8f98374c9d6fed3,601136_1460353_gg_mk_den.rar/gg_mk_den.bsp,automated upload,2025-06-17 17:59
 Bust2x2,2108974,699849,4a845b2e6b645134649be860c367685a369e9f89,598736_1460257_mapcss_bs_bust2x2_release.zip/Bust2x2.bsp,automated upload,2025-06-17 14:10
 Bust,3153348,1112649,754c057c060e1f1152778d90d56296a233caad58,601094_1460255_mapcss_bs_bust_release.zip/Bust.bsp,automated upload,2025-06-17 14:03
-de_dust2_b_classic,16618884,5863868,b5c47a1f9725ad461da203722ae46b3821b326d9,599898_1460153_de_dust2_b_classic.zip/de_dust2_b_classic.bsp,automated upload,2025-06-17 06:55
 grenade_snowballs,1668600,389376,a7d91b33770978fea39a6a701b9ef651775fd72f,601018_1460032_grenade_snowballs.rar/grenade_snowballs.bsp,automated upload,2025-06-17 00:46
 zm_terminator_disco_reloaded,36020754,30128756,864f11c7f67051d29715f59ac727e7f6c62f8378,132909_1458400_zm_terminator_disco_reloaded.zip/zm_terminator_disco_reloaded.bsp,automated upload,2025-06-14 11:20
 bhop_deception,17688054,17433199,29403dabd6f9b6922a9b860447c6a4b09a145099,600368_1458017_bhop_deceptionseries.rar/bhop_deception.bsp,automated upload,2025-06-13 19:39
@@ -609,7 +610,6 @@ de_inferno_fix,20434344,8792051,62e77d8dca767d0c20d0eaf3011ee82d2291661d,600044_
 de_train_fix,13605440,4549339,2fff6d4b5e851fee2cee3d1c9ef0f6235d8886af,600043_1456929_train_fix.rar/Train fix/de_train_fix.bsp,automated upload,2025-06-12 02:05
 de_nuke_fix,18399732,6842756,a2b3b22617c1ba62a3528ca41ae0e499b2417132,600041_1456925_nuke_fix.rar/Nuke fix/de_nuke_fix.bsp,automated upload,2025-06-12 01:52
 de_dust2_fix,17708444,6557660,c7f63622fb4d9239e73c9d50a6c5f91eb96e575f,600039_1456920_dust_2_fix.rar/Dust 2 fix/de_dust2_fix.bsp,automated upload,2025-06-12 01:39
-de_dust2_B,16539908,5837404,1037fc0b79c411c198ff640a68ca9848e7a9242e,599898_1456450_de_dust2_b_81709.zip/de_dust2_B.bsp,automated upload,2025-06-11 08:52
 de_dust2_csm2_beta4,47102424,25497204,fafc274a86073fca86dffcf6eba568bdfef45a4a,599373_1456457_de_dust2_csm2_beta4_fa588.rar/de_dust2_csm2_beta4.bsp,automated upload,2025-06-11 08:52
 bhop_sky_infinity,4665388,4602003,989926f1b24a7521ca1dc2500f1faef0fa00be85,599834_1456219_bhop_skyseries.rar/bhop_sky_infinity.bsp,automated upload,2025-06-10 21:47
 bhop_sky_journey,19970801,20011276,095d12116f273a9482ce9e2880cd9a0802eb98b0,599834_1456219_bhop_skyseries.rar/bhop_sky_journey.bsp,automated upload,2025-06-10 21:47
