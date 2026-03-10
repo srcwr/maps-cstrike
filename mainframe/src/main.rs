@@ -154,7 +154,6 @@ pub struct GlobalSettings {
 	pub gb_wait_looped: f32,
 }
 
-// TODO: (low) use a .env file or something...
 static SETTINGS: LazyLock<GlobalSettings> = LazyLock::new(|| {
 	let mut dir = std::env::current_dir().unwrap();
 	loop {

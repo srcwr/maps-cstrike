@@ -67,7 +67,7 @@ pub(crate) fn run(bsps: Option<&Bsps>) -> anyhow::Result<()> {
 			{
 				continue;
 			}
-			// moving files to different drives blew up my creation timestamps :^) TODO
+			// moving files to different drives blew up my creation timestamps :^)
 			if (new_create.to_zoned(TimeZone::UTC).datetime() - orig_create.parse::<DateTime>()?)
 				.abs()
 				.compare((2.seconds(), SpanRelativeTo::days_are_24_hours()))?

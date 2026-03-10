@@ -27,7 +27,6 @@ pub(crate) async fn r2_upload(localpath: &Path, bucketname: &str, remotepath: &s
 	CLIENT
 		.put(signed_url)
 		.header("content-type", content_type)
-		// TODO: stream this & also have a progress callback...
 		.body(tokio::fs::read(localpath).await?)
 		.send()
 		.await?

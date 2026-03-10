@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: WTFPL
 // Copyright 2025 rtldg <rtldg@protonmail.com>
 
-use std::{collections::HashSet, io::Write, sync::Arc};
+use std::{
+	collections::HashSet,
+	io::{Read, Write},
+	sync::Arc,
+};
 
 use flate2::write::GzEncoder;
 use vbsp::bspfile::LumpType;
@@ -104,8 +108,20 @@ pub(crate) async fn dumpher() -> anyhow::Result<Bsps> {
 			continue;
 		}
 
-		// TODO: rework to read & unzip bz2s...
-		let content = Arc::new(tokio::fs::read(&SETTINGS.dir_hashed.join(format!("{hash}.bsp"))).await?);
+		let content = if tokio::fs::try_exists(&SETTINGS.dir_hashed.join(format!("{hash}.bsp"))).await? {
+			tokio::fs::read(&SETTINGS.dir_hashed.join(format!("{hash}.bsp"))).await?
+		} else {
+			let p = SETTINGS.dir_hashed.join(format!("{hash}.bsp"));
+			tokio::task::spawn_blocking(|| {
+				let content = std::fs::read(p)?;
+				let mut d = bzip2::read::MultiBzDecoder::new(std::io::Cursor::new(content));
+				let mut v = vec![];
+				d.read_to_end(&mut v)?;
+				anyhow::Ok(v)
+			})
+			.await??
+		};
+		let content = Arc::new(content);
 		let bsp = match vbsp::bspfile::BspFile::new(&content) {
 			Err(e) => {
 				println!("bspfile failed on {hash}\n{e:?}");

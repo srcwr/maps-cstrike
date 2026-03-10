@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: WTFPL
 // Copyright 2025 rtldg <rtldg@protonmail.com>
 
-use std::collections::BTreeMap;
+use std::{collections::BTreeMap, io::Read};
 
 use md5::{Digest, Md5};
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
@@ -16,13 +16,21 @@ struct LumpChecksumsRow {
 }
 
 fn get_checksum(hash: &BspHash) -> anyhow::Result<String> {
-	// TODO: rework to read & unzip bz2s...
-	let content = std::fs::read(SETTINGS.dir_hashed.join(format!("{}.bsp", hash_to_hex(hash))))?;
+	let content = if std::fs::exists(SETTINGS.dir_hashed.join(format!("{}.bsp", hash_to_hex(hash))))? {
+		std::fs::read(SETTINGS.dir_hashed.join(format!("{}.bsp", hash_to_hex(hash))))?
+	} else {
+		let content = std::fs::read(SETTINGS.dir_hashed.join(format!("{}.bsp.bz2", hash_to_hex(hash))))?;
+		let mut d = bzip2::read::MultiBzDecoder::new(std::io::Cursor::new(content));
+		let mut v = vec![];
+		d.read_to_end(&mut v)?;
+		v
+	};
+
 	let bspfile = vbsp::bspfile::BspFile::new(&content)?;
 
 	let mut hasher = Md5::new();
 
-	// start at 1 to skip entities-lump (which is 0)
+	// start at 1 to skip entities-lump (which is 0 (and which isn't hashed))
 	for lump_type in 1u32..=63 {
 		let raw_lump = bspfile.get_lump_raw(bspfile.get_lump_entry(lump_type.try_into().unwrap()))?;
 		hasher.update(raw_lump);

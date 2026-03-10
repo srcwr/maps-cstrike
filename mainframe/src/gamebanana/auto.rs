@@ -193,7 +193,6 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 
 	let link = format!("https://gamebanana.com/dl/{}", row.downloadid);
 	println!("downloading {link}");
-	// TODO: (low) progress bar...
 	let resp = match CLIENT.get(&link).send().await {
 		Ok(resp) => resp,
 		Err(e) => {
