@@ -58,6 +58,14 @@ pub struct ShrimpleRow {
 	pub reason: String,
 }
 
+#[derive(Deserialize)]
+pub struct CanonGbCSsvRow {
+	pub sha1: String,
+	pub gbnote: String,
+	#[allow(unused)]
+	pub mynote: String,
+}
+
 #[derive(Serialize, Deserialize, PartialEq, PartialOrd, Eq, Ord)]
 pub struct FilelistRow {
 	pub filename: String,

@@ -2,7 +2,7 @@
 // Copyright 2025 rtldg <rtldg@protonmail.com>
 
 use std::{
-	collections::{BTreeMap, BTreeSet},
+	collections::{BTreeMap, BTreeSet, HashMap},
 	fmt::Write as _,
 	io::Write as _,
 	path::Path,
@@ -22,7 +22,7 @@ use thousands::Separable;
 use crate::{
 	SETTINGS,
 	base::copytree,
-	csv::{CanonCsvRow, ProcessedCsvRow, UnprocessedCsvRow},
+	csv::{CanonCsvRow, CanonGbCSsvRow, ProcessedCsvRow, UnprocessedCsvRow},
 	gamebanana::GamebananaID,
 	normalize_mapname,
 };
@@ -108,7 +108,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			CREATE TABLE maps_canon (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 			CREATE TABLE maps_czarchasm (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
 			CREATE TABLE maps_ksfthings (mapname TEXT NOT NULL, filesize INT NOT NULL, filesize_bz2 INT NOT NULL, sha1 TEXT NOT NULL);
-			CREATE TABLE gamebanana (sha1 TEXT NOT NULL, gamebananaid INT NOT NULL, gamebananafileid INT NOT NULL);
+			CREATE TABLE gamebanana (sha1 TEXT NOT NULL PRIMARY KEY, gamebananaid INT NOT NULL, gamebananafileid INT NOT NULL);
 			CREATE TABLE links (sha1 TEXT NOT NULL, url TEXT NOT NULL);
 			",
 		)
@@ -146,6 +146,19 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 	glob_filters("filters/*.csv", &unique)?;
 	glob_filters("filters/custom/czarchasm_filter.csv", &czarchasm_unique)?;
 
+	let canon_gb = {
+		let mut canon_gb = HashMap::new();
+		let mut canon_gb_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("canon-gb.csv"))?;
+		for row in canon_gb_csv.deserialize::<CanonGbCSsvRow>() {
+			let row = row?;
+			canon_gb.insert(
+				row.sha1,
+				get_gamebanana_info(&row.gbnote).context("invalid gamebanana gbnote in canon-gb.csv.  Go find it...")?,
+			);
+		}
+		canon_gb
+	};
+
 	conn.call(move |conn| {
 		println!(
 			"inserting maps into sqlite db {}",
@@ -171,6 +184,19 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			let _ = stmt.execute((sha1.as_str(), modid, downloadid))?;
 		}
 		drop(stmt);
+		let mut stmt = tx.prepare(
+			"
+		INSERT INTO gamebanana(sha1, gamebananaid, gamebananafileid)
+			VALUES (?, ?, ?)
+			ON CONFLICT (sha1)
+			DO UPDATE SET gamebananaid = ?, gamebananafileid = ?;
+		",
+		)?;
+		for (sha1, (modid, downloadid)) in canon_gb.iter() {
+			let _ = stmt.execute((sha1.as_str(), modid, downloadid, modid, downloadid))?;
+		}
+		drop(stmt);
+		//tx.execute("DELETE FROM gamebanana WHERE gamebananaid = 0;", ())?;
 		let mut stmt = tx.prepare("INSERT INTO links VALUES(?,?);")?;
 		for r in links.iter() {
 			let (sha1, link) = r.pair();
@@ -195,7 +221,6 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			CREATE INDEX sha1cz on maps_czarchasm(sha1);
 			CREATE INDEX mapnameksf ON maps_ksfthings(mapname);
 			CREATE INDEX sha1ksf on maps_ksfthings(sha1);
-			CREATE INDEX sha1g on gamebanana(sha1);
 			CREATE INDEX sha1o on links(sha1);
 			",
 		)
