@@ -80,6 +80,7 @@ pub(crate) async fn upload_pages() -> anyhow::Result<()> {
 				.join(" "),
 			])
 			.env("CLOUDFLARE_ACCOUNT_ID", SETTINGS.r2_account_id.clone())
+			.env("CLOUDFLARE_API_TOKEN", SETTINGS.cf_pagestoken.clone())
 			.current_dir(dir)
 			.stdin(Stdio::null())
 			.stdout(Stdio::null())
@@ -110,6 +111,7 @@ pub(crate) async fn upload_pages() -> anyhow::Result<()> {
 				.join(" "),
 			])
 			.env("CLOUDFLARE_ACCOUNT_ID", SETTINGS.r2_account_id.clone())
+			.env("CLOUDFLARE_API_TOKEN", SETTINGS.cf_pagestoken.clone())
 			.current_dir(dir)
 			.stdin(Stdio::null())
 			.stdout(Stdio::null())

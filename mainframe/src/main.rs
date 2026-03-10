@@ -114,6 +114,9 @@ pub struct GlobalSettings {
 	/// a token that has `Cache Purge:Purge` permissions on your zone
 	#[cfg(feature = "scraper")]
 	pub cf_purgetoken: String,
+	///
+	#[cfg(feature = "scraper")]
+	pub cf_pagestoken: String,
 	/// fuck documenting
 	#[cfg(feature = "scraper")]
 	pub buckets: HashMap<String, BucketSettings>,
