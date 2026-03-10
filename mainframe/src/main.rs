@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: WTFPL
-// Copyright 2022, 2025 rtldg <rtldg@protonmail.com>
+// Copyright 2022, 2025-2026 rtldg <rtldg@protonmail.com>
 
 mod base; // maps-cstrike
+#[cfg(feature = "scraper")]
 mod cloudflare;
 mod csv;
+#[cfg(feature = "discord")]
 mod discord;
 mod gamebanana;
 mod more; // maps-cstrike-more
@@ -47,7 +49,7 @@ struct Cli {
 
 #[derive(Debug, Subcommand)]
 enum Commands {
-	// bleh
+	#[cfg(feature = "scraper")]
 	SemiManual {
 		timestamp: i64,
 	},
@@ -58,12 +60,13 @@ enum Commands {
 		timestamp_fixer: bool,
 		#[arg(short, long)]
 		skip_existing_hash: bool,
-		#[arg(short, long)]
-		canon_clobber_check: bool,
 	},
+	#[cfg(feature = "scraper")]
 	Autogb,
 	Process,
+	#[cfg(feature = "scraper")]
 	Gbdls,
+	#[cfg(feature = "scraper")]
 	Cfpages,
 	TransferToNodes,
 	Ezcanon {
@@ -78,13 +81,17 @@ enum Commands {
 	LumpChecksummer,
 	OriginalFilename,
 	Timestamper,
+	#[cfg(feature = "scraper")]
 	Venus,
 	Vscripter,
 	// cloudflare
+	#[cfg(feature = "scraper")]
 	PurgeCache,
+	#[cfg(feature = "scraper")]
 	SyncR2Bz2s,
 }
 
+#[cfg(feature = "scraper")]
 #[derive(Deserialize)]
 pub struct BucketSettings {
 	pub name: String,
@@ -102,21 +109,29 @@ pub struct GlobalSettings {
 	pub git_origin: String,
 
 	/// the zone id on cloudflare
+	#[cfg(feature = "scraper")]
 	pub cf_zone: String,
 	/// a token that has `Cache Purge:Purge` permissions on your zone
+	#[cfg(feature = "scraper")]
 	pub cf_purgetoken: String,
 	/// fuck documenting
+	#[cfg(feature = "scraper")]
 	pub buckets: HashMap<String, BucketSettings>,
 	/// the account id used in r2 (which is the same as the cloudflare "account" id)
+	#[cfg(feature = "scraper")]
 	pub r2_account_id: String,
 
 	/// the discord webhook to post new downloads to
+	#[cfg(feature = "scraper")]
 	pub discord_webhook: String,
 	/// a ping identifier. e.g. "<@&123123123123>" to ping a role
+	#[cfg(feature = "scraper")]
 	pub discord_ping: String,
 	/// the discord username used for messages posted via webhook
+	#[cfg(feature = "scraper")]
 	pub discord_username: String,
 	/// the bot token used for member bots...
+	#[cfg(feature = "discord")]
 	pub discord_bottoken: String,
 
 	/// the full path to the maps-cstrike repo on disk
@@ -136,21 +151,29 @@ pub struct GlobalSettings {
 	pub cmd_transfer_to_nodes: Vec<Vec<Vec<String>>>,
 
 	/// gamebanana category ids
+	#[cfg(feature = "scraper")]
 	pub gb_categories: Vec<GamebananaID>,
 	/// Max of 50.
+	#[cfg(feature = "scraper")]
 	pub gb_maxperpage: NonZeroUsize,
 	///
+	#[cfg(feature = "scraper")]
 	pub gb_perpage: NonZeroUsize,
 	///
+	#[cfg(feature = "scraper")]
 	pub gb_numtofetch: NonZeroUsize,
 	///
+	#[cfg(feature = "scraper")]
 	pub gb_itemoffset: usize,
 	/// Added because caching is ruining my life...
+	#[cfg(feature = "scraper")]
 	pub gb_walkto: usize,
 
 	///
+	#[cfg(feature = "scraper")]
 	pub gb_wait_regular: f32,
 	///
+	#[cfg(feature = "scraper")]
 	pub gb_wait_looped: f32,
 }
 
@@ -166,6 +189,7 @@ static SETTINGS: LazyLock<GlobalSettings> = LazyLock::new(|| {
 	}
 });
 
+#[cfg(feature = "scraper")]
 static CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 	reqwest::ClientBuilder::new()
 		.connect_timeout(Duration::from_secs(10))
@@ -232,6 +256,7 @@ async fn async_main() -> anyhow::Result<()> {
 	let args = Cli::parse();
 	match args.command {
 		// bleh
+		#[cfg(feature = "scraper")]
 		Commands::SemiManual { timestamp } => {
 			let timestamp = sanity_check_timestamp(timestamp)?;
 			base::semimanual::run(timestamp, None, None).await?;
@@ -243,13 +268,13 @@ async fn async_main() -> anyhow::Result<()> {
 				.await
 				.into_iter()
 				.collect::<anyhow::Result<Vec<_>>>()?;
+			#[cfg(feature = "scraper")]
 			cloudflare::purge_cache(None).await?;
 		}
 		// maps-cstrike
 		Commands::Mapshasher {
 			timestamp_fixer,
 			skip_existing_hash,
-			canon_clobber_check,
 		} => {
 			base::mapshasher::run(
 				SETTINGS.dir_maps_cstrike.join("unprocessed/misc3.csv"),
@@ -257,17 +282,19 @@ async fn async_main() -> anyhow::Result<()> {
 				SETTINGS.dir_manualmaps.clone(),
 				timestamp_fixer,
 				skip_existing_hash,
-				canon_clobber_check,
 			)
 			.await?;
 		}
+		#[cfg(feature = "scraper")]
 		Commands::Autogb => {
 			// we use some of the processed csvs inside gbauto->mapshasher, so make sure they exist here...
 			base::process::run().await?;
 			gamebanana::auto::run().await?;
 		}
 		Commands::Process => base::process::run().await?,
+		#[cfg(feature = "scraper")]
 		Commands::Gbdls => csv::fill_downloads(&SETTINGS.dir_gamebanana_scrape).await?,
+		#[cfg(feature = "scraper")]
 		Commands::Cfpages => cloudflare::upload_pages().await?,
 		Commands::TransferToNodes => {
 			let _ = base::nodes::transfer()
@@ -298,13 +325,16 @@ async fn async_main() -> anyhow::Result<()> {
 		Commands::Timestamper => {
 			tokio::task::spawn_blocking(move || more::timestamper::run(None)).await??;
 		}
+		#[cfg(feature = "scraper")]
 		Commands::Venus => more::venus::upload().await?,
 		Commands::Vscripter => {
 			let bsps = get_all_bsps(&SETTINGS.dir_hashed);
 			tokio::task::spawn_blocking(move || more::vscripter::run(&bsps)).await??;
 		}
 		// cloudflare
+		#[cfg(feature = "scraper")]
 		Commands::PurgeCache => cloudflare::purge_cache(None).await?,
+		#[cfg(feature = "scraper")]
 		Commands::SyncR2Bz2s => cloudflare::sync_r2_bz2s().await?,
 	}
 
