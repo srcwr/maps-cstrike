@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: WTFPL
 // Copyright 2025 rtldg <rtldg@protonmail.com>
 
-use crate::{CLIENT, SETTINGS};
+use crate::{NOPROXY_CLIENT, SETTINGS};
 
 pub(crate) async fn webhook(ping: bool, message: &str) -> anyhow::Result<()> {
 	let content = if ping {
@@ -9,7 +9,7 @@ pub(crate) async fn webhook(ping: bool, message: &str) -> anyhow::Result<()> {
 	} else {
 		message.to_string()
 	};
-	CLIENT
+	NOPROXY_CLIENT
 		.post(SETTINGS.discord_webhook.as_str())
 		.json(&serde_json::json!({
 			"username": SETTINGS.discord_username.as_str(),

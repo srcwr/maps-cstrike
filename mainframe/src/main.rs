@@ -178,6 +178,10 @@ pub struct GlobalSettings {
 	///
 	#[cfg(feature = "scraper")]
 	pub gb_wait_looped: f32,
+
+	///
+	#[cfg(feature = "scraper")]
+	pub proxy: Option<String>,
 }
 
 static SETTINGS: LazyLock<GlobalSettings> = LazyLock::new(|| {
@@ -193,7 +197,29 @@ static SETTINGS: LazyLock<GlobalSettings> = LazyLock::new(|| {
 });
 
 #[cfg(feature = "scraper")]
-static CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
+static PROXIED_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
+	let c = reqwest::ClientBuilder::new()
+		.connect_timeout(Duration::from_secs(10))
+		.read_timeout(Duration::from_secs(120))
+		.timeout(Duration::from_secs(140))
+		.user_agent(format!(
+			"{}/{} ({})",
+			env!("CARGO_PKG_NAME"),
+			env!("CARGO_PKG_VERSION"),
+			env!("CARGO_PKG_REPOSITORY")
+		));
+
+	let c = if let Some(proxy) = &SETTINGS.proxy {
+		c.proxy(reqwest::Proxy::all(proxy).unwrap())
+	} else {
+		c
+	};
+
+	c.build().unwrap()
+});
+
+#[cfg(feature = "scraper")]
+static NOPROXY_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 	reqwest::ClientBuilder::new()
 		.connect_timeout(Duration::from_secs(10))
 		.read_timeout(Duration::from_secs(120))

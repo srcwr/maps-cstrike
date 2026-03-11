@@ -10,7 +10,7 @@ use std::{
 use itertools::Itertools;
 use tokio::task::JoinSet;
 
-use crate::{Bsps, CLIENT, SETTINGS, base, cloudflare, discord, gamebanana::discordbot, hex_to_hash, normalize_mapname};
+use crate::{Bsps, PROXIED_CLIENT, SETTINGS, base, cloudflare, discord, gamebanana::discordbot, hex_to_hash, normalize_mapname};
 
 use super::types::{ARecords1, ApiV11Mod, ApiV11ModIndex};
 
@@ -48,7 +48,7 @@ async fn get_index_records() -> Vec<ARecords1> {
 				if page == 1 { String::new() } else { format!("&_nPage={page}") },
 			);
 			//println!("fetching {url}");
-			let resp = match CLIENT.get(&url).send().await {
+			let resp = match PROXIED_CLIENT.get(&url).send().await {
 				Ok(resp) => resp,
 				Err(e) => {
 					eprintln!("failed to fetch {url}\n{e:?}");
@@ -124,7 +124,7 @@ async fn fetch_mod(
 		rand::random::<u64>()
 	);
 	println!("fetching {url}");
-	let files = CLIENT.get(&url).send().await;
+	let files = PROXIED_CLIENT.get(&url).send().await;
 	let files = match files {
 		Ok(files) => files,
 		Err(e) => {
@@ -193,7 +193,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 
 	let link = format!("https://gamebanana.com/dl/{}", row.downloadid);
 	println!("downloading {link}");
-	let resp = match CLIENT.get(&link).send().await {
+	let resp = match PROXIED_CLIENT.get(&link).send().await {
 		Ok(resp) => resp,
 		Err(e) => {
 			eprintln!("failed to download {link}\n{e:?}");

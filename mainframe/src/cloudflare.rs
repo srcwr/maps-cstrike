@@ -7,7 +7,7 @@ use rusty_s3::{Bucket, Credentials, S3Action, actions::ListObjectsV2};
 use serde_json::{Value, json};
 use tokio::task::JoinSet;
 
-use crate::{Bsps, CLIENT, SETTINGS, hash_to_hex, hex_to_hash};
+use crate::{Bsps, NOPROXY_CLIENT, SETTINGS, hash_to_hex, hex_to_hash};
 
 // https://docs.rs/rusty-s3/latest/rusty_s3/
 pub(crate) async fn r2_upload(localpath: &Path, bucketname: &str, remotepath: &str, content_type: &str) -> anyhow::Result<()> {
@@ -24,7 +24,7 @@ pub(crate) async fn r2_upload(localpath: &Path, bucketname: &str, remotepath: &s
 	let signed_url = bucket
 		.put_object(Some(&credentials), remotepath)
 		.sign(Duration::from_secs(120));
-	CLIENT
+	NOPROXY_CLIENT
 		.put(signed_url)
 		.header("content-type", content_type)
 		.body(tokio::fs::read(localpath).await?)
@@ -36,7 +36,7 @@ pub(crate) async fn r2_upload(localpath: &Path, bucketname: &str, remotepath: &s
 
 pub(crate) async fn purge_cache(urls: Option<&[&str]>) -> anyhow::Result<()> {
 	let purge_url = format!("https://api.cloudflare.com/client/v4/zones/{}/purge_cache", SETTINGS.cf_zone);
-	let response: Value = CLIENT
+	let response: Value = NOPROXY_CLIENT
 		.request(reqwest::Method::POST, purge_url)
 		.bearer_auth(SETTINGS.cf_purgetoken.as_str())
 		.json(&match urls {
@@ -173,7 +173,7 @@ pub(crate) async fn sync_r2_bz2s() -> anyhow::Result<()> {
 			for _i in 0..max_requests_per_prefix {
 				//println!("{shard} {_i}");
 				let signed_url = list_objects_v2.sign(Duration::from_secs(12));
-				let resp = CLIENT.get(signed_url).send().await?.bytes().await?;
+				let resp = NOPROXY_CLIENT.get(signed_url).send().await?.bytes().await?;
 				let resp = ListObjectsV2::parse_response(&resp)?;
 
 				for object in resp.contents {
