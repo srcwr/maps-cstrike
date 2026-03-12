@@ -6,4 +6,4 @@ cd "$(dirname "$0")"/unprocessed
 
 git reset
 git add ksf.surf_maps-list.txt
-git commit -m "$(date +%Y%m%d%H%M) - ksf.surf/maps update"
+git -c user.name=srcwrbot -c user.email=bot@srcwr.com commit -m "$(date +%Y%m%d%H%M) - ksf.surf/maps update"

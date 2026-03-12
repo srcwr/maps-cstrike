@@ -466,9 +466,9 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 					.current_dir(&SETTINGS.dir_maps_cstrike)
 					.args([
 						"-c",
-						"user.name=srcwrbot",
+						&format!("user.name={}", SETTINGS.git_name),
 						"-c",
-						"user.email=bot@srcwr.com",
+						&format!("user.email={}", SETTINGS.git_email),
 						"commit",
 						"-m",
 						&format!("{now} - automatic gamebanana"),

@@ -58,9 +58,9 @@ pub(crate) async fn run(bsps: Option<Arc<Bsps>>, now: jiff::Timestamp) -> anyhow
 		.current_dir(&SETTINGS.dir_maps_cstrike_more)
 		.args([
 			"-c",
-			"user.name=srcwrbot",
+			&format!("user.name={}", SETTINGS.git_name),
 			"-c",
-			"user.email=bot@srcwr.com",
+			&format!("user.email={}", SETTINGS.git_email),
 			"commit",
 			"-m",
 			&now,
