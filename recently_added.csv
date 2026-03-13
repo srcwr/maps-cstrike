@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+cs_assault_csbeta,29508000,2739679,b056a0a8399adbc10c8f56b0b5b46cc1515c0ff3,657386_1646619_cs_assault_csbeta-final-mapsrc.7z/cs_assault_csbeta-mapsrc/mapsrc/cs_assault_csbeta.bsp,automated upload,2026-03-13 18:45
 de_foption,28942596,7381647,510642dae0b5c2c36f367af99929b8b904b44fa6,531763_1646375_de_foption-final-src.7z/de_foption-src/de_foption.bsp,automated upload,2026-03-13 11:16
 de_prodigy_csbeta,20458448,4262230,6bf63b40af37f743edfe070e5aebf5ad0693f18a,652657_1646353_de_prodigy_csbeta-final-src.7z/de_prodigy_csbeta-src/de_prodigy_csbeta.bsp,automated upload,2026-03-13 09:36
 bhop_crab_game,50199260,12621805,0a40a66160a51bf8f01c9a378ec471cf4a54d991,659414_1646349_bhop_crab_game_84230.rar/bhop_crab_game.bsp,automated upload,2026-03-13 09:23
@@ -38,7 +39,6 @@ de_matcha_a2,8372084,2402098,75ec8faacc4ba27cace52ae697d5a06b6ae36266,657661_163
 fy_trains1.1,2409160,706324,0800a77765647fd15fa93cc9c840e41b3dca944e,654146_1639483_fy_trains11.7z/fy_trains1.1.bsp,automated upload,2026-03-04 04:45
 de_2sides,655668,189255,681578d0668f52c8ed36644384d71678d1e03fff,657497_1639290_de_2sides_1vs2_bots.rar/de_2sides.bsp,automated upload,2026-03-03 22:54
 de_2sides_wingman2v2,656252,190061,3480029183b368d4dc241f802f4cac041aa3a3a7,657497_1639289_de_2sides_wingman2v2.rar/de_2sides_wingman2v2.bsp,automated upload,2026-03-03 22:54
-cs_assault_csbeta,16607064,16549226,b619fef2f077190b2c0153c3c2e952cab169d8a8,657386_1638981_cs_assault_csbeta.7z/! cs_assault_csbeta/maps/cs_assault_csbeta.bsp,automated upload,2026-03-03 15:19
 72hrchallengebp,4296072,530829,324496e8ba07a67aac8d519f0ed578be38b55f2f,657259_1638562_72launch_2_.zip/72Launch/72hrchallengebp.bsp,automated upload,2026-03-03 00:53
 kayak_v2,7259664,1602845,3f0136bf6d2dfdcc47bf809d914e859c4db01d38,657191_1638536_kayak_v2_2_.zip/kayak_v2.bsp,automated upload,2026-03-03 00:14
 bhop_q4,40677408,15714404,a0ce1051712ae0105e46dbefcb8ed6f68b601ce2,657234_1638490_bhop_q4.zip/bhop_q4.bsp,automated upload,2026-03-02 23:12
