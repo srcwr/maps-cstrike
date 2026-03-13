@@ -760,6 +760,29 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		res??;
 	}
 
+	println!("creating maps-lite.db {}", Instant::now().duration_since(start).as_secs_f64());
+	let mapslitedb = SETTINGS.dir_maps_cstrike.join("processed/maps-lite.db");
+	let _ = tokio::fs::remove_file(&mapslitedb).await;
+	conn.call(move |conn| {
+		conn.execute_batch(
+			"
+			BEGIN;
+			DROP TABLE gamebanana;
+			DROP TABLE links;
+			DROP TABLE maps_czarchasm;
+			DROP TABLE maps_ksfthings;
+			DROP TABLE maps_unfiltered;
+			DROP INDEX sha1c;
+			ALTER TABLE maps_canon DROP COLUMN filesize;
+			COMMIT;
+			",
+		)?;
+		let mut stmt = conn.prepare("VACUUM INTO ?;")?;
+		let _ = stmt.execute((mapslitedb.to_string_lossy(),))?;
+		Ok::<(), rusqlite::Error>(())
+	})
+	.await?;
+
 	println!("done! {}\n\n", Instant::now().duration_since(start).as_secs_f64());
 
 	Ok(())

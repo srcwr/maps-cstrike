@@ -11,7 +11,7 @@ app = Flask(__name__)
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        db = g._database = sqlite3.connect("file:/www/maps.db?mode=ro", uri=True)
+        db = g._database = sqlite3.connect("file:/www/maps-lite.db?mode=ro", uri=True)
     return db
 
 @app.teardown_appcontext
