@@ -758,6 +758,7 @@ surf_sinsane2
 surf_sinsane_ez
 surf_sinsane_ksf
 surf_sippysip
+surf_sirena
 surf_sirius
 surf_sketchy
 surf_skill8
