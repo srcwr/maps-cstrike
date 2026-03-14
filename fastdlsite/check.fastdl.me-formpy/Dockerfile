@@ -1,9 +1,12 @@
-FROM python:slim
+FROM alpine:latest
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apk add wget zip
+RUN wget https://cosmo.zip/pub/cosmos/bin/assimilate-x86_64.elf https://redbean.dev/redbean-3.0.0.com
+RUN chmod +x *.elf *.com
+RUN ./assimilate-x86_64.elf -c redbean-3.0.0.com
 
-COPY main.py .
+COPY init.lua ./.init.lua
+RUN zip redbean-3.0.0.com .init.lua
 
-CMD ["gunicorn", "--workers", "4", "--bind", "0.0.0.0:55154", "main:app"]
+CMD ["./redbean-3.0.0.com", "-X", "-p", "55154"]
