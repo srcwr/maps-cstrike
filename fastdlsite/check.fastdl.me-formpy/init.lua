@@ -26,9 +26,9 @@ function OnHttpRequest()
 			SetHeader("Content-Type", "application/json")
 			Write('{"yip":"pie"}')
 		else
-			ServeError(503)
+			SetStatus(503)
 		end
 		return
 	end
-	ServeError(404)
+	SetStatus(404)
 end
