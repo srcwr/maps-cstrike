@@ -114,7 +114,7 @@ pub struct GlobalSettings {
 	/// a token that has `Cache Purge:Purge` permissions on your zone
 	#[cfg(feature = "scraper")]
 	pub cf_purgetoken: String,
-	///
+	/// a token with Workers perms
 	#[cfg(feature = "scraper")]
 	pub cf_pagestoken: String,
 	/// fuck documenting
@@ -159,27 +159,27 @@ pub struct GlobalSettings {
 	/// Max of 50.
 	#[cfg(feature = "scraper")]
 	pub gb_maxperpage: NonZeroUsize,
-	///
+	/// Non-zero value up to `gb_maxperpage`.
 	#[cfg(feature = "scraper")]
 	pub gb_perpage: NonZeroUsize,
-	///
+	/// How many items to fetch.
 	#[cfg(feature = "scraper")]
 	pub gb_numtofetch: NonZeroUsize,
-	///
+	/// Which item to start at...
 	#[cfg(feature = "scraper")]
 	pub gb_itemoffset: usize,
 	/// Added because caching is ruining my life...
 	#[cfg(feature = "scraper")]
 	pub gb_walkto: usize,
 
-	///
+	/// How long to wait after an error before looping autogb.  A few minutes is a good idea.
 	#[cfg(feature = "scraper")]
-	pub gb_wait_regular: f32,
-	///
+	pub gb_wait_time_after_errors: f32,
+	/// How many seconds to wait before loop autogb.  Multiple minutes is a good idea.
 	#[cfg(feature = "scraper")]
-	pub gb_wait_looped: f32,
+	pub gb_wait_time_for_looping: f32,
 
-	///
+	/// Proxy to use when pulling from gamebanana
 	#[cfg(feature = "scraper")]
 	pub proxy: Option<String>,
 }
@@ -278,7 +278,7 @@ async fn async_main() -> anyhow::Result<()> {
 	// cargo flamegraph -- process
 
 	let sanity_check_timestamp = |timestamp: i64| {
-		assert!(timestamp > 2026_01_01_0000 && timestamp < 2027_01_01_0001);
+		assert!(timestamp > 2026_03_20_0000 && timestamp < 2027_01_01_0001);
 		jiff::Timestamp::strptime("%Y%m%d%H%M%z", format!("{timestamp}+0000"))
 	};
 
@@ -338,7 +338,7 @@ async fn async_main() -> anyhow::Result<()> {
 		// maps-cstrike-more
 		Commands::Auto2 { timestamp } => {
 			let timestamp = sanity_check_timestamp(timestamp)?;
-			more::auto::run(None, timestamp).await?
+			more::auto::run(None, timestamp).await?;
 		}
 		Commands::Dumper => {
 			let _ = more::dumper::dumpher().await?;

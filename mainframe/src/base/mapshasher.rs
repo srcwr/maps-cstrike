@@ -67,7 +67,7 @@ async fn run_inner(
 		let headers = hashed_csv.headers()?.clone();
 		let mut raw_record = csv::StringRecord::new();
 		while hashed_csv.read_record(&mut raw_record)? {
-			let row = raw_record.deserialize::<ProcessedCsvRow>(Some(&headers))?;
+			let row = raw_record.deserialize::<ProcessedCsvRow<'_>>(Some(&headers))?;
 			let _ = existing_names.insert(
 				normalize_mapname(row.mapname),
 				row.url

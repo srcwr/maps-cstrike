@@ -28,9 +28,9 @@ async fn set_mtime(path: &Path, mtime: SystemTime, is_dir: bool) -> Result<(), E
 			std::fs::File::options()
 				.write(true)
 				.open(path)
-				.map_err(|_| Error::OpenFile)?
+				.map_err(|_e| Error::OpenFile)?
 				.set_modified(mtime)
-				.map_err(|_| Error::SetModifiedTime)?;
+				.map_err(|_e| Error::SetModifiedTime)?;
 			Ok(())
 		})
 		.await
@@ -43,33 +43,33 @@ pub(crate) async fn copy_with_mtime<P: AsRef<Path>>(from: P, to: P) -> anyhow::R
 	let to = to.as_ref();
 
 	if from.is_file() {
-		tokio::fs::copy(from, to).await.map_err(|_| Error::CopyFile)?;
-		let time = tokio::fs::metadata(from).await.map_err(|_| Error::Metadata)?;
-		let modified = time.modified().map_err(|_| Error::Metadata)?;
+		tokio::fs::copy(from, to).await.map_err(|_e| Error::CopyFile)?;
+		let time = tokio::fs::metadata(from).await.map_err(|_e| Error::Metadata)?;
+		let modified = time.modified().map_err(|_e| Error::Metadata)?;
 		set_mtime(to, modified, false).await?;
 		return Ok(());
 	}
 
-	tokio::fs::create_dir_all(to).await.map_err(|_| Error::CreateDirectory)?;
+	tokio::fs::create_dir_all(to).await.map_err(|_e| Error::CreateDirectory)?;
 
-	let mut dir = tokio::fs::read_dir(from).await.map_err(|_| Error::ReadDirectory)?;
+	let mut dir = tokio::fs::read_dir(from).await.map_err(|_e| Error::ReadDirectory)?;
 	let mut futures = tokio::task::JoinSet::new();
-	while let Some(entry) = dir.next_entry().await.map_err(|_| Error::ReadDirectory)? {
+	while let Some(entry) = dir.next_entry().await.map_err(|_e| Error::ReadDirectory)? {
 		let path = entry.path();
 		//dbg!(&path);
-		let metadata = entry.metadata().await.map_err(|_| Error::Metadata)?;
-		let modified = metadata.modified().map_err(|_| Error::Metadata)?;
+		let metadata = entry.metadata().await.map_err(|_e| Error::Metadata)?;
+		let modified = metadata.modified().map_err(|_e| Error::Metadata)?;
 
 		let newpath = to.join(path.file_name().unwrap());
 		//dbg!(&newpath);
 
-		if entry.file_type().await.map_err(|_| Error::Metadata)?.is_dir() {
-			let newpath_clone = newpath.to_path_buf();
+		if entry.file_type().await.map_err(|_e| Error::Metadata)?.is_dir() {
+			let newpath_clone = newpath.clone();
 			Box::pin(copy_with_mtime(path, newpath_clone)).await?;
 			set_mtime(&newpath, modified, true).await?;
 		} else {
 			futures.spawn(async move {
-				tokio::fs::copy(&path, &newpath).await.map_err(|_| Error::CopyFile)?;
+				tokio::fs::copy(&path, &newpath).await.map_err(|_e| Error::CopyFile)?;
 				set_mtime(&newpath, modified, false).await?;
 				anyhow::Result::<(), anyhow::Error>::Ok(())
 			});

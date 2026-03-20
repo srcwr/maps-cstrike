@@ -129,14 +129,14 @@ async fn fetch_mod(
 		Ok(files) => files,
 		Err(e) => {
 			eprintln!("failed to fetch {url}\n{e:?}");
-			return Ok(LoopControl::Restart(SETTINGS.gb_wait_regular));
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
 	let files = match files.json::<ApiV11Mod>().await {
 		Ok(files) => files._aFiles,
 		Err(e) => {
 			eprintln!("failed to parse json file list from {url}\n{e:?}");
-			return Ok(LoopControl::Restart(SETTINGS.gb_wait_regular));
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
 
@@ -159,7 +159,7 @@ async fn fetch_mod(
 					downloaded: false,
 					processed: false,
 				});
-				inserted_new_row = true
+				inserted_new_row = true;
 			}
 		}
 	}
@@ -198,7 +198,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 		Err(e) => {
 			eprintln!("failed to download {link}\n{e:?}");
 			let _ = discord::webhook(true, &format!("{} on {link}", e.status().unwrap_or_default().as_u16())).await;
-			return Ok(LoopControl::Restart(SETTINGS.gb_wait_regular));
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
 
@@ -207,7 +207,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 		Err(e) => {
 			eprintln!("failed to download2 {link}\n{e:?}");
 			let _ = discord::webhook(true, &format!("{} on {link}", e.status().unwrap_or_default().as_u16())).await;
-			return Ok(LoopControl::Restart(SETTINGS.gb_wait_regular));
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
 
@@ -223,7 +223,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 				),
 			)
 			.await;
-			return Ok(LoopControl::Restart(SETTINGS.gb_wait_regular));
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
 
@@ -497,7 +497,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			println!("\n\nrunning it back!\n\n");
 		}
 
-		control = LoopControl::Restart(SETTINGS.gb_wait_looped);
+		control = LoopControl::Restart(SETTINGS.gb_wait_time_for_looping);
 
 		// some bullshit to stop eating so much memory...
 		let mut memory_set = JoinSet::new();

@@ -3,6 +3,8 @@
 
 use std::{collections::BTreeMap, path::Path, sync::Arc};
 
+use anyhow::Context;
+use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::{SETTINGS, normalize_mapname};
@@ -166,11 +168,14 @@ pub(crate) async fn fill_downloads<P: AsRef<Path>>(srcdir: P) -> anyhow::Result<
 			continue;
 		}
 		let filename = entry.file_name().to_str().unwrap().to_owned();
-		let splits: Vec<&str> = filename.splitn(3, '_').collect();
+		let (modid, downloadid, filename) = filename
+			.splitn(3, '_')
+			.collect_tuple()
+			.context("shouldn't have issues splitting here, but alas...")?;
 		records.push(DownloadsRow {
-			modid: splits[0].parse()?,
-			downloadid: splits[1].parse()?,
-			filename: splits[2].to_owned(),
+			modid: modid.parse()?,
+			downloadid: downloadid.parse()?,
+			filename: filename.to_owned(),
 			downloaded: true,
 			processed: true,
 		});

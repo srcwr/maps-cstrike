@@ -165,7 +165,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			Instant::now().duration_since(start).as_secs_f64()
 		);
 		let tx = conn.transaction()?;
-		let insert_maps = |tx: &Transaction, table: &str, rows: &DashSet<UnprocessedCsvRow>| -> rusqlite::Result<()> {
+		let insert_maps = |tx: &Transaction<'_>, table: &str, rows: &DashSet<UnprocessedCsvRow>| -> rusqlite::Result<()> {
 			let mut stmt = tx.prepare(&format!("INSERT INTO {table} VALUES(?,?,?,?);"))?;
 			for row in rows.iter() {
 				let _ = stmt.execute((row.mapname.as_str(), row.filesize, row.filesize_bz2, row.sha1.as_str()))?;

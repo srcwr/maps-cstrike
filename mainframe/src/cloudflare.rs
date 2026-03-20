@@ -49,7 +49,7 @@ pub(crate) async fn purge_cache(urls: Option<&[&str]>) -> anyhow::Result<()> {
 		.await?;
 
 	if response.get("success") != Some(&Value::Bool(true)) {
-		dbg!(response);
+		println!("{response:?}");
 		anyhow::bail!("failed to purge cache");
 	}
 

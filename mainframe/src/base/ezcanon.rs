@@ -23,7 +23,7 @@ pub async fn run(name: &str, hash: &str) -> anyhow::Result<()> {
 		for row in in_recently_added_csv.deserialize::<UnprocessedCsvRow>() {
 			let mut row = row?;
 			let mapname = row.mapname.trim_start_matches('#');
-			let mapname = normalize_mapname(&mapname);
+			let mapname = normalize_mapname(mapname);
 			if mapname == name {
 				if row.sha1 != hash {
 					println!("removing {row:?}");
@@ -53,7 +53,7 @@ pub async fn run(name: &str, hash: &str) -> anyhow::Result<()> {
 		for row in in_gamebanana_x_automatic_csv.deserialize::<UnprocessedCsvRowShort>() {
 			let mut row = row?;
 			if let Some(stripped) = row.mapname.strip_prefix('#') {
-				let mapname = normalize_mapname(&stripped);
+				let mapname = normalize_mapname(stripped);
 				if mapname == name {
 					println!("uncommenting {row:?}");
 					row.mapname = stripped.to_string();
@@ -73,7 +73,7 @@ pub async fn run(name: &str, hash: &str) -> anyhow::Result<()> {
 
 	{
 		let mut out_canon_rows = vec![CanonCsvRow {
-			mapname: name.to_string(),
+			mapname: name.clone(),
 			sha1: hash.to_string(),
 			note: "ezcanon".to_string(),
 		}];
