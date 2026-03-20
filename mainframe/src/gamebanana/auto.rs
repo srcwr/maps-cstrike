@@ -286,7 +286,6 @@ async fn process_item(
 		&outputdir,
 		false,
 		false,
-		true,
 	)
 	.await?;
 	newly_hashed.sort();

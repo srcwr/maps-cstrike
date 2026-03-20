@@ -28,7 +28,6 @@ pub(crate) async fn run<P1: AsRef<Path>, P2: AsRef<Path>>(
 	mapsfolder: P2,
 	timestamp_fixer: bool,
 	skip_existing_hash: bool,
-	canon_clobber_check: bool,
 ) -> anyhow::Result<Vec<UnprocessedCsvRow>> {
 	run_inner(
 		outcsvpath.as_ref(),
@@ -36,7 +35,6 @@ pub(crate) async fn run<P1: AsRef<Path>, P2: AsRef<Path>>(
 		mapsfolder.as_ref(),
 		timestamp_fixer,
 		skip_existing_hash,
-		canon_clobber_check,
 	)
 	.await
 }
@@ -47,7 +45,6 @@ async fn run_inner(
 	mapsfolder: &Path,
 	timestamp_fixer: bool,
 	skip_existing_hash: bool,
-	canon_clobber_check: bool,
 ) -> anyhow::Result<Vec<UnprocessedCsvRow>> {
 	let mapsfolder = mapsfolder.canonicalize()?;
 
@@ -56,19 +53,6 @@ async fn run_inner(
 			if metadata.len() > 75 {
 				anyhow::bail!("DON'T OVERWRITE THAT CSV! ({})", outcsvpath.display());
 			}
-		}
-	}
-
-	let mut existing_canon = HashMap::new();
-	if canon_clobber_check {
-		// TODO (low) canonClobber.csv
-		let mut maps_index_csv =
-			csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("processed/main.fastdl.me/maps_index.html.csv"))?;
-		let headers = maps_index_csv.headers()?.clone();
-		let mut raw_record = csv::StringRecord::new();
-		while maps_index_csv.read_record(&mut raw_record)? {
-			let row = raw_record.deserialize::<ProcessedCsvRow>(Some(&headers))?;
-			let _ = existing_canon.insert(normalize_mapname(row.mapname), row.sha1.to_string());
 		}
 	}
 
@@ -259,13 +243,16 @@ async fn run_inner(
 			}
 		}
 
-		let mut stem = entry.file_stem().unwrap().to_str().unwrap().to_owned();
-		if stem == "#" {
+		let mut stem = entry
+			.file_stem()
+			.unwrap()
+			.to_str()
+			.unwrap()
+			.trim_start_matches('#')
+			.to_owned();
+		if stem.is_empty() {
 			// stupid
-			stem = rand::random::<u64>().to_string();
-		}
-		if stem.starts_with('#') && stem.len() > 1 {
-			stem.remove(0);
+			stem = digest.clone();
 		}
 
 		let parent = if mode == Mode::Manual {
@@ -281,14 +268,6 @@ async fn run_inner(
 				let in_recents = existing_recents.get(&normalized);
 				if in_recents.is_none() || *in_recents.unwrap() != *existing_names_id {
 					stem.insert(0, '#');
-				}
-			}
-		} else if canon_clobber_check {
-			if let Some(found) = existing_canon.get(&stem) {
-				if digest != *found {
-					// TODO: (low) canonClobber things...
-					// canonClobber.write(f"{steam},{found},\n")
-					// print_and_to_shit(f"  ^^^^ name collision {digest} {entry} (existing: {row[0]} & {found}")
 				}
 			}
 		}
