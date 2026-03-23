@@ -329,6 +329,7 @@ ze_hl2_episodic_escape_v09_1
 ze_hobbit_escape_b2
 ze_hold_em_2_v1
 ze_hold_em_2_v3a
+ze_hold_em_2_v3b
 ze_hold_em_v10
 ze_holmes_escape_pf_2014c
 ze_honkai_impact_3rd_cyberpunk_city_css
