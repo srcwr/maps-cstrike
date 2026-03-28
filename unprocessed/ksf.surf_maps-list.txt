@@ -646,6 +646,7 @@ surf_pure
 surf_purgatory
 surf_pyzire_retexture
 surf_qlimax_q
+surf_quake
 surf_quantum_njv
 surf_quarantine
 surf_quartus_ksf
