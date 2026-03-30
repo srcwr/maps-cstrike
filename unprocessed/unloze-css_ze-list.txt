@@ -86,6 +86,7 @@ ze_biohazard3_nemesis_b5_2s
 ze_biohazard_manor_v4a_004
 ze_biohazard_v2b_004
 ze_bioluminescent_b2
+ze_bioluminescent_v1_1
 ze_bioshock_v7_1
 ze_blackmesa_escape_final
 ze_blackmesa_remix_v3_6
@@ -93,6 +94,7 @@ ze_blueshift_a3
 ze_boacceho_p4s
 ze_boat_escape_jenz_v4_5
 ze_boatescape6_remix_fix2
+ze_boatescape888_v1_8_css
 ze_boredom_v543656
 ze_bowser_in_the_fire_sea_v1e
 ze_bowser_in_the_fire_sea_v1f_remastered
@@ -203,12 +205,14 @@ ze_dreamin_v1_8s
 ze_dreamin_v2_3s
 ze_dreamin_v3_1_css
 ze_dystopia_a4_css
+ze_dystopia_a4_css1
 ze_echo_boatescape_extended
 ze_eden_a3s
 ze_eerie_escape_chapter2_b02
 ze_eerie_escape_redux_v2
 ze_eerie_escape_v4_2
 ze_egyptian_trip_v1_1
+ze_egyptian_trip_v1_4
 ze_einstein_v7_css1
 ze_element_fire_final_v2
 ze_elevator_escape
@@ -388,6 +392,7 @@ ze_jurassicpark_c1v4
 ze_jurassicpark_escape_v1
 ze_jurassicpark_v2_10_ob
 ze_jurassicpark_winter_v2
+ze_jurassicpark_winter_v3
 ze_kaffe_escape_v2_css2
 ze_kage_a2s
 ze_kanker_escape_v1_1
@@ -470,6 +475,7 @@ ze_melancholic_summer_c2
 ze_memehell_test3
 ze_metro2033_v1_fix
 ze_mgden_css
+ze_mgden_css1
 ze_mgden_y3_s2
 ze_mindtree_v1_6s
 ze_minecraft_adventure_v1_2c
@@ -480,12 +486,15 @@ ze_minimal_v4_1
 ze_mirrors_edge_reborn_v4_2
 ze_mirrors_edge_reborn_v4_3
 ze_mirrors_edge_v2_pf_final
+ze_misaka_css3
 ze_mist_v1_3
 ze_mkzk_scarab_v4
 ze_mohgwyn_v1
+ze_mojos_minigames_v1_4_1_css
 ze_moltentemple_a5
 ze_moltentemple_p1t2
 ze_monkey_mappers_v2
+ze_monochrome_css2
 ze_monolith_b2
 ze_moon_base_v1
 ze_motanuminc_ob
@@ -493,6 +502,7 @@ ze_mountain_escape_bbo_v1
 ze_mountain_escape_ultimate_fix
 ze_mountain_escape_v5_zy
 ze_mytex_escape_v3
+ze_nagi_b1_1s
 ze_naruto_shippuden_legends_b1
 ze_naruto_shippuden_legends_b2
 ze_naruto_shippuden_legends_v1
@@ -548,6 +558,7 @@ ze_ouroboros_v2
 ze_ouroboros_v3
 ze_ouroboros_v4
 ze_outpost_escape_css
+ze_palace_of_minolila_v1_s_f
 ze_palm_island_nav72
 ze_pandemic_za_empire_v6
 ze_paper_escaper_v7_1
@@ -753,6 +764,7 @@ ze_super_mario_64_v2_b9
 ze_super_metroid_v5
 ze_surf_blitzkreig_v2_2
 ze_surf_bona_s2
+ze_surf_bona_s3
 ze_surf_charge_v2_f2
 ze_surf_cherry_blossom_v2
 ze_surf_cherry_blossom_v3
@@ -807,6 +819,7 @@ ze_thelostworld_redux_gflfixed
 ze_thousand_steps_b7c
 ze_three_eyes_v0_7s_fix
 ze_thriller_escape_b6
+ze_tibia_v4_1s3
 ze_tilex_ultimate_v2_14s
 ze_timeshifter_a2
 ze_timesink_css
@@ -890,6 +903,7 @@ ze_zombie_factory_v1
 ze_zombierig_v4_3
 ze_ztastic_v2
 ze_zulu_css
+ze_zulu_css1
 zm_4way_tunnel_v2
 zm_atix_helicopter_e1f
 zm_cbble_b3
