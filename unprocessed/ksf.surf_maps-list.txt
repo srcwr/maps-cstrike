@@ -249,6 +249,7 @@ surf_elysium
 surf_elysium2
 surf_elysium3
 surf_elysium4
+surf_elysium5
 surf_ember
 surf_ember2
 surf_embrace
