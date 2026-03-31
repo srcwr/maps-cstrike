@@ -241,6 +241,7 @@ ze_exit_this_earths_atomosphere_c1
 ze_exodus_v1_6_2
 ze_exodus_v1_7fix
 ze_exodus_v1_8
+ze_facility_s3_2
 ze_fapescape_rote_v1_3f
 ze_fapescape_v1_2
 ze_fartlocker_escape_v3s
@@ -557,6 +558,7 @@ ze_otakuroom_v5_6fs
 ze_ouroboros_v2
 ze_ouroboros_v3
 ze_ouroboros_v4
+ze_outlast_v1
 ze_outpost_escape_css
 ze_palace_of_minolila_v1_s_f
 ze_palm_island_nav72
@@ -607,6 +609,7 @@ ze_predator_ultimate_beta04
 ze_predator_ultimate_v1_3
 ze_predator_ultimate_v3
 ze_project_alcaria_v1_5s
+ze_project_codex_v1_2_css
 ze_prototype_v2
 ze_psykopat_v1_2a
 ze_psykopat_v1_3a_fix
@@ -617,8 +620,10 @@ ze_purgatorium_b1fix
 ze_puta
 ze_quake1_a1
 ze_quiver_v2a
+ze_rabanastre_royal_s
 ze_raccoon_facility_v6b
 ze_radiance_v1_1
+ze_rainbow_factory_b1
 ze_ramp_a1_1s
 ze_random_escape_b7_3
 ze_random_map_v3_7
@@ -637,6 +642,7 @@ ze_rawnscape_b2
 ze_re4_castle_a3
 ze_realm_h1
 ze_rebelground_css_v1_fix
+ze_rebicefacility_e01_v1
 ze_regular_rooftoprunaway2
 ze_regular_rooftoprunaway2_v1
 ze_regular_rooftoprunaway2_v2
