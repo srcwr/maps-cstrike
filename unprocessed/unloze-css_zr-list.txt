@@ -144,6 +144,7 @@ zr_snow_war
 zr_snowfall_v3
 zr_streets_beta_3_unloze
 zr_tank_challenge_l4d_scythx
+zr_town
 zr_toxic_lake
 zr_tpose_underground
 zr_training_maze2_scythx
