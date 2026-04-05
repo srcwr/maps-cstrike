@@ -307,6 +307,7 @@ ze_geometric_v1_4s
 ze_geometric_v1_4sv
 ze_get_to_the_chopper_undead_6
 ze_gibletz_establishment_b6
+ze_gladiator_v1
 ze_global_crisis_a1
 ze_gods_wrath_v3_8b
 ze_got_the_north_b4
