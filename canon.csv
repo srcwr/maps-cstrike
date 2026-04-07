@@ -1,9 +1,4 @@
 mapname,sha1,note
-#de_bosnian_house,6406479063580cf350ef5ac7a9ecb30ee960c6c0,automatic canonization 202312031232
-#de_dustcity -- bleh,0,0
-#de_fastline,5b9e44b5cc0b2815886a1d10ee6c8a9b8ea15a97,automatic canonization 202401211252
-#de_industry,55956322769a924aba7775f592f819eb0752077d,automatic canonization 202603282037
-#de_metro -- bleh,0,0
 1v1_shadowmoses,0f323120c7ce7775fb377f17d81b31a6ef28e2a4,automatic canonization 202603141346
 1v1_test,b4a70d46ebb38a6916ffb8b74e173e688e8220ee,automatic canonization 202502231432
 3mc_training,bf17153bcc286a09d97375eb9218071b8b00efde,original 3mc_training brought to attention by check.fastdl.me & email
@@ -383,6 +378,7 @@ de_frazzledrip,7b66802f7281d5f07a3f35d388a3f1edbdd2b501,automatic canonization 2
 de_fs_zavod,4f98afc0875623285155d845d8c26ab266568963,automatic canonization 202603011326
 de_hawkins,18f2a0da043e916c0b9c35222a8444a179b03bda,automatic canonization 202409130959
 de_industrialzone,94201d5570b654f538e09dc809277e450fb233bb,ezcanon
+de_industry,160ff2c01ed098bb6291d693da95541e82b398e7,ezcanon
 de_inferno,128cb9ef3c09b0192f3a46443f45d7f1d3172f61,latest included version
 de_inferno_csco_winter,97063967cac745cba16b0d4d2a3ad85e04694976,automatic canonization 202501030926
 de_inferno_plus,9163a3c77380d4c224c18d424862dca466aaff5f,automatic canonization 202401171814
