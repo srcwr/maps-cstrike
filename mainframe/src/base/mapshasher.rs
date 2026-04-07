@@ -4,7 +4,12 @@
 #[cfg(windows)]
 use std::os::windows::fs::FileTimesExt;
 
-use std::{collections::HashMap, io::Write, path::Path, sync::Arc};
+use std::{
+	collections::{HashMap, HashSet},
+	io::Write,
+	path::Path,
+	sync::Arc,
+};
 
 use crate::{
 	SETTINGS,
@@ -53,46 +58,6 @@ async fn run_inner(
 			if metadata.len() > 75 {
 				anyhow::bail!("DON'T OVERWRITE THAT CSV! ({})", outcsvpath.display());
 			}
-		}
-	}
-
-	let mut existing_names = HashMap::<String, Option<GamebananaID>>::new();
-	let mut existing_recents = HashMap::<String, Option<GamebananaID>>::new();
-	if mode == Mode::Automatic {
-		let mut hashed_csv = csv::Reader::from_path(
-			SETTINGS
-				.dir_maps_cstrike
-				.join("processed/main.fastdl.me/hashed_index.html.csv"),
-		)?;
-		let headers = hashed_csv.headers()?.clone();
-		let mut raw_record = csv::StringRecord::new();
-		while hashed_csv.read_record(&mut raw_record)? {
-			let row = raw_record.deserialize::<ProcessedCsvRow<'_>>(Some(&headers))?;
-			let _ = existing_names.insert(
-				normalize_mapname(row.mapname),
-				row.url
-					.split("https://gamebanana.com/mods/")
-					.nth(1)
-					.map(|id| id.parse().unwrap()),
-			);
-		}
-
-		let mut recently_added_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("recently_added.csv"))?;
-		// only allow clobbering mapnames for recently added gamebanana downloads....
-		for row in recently_added_csv.deserialize::<UnprocessedCsvRow>() {
-			let row = row?;
-			let id = if let Some(note) = row.note {
-				note.split('_').next().and_then(|s| s.parse().ok())
-			} else {
-				None
-			};
-			let mapname = normalize_mapname(&row.mapname);
-			if let Some(existing_names_id) = existing_names.get(&mapname) {
-				if id == *existing_names_id {
-					existing_names.remove(&mapname);
-				}
-			}
-			existing_recents.insert(mapname, id);
 		}
 	}
 
@@ -263,12 +228,62 @@ async fn run_inner(
 		let parent = parent.to_str().unwrap().replace('\\', "/");
 
 		if mode == Mode::Automatic {
-			let normalized = normalize_mapname(&stem);
-			if let Some(existing_names_id) = existing_names.get(&normalized) {
-				let in_recents = existing_recents.get(&normalized);
-				if in_recents.is_none() || *in_recents.unwrap() != *existing_names_id {
-					stem.insert(0, '#');
+			let all_canons = {
+				let mut all_canons = HashMap::<String, Option<GamebananaID>>::new();
+
+				let mut hashed_csv =
+					csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("processed/main.fastdl.me/maps_index.html.csv"))?;
+				let headers = hashed_csv.headers()?.clone();
+				let mut raw_record = csv::StringRecord::new();
+				while hashed_csv.read_record(&mut raw_record)? {
+					let row = raw_record.deserialize::<ProcessedCsvRow<'_>>(Some(&headers))?;
+					let _ = all_canons.insert(
+						normalize_mapname(row.mapname),
+						row.url
+							.split("https://gamebanana.com/mods/")
+							.nth(1)
+							.map(|id| id.parse().unwrap()),
+					);
 				}
+				all_canons
+			};
+
+			let existing_names = {
+				let mut existing_names = HashSet::<String>::new();
+				let mut hashed_csv = csv::Reader::from_path(
+					SETTINGS
+						.dir_maps_cstrike
+						.join("processed/main.fastdl.me/hashed_index.html.csv"),
+				)?;
+				let headers = hashed_csv.headers()?.clone();
+				let mut raw_record = csv::StringRecord::new();
+				while hashed_csv.read_record(&mut raw_record)? {
+					let row = raw_record.deserialize::<ProcessedCsvRow<'_>>(Some(&headers))?;
+					existing_names.insert(normalize_mapname(row.mapname));
+				}
+				existing_names
+			};
+
+			let existing_recents = {
+				let mut existing_recents = HashMap::<String, Option<GamebananaID>>::new();
+				let mut recently_added_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("recently_added.csv"))?;
+				for row in recently_added_csv.deserialize::<UnprocessedCsvRow>() {
+					let row = row?;
+					let id = if let Some(note) = row.note {
+						note.split('_').next().and_then(|s| s.parse().ok())
+					} else {
+						None
+					};
+					existing_recents.insert(normalize_mapname(&row.mapname), id);
+				}
+				existing_recents
+			};
+
+			// only allow clobbering mapnames for recently added gamebanana downloads....
+			let normalized = normalize_mapname(&stem);
+			let in_recents = existing_recents.get(&normalized);
+			if existing_names.contains(&normalized) && (in_recents.is_none() || all_canons.get(&normalized) != in_recents) {
+				stem.insert(0, '#');
 			}
 		}
 
