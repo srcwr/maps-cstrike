@@ -269,6 +269,8 @@ ze_ffxii_moko_temple_v1_1
 ze_ffxii_monaco_v1
 ze_ffxii_mt_bur_omisace_v5_4
 ze_ffxii_mt_bur_omisace_v5_5fix
+ze_ffxii_mt_bur_omisace_v6fix
+ze_ffxii_mt_bur_snow_v6fix5
 ze_ffxii_paramina_rift_v1_4
 ze_ffxii_ridorana_cataract_t5_3
 ze_ffxii_salikawood_v1_7s
@@ -303,6 +305,7 @@ ze_gameshow_v1_2
 ze_gargantua_v2_0
 ze_genso_of_last_b2
 ze_genso_of_last_v2_2fix
+ze_genso_of_last_v2_2fix_a
 ze_geometric_v1_4s
 ze_geometric_v1_4sv
 ze_get_to_the_chopper_undead_6
