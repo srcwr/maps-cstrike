@@ -912,6 +912,7 @@ surf_x
 surf_y
 surf_year3000
 surf_yellow
+surf_yolo
 surf_z
 surf_zae
 surf_zbig2
