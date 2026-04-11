@@ -748,6 +748,7 @@ ze_sorrento_xmas_v4
 ze_sorrtento_resonate_v1
 ze_source_ware_b1_5
 ze_source_ware_b1_8
+ze_source_ware_b2
 ze_space_flight_v1_1
 ze_space_stationob_fix
 ze_squid_game_css1
