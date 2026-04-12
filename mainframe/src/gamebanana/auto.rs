@@ -10,7 +10,9 @@ use std::{
 use itertools::Itertools;
 use tokio::task::JoinSet;
 
-use crate::{Bsps, PROXIED_CLIENT, SETTINGS, base, cloudflare, discord, gamebanana::discordbot, hex_to_hash, normalize_mapname};
+#[cfg(feature = "discordbot")]
+use crate::gamebanana::discordbot;
+use crate::{Bsps, NOPROXY_CLIENT, PROXIED_CLIENT, SETTINGS, base, cloudflare, hex_to_hash, normalize_mapname};
 
 use super::types::{ARecords1, ApiV11Mod, ApiV11ModIndex};
 
@@ -18,6 +20,24 @@ use super::types::{ARecords1, ApiV11Mod, ApiV11ModIndex};
 enum LoopControl {
 	Restart(f32),
 	Pass,
+}
+
+async fn discord_webhook(ping: bool, message: &str) -> anyhow::Result<()> {
+	let content = if ping {
+		format!("{} {message}", SETTINGS.discord_ping)
+	} else {
+		message.to_string()
+	};
+	NOPROXY_CLIENT
+		.post(SETTINGS.discord_webhook.as_str())
+		.json(&serde_json::json!({
+			"username": SETTINGS.discord_username.as_str(),
+			"embeds": [],
+			"content": content,
+		}))
+		.send()
+		.await?;
+	Ok(())
 }
 
 async fn get_index_records() -> Vec<ARecords1> {
@@ -185,7 +205,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 	};
 
 	let outputfilename = format!("{}_{}_{}", row.modid, row.downloadid, row.filename);
-	let _ = discord::webhook(
+	let _ = discord_webhook(
 		true,
 		&format!("new download at https://gamebanana.com/mods/{} `{outputfilename}`", row.modid),
 	)
@@ -197,7 +217,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 		Ok(resp) => resp,
 		Err(e) => {
 			eprintln!("failed to download {link}\n{e:?}");
-			let _ = discord::webhook(true, &format!("{} on {link}", e.status().unwrap_or_default().as_u16())).await;
+			let _ = discord_webhook(true, &format!("{} on {link}", e.status().unwrap_or_default().as_u16())).await;
 			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
@@ -206,7 +226,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 		Ok(resp) => resp,
 		Err(e) => {
 			eprintln!("failed to download2 {link}\n{e:?}");
-			let _ = discord::webhook(true, &format!("{} on {link}", e.status().unwrap_or_default().as_u16())).await;
+			let _ = discord_webhook(true, &format!("{} on {link}", e.status().unwrap_or_default().as_u16())).await;
 			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
@@ -215,7 +235,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 		Ok(bytes) => bytes,
 		Err(e) => {
 			eprintln!("stream died during {link} download?\n{e:?}");
-			let _ = discord::webhook(
+			let _ = discord_webhook(
 				true,
 				&format!(
 					"failed to download {link} (stream died?) ({})",
@@ -391,6 +411,7 @@ async fn process_item(
 }
 
 pub(crate) async fn run() -> anyhow::Result<()> {
+	#[cfg(feature = "discordbot")]
 	tokio::spawn(discordbot::lurk());
 
 	let mut downloads = Arc::new(crate::csv::load_downloads().await?);

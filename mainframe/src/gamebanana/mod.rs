@@ -2,7 +2,7 @@
 
 #[cfg(feature = "scraper")]
 pub mod auto;
-#[cfg(feature = "discord")]
+#[cfg(feature = "discordbot")]
 pub mod discordbot;
 pub mod types;
 

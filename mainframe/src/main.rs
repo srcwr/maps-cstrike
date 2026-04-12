@@ -5,8 +5,6 @@ mod base; // maps-cstrike
 #[cfg(feature = "scraper")]
 mod cloudflare;
 mod csv;
-#[cfg(feature = "discord")]
-mod discord;
 mod gamebanana;
 mod more; // maps-cstrike-more
 
@@ -134,7 +132,7 @@ pub struct GlobalSettings {
 	#[cfg(feature = "scraper")]
 	pub discord_username: String,
 	/// the bot token used for member bots...
-	#[cfg(feature = "discord")]
+	#[cfg(feature = "discordbot")]
 	pub discord_bottoken: String,
 
 	/// the full path to the maps-cstrike repo on disk

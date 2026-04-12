@@ -9,9 +9,9 @@ repository = "https://github.com/srcwr/maps-cstrike/tree/master/mainframe"
 [features]
 default = [
 	"scraper",
-	"discord",
+	"discordbot",
 ]
-discord = [
+discordbot = [
 	"scraper",
 	"dep:twilight-gateway",
 ]
