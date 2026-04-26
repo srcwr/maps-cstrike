@@ -499,6 +499,7 @@ ze_mohgwyn_v1
 ze_mojos_minigames_v1_4_1_css
 ze_moltentemple_a5
 ze_moltentemple_p1t2
+ze_monkey_mappers2_v3
 ze_monkey_mappers_v2
 ze_monochrome_css2
 ze_monolith_b2
@@ -927,6 +928,7 @@ ze_yuki_base_v3
 ze_yuki_base_v3_fix
 ze_yuki_base_v3_test
 ze_yuki_base_v3_test2
+ze_zertinan_s
 ze_zk_colour_sick
 ze_zk_fapescape_a11
 ze_zk_mall_of_zombies_v1_2
