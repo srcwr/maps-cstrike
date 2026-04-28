@@ -287,6 +287,7 @@ async fn process_item(
 
 	let outputfilename = format!("{}_{}_{}", row.modid, row.downloadid, row.filename);
 	let outputdir = SETTINGS.dir_gamebanana_auto.join(&shortnow).join(&outputfilename);
+	tokio::fs::create_dir_all(&outputdir).await?;
 
 	let status = tokio::process::Command::new("7z")
 		.args([
