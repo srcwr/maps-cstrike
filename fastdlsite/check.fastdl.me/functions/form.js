@@ -3,9 +3,9 @@
 // wrangler pages publish --project-name check-fastdl --branch main .
 
 export async function onRequestPost(ctx) {
-    const now  = new Date().toISOString().replace('T', ' ').slice(0, -5); // lol
+    const now = new Date().toISOString().replace('T', ' ').slice(0, -5); // lol
 
-    let text = await ctx.request.text();
+    let text = (await ctx.request.text()).replace(/\p{Cc}/gu, "");
     if (text.length < 5 || text.length > 1800)
         return new Response(null, {status: 500});
 
@@ -18,7 +18,7 @@ export async function onRequestPost(ctx) {
         body: JSON.stringify({
             username: "check.fastdl.me",
             avatar_url: "",
-            content: now /*+ ' - ' + ctx.request.cf.country ' - ' + ctx.request.headers.get("X-Real-IP")*/ + '\n```\n' + text + '\n```',
+            content: now /*+ ' - ' + ctx.request.cf.country ' - ' + ctx.request.headers.get("X-Real-IP")*/ + '\n' + text + '\n',
             tts: false,
             flags: 4, // SUPPRESS_EMBEDS
             allowed_mentions: {

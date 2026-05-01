@@ -20,8 +20,8 @@ function OnHttpRequest()
 	if GetPath() == WEBHOOKPATH then
 		local j = DecodeJson(GetBody())
 		local unixsec, _nanos = unix.clock_gettime()
-		local y,m,d,h,m,s = unix.gmtime(unixsec)
-		local f = "/data/forms/%.4d%.2d%.2d_%.2d%.2d%.2d.txt" % {y,m,d,h,m,s}
+		local years,mons,days,hours,mins,secs = unix.gmtime(unixsec)
+		local f = "/data/forms/%.4d%.2d%.2d_%.2d%.2d%.2d.txt" % {years,mons,days,hours,mins,secs}
 		if Barf(f, j["content"]) then
 			SetHeader("Content-Type", "application/json")
 			Write('{"yip":"pie"}')
