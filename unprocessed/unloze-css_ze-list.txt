@@ -546,6 +546,7 @@ ze_notredame_v1_3
 ze_nslar_s1_a5
 ze_nuke_v2
 ze_ny_marathon_v4_1
+ze_obj_filth_x1
 ze_obj_npst_zi1_t
 ze_obj_npst_zi2_t
 ze_obj_npst_zi3_t
