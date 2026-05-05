@@ -780,6 +780,7 @@ ze_stone_pit_v2_b5
 ze_strange_escape_b3
 ze_street_fight_with_autism_v3
 ze_street_fight_with_autism_v3_1
+ze_subway_surfers_v1_1
 ze_sunkentemple_v3_1s
 ze_sunlight_v2_0
 ze_super_mario_64_v2_b9
