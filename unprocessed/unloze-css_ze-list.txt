@@ -878,6 +878,7 @@ ze_typical_american_week_v1_2
 ze_typical_american_week_v2_1
 ze_tyranny2_v1fix
 ze_tyranny2_v2_beta1_1
+ze_tyranny2_v2_beta1_2
 ze_tyranny_v5fix
 ze_uchiha_legacy_v1_3f
 ze_umbra_b3_1
