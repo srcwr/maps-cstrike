@@ -578,12 +578,24 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 
 				let bottom_html = tokio::spawn(tokio::fs::read_to_string(SETTINGS.dir_maps_cstrike.join("index_bottom.html")));
 
+				fn zstd_is_pain_and_suffering_and_i_hate_browsers(src: &[u8]) -> anyhow::Result<Vec<u8>> {
+					let buf = Vec::with_capacity(4_000_000);
+					let mut e = zstd::Encoder::new(buf, 22)?;
+					// SCREAMING!!!!  WHY DO I RUN INTO BUGS ABOUT COMPRESSION-WINDOW SIZES!!!  WHY DOES FIREFOX LOG NOTHING!!!!  https://github.com/tower-rs/tower-http/pull/490
+					e.window_log(23)?;
+					e.write_all(src)?;
+					Ok(e.finish()?)
+				}
+
+				let outcsv = Arc::new(outcsv.into_inner()?);
+
 				futures.spawn({
 					let outfilename = Arc::clone(&outfilename);
+					let outcsv = Arc::clone(&outcsv);
 					async move {
 						tokio::fs::write(
-							SETTINGS.dir_maps_cstrike.join(format!("processed/{}.csv", outfilename)),
-							outcsv.into_inner()?,
+							SETTINGS.dir_maps_cstrike.join(format!("processed/{outfilename}.csv")),
+							outcsv.as_slice(),
 						)
 						.await?;
 						Ok(())
@@ -592,15 +604,44 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 
 				futures.spawn({
 					let outfilename = Arc::clone(&outfilename);
+					let outcsv = Arc::clone(&outcsv);
 					async move {
-						if let Some(unfiltered_hashes) = &unfiltered_hashes {
-							for hash in unfiltered_hashes {
-								writeln!(&mut outtext, "{hash}")?;
-							}
-						}
 						tokio::fs::write(
-							SETTINGS.dir_maps_cstrike.join(format!("processed/{}.txt", outfilename)),
-							outtext,
+							SETTINGS.dir_maps_cstrike.join(format!("processed/{outfilename}.csv.zst")),
+							zstd_is_pain_and_suffering_and_i_hate_browsers(outcsv.as_slice())?,
+						)
+						.await?;
+						Ok(())
+					}
+				});
+
+				if let Some(unfiltered_hashes) = &unfiltered_hashes {
+					for hash in unfiltered_hashes {
+						writeln!(&mut outtext, "{hash}")?;
+					}
+				}
+				let outtext = Arc::new(outtext);
+
+				futures.spawn({
+					let outfilename = Arc::clone(&outfilename);
+					let outtext = Arc::clone(&outtext);
+					async move {
+						tokio::fs::write(
+							SETTINGS.dir_maps_cstrike.join(format!("processed/{outfilename}.txt")),
+							outtext.as_bytes(),
+						)
+						.await?;
+						Ok(())
+					}
+				});
+
+				futures.spawn({
+					let outfilename = Arc::clone(&outfilename);
+					let outtext = Arc::clone(&outtext);
+					async move {
+						tokio::fs::write(
+							SETTINGS.dir_maps_cstrike.join(format!("processed/{outfilename}.txt.zst")),
+							zstd_is_pain_and_suffering_and_i_hate_browsers(outtext.as_bytes())?,
 						)
 						.await?;
 						Ok(())
@@ -630,6 +671,18 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 							minified.as_bytes(),
 						)
 						.await?;
+						Ok(())
+					}
+				});
+
+				futures.spawn_blocking({
+					let outfilename = Arc::clone(&outfilename);
+					let minified = Arc::clone(&minified);
+					move || -> anyhow::Result<()> {
+						std::fs::write(
+							SETTINGS.dir_maps_cstrike.join(format!("processed/{outfilename}.zst")),
+							zstd_is_pain_and_suffering_and_i_hate_browsers(minified.as_bytes())?,
+						)?;
 						Ok(())
 					}
 				});

@@ -1,5 +1,6 @@
 [workspace]
 resolver = "3"
+exclude = ["fastdlsite/fastdl-tun-but-h2"]
 members = ["mainframe"]
 default-members = ["mainframe"]
 
