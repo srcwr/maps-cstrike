@@ -1,0 +1,115 @@
+{
+	#debug
+	skip_install_trust
+}
+
+(shared) {
+	root /processed/main.fastdl.me
+	#encode zstd gzip
+
+
+	# TODO: https://caddyserver.com/docs/caddyfile/directives/log
+
+	# We probably can't do anything fancy to hide the log messages for these...
+	#@ignoreThese {
+	#	path ^.*\.(ttf|ttf\.bz2|ain|ain\.bz2)$
+	#}
+	#handle @ignoreThese {
+	#	respond 404
+	#}
+
+
+	handle /mapsredir/*.bsp.bz2 {
+		# TODO log
+		reverse_proxy h2c://fastdl-tun-but-h2:9001
+	}
+	handle /maps/*.bsp.bz2 {
+		# TODO log
+		reverse_proxy h2c://fastdl-tun-but-h2:9001
+	}
+
+	handle /maps/*.nav.bz2 {
+		header Cache-Control max-age=432000
+		rewrite /dummy.nav.bz2
+	}
+
+	header /*.txt Content-Type "text/plain; charset=utf-8" {
+		match status 2xx
+	}
+	header /*.csv Content-Type "text/plain; charset=utf-8" {
+		match status 2xx
+	}
+
+	@trash path_regexp \.(ain|ttf)(\.bz2)?$
+	handle @trash {
+		respond 404
+		log {
+			output discard
+		}
+	}
+
+	handle /maps/*.bsp {
+		# TODO log
+		respond 404
+	}
+
+	file_server browse {
+		precompressed zstd gzip
+	}
+}
+
+(mainfastdlme) {
+	import shared
+
+	# https://caddyserver.com/docs/caddyfile/matchers#path-regexp
+	# {re.1} = first capture group...
+	#@hashedWithoutMapname
+	#@hashedWithMapname path_regexp \/hashed\/(.*)/(.*)\.bsp\.bz2
+	#handle @hashedWithMapname {
+	#	import proxy_and_xaccel
+	#}
+	handle /hashed/* {
+		reverse_proxy h2c://fastdl-tun-but-h2:9001
+	}
+	handle /h2/* {
+		reverse_proxy h2c://fastdl-tun-but-h2:9001
+	}
+	handle /m2/* {
+		reverse_proxy h2c://fastdl-tun-but-h2:9001
+	}
+
+	handle /h2/ {
+		redir https://{host}/hashed/
+	}
+	handle /m2/ {
+		redir https://{host}/maps/
+	}
+
+	handle /hashed/ {
+		rewrite /hashed_index.html
+	}
+	handle /maps/ {
+		rewrite /maps_index.html
+	}
+}
+
+# main.fastdl.me
+https://:9443 {
+	import mainfastdlme
+}
+
+# check.fastdl.me form handler
+https://:8443 {
+	reverse_proxy h2c://fastdl-tun-but-h2:9002
+}
+
+# thirdparty
+https://:7443 {
+	#var {
+	#	redirurl "..."
+	#}
+	import shared
+	handle /maps/ {
+		redir https://main.fastdl.me/maps/
+	}
+}

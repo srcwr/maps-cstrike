@@ -5,26 +5,26 @@ services:
     command: tunnel run --protocol http2
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-  nginx:
-    image: nginx
+  caddy:
+    image: caddy
     restart: unless-stopped
     environment:
+      - a=b
+    volumes:
+      - ${PROCESSED_DIR}:/processed:ro
+  fastdl-tun-but-h2:
+    build: fastdl-tun-but-h2
+    restart: unless-stopped
+    stop_grace_period: 1s
+    environment:
+      - PROCESSED_DIR=${PROCESSED_DIR}
+      - FORMS_DIR=${FORMS_DIR}
+      - FORM_POST_PATH=${FORM_POST_PATH}
       - NODE_ID=${NODE_ID}
       - REAL_WORKER_HEADER=${REAL_WORKER_HEADER}
       - REAL_IP_HEADER=${REAL_IP_HEADER}
       - REAL_FORWARDED_PROTO_HEADER=${REAL_FORWARDED_PROTO_HEADER}
       - REAL_COUNTRY_HEADER=${REAL_COUNTRY_HEADER}
     volumes:
-      - ${PROCESSED_DIR}:/data:ro
-      - ${LOGS_DIR}:/var/log/nginx
-      - ./nginx/fastdl.me-3rdparty-shared.conf:/etc/nginx/fastdl.me-3rdparty-shared.conf:ro
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/proxy_params.conf:/etc/nginx/proxy_params.conf:ro
-      - ./nginx/sites-enabled:/etc/nginx/sites-enabled:ro
-      - ./nginx/templates:/etc/nginx/templates:ro
-  fastdlpy:
-    build: fastdlpy
-    restart: unless-stopped
-    stop_grace_period: 2s
-    volumes:
-      - ${PROCESSED_DIR}:/data:ro
+      - ${PROCESSED_DIR}:/processed:ro
+      - ${FORMS_DIR}:/forms
