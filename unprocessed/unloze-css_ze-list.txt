@@ -47,9 +47,11 @@ ze_ancient_wrath_v2_test27
 ze_ancient_wrath_v3_d
 ze_antartika_b2
 ze_antfarm_2vs
+ze_anzalone_css
 ze_aperturescience_ob
 ze_april_fools_v2
 ze_arctic_escape_c1_fix3
+ze_argon_a2
 ze_arid_lands_of_king_theba_b1_0
 ze_artika_base_v1_2s
 ze_ashen_keep_v0_3
@@ -90,6 +92,7 @@ ze_bioluminescent_v1_1
 ze_bioshock_v7_1
 ze_blackmesa_escape_final
 ze_blackmesa_remix_v3_6
+ze_blue_magic_castle_css
 ze_blueshift_a3
 ze_boacceho_p4s
 ze_boat_escape_jenz_v4_5
@@ -313,6 +316,7 @@ ze_gibletz_establishment_b6
 ze_gladiator_v1
 ze_global_crisis_a1
 ze_gods_wrath_v3_8b
+ze_golubenkaya_meow_css
 ze_got_the_north_b4
 ze_grand_boat_escape_day_v4_3
 ze_grand_boat_escape_v1_9
@@ -329,6 +333,7 @@ ze_halo_poa
 ze_halo_v1_3
 ze_harry_potter_v2_1
 ze_haunted_lab_escape_v2c
+ze_helium_a1_1
 ze_hell_escape_rc1
 ze_hellz_rescuebase_v5_b1
 ze_hexagon_project_v2_1
@@ -521,6 +526,7 @@ ze_natural_css
 ze_necromanteion_v3_1s_fix
 ze_negative_legacy_xf4s
 ze_neochrome_css3
+ze_neon_y1
 ze_never_gonna_give_you_up_v2
 ze_nibui_a3_1a
 ze_nibui_a3_2
