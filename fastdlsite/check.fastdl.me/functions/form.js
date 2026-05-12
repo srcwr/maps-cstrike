@@ -5,7 +5,7 @@
 export async function onRequestPost(ctx) {
     const now = new Date().toISOString().replace('T', ' ').slice(0, -5); // lol
 
-    let text = (await ctx.request.text()).replace(/\p{Cc}/gu, "");
+    let text = (await ctx.request.text()).replace(/([\u{0}-\u{8}]|[\u{b}-\u{1f}])/gu, "");
     if (text.length < 5 || text.length > 1800)
         return new Response(null, {status: 500});
 
