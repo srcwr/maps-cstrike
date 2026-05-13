@@ -343,6 +343,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		SETTINGS.dir_maps_cstrike.join("processed/main.fastdl.me"),
 	)
 	.await?;
+	tokio::fs::remove_dir_all(SETTINGS.dir_maps_cstrike.join("processed/main.fastdl.me/functions")).await?;
 	reset_dir(
 		SETTINGS.dir_maps_cstrike.join("../fastdl_opendir/materials"),
 		SETTINGS.dir_maps_cstrike.join("processed/main.fastdl.me/materials"),
@@ -813,6 +814,11 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		res??;
 	}
 
+	/*
+	tokio::task::spawn_blocking(|| generate_index_htmls(&SETTINGS.dir_maps_cstrike.join("processed/main.fastdl.me"), ""))
+		.await??;
+	*/
+
 	println!("creating maps-lite.db {}", Instant::now().duration_since(start).as_secs_f64());
 	let mapslitedb = SETTINGS.dir_maps_cstrike.join("processed/maps-lite.db");
 	let _ = tokio::fs::remove_file(&mapslitedb).await;
@@ -837,6 +843,57 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 	.await?;
 
 	println!("done! {}\n\n", Instant::now().duration_since(start).as_secs_f64());
+
+	Ok(())
+}
+
+// TODO: if filenames that aren't safe HTML = kablooey
+fn generate_index_htmls(dir: &Path, parents: &str) -> anyhow::Result<()> {
+	let mut entries = vec![];
+
+	for e in std::fs::read_dir(dir)? {
+		let e = e?;
+		entries.push((!e.file_type()?.is_dir(), e.file_name().to_str().unwrap().to_owned()));
+	}
+
+	entries.sort();
+
+	let mut buf = format!(
+		r#"<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><title>Index of /{parents}</title></head><body><h1>Index of /{parents}</h1><hr><pre><a href="../">../</a>"#
+	);
+	buf.push('\n');
+
+	for (is_file, filename) in entries {
+		if filename.ends_with(".gz") || filename.ends_with(".zst") {
+			continue;
+		}
+
+		if !is_file {
+			generate_index_htmls(&dir.join(&filename), &format!("{parents}{filename}/"))?;
+		}
+
+		let meta = std::fs::metadata(&dir.join(&filename))?;
+
+		let time: jiff::Timestamp = meta.modified()?.try_into()?;
+
+		let dirslash = if !is_file { "/" } else { "" };
+		let filesize = if !is_file { "-" } else { &meta.len().to_string() };
+
+		let mut before_date_space = String::new();
+		for _ in 0..(50 - (filename.len() + dirslash.len())) {
+			before_date_space.push(' ');
+		}
+
+		let _ = writeln!(
+			&mut buf,
+			r##"<a href="{filename}{dirslash}">{filename}{dirslash}</a>{before_date_space}{}{filesize:>15}"##,
+			time.strftime("%Y-%m-%d %H:%M")
+		)?;
+	}
+
+	let _ = writeln!(&mut buf, "</pre><hr></body></html>")?;
+
+	std::fs::write(dir.join("index.html"), buf.as_bytes())?;
 
 	Ok(())
 }
