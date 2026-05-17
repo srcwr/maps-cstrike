@@ -113,6 +113,7 @@ surf_borderlands
 surf_boreas
 surf_boring
 surf_bork_nbv
+surf_bossfight
 surf_botanica
 surf_breach
 surf_brodderlands
@@ -268,6 +269,7 @@ surf_era
 surf_eryr
 surf_eryr2_fix
 surf_eternal_beta
+surf_eternity
 surf_ethereal
 surf_eunoia
 surf_euphoria
@@ -291,6 +293,7 @@ surf_ezclap
 surf_fabas
 surf_facility
 surf_faint_fix
+surf_fairy
 surf_fantasy
 surf_fast
 surf_feudal
@@ -301,6 +304,7 @@ surf_firedancer
 surf_flatliners
 surf_flow_ksf
 surf_flyin_fortress_fix
+surf_for_shareholder_value
 surf_forbidden_tomb
 surf_forbidden_tomb2
 surf_forbidden_tomb3
@@ -372,6 +376,7 @@ surf_harmony_fix
 surf_haze
 surf_healthy
 surf_heaven_njv
+surf_hedron
 surf_hektik
 surf_helium_fix
 surf_hellenic
@@ -395,6 +400,7 @@ surf_iceworld
 surf_illumination
 surf_illumination2
 surf_illusion
+surf_imaginarium
 surf_imagine_fix
 surf_imex
 surf_impact
@@ -496,6 +502,7 @@ surf_loweffort2
 surf_lowestbidder
 surf_lt_omnific
 surf_lt_unicorn
+surf_lucid
 surf_lullaby_ksf
 surf_luminaris_refix
 surf_lux
@@ -582,6 +589,7 @@ surf_ofsfice
 surf_olivia
 surf_olympics
 surf_omnibus
+surf_oneiric
 surf_oompa2
 surf_oompa_loompa
 surf_orbion
@@ -614,6 +622,7 @@ surf_perennial
 surf_perforated_restored
 surf_perihelion
 surf_petrus
+surf_phantasia
 surf_pipeline
 surf_placid
 surf_plaguelands_beta7a
@@ -678,6 +687,7 @@ surf_reprise
 surf_resort
 surf_resource
 surf_retroartz
+surf_reverie
 surf_revolution_fix
 surf_rewind
 surf_rez
@@ -743,6 +753,7 @@ surf_sh
 surf_shade
 surf_shady_h
 surf_shambles
+surf_shape
 surf_shibboleth
 surf_shodan
 surf_shoria
@@ -809,6 +820,7 @@ surf_sundown
 surf_sunnyhappylove
 surf_sunset
 surf_sunset2_fix
+surf_surreal
 surf_swagtoast
 surf_sylvan
 surf_symbiosis
@@ -874,6 +886,7 @@ surf_underworld
 surf_unraveled
 surf_unreal2
 surf_unreal_njv
+surf_unrequited
 surf_utopia_njv
 surf_vacant
 surf_vale
