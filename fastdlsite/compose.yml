@@ -1,23 +1,21 @@
 services:
   tunnel:
+    network_mode: "pasta"
     image: cloudflare/cloudflared
     restart: unless-stopped
     command: tunnel run --protocol http2
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-  caddy:
-    image: caddy
-    restart: unless-stopped
-    environment:
-      - a=b
-    volumes:
-      - ${PROCESSED_DIR}:/processed:ro
+    #dns:
+    #  - 1.1.1.1
   fastdl-tun-but-h2:
+    network_mode: "service:tunnel"
     build: fastdl-tun-but-h2
+    user: 1000:1000
     restart: unless-stopped
     stop_grace_period: 1s
     environment:
-      - PROCESSED_DIR=${PROCESSED_DIR}
+      - PROCESSED_DIR_INNER=${PROCESSED_DIR_INNER}
       - FORMS_DIR=${FORMS_DIR}
       - FORM_POST_PATH=${FORM_POST_PATH}
       - NODE_ID=${NODE_ID}
@@ -25,6 +23,9 @@ services:
       - REAL_IP_HEADER=${REAL_IP_HEADER}
       - REAL_FORWARDED_PROTO_HEADER=${REAL_FORWARDED_PROTO_HEADER}
       - REAL_COUNTRY_HEADER=${REAL_COUNTRY_HEADER}
+      - THIRDPARTY_REDIRECTS=${THIRDPARTY_REDIRECTS}
     volumes:
-      - ${PROCESSED_DIR}:/processed:ro
+      - ${PROCESSED_DIR_OUTER}:/processed:ro
       - ${FORMS_DIR}:/forms
+    depends_on:
+      - tunnel

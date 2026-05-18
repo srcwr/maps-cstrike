@@ -14,3 +14,12 @@ sqlx = { version = "0.9.0-alpha.1", features = ["runtime-tokio", "sqlite", "deri
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["float_roundtrip"] }
 tokio = { version = "1.52", features = ["full"] }
+tower = { version = "0.5.3", features = ["full"] }
+tower-http = { version = "0.6.10", features = ["fs", "sensitive-headers", "set-header", "trace"] }
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
+tracing = "0.1.44"
+http = "1.4.0"
+axum-server = { version = "0.8.0", features = ["tls-rustls"] }
+rcgen = { version = "0.14.8", features = ["crypto"] }
+rustls = "0.23.40"
+tap = "1.0.1"
