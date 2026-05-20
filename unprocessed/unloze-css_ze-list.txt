@@ -560,6 +560,7 @@ ze_obj_npst_zi3_t
 ze_obj_npst_zi4_t
 ze_obj_void_v1c_css
 ze_obj_void_v1fix_css
+ze_oblivion_castle_css
 ze_ocarina_of_time_v1_0
 ze_ocean_base_escape_v4
 ze_oculus_b1
