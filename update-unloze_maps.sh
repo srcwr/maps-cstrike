@@ -4,8 +4,8 @@ cd "$(dirname "$0")"/unprocessed
 
 get_le_file() {
 	curl --fail --proxy socks5h://ca-mtr-wg-socks5-302.relays.mullvad.net:1080 "https://fastdl-wrapper.unloze.com/api/list?prefix=$1%2Fmaps%2F" \
-		| jq -r '.files[] | select(.key | endswith(".bsp.bz2")) | .key' \
-		| sed "s|$1/maps/||; s|\\.bsp\\.bz2$||" \
+		| jq -r '.files[] | select(.key | endswith(".bsp.bz2")) | "\(.key) \(.size)"' \
+		| sed "s|$1/maps/||; s|\\.bsp\\.bz2||" \
 		| sort -u \
 		> unloze-$1-list.txt
 }
