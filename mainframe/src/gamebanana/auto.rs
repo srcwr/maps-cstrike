@@ -7,6 +7,7 @@ use std::{
 	time::Duration,
 };
 
+use anyhow::Context;
 use itertools::Itertools;
 use tokio::task::JoinSet;
 
@@ -279,6 +280,16 @@ async fn process_item(
 
 	if now.is_none() {
 		*now = Some(jiff::Timestamp::now());
+	}
+
+	let file_extension = row.filename.split('.').last().context("no file-extension?")?;
+	if file_extension.eq_ignore_ascii_case("json") || file_extension.eq_ignore_ascii_case("bnp") {
+		{
+			let downloads = Arc::get_mut(downloads).unwrap();
+			let entry = downloads.get_mut(&(row.modid, row.downloadid)).unwrap();
+			entry.processed = true;
+		}
+		crate::csv::write_downloads(Arc::clone(downloads)).await?;
 	}
 
 	let shortnow = now.as_ref().unwrap().strftime("%Y%m%d%H%M").to_string();
