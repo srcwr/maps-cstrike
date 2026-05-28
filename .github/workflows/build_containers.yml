@@ -1,0 +1,17 @@
+name: Build Containers
+on:
+  push:
+    paths: ["fastdlsite/fastdl-tun-but-h2/**"]
+
+jobs:
+  build-server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      # https://github.com/marketplace/actions/push-to-ghcr
+      - name: Build and publish a Docker image for fastdl-tun-but-h2
+        uses: macbre/push-to-ghcr@master
+        with:
+          context: fastdlsite/fastdl-tun-but-h2
+          image_name: fastdl-tun-but-h2
+          github_token: ${{ secrets.GITHUB_TOKEN }}
