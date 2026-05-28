@@ -144,7 +144,7 @@ async fn main_fastdl_me() -> anyhow::Result<()> {
 			.unwrap_or_default()
 			.split(',')
 			.filter(|s| !s.is_empty())
-			.chain(["CF-Connecting-IP", "X-Real-IP"])
+			.chain(["CF-Connecting-IP", "X-Real-IP", "X-Forwarded-For"])
 			.map(|s| HeaderName::from_str(s).unwrap())
 			.collect();
 

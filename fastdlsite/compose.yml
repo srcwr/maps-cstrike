@@ -4,6 +4,7 @@ services:
     image: cloudflare/cloudflared
     restart: unless-stopped
     command: tunnel run --protocol http2
+    stop_grace_period: 5s
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
     #dns:
