@@ -75,6 +75,7 @@ ze_bastion2_nav72 40847874
 ze_bathroom_v2_5s 78067744
 ze_battletoads_a1 38818697
 ze_battletoads_a2_1 99747842
+ze_battletoads_a4_2 92384554
 ze_bay_v1 8024110
 ze_best_korea_css2 87992952
 ze_best_korea_css3 112416047
@@ -321,6 +322,7 @@ ze_global_crisis_a1 30102757
 ze_gods_wrath_v3_8b 14276229
 ze_golubenkaya_meow_css 81228396
 ze_golubenkaya_meow_css1 90351404
+ze_golubenkaya_meow_css2 87560680
 ze_got_the_north_b4 97086421
 ze_grand_boat_escape_day_v4_3 25829770
 ze_grand_boat_escape_v1_9 14746196
@@ -483,6 +485,7 @@ ze_madness_v2_1 24252664
 ze_magala_castle_final_s 49547364
 ze_magic_carpet_v1_0 3276380
 ze_mako2_in_4hours 7336008
+ze_mapeadores_museum_v1_css1 337433642
 ze_mario_tower_v4 21840576
 ze_meatropolis_v1_1 5188345
 ze_megaman_a6 78099841
@@ -895,6 +898,7 @@ ze_tyranny2_v1fix 200660445
 ze_tyranny2_v2_beta1_1 250996526
 ze_tyranny2_v2_beta1_2 250980444
 ze_tyranny2_v2_beta1_3 251034532
+ze_tyranny2_v2_beta1_4 251008348
 ze_tyranny_v5fix 106083007
 ze_uchiha_legacy_v1_3f 162624576
 ze_umbra_b3_1 231469766
