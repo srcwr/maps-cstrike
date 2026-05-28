@@ -15,5 +15,5 @@ jobs:
         with:
           context: fastdlsite/fastdl-tun-but-h2
           dockerfile: fastdlsite/fastdl-tun-but-h2/Dockerfile
-          image_name: fastdl-tun-but-h2
+          image_name: ${{ github.repository_owner }}/fastdl-tun-but-h2
           github_token: ${{ secrets.GITHUB_TOKEN }}

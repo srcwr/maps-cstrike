@@ -11,7 +11,8 @@ services:
     #  - 1.1.1.1
   fastdl-tun-but-h2:
     network_mode: "service:tunnel"
-    build: fastdl-tun-but-h2
+    #build: fastdl-tun-but-h2
+    image: ghcr.io/srcwr/fastdl-tun-but-h2:latest
     user: 1000:1000
     restart: unless-stopped
     stop_grace_period: 1s
