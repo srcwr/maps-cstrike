@@ -19,7 +19,7 @@ services:
     environment:
       - RUST_LOG=${RUST_LOG}
       - PROCESSED_DIR_INNER=${PROCESSED_DIR_INNER}
-      - FORMS_DIR=${FORMS_DIR}
+      - FORMS_DIR_INNER=${FORMS_DIR_INNER}
       - FORM_POST_PATH=${FORM_POST_PATH}
       - NODE_ID=${NODE_ID}
       - REAL_WORKER_HEADER=${REAL_WORKER_HEADER}
@@ -30,6 +30,6 @@ services:
       - SENSITIVE_HEADERS=${SENSITIVE_HEADERS}
     volumes:
       - ${PROCESSED_DIR_OUTER}:/processed:ro
-      - ${FORMS_DIR}:/forms
+      - ${FORMS_DIR_OUTER}:/forms
     depends_on:
       - tunnel

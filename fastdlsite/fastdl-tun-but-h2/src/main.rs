@@ -109,7 +109,7 @@ struct FormYay {
 	yip: &'static str,
 }
 async fn check_fastdl_me_form_upload(Json(form): Json<FormUpload>) -> Result<Json<FormYay>, StatusCode> {
-	let forms_dir = PathBuf::from(&std::env::var("FORMS_DIR").unwrap_or_else(|_| "../forms".to_owned()));
+	let forms_dir = PathBuf::from(&std::env::var("FORMS_DIR_INNER").unwrap_or_else(|_| "../forms".to_owned()));
 	let fullpath = forms_dir.join(jiff::Timestamp::now().strftime("%Y%m%d_%H%M%S.txt").to_string());
 	tokio::fs::write(fullpath, form.content)
 		.await
@@ -122,7 +122,7 @@ struct MapsHandlerState {
 	pool: sqlx::Pool<sqlx::Sqlite>,
 }
 
-static NODE_ID: LazyLock<String> = LazyLock::new(|| std::env::var("NODE_ID").unwrap_or_else(|_| "test".to_string()));
+static NODE_ID: LazyLock<String> = LazyLock::new(|| std::env::var("NODE_ID").unwrap_or_else(|_| "unset".to_string()));
 
 async fn main_fastdl_me() -> anyhow::Result<()> {
 	let processed_dir =
