@@ -2,6 +2,7 @@ name: Build Containers
 on:
   push:
     paths: ["fastdlsite/fastdl-tun-but-h2/**"]
+  workflow_dispatch:
 
 jobs:
   build-server:
