@@ -814,10 +814,8 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		res??;
 	}
 
-	/*
 	tokio::task::spawn_blocking(|| generate_index_htmls(&SETTINGS.dir_maps_cstrike.join("processed/main.fastdl.me"), ""))
 		.await??;
-	*/
 
 	println!("creating maps-lite.db {}", Instant::now().duration_since(start).as_secs_f64());
 	let mapslitedb = SETTINGS.dir_maps_cstrike.join("processed/maps-lite.db");

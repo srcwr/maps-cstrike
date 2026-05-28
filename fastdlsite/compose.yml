@@ -1,6 +1,6 @@
 services:
   tunnel:
-    network_mode: "pasta"
+    #network_mode: "pasta"
     image: cloudflare/cloudflared
     restart: unless-stopped
     command: tunnel run --protocol http2

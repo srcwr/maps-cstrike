@@ -63,6 +63,8 @@ fn main() -> anyhow::Result<()> {
 		)
 		.init();
 
+	tracing::info!("HTTPS = {HTTPS}");
+
 	tokio::runtime::Runtime::new().unwrap().block_on(async {
 		let mut tasks = tokio::task::JoinSet::new();
 		tasks.spawn(check_fastdl_me_forms());
@@ -80,6 +82,8 @@ async fn check_fastdl_me_forms() -> anyhow::Result<()> {
 	let form_post_path = std::env::var("FORM_POST_PATH").unwrap_or_else(|_| "/form".to_owned());
 
 	let app = Router::new().route(&form_post_path, post(check_fastdl_me_form_upload));
+
+	tracing::info!("starting check.fastdl.me form-handler (0.0.0.0:9002)");
 
 	if HTTPS {
 		axum_server::bind_rustls(SocketAddr::from(([0, 0, 0, 0], 9002)), TLS_CONFIG.clone())
@@ -198,6 +202,8 @@ async fn main_fastdl_me() -> anyhow::Result<()> {
 	tasks.spawn({
 		let app = make_app().with_state(state.clone());
 		async move {
+			tracing::info!("starting main.fastdl.me handler (0.0.0.0:9001)");
+
 			if HTTPS {
 				axum_server::bind_rustls(SocketAddr::from(([0, 0, 0, 0], 9001)), TLS_CONFIG.clone())
 					.serve(app.into_make_service())
@@ -219,6 +225,7 @@ async fn main_fastdl_me() -> anyhow::Result<()> {
 		.filter_map(|s| s.split_once('='))
 	{
 		let port = port.parse()?;
+		tracing::info!("starting thirdparty main.fastdl.me handler (0.0.0.0:{port}) ({redirect_url})");
 		let app = make_app()
 			.with_state(state.clone())
 			.layer(axum::middleware::from_fn_with_state(
