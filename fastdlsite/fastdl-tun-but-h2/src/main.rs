@@ -371,5 +371,9 @@ async fn maps_1(
 			.map_err(|_e| StatusCode::INTERNAL_SERVER_ERROR)?
 	};
 
-	Ok(Redirect::to(&format!("https://mainr2.fastdl.me/hashed/{hash}.bsp.bz2")))
+	if hash.is_empty() {
+		Err(StatusCode::NOT_FOUND)
+	} else {
+		Ok(Redirect::to(&format!("https://mainr2.fastdl.me/hashed/{hash}.bsp.bz2")))
+	}
 }
