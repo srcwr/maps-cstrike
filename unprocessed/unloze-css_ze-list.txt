@@ -96,6 +96,7 @@ ze_blackmesa_escape_final 11172773
 ze_blackmesa_remix_v3_6 51203560
 ze_blue_magic_castle_css 85832994
 ze_blue_magic_castle_css1 87192795
+ze_blue_magic_castle_css2 87247791
 ze_blueshift_a3 172785692
 ze_boacceho_p4s 5704558
 ze_boat_escape_jenz_v4_5 109838291
