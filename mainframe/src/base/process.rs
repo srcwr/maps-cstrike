@@ -870,7 +870,7 @@ fn generate_index_htmls(dir: &Path, parents: &str) -> anyhow::Result<()> {
 			generate_index_htmls(&dir.join(&filename), &format!("{parents}{filename}/"))?;
 		}
 
-		let meta = std::fs::metadata(&dir.join(&filename))?;
+		let meta = std::fs::metadata(dir.join(&filename))?;
 
 		let time: jiff::Timestamp = meta.modified()?.try_into()?;
 
@@ -882,14 +882,14 @@ fn generate_index_htmls(dir: &Path, parents: &str) -> anyhow::Result<()> {
 			before_date_space.push(' ');
 		}
 
-		let _ = writeln!(
+		writeln!(
 			&mut buf,
 			r##"<a href="{filename}{dirslash}">{filename}{dirslash}</a>{before_date_space}{}{filesize:>15}"##,
 			time.strftime("%Y-%m-%d %H:%M")
 		)?;
 	}
 
-	let _ = writeln!(&mut buf, "</pre><hr></body></html>")?;
+	writeln!(&mut buf, "</pre><hr></body></html>")?;
 
 	std::fs::write(dir.join("index.html"), buf.as_bytes())?;
 

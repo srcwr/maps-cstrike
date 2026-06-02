@@ -282,7 +282,7 @@ async fn process_item(
 		*now = Some(jiff::Timestamp::now());
 	}
 
-	let file_extension = row.filename.split('.').last().context("no file-extension?")?;
+	let file_extension = row.filename.split('.').next_back().context("no file-extension?")?;
 	if file_extension.eq_ignore_ascii_case("json") || file_extension.eq_ignore_ascii_case("bnp") {
 		{
 			let downloads = Arc::get_mut(downloads).unwrap();
