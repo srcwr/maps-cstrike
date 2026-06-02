@@ -567,6 +567,7 @@ ze_obj_npst_zi1_t 128531213
 ze_obj_npst_zi2_t 135083968
 ze_obj_npst_zi3_t 130578377
 ze_obj_npst_zi4_t 140469034
+ze_obj_rod_wave_arbys_takeover 14603252
 ze_obj_void_v1c_css 131157117
 ze_obj_void_v1fix_css 132296985
 ze_oblivion_castle_css 119078499
@@ -867,6 +868,7 @@ ze_thriller_escape_b6 56324538
 ze_thriller_escape_fix 56886936
 ze_tibia_v4_1s3 110220641
 ze_tilex_ultimate_v2_14s 91127732
+ze_time_las_ever_b1 64406258
 ze_timeshifter_a2 224856745
 ze_timesink_css 76751027
 ze_timesink_css1 60319745
