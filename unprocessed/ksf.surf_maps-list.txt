@@ -640,6 +640,7 @@ surf_prelude_fix
 surf_premium
 surf_presmon_fix
 surf_prevail
+surf_pride
 surf_prime_time_r3vamp
 surf_primero_fix
 surf_prismatic_ksf
