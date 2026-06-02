@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: WTFPL
 // Copyright 2025 rtldg <rtldg@protonmail.com>
 
-use std::{collections::BTreeMap, path::Path, sync::Arc};
+use std::{
+	collections::BTreeMap,
+	path::{Path, PathBuf},
+	sync::Arc,
+};
 
 use anyhow::Context;
 use itertools::Itertools;
@@ -106,7 +110,8 @@ pub struct GbModifiedTimesRow {
 }
 pub type ModifiedTimes = BTreeMap<GamebananaID, GbModifiedTimesRow>;
 
-pub(crate) async fn load_csv<Key, Row, RowToKey>(path: &'static str, row_to_key: RowToKey) -> anyhow::Result<BTreeMap<Key, Row>>
+// what the fuck am I doing, man...
+pub(crate) async fn load_csv<Key, Row, RowToKey>(path: PathBuf, row_to_key: RowToKey) -> anyhow::Result<BTreeMap<Key, Row>>
 where
 	Key: Ord + Send + Sync + 'static,
 	Row: serde::de::DeserializeOwned + Send + 'static,
@@ -114,12 +119,28 @@ where
 {
 	tokio::task::spawn_blocking(move || {
 		let mut out = BTreeMap::new();
-		let mut in_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join(path))?;
+		let mut in_csv = csv::Reader::from_path(path)?;
 		for row in in_csv.deserialize::<Row>() {
 			let row = row?;
 			assert!(out.insert(row_to_key(&row), row).is_none());
 		}
 		Ok(out)
+	})
+	.await?
+}
+
+pub(crate) async fn write_csv<Key, Row>(path: PathBuf, data: Arc<BTreeMap<Key, Row>>) -> anyhow::Result<()>
+where
+	Key: Ord + Send + Sync + 'static,
+	Row: serde::ser::Serialize + Send + Sync + 'static,
+{
+	tokio::task::spawn_blocking(move || {
+		let mut out_csv = csv::Writer::from_path(path)?;
+		for (_key, row) in data.iter() {
+			out_csv.serialize(row)?;
+		}
+		out_csv.flush()?;
+		Ok(())
 	})
 	.await?
 }
