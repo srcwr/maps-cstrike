@@ -5,7 +5,7 @@ mod base; // maps-cstrike
 #[cfg(feature = "scraper")]
 mod cloudflare;
 mod csv;
-mod gamebanana;
+mod downloaders;
 mod more; // maps-cstrike-more
 
 #[global_allocator]
@@ -35,7 +35,7 @@ use std::{
 };
 
 use clap::{Parser, Subcommand};
-use gamebanana::GamebananaID;
+use downloaders::GamebananaID;
 use serde::Deserialize;
 
 #[derive(Debug, Parser)]
@@ -60,7 +60,14 @@ enum Commands {
 		skip_existing_hash: bool,
 	},
 	#[cfg(feature = "scraper")]
-	Autogb,
+	Autodl {
+		#[arg(long)]
+		gamebanana: bool,
+		#[arg(long)]
+		ksf: bool,
+		#[arg(long)]
+		unloze: bool,
+	},
 	Process,
 	#[cfg(feature = "scraper")]
 	Gbdls,
@@ -200,12 +207,7 @@ static PROXIED_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 		.connect_timeout(Duration::from_secs(10))
 		.read_timeout(Duration::from_secs(120))
 		.timeout(Duration::from_secs(140))
-		.user_agent(format!(
-			"{}/{} ({})",
-			env!("CARGO_PKG_NAME"),
-			env!("CARGO_PKG_VERSION"),
-			env!("CARGO_PKG_REPOSITORY")
-		));
+		.user_agent(format!("{} ({})", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_REPOSITORY")));
 
 	let c = if let Some(proxy) = &SETTINGS.proxy {
 		c.proxy(reqwest::Proxy::all(proxy).unwrap())
@@ -222,12 +224,7 @@ static NOPROXY_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 		.connect_timeout(Duration::from_secs(10))
 		.read_timeout(Duration::from_secs(120))
 		.timeout(Duration::from_secs(140))
-		.user_agent(format!(
-			"{}/{} ({})",
-			env!("CARGO_PKG_NAME"),
-			env!("CARGO_PKG_VERSION"),
-			env!("CARGO_PKG_REPOSITORY")
-		))
+		.user_agent(format!("{} ({})", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_REPOSITORY")))
 		.build()
 		.unwrap()
 });
@@ -313,10 +310,10 @@ async fn async_main() -> anyhow::Result<()> {
 			.await?;
 		}
 		#[cfg(feature = "scraper")]
-		Commands::Autogb => {
+		Commands::Autodl { gamebanana, ksf, unloze } => {
 			// we use some of the processed csvs inside gbauto->mapshasher, so make sure they exist here...
 			base::process::run().await?;
-			gamebanana::auto::run().await?;
+			downloaders::auto::run().await?;
 		}
 		Commands::Process => base::process::run().await?,
 		#[cfg(feature = "scraper")]

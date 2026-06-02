@@ -23,7 +23,7 @@ use crate::{
 	SETTINGS,
 	base::copytree,
 	csv::{CanonCsvRow, CanonGbCSsvRow, ProcessedCsvRow, UnprocessedCsvRow},
-	gamebanana::GamebananaID,
+	downloaders::GamebananaID,
 	normalize_mapname,
 };
 

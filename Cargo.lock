@@ -1546,7 +1546,7 @@ dependencies = [
 
 [[package]]
 name = "mainframe"
-version = "0.9.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "bzip2",

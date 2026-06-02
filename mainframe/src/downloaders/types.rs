@@ -22,7 +22,7 @@ pub struct ASubmitter1 {
 }
 */
 #[derive(Serialize, Deserialize)]
-pub struct ARecords1 {
+pub struct GbRecords {
 	//pub _aSubmitter: ASubmitter1,
 	//pub _bHasFiles: bool,
 	pub _idRow: GamebananaID,
@@ -32,13 +32,13 @@ pub struct ARecords1 {
 	//_tsDateUpdated: u64,
 }
 #[derive(Serialize, Deserialize)]
-pub struct ApiV11ModIndex {
+pub struct GbApiV11ModIndex {
 	//pub _aMetadata: AMetadata1,
-	pub _aRecords: Vec<ARecords1>,
+	pub _aRecords: Vec<GbRecords>,
 }
 
 #[derive(Serialize, Deserialize)]
-pub(super) struct AFiles1 {
+pub(super) struct GbFiles {
 	//_bContainsExe: bool,
 	pub _idRow: GamebananaID,
 	//_nDownloadCount: u64,
@@ -56,6 +56,6 @@ pub(super) struct AFiles1 {
 }
 
 #[derive(Serialize, Deserialize)]
-pub(super) struct ApiV11Mod {
-	pub _aFiles: Option<Vec<AFiles1>>,
+pub(super) struct GbApiV11Mod {
+	pub _aFiles: Option<Vec<GbFiles>>,
 }

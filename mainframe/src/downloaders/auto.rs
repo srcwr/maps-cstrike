@@ -12,10 +12,10 @@ use itertools::Itertools;
 use tokio::task::JoinSet;
 
 #[cfg(feature = "discordbot")]
-use crate::gamebanana::discordbot;
+use crate::downloaders::discordbot;
 use crate::{Bsps, NOPROXY_CLIENT, PROXIED_CLIENT, SETTINGS, base, cloudflare, hex_to_hash, normalize_mapname};
 
-use super::types::{ARecords1, ApiV11Mod, ApiV11ModIndex};
+use super::types::{GbApiV11Mod, GbApiV11ModIndex, GbRecords};
 
 #[derive(PartialEq)]
 enum LoopControl {
@@ -41,7 +41,7 @@ async fn discord_webhook(ping: bool, message: &str) -> anyhow::Result<()> {
 	Ok(())
 }
 
-async fn get_index_records() -> Vec<ARecords1> {
+async fn get_index_records() -> Vec<GbRecords> {
 	let start_page = SETTINGS.gb_itemoffset / SETTINGS.gb_perpage + 1;
 	let last_page = SETTINGS.gb_numtofetch.get() / SETTINGS.gb_perpage + start_page;
 	let mut perpage = SETTINGS.gb_perpage.get();
@@ -76,7 +76,7 @@ async fn get_index_records() -> Vec<ARecords1> {
 					continue 'categories;
 				}
 			};
-			let resp = match resp.json::<ApiV11ModIndex>().await {
+			let resp = match resp.json::<GbApiV11ModIndex>().await {
 				Ok(resp) => resp,
 				Err(e) => {
 					eprintln!("received invalid json from {url}\n{e:?}");
@@ -106,7 +106,7 @@ async fn update_modified_times(modified_times: &mut Arc<crate::csv::ModifiedTime
 			}
 			let _ = modified_times.insert(
 				record._idRow,
-				crate::csv::ModifiedTimesRow {
+				crate::csv::GbModifiedTimesRow {
 					modid: record._idRow,
 					lastmodified: record._tsDateModified,
 					checked: false,
@@ -125,7 +125,7 @@ async fn update_modified_times(modified_times: &mut Arc<crate::csv::ModifiedTime
 }
 
 async fn fetch_mod(
-	downloads: &mut Arc<crate::csv::Downloads>,
+	downloads: &mut Arc<crate::csv::GbDownloads>,
 	modified_times: &mut Arc<crate::csv::ModifiedTimes>,
 ) -> anyhow::Result<LoopControl> {
 	let find_next_mod = || {
@@ -153,7 +153,7 @@ async fn fetch_mod(
 			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
-	let files = match files.json::<ApiV11Mod>().await {
+	let files = match files.json::<GbApiV11Mod>().await {
 		Ok(files) => files._aFiles,
 		Err(e) => {
 			eprintln!("failed to parse json file list from {url}\n{e:?}");
@@ -173,7 +173,7 @@ async fn fetch_mod(
 		let downloads = Arc::get_mut(downloads).unwrap();
 		for file in files {
 			if let btree_map::Entry::Vacant(vacant_entry) = downloads.entry((modid, file._idRow)) {
-				vacant_entry.insert(crate::csv::DownloadsRow {
+				vacant_entry.insert(crate::csv::GbDownloadsRow {
 					modid,
 					downloadid: file._idRow,
 					filename: file._sFile,
@@ -186,13 +186,13 @@ async fn fetch_mod(
 	}
 
 	if inserted_new_row {
-		crate::csv::write_downloads(Arc::clone(downloads)).await?;
+		crate::csv::write_gbdownloads(Arc::clone(downloads)).await?;
 	}
 
 	Ok(LoopControl::Restart(1.0))
 }
 
-async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Result<LoopControl> {
+async fn download_item(downloads: &mut Arc<crate::csv::GbDownloads>) -> anyhow::Result<LoopControl> {
 	let find_next_download = || {
 		for ((_modid, _downloadid), row) in downloads.iter() {
 			if !row.downloaded {
@@ -255,13 +255,13 @@ async fn download_item(downloads: &mut Arc<crate::csv::Downloads>) -> anyhow::Re
 		let entry = downloads.get_mut(&(row.modid, row.downloadid)).unwrap();
 		entry.downloaded = true;
 	}
-	crate::csv::write_downloads(Arc::clone(downloads)).await?;
+	crate::csv::write_gbdownloads(Arc::clone(downloads)).await?;
 
 	Ok(LoopControl::Restart(0.0))
 }
 
 async fn process_item(
-	downloads: &mut Arc<crate::csv::Downloads>,
+	downloads: &mut Arc<crate::csv::GbDownloads>,
 	new_bsps: &mut Bsps,
 	bz2_upload_tasks: &mut JoinSet<anyhow::Result<()>>,
 	now: &mut Option<jiff::Timestamp>,
@@ -289,7 +289,7 @@ async fn process_item(
 			let entry = downloads.get_mut(&(row.modid, row.downloadid)).unwrap();
 			entry.processed = true;
 		}
-		crate::csv::write_downloads(Arc::clone(downloads)).await?;
+		crate::csv::write_gbdownloads(Arc::clone(downloads)).await?;
 	}
 
 	let shortnow = now.as_ref().unwrap().strftime("%Y%m%d%H%M").to_string();
@@ -417,7 +417,7 @@ async fn process_item(
 		let entry = downloads.get_mut(&(row.modid, row.downloadid)).unwrap();
 		entry.processed = true;
 	}
-	crate::csv::write_downloads(Arc::clone(downloads)).await?;
+	crate::csv::write_gbdownloads(Arc::clone(downloads)).await?;
 
 	Ok(LoopControl::Restart(0.0))
 }
@@ -426,7 +426,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 	#[cfg(feature = "discordbot")]
 	tokio::spawn(discordbot::lurk());
 
-	let mut downloads = Arc::new(crate::csv::load_downloads().await?);
+	let mut downloads = Arc::new(crate::csv::load_gbdownloads().await?);
 	let mut modified_times = Arc::new(crate::csv::load_modified_times().await?);
 
 	let mut queued_now = None;
@@ -486,8 +486,8 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 						"recently_added.csv",
 						"unprocessed/gamebanana-x-automatic.csv",
 						"canon.csv",
-						"gamebanana-downloads.csv",
-						"gamebanana-modified-times.csv",
+						"downloader-state/gamebanana-downloads.csv",
+						"downloader-state/gamebanana-modified-times.csv",
 					])
 					.status()
 					.await

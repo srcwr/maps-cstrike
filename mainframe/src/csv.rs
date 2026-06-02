@@ -85,7 +85,7 @@ pub struct CanonCsvRow {
 
 #[serde_with::serde_as]
 #[derive(Serialize, Deserialize, Debug, Clone, PartialOrd, Ord, PartialEq, Eq)]
-pub struct DownloadsRow {
+pub struct GbDownloadsRow {
 	pub modid: GamebananaID,
 	pub downloadid: GamebananaID,
 	pub filename: String,
@@ -94,23 +94,50 @@ pub struct DownloadsRow {
 	#[serde_as(as = "serde_with::BoolFromInt")]
 	pub processed: bool,
 }
-pub type Downloads = BTreeMap<(GamebananaID, GamebananaID), DownloadsRow>;
+pub type GbDownloads = BTreeMap<(GamebananaID, GamebananaID), GbDownloadsRow>;
 
 #[serde_with::serde_as]
 #[derive(Serialize, Deserialize, Debug, Clone, PartialOrd, Ord, PartialEq, Eq)]
-pub struct ModifiedTimesRow {
+pub struct GbModifiedTimesRow {
 	pub modid: GamebananaID,
 	pub lastmodified: u64,
 	#[serde_as(as = "serde_with::BoolFromInt")]
 	pub checked: bool,
 }
-pub type ModifiedTimes = BTreeMap<GamebananaID, ModifiedTimesRow>;
+pub type ModifiedTimes = BTreeMap<GamebananaID, GbModifiedTimesRow>;
 
-pub(crate) async fn load_downloads() -> anyhow::Result<Downloads> {
+pub(crate) async fn load_csv<Key, Row, RowToKey>(path: &'static str, row_to_key: RowToKey) -> anyhow::Result<BTreeMap<Key, Row>>
+where
+	Key: Ord + Send + Sync + 'static,
+	Row: serde::de::DeserializeOwned + Send + 'static,
+	RowToKey: Fn(&Row) -> Key + Send + Sync + 'static,
+{
+	tokio::task::spawn_blocking(move || {
+		let mut out = BTreeMap::new();
+		let mut in_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join(path))?;
+		for row in in_csv.deserialize::<Row>() {
+			let row = row?;
+			assert!(out.insert(row_to_key(&row), row).is_none());
+		}
+		Ok(out)
+	})
+	.await?
+}
+
+pub(crate) async fn load_gbdownloads() -> anyhow::Result<GbDownloads> {
+	/*
+	if true {
+		return load_csv("downloader-state/gamebanana-downloads.csv", |row: &GbDownloadsRow| {
+			(row.modid, row.downloadid)
+		})
+		.await;
+	}
+	*/
+
 	tokio::task::spawn_blocking(|| {
 		let mut downloads = BTreeMap::new();
-		let mut in_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("gamebanana-downloads.csv"))?;
-		for row in in_csv.deserialize::<DownloadsRow>() {
+		let mut in_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("downloader-state/gamebanana-downloads.csv"))?;
+		for row in in_csv.deserialize::<GbDownloadsRow>() {
 			let row = row?;
 			assert!(downloads.insert((row.modid, row.downloadid), row).is_none());
 		}
@@ -119,9 +146,9 @@ pub(crate) async fn load_downloads() -> anyhow::Result<Downloads> {
 	.await?
 }
 
-pub(crate) async fn write_downloads(downloads: Arc<Downloads>) -> anyhow::Result<()> {
+pub(crate) async fn write_gbdownloads(downloads: Arc<GbDownloads>) -> anyhow::Result<()> {
 	tokio::task::spawn_blocking(move || {
-		let mut out_csv = csv::Writer::from_path(SETTINGS.dir_maps_cstrike.join("gamebanana-downloads.csv"))?;
+		let mut out_csv = csv::Writer::from_path(SETTINGS.dir_maps_cstrike.join("downloader-state/gamebanana-downloads.csv"))?;
 		for ((_modid, _downloadid), row) in downloads.iter() {
 			out_csv.serialize(row)?;
 		}
@@ -134,8 +161,12 @@ pub(crate) async fn write_downloads(downloads: Arc<Downloads>) -> anyhow::Result
 pub(crate) async fn load_modified_times() -> anyhow::Result<ModifiedTimes> {
 	tokio::task::spawn_blocking(|| {
 		let mut downloads = BTreeMap::new();
-		let mut in_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("gamebanana-modified-times.csv"))?;
-		for row in in_csv.deserialize::<ModifiedTimesRow>() {
+		let mut in_csv = csv::Reader::from_path(
+			SETTINGS
+				.dir_maps_cstrike
+				.join("downloader-state/gamebanana-modified-times.csv"),
+		)?;
+		for row in in_csv.deserialize::<GbModifiedTimesRow>() {
 			let row = row?;
 			assert!(downloads.insert(row.modid, row).is_none());
 		}
@@ -146,7 +177,11 @@ pub(crate) async fn load_modified_times() -> anyhow::Result<ModifiedTimes> {
 
 pub(crate) async fn write_modified_times(modified_times: Arc<ModifiedTimes>) -> anyhow::Result<()> {
 	tokio::task::spawn_blocking(move || {
-		let mut out_csv = csv::Writer::from_path(SETTINGS.dir_maps_cstrike.join("gamebanana-modified-times.csv"))?;
+		let mut out_csv = csv::Writer::from_path(
+			SETTINGS
+				.dir_maps_cstrike
+				.join("downloader-state/gamebanana-modified-times.csv"),
+		)?;
 		for (_modid, row) in modified_times.iter() {
 			out_csv.serialize(row)?;
 		}
@@ -156,10 +191,9 @@ pub(crate) async fn write_modified_times(modified_times: Arc<ModifiedTimes>) -> 
 	.await?
 }
 
-/// Assumes that the "filename" column will not cause CSV problems....
 pub(crate) async fn fill_downloads<P: AsRef<Path>>(srcdir: P) -> anyhow::Result<()> {
 	let srcdir = srcdir.as_ref();
-	let outcsv = SETTINGS.dir_maps_cstrike.join("gamebanana-downloads.csv");
+	let outcsv = SETTINGS.dir_maps_cstrike.join("downloader-state/gamebanana-downloads.csv");
 
 	let mut records = vec![];
 	let mut dir = tokio::fs::read_dir(srcdir).await?;
@@ -172,7 +206,7 @@ pub(crate) async fn fill_downloads<P: AsRef<Path>>(srcdir: P) -> anyhow::Result<
 			.splitn(3, '_')
 			.collect_tuple()
 			.context("shouldn't have issues splitting here, but alas...")?;
-		records.push(DownloadsRow {
+		records.push(GbDownloadsRow {
 			modid: modid.parse()?,
 			downloadid: downloadid.parse()?,
 			filename: filename.to_owned(),

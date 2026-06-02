@@ -14,7 +14,7 @@ use std::{
 use crate::{
 	SETTINGS,
 	csv::{ProcessedCsvRow, UnprocessedCsvRow},
-	gamebanana::GamebananaID,
+	downloaders::GamebananaID,
 	normalize_mapname,
 };
 
