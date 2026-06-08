@@ -45664,6 +45664,7 @@ modid,downloadid,filename,downloaded,processed
 678592,1706246,de_train_improved.zip,1,1
 678592,1723582,de_train_improved_v2.zip,1,1
 678592,1723599,de_train_improved_v2_9fb02.zip,1,1
+678592,1723604,de_train_improved_v3.zip,1,1
 679311,1708478,de_fall.zip,1,1
 679311,1714672,de_fall_v01.zip,1,1
 679311,1715428,de_fall_v02.zip,1,1
@@ -45737,3 +45738,4 @@ modid,downloadid,filename,downloaded,processed
 684164,1722886,trikz_endo.rar,1,1
 684369,1723513,bhop_linna.rar,1,1
 684372,1723520,bhop_arcade.rar,1,1
+684411,1723607,bhop_fullspeed.zip,1,1
