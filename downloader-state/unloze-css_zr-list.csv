@@ -107,6 +107,8 @@ zr_atrium_l4d_scythx 3208939
 zr_aztec_v1 13954857
 zr_castaway_b2 2207253
 zr_cbble_v1 5192351
+zr_chateau_lohas 5163261
+zr_chateau_lohas_fix 5163794
 zr_childrenofthecorn_v6c 7182698
 zr_combine 2895243
 zr_compound_v2 4012497
@@ -120,7 +122,9 @@ zr_gasdump_v1_1 2887368
 zr_ghost_town 1401615
 zr_godwana_surviver 16806578
 zr_halloween 525512
+zr_havana_lohas 3601251
 zr_house_v3_1 421368
+zr_inferno_lohas 5097467
 zr_italy_nightfall_v1 3890660
 zr_italy_v2 5261399
 zr_jatapur_unloze 1549594
@@ -128,6 +132,7 @@ zr_lila_panic_v2 433438
 zr_little_city_roy_v2 10421177
 zr_lt_sanctuary 934856
 zr_maze 206445
+zr_militia_lohas 5466475
 zr_mountain_river_v2c 9015937
 zr_nacht_der_untoten_v6 4466223
 zr_nuke_v1 4353805
@@ -144,9 +149,12 @@ zr_snow_war 1356300
 zr_snowfall_v3 2636774
 zr_streets_beta_3_unloze 7624739
 zr_tank_challenge_l4d_scythx 693218
+zr_tides_lohas 3267381
 zr_town 18006477
+zr_town_v1 18006477
 zr_toxic_lake 1195132
 zr_tpose_underground 296475
+zr_train_lohas 3386924
 zr_training_maze2_scythx 1706348
 zr_training_maze_scythx 1012012
 zr_training_maze_scythx_fixed 1011967
