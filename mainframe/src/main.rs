@@ -205,8 +205,8 @@ static SETTINGS: LazyLock<GlobalSettings> = LazyLock::new(|| {
 static PROXIED_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 	let c = reqwest::ClientBuilder::new()
 		.connect_timeout(Duration::from_secs(10))
-		.read_timeout(Duration::from_secs(120))
-		.timeout(Duration::from_secs(140))
+		.read_timeout(Duration::from_secs(300))
+		.timeout(Duration::from_secs(340))
 		.user_agent(format!("{} ({})", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_REPOSITORY")));
 
 	let c = if let Some(proxy) = &SETTINGS.proxy {
@@ -222,8 +222,8 @@ static PROXIED_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 static NOPROXY_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 	reqwest::ClientBuilder::new()
 		.connect_timeout(Duration::from_secs(10))
-		.read_timeout(Duration::from_secs(120))
-		.timeout(Duration::from_secs(140))
+		.read_timeout(Duration::from_secs(300))
+		.timeout(Duration::from_secs(340))
 		.user_agent(format!("{} ({})", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_REPOSITORY")))
 		.build()
 		.unwrap()
