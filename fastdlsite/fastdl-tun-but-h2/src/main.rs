@@ -320,8 +320,9 @@ fn smells_like_sha1(s: &str) -> bool {
 }
 
 async fn hashed_1(axum::extract::Path(hash_with_ext): axum::extract::Path<String>) -> Result<Redirect, StatusCode> {
-	let hash = hash_with_ext.strip_suffix(".bsp.bz2").unwrap();
-	if smells_like_sha1(hash) {
+	if let Some(hash) = hash_with_ext.strip_suffix(".bsp.bz2")
+		&& smells_like_sha1(hash)
+	{
 		// TODO: actually check if it exists in the database... but who cares since this never hits as the cloudflare worker is handling this
 		Ok(Redirect::to(&format!("https://main.fastdl.me/hashed/{hash}.bsp.bz2")))
 	} else {
