@@ -1,4 +1,8 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_dust_cc,45898738,20172783,d5f945e3268984b0d71dc6a5662befc14e4cc1c2,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_dust_cc.bsp,automated upload,2026-07-08 15:36
+de_inferno_cc,52784764,17867424,a31f4cc097aa99ef19bc8dee5291e0d1d9d0476f,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_inferno_cc.bsp,automated upload,2026-07-08 15:36
+de_nuke_cc,37629626,16160395,d5d90087bf023a16ff4d8da5d5fec234824f9361,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_nuke_cc.bsp,automated upload,2026-07-08 15:36
+de_train_cc,39031604,16477792,1895c997aae0385d7e30d6891c3bc0fdd0bd2901,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_train_cc.bsp,automated upload,2026-07-08 15:36
 province-7-7-26,5608820,2351326,e490799c06cc5ebd13e9d4174caea7dfb5d08c04,503967_1748580_province-7-7-26.zip/province-7-7-26/province-7-7-26.bsp,automated upload,2026-07-08 03:13
 bhop_10rooms,61610564,17467024,fcb58ece7ce362020ca7765bcea9ee59532b724d,692489_1748150_bhop_10rooms_2_.zip/bhop_10rooms.bsp,automated upload,2026-07-08 01:16
 ze_paindown_v1_3,84087936,82661169,de7777cb2a6d35282bf0c94009de5a56477c59ce,686101_1746539_ze_paindown_v1_3.rar/ze_paindown_v1_3.bsp,automated upload,2026-07-05 19:58
@@ -12,8 +16,6 @@ ze_obj_rod_wave_arbys_takeover_v1_2,77835784,40905632,364df7daccff3973d4d22a3cf1
 cs_italy_cc,77061836,28901318,ff2179d0812c8c65d6d68ffb6075c98df0e0aee7,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/cs_italy_cc.bsp,automated upload,2026-06-29 20:11
 cs_office_cc,49978115,15789821,e442d1ece7bf0c314620a8a387496dc7a413d428,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/cs_office_cc.bsp,automated upload,2026-06-29 20:11
 de_dust2_cc,36339551,18425485,d2a57002a4e24775e23ebc45a0cc3d2e1cacc8fb,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/de_dust2_cc.bsp,automated upload,2026-06-29 20:11
-de_nuke_cc,37900490,16201889,a463fd4532cfda9794e02ddb3087881f65bf25e3,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/de_nuke_cc.bsp,automated upload,2026-06-29 20:11
-de_train_cc,39042092,16593572,0130458d0bed6c0740dd4732892d58d014d21a69,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/de_train_cc.bsp,automated upload,2026-06-29 20:11
 de_finz,1071836,459377,9e0516f627959b370d5dd38a809631896daf1afe,672588_1740756_de_finz36.zip/de_finz.bsp,automated upload,2026-06-29 11:35
 bhop_castlewars,69752610,15875677,082cb7edf0dd822351f71ba9f15d9f3e62079128,689698_1739946_bhop_castlewars_7cce2.zip/bhop_castlewars.bsp,automated upload,2026-06-28 12:22
 bhop_sb1,30289914,30413328,bf95d8a3c516e44865a8ebe5db72457909ca3266,689477_1738945_bhop_sb1.rar/bhop_sb1.bsp,automated upload,2026-06-27 12:38
@@ -285,8 +287,6 @@ bhop_crimsondungeon,11456689,6061908,a557f566d4acb41fe7f7d6b0f18ce1d942657c33,67
 ze_tyranny2_v2_beta1_2,250624748,250980444,0e9dea3574e595f37b22de0298c1d9fa83cff426,,from unloze,2026-05-07 15:58
 lvlups_de_dust2_2x2_community,68647072,23060813,feb52816c7d163defadbbd505e37bd3f91377add,675235_1695032_levelups_de_dust2_community.zip/lvlups_de_dust2_2x2_community.bsp,automated upload,2026-05-06 23:39
 bhop_topology,78399651,78324989,e25627d0819f2ec020bbff864f03669cb8d969c8,674387_1692144_bhop_topology.zip/bhop_topology.bsp,automated upload,2026-05-06 21:47
-de_dust_cc,45898738,20173674,5b1f79b55d3b7f3c02b6b74425350d93908da8f2,667927_1694810_color_correction_mod_c9bb2.7z/Color Correction Mod/de_dust_cc.bsp,automated upload,2026-05-06 18:17
-de_inferno_cc,52784764,17865692,02fae43733f9c9741c2b6249d52a40d3be3725f7,667927_1694810_color_correction_mod_c9bb2.7z/Color Correction Mod/de_inferno_cc.bsp,automated upload,2026-05-06 18:17
 ze_tyranny2_v2_beta1_1,250644783,250996526,ebb1acf26f3e06520636ee496270031fc0b9bf20,,from unloze,2026-05-06 16:49
 bhop_core,9814621,3620173,e84080ab75125e6ed73ec08ed128f24419f69aaa,674925_1694739_bhop_core_08c65.zip/bhop_core.bsp,automated upload,2026-05-06 16:10
 bhop_kamapulya,12406807,4586300,aaea0ba87fd2e3d984eaed3ab59c42a4a6a9377e,675144_1694725_bhop_kamapulya.zip/bhop_kamapulya.bsp,automated upload,2026-05-06 15:45
