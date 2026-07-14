@@ -1,4 +1,8 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+cs_assault_cc,58788653,20313733,99939e1e98b45facf4c33503141bc01d7f94993a,667927_1754584_color_correction_mod_75664.7z/Color Correction Mod/cs_assault_cc.bsp,automated upload,2026-07-14 21:08
+cs_italy_cc,77062640,28705282,531fea91158b446b15cf7570645698c3702b9177,667927_1754584_color_correction_mod_75664.7z/Color Correction Mod/cs_italy_cc.bsp,automated upload,2026-07-14 21:08
+cs_office_cc,49978737,15872957,d2be5fcfd399d4c036008b46af85ab6b5093d2be,667927_1754584_color_correction_mod_75664.7z/Color Correction Mod/cs_office_cc.bsp,automated upload,2026-07-14 21:08
+de_inferno_cc,54508332,18573442,e675039ef507cda596aade2933e777aa1e3f55a9,667927_1754584_color_correction_mod_75664.7z/Color Correction Mod/de_inferno_cc.bsp,automated upload,2026-07-14 21:08
 province-art-pass,7175451,2903738,42f779f2a9587518ff434e2524ee005872bd8e4f,503967_1753459_province-art-pass.zip/province-art-pass/maps/province-art-pass.bsp,automated upload,2026-07-13 16:55
 de_litt,395552,108311,adb89e993c626cc83ed14e563e5920c1ab289b75,693974_1753428_de_litt.zip/de_litt.bsp,automated upload,2026-07-13 16:17
 cs_piazzacavour,3684352,1180259,efce7e564ad0273269f7618797434685ed3fa58c,693896_1753206_cs_piazzacavour.zip/cs_piazzacavour.bsp,automated upload,2026-07-13 09:32
@@ -9,7 +13,6 @@ province-7-7-26,8406444,2840005,0d8dc6009aebe9669e1724e621a788f65d9cdd33,503967_
 de_erode,42654804,11830031,bb68d18c872464153982a05885fecad45fc59a82,657776_1749591_de_erode_f9817.zip/de_erode/de_erode.bsp,automated upload,2026-07-09 08:48
 de_factory_storage_4v4,6071104,1046296,101ae160b7e457e579b18cc22c87df28365e1319,681672_1749147_de_factory_storage_4v4.zip/maps/de_factory_storage_4v4.bsp,automated upload,2026-07-08 20:18
 de_dust_cc,45898738,20172783,d5f945e3268984b0d71dc6a5662befc14e4cc1c2,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_dust_cc.bsp,automated upload,2026-07-08 15:36
-de_inferno_cc,52784764,17867424,a31f4cc097aa99ef19bc8dee5291e0d1d9d0476f,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_inferno_cc.bsp,automated upload,2026-07-08 15:36
 de_nuke_cc,37629626,16160395,d5d90087bf023a16ff4d8da5d5fec234824f9361,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_nuke_cc.bsp,automated upload,2026-07-08 15:36
 de_train_cc,39031604,16477792,1895c997aae0385d7e30d6891c3bc0fdd0bd2901,667927_1748903_color_correction_mod_dda0e.7z/Color Correction Mod/de_train_cc.bsp,automated upload,2026-07-08 15:36
 bhop_10rooms,61610564,17467024,fcb58ece7ce362020ca7765bcea9ee59532b724d,692489_1748150_bhop_10rooms_2_.zip/bhop_10rooms.bsp,automated upload,2026-07-08 01:16
@@ -21,8 +24,6 @@ ze_psykopat_v2_1a,207174588,81401152,044fed429907afb75e8ed543329d7b43e27d837e,59
 cs_ufficio,11923980,3465864,61120b4b55d38d29aaf0cedf267ab702d2ea3bca,690778_1742991_cs_ufficio.zip/cs_ufficio.bsp,automated upload,2026-07-01 21:26
 xc_polusi_v1_0,41793473,40832033,099b0be8eb1e41d79b170c88ca6fc948d47bb4bd,690365_1741618_xc_polusi_v1_0.7z/xc_polusi_v1_0.bsp,automated upload,2026-06-30 11:52
 ze_obj_rod_wave_arbys_takeover_v1_2,77835784,40905632,364df7daccff3973d4d22a3cf10945b43f182b8d,681914_1741149_ze_obj_rod_wave_arbys_takeover_v1_2.zip/ze_obj_rod_wave_arbys_takeover_v1_2.bsp,automated upload,2026-06-29 20:42
-cs_italy_cc,77061836,28901318,ff2179d0812c8c65d6d68ffb6075c98df0e0aee7,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/cs_italy_cc.bsp,automated upload,2026-06-29 20:11
-cs_office_cc,49978115,15789821,e442d1ece7bf0c314620a8a387496dc7a413d428,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/cs_office_cc.bsp,automated upload,2026-06-29 20:11
 de_dust2_cc,36339551,18425485,d2a57002a4e24775e23ebc45a0cc3d2e1cacc8fb,667927_1741120_color_correction_mod_32cc8.7z/Color Correction Mod/de_dust2_cc.bsp,automated upload,2026-06-29 20:11
 de_finz,1071836,459377,9e0516f627959b370d5dd38a809631896daf1afe,672588_1740756_de_finz36.zip/de_finz.bsp,automated upload,2026-06-29 11:35
 bhop_castlewars,69752610,15875677,082cb7edf0dd822351f71ba9f15d9f3e62079128,689698_1739946_bhop_castlewars_7cce2.zip/bhop_castlewars.bsp,automated upload,2026-06-28 12:22
