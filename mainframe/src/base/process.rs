@@ -168,7 +168,12 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		let insert_maps = |tx: &Transaction<'_>, table: &str, rows: &DashSet<UnprocessedCsvRow>| -> rusqlite::Result<()> {
 			let mut stmt = tx.prepare(&format!("INSERT INTO {table} VALUES(?,?,?,?);"))?;
 			for row in rows.iter() {
-				let _ = stmt.execute((row.mapname.as_str(), row.filesize, row.filesize_bz2, row.sha1.as_str()))?;
+				let _ = stmt.execute((
+					row.mapname.as_str(),
+					row.filesize as i64,
+					row.filesize_bz2 as i64,
+					row.sha1.as_str(),
+				))?;
 			}
 			drop(stmt);
 			Ok(())
@@ -181,7 +186,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		let mut stmt = tx.prepare("INSERT INTO gamebanana VALUES(?,?,?);")?;
 		for r in gamebanana.iter() {
 			let (sha1, (modid, downloadid)) = r.pair();
-			let _ = stmt.execute((sha1.as_str(), modid, downloadid))?;
+			let _ = stmt.execute((sha1.as_str(), *modid as i64, *downloadid as i64))?;
 		}
 		drop(stmt);
 		let mut stmt = tx.prepare(
@@ -193,7 +198,13 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		",
 		)?;
 		for (sha1, (modid, downloadid)) in canon_gb.iter() {
-			let _ = stmt.execute((sha1.as_str(), modid, downloadid, modid, downloadid))?;
+			let _ = stmt.execute((
+				sha1.as_str(),
+				*modid as i64,
+				*downloadid as i64,
+				*modid as i64,
+				*downloadid as i64,
+			))?;
 		}
 		drop(stmt);
 		//tx.execute("DELETE FROM gamebanana WHERE gamebananaid = 0;", ())?;
@@ -307,11 +318,11 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		.call(|conn| {
 			let mut stmt = conn.prepare("SELECT mapname, filesize FROM maps_unfiltered;")?;
 			let mut rows = stmt.query(())?;
-			let mut things = BTreeMap::<String, Vec<usize>>::new();
+			let mut things = BTreeMap::<String, Vec<u64>>::new();
 			while let Some(row) = rows.next()? {
 				let mapname: String = row.get(0)?;
-				let filesize: usize = row.get(1)?;
-				things.entry(mapname).or_default().push(filesize);
+				let filesize: i64 = row.get(1)?;
+				things.entry(mapname).or_default().push(filesize as u64);
 			}
 			Ok::<_, rusqlite::Error>(things)
 		})
@@ -385,7 +396,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			OpenFlags::SQLITE_OPEN_READ_ONLY | OpenFlags::SQLITE_OPEN_URI,
 		)?;
 
-		let (number_of_maps, unpacked_size, bz2_size): (usize, usize, usize) = conn.query_row(
+		let (number_of_maps, unpacked_size, bz2_size): (i64, i64, i64) = conn.query_row(
 			&format!(
 				"
 			SELECT COUNT(*), SUM(s1), SUM(s2)
@@ -524,10 +535,11 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		let mut rows = stmt.query(())?;
 		while let Some(row) = rows.next()? {
 			let mapname = row.get_ref(0)?.as_str()?;
-			let filesize = row.get(1)?;
-			let filesize_bz2 = row.get(2)?;
+			let filesize: i64 = row.get(1)?;
+			let filesize_bz2: i64 = row.get(2)?;
 			let sha1 = row.get_ref(3)?.as_str()?;
-			let gbid: Option<GamebananaID> = row.get(4)?;
+			let gbid: Option<i64> = row.get(4)?;
+			let gbid = gbid.map(|v| v as u64);
 			let mut link: Option<String> = row.get(5)?;
 			let mut htmllink = String::new();
 
@@ -550,8 +562,8 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			outcsv.serialize(ProcessedCsvRow {
 				mapname,
 				sha1,
-				filesize,
-				filesize_bz2,
+				filesize: filesize as u64,
+				filesize_bz2: filesize_bz2 as u64,
 				url: &link.unwrap_or_default(),
 			})?;
 

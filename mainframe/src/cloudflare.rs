@@ -173,7 +173,7 @@ pub(crate) async fn sync_r2_bz2s() -> anyhow::Result<()> {
 			for _i in 0..max_requests_per_prefix {
 				//println!("{shard} {_i}");
 				let signed_url = list_objects_v2.sign(Duration::from_secs(12));
-				let resp = NOPROXY_CLIENT.get(signed_url).send().await?.bytes().await?;
+				let resp = NOPROXY_CLIENT.get(signed_url).send().await?.text().await?;
 				let resp = ListObjectsV2::parse_response(&resp)?;
 
 				for object in resp.contents {

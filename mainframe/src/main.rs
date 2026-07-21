@@ -184,6 +184,13 @@ pub struct GlobalSettings {
 	#[cfg(feature = "scraper")]
 	pub gb_wait_time_for_looping: f32,
 
+	/// Number of seconds to wait between checking for new maps on fastdl.unloze.com.
+	#[cfg(feature = "scraper")]
+	pub unloze_check_interval_in_seconds: u32,
+	/// Number of seconds to wait between checking for new maps on ksf.surf.
+	#[cfg(feature = "scraper")]
+	pub ksf_check_interval_in_seconds: u32,
+
 	/// Proxy to use when pulling from gamebanana
 	#[cfg(feature = "scraper")]
 	pub proxy: Option<String>,
@@ -313,7 +320,7 @@ async fn async_main() -> anyhow::Result<()> {
 		Commands::Autodl { gamebanana, ksf, unloze } => {
 			// we use some of the processed csvs inside gbauto->mapshasher, so make sure they exist here...
 			base::process::run().await?;
-			downloaders::auto::run().await?;
+			downloaders::auto::run(gamebanana, ksf, unloze).await?;
 		}
 		Commands::Process => base::process::run().await?,
 		#[cfg(feature = "scraper")]

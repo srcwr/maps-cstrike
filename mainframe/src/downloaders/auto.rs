@@ -91,7 +91,7 @@ async fn get_index_records() -> Vec<GbRecords> {
 	records
 }
 
-async fn update_modified_times(modified_times: &mut Arc<crate::csv::ModifiedTimes>) -> anyhow::Result<LoopControl> {
+async fn update_gb_modified_times(modified_times: &mut Arc<crate::csv::ModifiedTimes>) -> anyhow::Result<LoopControl> {
 	let records = get_index_records().await;
 
 	let mut updated = false;
@@ -124,7 +124,7 @@ async fn update_modified_times(modified_times: &mut Arc<crate::csv::ModifiedTime
 	}
 }
 
-async fn fetch_mod(
+async fn fetch_gb_mod(
 	downloads: &mut Arc<crate::csv::GbDownloads>,
 	modified_times: &mut Arc<crate::csv::ModifiedTimes>,
 ) -> anyhow::Result<LoopControl> {
@@ -192,7 +192,71 @@ async fn fetch_mod(
 	Ok(LoopControl::Restart(1.0))
 }
 
-async fn download_item(downloads: &mut Arc<crate::csv::GbDownloads>) -> anyhow::Result<LoopControl> {
+async fn finish_semimanual_stuff(
+	now: jiff::Timestamp,
+	bz2_upload_tasks: JoinSet<anyhow::Result<()>>,
+	new_bsps: Bsps,
+	r#type: &'static str,
+) -> anyhow::Result<()> {
+	let push_maps_cstrike = tokio::spawn(async move {
+		let now = now.strftime("%Y%m%d%H%M").to_string();
+		let _x = tokio::process::Command::new("git")
+			.current_dir(&SETTINGS.dir_maps_cstrike)
+			.args([
+				"add",
+				"recently_added.csv",
+				"unprocessed/gamebanana-x-automatic.csv",
+				"unprocessed/ksf.surf.csv",
+				"unprocessed/unloze-css_mg-all.csv",
+				"unprocessed/unloze-css_mg-unique.csv",
+				"unprocessed/unloze-css_ze-all.csv",
+				"unprocessed/unloze-css_ze-unique.csv",
+				"unprocessed/unloze-css_zr-all.csv",
+				"unprocessed/unloze-css_zr-unique.csv",
+				"canon.csv",
+				"downloader-state/gamebanana-downloads.csv",
+				"downloader-state/gamebanana-modified-times.csv",
+				"downloader-state/ksf.surf_maps-list.csv",
+				"downloader-state/unloze-css_mg-list.csv",
+				"downloader-state/unloze-css_ze-list.csv",
+				"downloader-state/unloze-css_zr-list.csv",
+			])
+			.status()
+			.await
+			.unwrap();
+		let _x = tokio::process::Command::new("git")
+			.current_dir(&SETTINGS.dir_maps_cstrike)
+			.args([
+				"-c",
+				&format!("user.name={}", SETTINGS.git_name),
+				"-c",
+				&format!("user.email={}", SETTINGS.git_email),
+				"commit",
+				"-m",
+				&format!("{now} - automatic {type}"),
+			])
+			.status()
+			.await
+			.unwrap();
+		tokio::process::Command::new("git")
+			.current_dir(&SETTINGS.dir_maps_cstrike)
+			.args(["push", &SETTINGS.git_origin])
+			.status()
+			.await
+			.unwrap()
+	});
+
+	base::semimanual::run(now, Some(bz2_upload_tasks), Some(new_bsps)).await?;
+
+	if !push_maps_cstrike.await.unwrap().success() {
+		eprintln!("failed to push maps-cstrike to github");
+	}
+
+	println!("\n\nrunning it back!\n\n");
+	Ok(())
+}
+
+async fn download_gb_item(downloads: &mut Arc<crate::csv::GbDownloads>) -> anyhow::Result<LoopControl> {
 	let find_next_download = || {
 		for ((_modid, _downloadid), row) in downloads.iter() {
 			if !row.downloaded {
@@ -260,7 +324,7 @@ async fn download_item(downloads: &mut Arc<crate::csv::GbDownloads>) -> anyhow::
 	Ok(LoopControl::Restart(0.0))
 }
 
-async fn process_item(
+async fn process_gb_item(
 	downloads: &mut Arc<crate::csv::GbDownloads>,
 	new_bsps: &mut Bsps,
 	bz2_upload_tasks: &mut JoinSet<anyhow::Result<()>>,
@@ -294,7 +358,6 @@ async fn process_item(
 
 	let shortnow = now.as_ref().unwrap().strftime("%Y%m%d%H%M").to_string();
 	let prettynow = now.as_ref().unwrap().strftime("%Y-%m-%d %H:%M").to_string();
-	let prettynow = compact_str::CompactString::from(prettynow);
 
 	let outputfilename = format!("{}_{}_{}", row.modid, row.downloadid, row.filename);
 	let outputdir = SETTINGS.dir_gamebanana_auto.join(&shortnow).join(&outputfilename);
@@ -422,7 +485,7 @@ async fn process_item(
 	Ok(LoopControl::Restart(0.0))
 }
 
-pub(crate) async fn run() -> anyhow::Result<()> {
+pub(crate) async fn run(gamebanana: bool, ksf: bool, unloze: bool) -> anyhow::Result<()> {
 	#[cfg(feature = "discordbot")]
 	tokio::spawn(discordbot::lurk());
 
@@ -439,7 +502,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 	// then download every possible item
 	// then fetch every possible mod
 	// then update modified times
-	// and if there's nothing new, then it commits & starts maps-cstrike-more-auto stuff...
+	// and if there's nothing more new, then it commits & starts maps-cstrike-more-auto stuff...
 	//
 	// so what really happens is:
 	// - there's new modified time from update_modified_times
@@ -448,6 +511,11 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 	// - process the downloaded files
 	//
 	// trickle-down economics or something idk
+	//
+	// ksf and unloze have destroyed the economy!  Now I have to fit those in my state-machine somewhere!  Gahh!!!
+
+	let mut last_ksf_check = 0;
+	let mut last_unloze_check = 0;
 
 	loop {
 		if let LoopControl::Restart(sleep_seconds) = control {
@@ -456,76 +524,45 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			}
 		}
 
-		control = process_item(&mut downloads, &mut new_bsps, &mut bz2_upload_tasks, &mut queued_now).await?;
+		control = process_gb_item(&mut downloads, &mut new_bsps, &mut bz2_upload_tasks, &mut queued_now).await?;
 		if control != LoopControl::Pass {
 			continue;
 		}
 
-		control = download_item(&mut downloads).await?;
+		control = download_gb_item(&mut downloads).await?;
 		if control != LoopControl::Pass {
 			continue;
 		}
 
-		control = fetch_mod(&mut downloads, &mut modified_times).await?;
+		control = fetch_gb_mod(&mut downloads, &mut modified_times).await?;
 		if control != LoopControl::Pass {
 			continue;
 		}
 
-		control = update_modified_times(&mut modified_times).await?;
+		control = update_gb_modified_times(&mut modified_times).await?;
 		if control != LoopControl::Pass {
 			continue;
 		}
 
 		if let Some(now) = queued_now.take() {
-			let push_maps_cstrike = tokio::spawn(async move {
-				let now = now.strftime("%Y%m%d%H%M").to_string();
-				let _x = tokio::process::Command::new("git")
-					.current_dir(&SETTINGS.dir_maps_cstrike)
-					.args([
-						"add",
-						"recently_added.csv",
-						"unprocessed/gamebanana-x-automatic.csv",
-						"canon.csv",
-						"downloader-state/gamebanana-downloads.csv",
-						"downloader-state/gamebanana-modified-times.csv",
-					])
-					.status()
-					.await
-					.unwrap();
-				let _x = tokio::process::Command::new("git")
-					.current_dir(&SETTINGS.dir_maps_cstrike)
-					.args([
-						"-c",
-						&format!("user.name={}", SETTINGS.git_name),
-						"-c",
-						&format!("user.email={}", SETTINGS.git_email),
-						"commit",
-						"-m",
-						&format!("{now} - automatic gamebanana"),
-					])
-					.status()
-					.await
-					.unwrap();
-				tokio::process::Command::new("git")
-					.current_dir(&SETTINGS.dir_maps_cstrike)
-					.args(["push", &SETTINGS.git_origin])
-					.status()
-					.await
-					.unwrap()
-			});
-
-			base::semimanual::run(
+			finish_semimanual_stuff(
 				now,
-				Some(std::mem::take(&mut bz2_upload_tasks)),
-				Some(std::mem::take(&mut new_bsps)),
+				std::mem::take(&mut bz2_upload_tasks),
+				std::mem::take(&mut new_bsps),
+				"gamebanana",
 			)
 			.await?;
+		}
 
-			if !push_maps_cstrike.await.unwrap().success() {
-				eprintln!("failed to push maps-cstrike to github");
-			}
+		let current_unix_timestamp = jiff::Timestamp::now().as_second();
+		if (current_unix_timestamp - last_ksf_check) > SETTINGS.ksf_check_interval_in_seconds as i64 {
+			last_ksf_check = current_unix_timestamp;
+			do_ksf().await?;
+		}
 
-			println!("\n\nrunning it back!\n\n");
+		if (current_unix_timestamp - last_unloze_check) > SETTINGS.unloze_check_interval_in_seconds as i64 {
+			last_unloze_check = current_unix_timestamp;
+			do_unloze().await?;
 		}
 
 		control = LoopControl::Restart(SETTINGS.gb_wait_time_for_looping);
@@ -543,4 +580,12 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			libmimalloc_sys::mi_collect(true);
 		}
 	}
+}
+
+async fn do_ksf() -> anyhow::Result<()> {
+	Ok(())
+}
+
+async fn do_unloze() -> anyhow::Result<()> {
+	Ok(())
 }

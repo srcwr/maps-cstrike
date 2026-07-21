@@ -26,7 +26,7 @@ pub struct UnprocessedCsvRow {
 	#[serde(alias = "url")]
 	pub note: Option<String>,
 	pub recently_added_note: Option<String>,
-	pub datetime: Option<compact_str::CompactString>,
+	pub datetime: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Hash, PartialEq, Eq, Clone, Debug, PartialOrd, Ord)]
