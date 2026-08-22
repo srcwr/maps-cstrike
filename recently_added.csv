@@ -1,4 +1,6 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_prodigy_csalpha,26868104,5536817,28f63841851a2b75ee923e56337b5ad3bd2b0921,652657_1793269_de_prodigy_csbeta-src-v2.7z/de_prodigy_csbeta-src-v2/mapsrc/de_prodigy_csalpha.bsp,automated upload,2026-08-22 12:38
+de_prodigy_csbeta,22764096,4399149,830e600ea14efd1e9c50753fe81324c7a8c9a521,652657_1793269_de_prodigy_csbeta-src-v2.7z/de_prodigy_csbeta-src-v2/mapsrc/de_prodigy_csbeta.bsp,automated upload,2026-08-22 12:38
 dm_duke3d_l1_v2,53740236,32565903,9c64c7fbdec730c545d8a98c369c8ea3f8ee9933,703991_1793073_dm_duke3d_l1_v2_4fc68.7z/dm_duke3d_l1_v2.bsp,automated upload,2026-08-22 06:54
 de_hamburger,7169144,2877687,90d130144fa0271cbafe2fca8770a58c7b2bb84e,707927_1792942_de_hamburger.zip/de_hamburger/de_hamburger.bsp,automated upload,2026-08-22 03:05
 bhop_fergus_slop1,1199228,149790,8c634e662ff4e8dc9a2b54566338770bd9a5e2e2,707747_1792636_bhop_fergus_slop1_d508c.zip/bhop_fergus_slop1.bsp,automated upload,2026-08-21 21:27
@@ -561,7 +563,6 @@ ze_cubic_v1_2,38768204,13804989,64ba270019843dc486720affe4f869fa2442c5d3,,sent v
 de_shipment_v7,6782380,3177156,81dec4ac8a3ac88af3f04b130ab9941a52d372c2,660799_1649531_de_shipment_889bb.zip/de_shipment/de_shipment_v7.bsp,automated upload,2026-03-16 18:54
 de_matcha_a3,8176444,2723215,fd348bf493fa78d1bcd460670e80fea9e94f395d,657661_1649331_de_matcha_a3.zip/de_matcha_a3.bsp,automated upload,2026-03-16 14:28
 surf_mentos,42897553,11456616,55ad91f3857ef5bac004ed0339db80900fd159ab,660336_1648356_surf_mentos_640ca.rar/surf_mentos.bsp,automated upload,2026-03-15 12:26
-de_prodigy_csbeta,13635863,13554068,ac408780dee8bd3299c7f37daf24b358bef8d28a,652657_1648257_de_prodigy_csbeta-final-tweak.7z/de_prodigy_csbeta-FINAL-tweak/maps/de_prodigy_csbeta.bsp,automated upload,2026-03-15 09:40
 zm_NoMercy_v1N,99367480,41704118,9819634f1a166ac312d136f82ac577e968f9ba5c,437071_1647343_zm_nomercy_v1n.7z/zm_NoMercy_v1N/zm_NoMercy_v1N.bsp,automated upload,2026-03-14 15:01
 1v1_shadowmoses,56093352,26179612,0f323120c7ce7775fb377f17d81b31a6ef28e2a4,650449_1647293_1v1_shadowmoses_18b49.7z/1v1_shadowmoses.bsp,automated upload,2026-03-14 13:46
 zm_NoMercy_v1,99367108,41660647,7ad8b632e1605b39b51a5d059c01f0d7cab67eba,437071_1647218_nomercy_v1.7z/NoMercy/zm_NoMercy_v1.bsp,automated upload,2026-03-14 11:24
