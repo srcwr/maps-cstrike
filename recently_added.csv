@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_endpoint,15048956,5058105,5b25dc81a60b3f40f3fdb6c068413861b431eb9e,684837_1800833_de_endpoint_v101.rar/de_endpoint.bsp,automated upload,2026-08-29 10:53
 de_nuke_csgo_new,23394112,7453240,6ff3222e83f8c3dffdf6892bc7c3af4bd32e0547,709333_1800614_de_nuke_csgo_new_80de0.7z/de_nuke_csgo_new/maps/de_nuke_csgo_new.bsp,automated upload,2026-08-29 04:39
 city_norilsk_v5,15589202,4711238,6bc715a1318c6edbba1f63b1f67cfe5d57a142c9,710603_1799490_city_norilsk_v5.rar/city_norilsk_v5.bsp,automated upload,2026-08-28 01:13
 de_cbble_t6,13475770,5177631,9df8fc60766e4736f7379ce1ff1c7a462f1efbdf,705180_1799098_de_cbble_t6.zip/de_cbble_t6.bsp,automated upload,2026-08-27 16:53
@@ -206,7 +207,6 @@ zm_vice_beach,14359348,9450722,fa40c3f406fc9d8b2ff80f70f93fe14a1210253f,685293_1
 bhop_arcade,88313353,31227843,33f068c7bb1dec49c505a11a95441442cfd5f90e,684372_1725162_bhop_arcade_2c9c4.rar/bhop_arcade.bsp,automated upload,2026-06-10 18:50
 ze_ArcticEscape_v1_1,142597672,53632774,1960f33f55e8048e18a03f86d3e206a9aa30afea,684842_1725145_ze_arcticescape_v1_1.7z/ze_ArcticEscape_v1_1.bsp,automated upload,2026-06-10 18:24
 ze_ArcticEscape_v1,141890168,53420084,7e81c7eae2490cadde4bd963d5299cfb92b2487d,684842_1724974_ze_arcticescape_v1.7z/ze_ArcticEscape_v1.bsp,automated upload,2026-06-10 14:00
-de_endpoint,15014200,5039454,64d9ea39f77a0ab87ee5944e89b344c6441fd78a,684837_1724970_de_endpoint.rar/de_endpoint.bsp,automated upload,2026-06-10 13:47
 de_skybridge,43027937,10728606,be1f0aa0069cf4ee8c1586df94ee080d1b56e726,656399_1723934_de_skybridge_c9d5f.zip/de_skybridge.bsp,automated upload,2026-06-09 06:42
 autoparts_nc,71520588,71466918,62e33f3734c9c8166f19746bd1d02c5c19dc0beb,684461_1723775_maps_nc.rar/maps/autoparts_nc.bsp,automated upload,2026-06-09 01:51
 cs_axe_nc,6202144,6050756,85ed3b9f036dabf2de0f64b261194e7304567c96,684461_1723775_maps_nc.rar/maps/cs_axe_nc.bsp,automated upload,2026-06-09 01:51
