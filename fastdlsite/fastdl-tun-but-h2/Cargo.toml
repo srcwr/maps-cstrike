@@ -15,7 +15,7 @@ serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["float_roundtrip"] }
 tokio = { version = "1", features = ["full"] }
 tower = { version = "0.5", features = ["full"] }
-tower-http = { version = "0.6", features = ["fs", "sensitive-headers", "set-header", "trace"] }
+tower-http = { version = "0.6", features = ["cors", "fs", "sensitive-headers", "set-header", "trace"] }
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 tracing = { version = "0.1", features = ["log"] }
 http = "1.4"

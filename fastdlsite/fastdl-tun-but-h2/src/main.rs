@@ -140,6 +140,11 @@ async fn main_fastdl_me() -> anyhow::Result<()> {
 	});
 
 	let make_app = || {
+		let cors = tower_http::cors::CorsLayer::new()
+			.allow_methods([http::Method::GET])
+			.allow_origin(tower_http::cors::Any)
+			.allow_private_network(true);
+
 		let sensitive_headers: Vec<_> = std::env::var("SENSITIVE_HEADERS")
 			.unwrap_or_default()
 			.split(',')
@@ -179,6 +184,7 @@ async fn main_fastdl_me() -> anyhow::Result<()> {
 					.layer(axum::middleware::map_response(tag_node))
 					.layer(SetSensitiveRequestHeadersLayer::new(sensitive_headers))
 					.layer(TraceLayer::new_for_http().make_span_with(DefaultMakeSpan::new().include_headers(true)))
+					.layer(cors)
 					.layer(axum::middleware::from_fn(strip_index_dot_html))
 					.layer(axum::middleware::from_fn(nav_short_circuit))
 					.layer(SetResponseHeaderLayer::overriding(
