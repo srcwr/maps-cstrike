@@ -1,4 +1,5 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+de_province_ea3,9156372,2795921,1a0ae6796192b4a283c4832266cc1d8f56a02bba,503967_1801851_de_province_ea3_radar_fix_.zip/de_province_ea3.bsp,automated upload,2026-08-30 04:23
 ze_paindown_v1_4,95061741,93323047,d793676f2195d8c7f02c830deb90681ebcf33ab8,686101_1801488_ze_paindown_v1_4_update_assets_.rar/ze_paindown_v1_4.bsp,automated upload,2026-08-29 22:20
 GUMI_STAGE,6815691,724464,ce35a10e8e0bd9d38e290e3bcf739c3711bb05a0,711413_1801394_gumi_stage.zip/GUMI_STAGE/GUMI_STAGE.bsp,automated upload,2026-08-29 20:42
 de_endpoint,15048956,5058105,5b25dc81a60b3f40f3fdb6c068413861b431eb9e,684837_1800833_de_endpoint_v101.rar/de_endpoint.bsp,automated upload,2026-08-29 10:53
@@ -12,7 +13,6 @@ de_train_t4,10664759,3095170,c1cbc68838e609a899443e9691bd575ae9f8bad2,703713_179
 tr_abst_en,93962898,53708652,d28861314d842d1bed675f8b84f2f4d36db91142,709513_1796778_tr_abst_english.zip/maps/tr_abst_en.bsp,automated upload,2026-08-25 09:42
 tr_abst_cn,93962595,53836549,a4d35e2b2e572f9d08b37a8274f1a293ce9f84b4,709513_1796776_tr_abst_chinese.zip/maps/tr_abst_cn.bsp,automated upload,2026-08-25 09:42
 de_arizona_csbeta_lite,30789494,30417078,4024680db8cbf378196a2e665a76add14fdff7ee,700681_1795436_de_arizona_csbeta_lite-rc2.7z/! de_Arizona_csbeta_lite/maps/de_arizona_csbeta_lite.bsp,automated upload,2026-08-24 04:22
-de_province_ea3,9156372,2893102,40decfe0510430e0c2d4aad1cc5640a94ad0573f,503967_1795303_de_province_ea3.zip/de_province_ea3.bsp,automated upload,2026-08-24 01:35
 dm_skyscraper_blacksquad_v1,72685188,27263558,4c9e766052d8c91088a7295f6f16bd240c07434c,708185_1794434_dm_skyscraper_blacksquad_v1.rar/dm_skyscraper_blacksquad_v1.bsp,automated upload,2026-08-23 12:11
 dm_skyscraper_blacksquad_test,71737268,27049940,4d5d1430c600a3b3bf6718cd58d6e49d4d85c1ae,708185_1793557_dm_skyscraper_blacksquad_test.rar/dm_skyscraper_blacksquad_test.bsp,automated upload,2026-08-22 17:57
 de_prodigy_csalpha,26868104,5536817,28f63841851a2b75ee923e56337b5ad3bd2b0921,652657_1793269_de_prodigy_csbeta-src-v2.7z/de_prodigy_csbeta-src-v2/mapsrc/de_prodigy_csalpha.bsp,automated upload,2026-08-22 12:38
