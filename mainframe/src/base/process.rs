@@ -291,9 +291,6 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			row.recently_added_note = Some(String::new());
 		}
 		recently_added.push(row);
-		if recently_added.len() > 154 {
-			break;
-		}
 	}
 	let recently_added = Arc::new(recently_added);
 
@@ -384,7 +381,7 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 		title_html: &str,
 		sqlwhere: &str,
 		// effectively the same as sqlwhere, but I don't want to remove sqlwhere because then I have to manually filter some results...
-		recently_added_name_highlights: Option<&str>,
+		recently_added_filter: Option<&str>,
 		recently_added: Option<Arc<Vec<UnprocessedCsvRow>>>,
 		txt_as_urls: bool,
 	) -> anyhow::Result<()> {
@@ -455,26 +452,22 @@ pub(crate) async fn run() -> anyhow::Result<()> {
 			"##
 			)?;
 			//<th style="width:1%">List of packed files</th>
-			let re = recently_added_name_highlights.map(|s| regex::RegexBuilder::new(s).case_insensitive(true).build().unwrap());
-			for row in recently_added.iter() {
-				let style = if let Some(re) = &re
-					&& re.is_match(&row.mapname)
-				{
-					" class=\"rahighlights\""
-				} else {
-					""
-				};
+			let re = recently_added_filter.map(|s| regex::RegexBuilder::new(s).case_insensitive(true).build().unwrap());
+			for row in recently_added
+				.iter()
+				.filter(|row| if let Some(re) = &re { re.is_match(&row.mapname) } else { true })
+				.take(154)
+			{
 				writedoc!(
 					&mut index_html,
 					r##"
-					<tr{}>
+					<tr>
 					<td><a href="#">{}</a></td>
 					<td>{}</td>
 					<td>{}</td>
 					<td>{}</td>
 					</tr>
 				"##,
-					style,
 					html_escape::encode_safe(&row.mapname),
 					row.sha1,
 					row.recently_added_note.as_deref().unwrap_or_default(),
