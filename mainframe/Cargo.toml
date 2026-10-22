@@ -32,7 +32,7 @@ dashmap = { version = "6.1.0", features = ["serde"] }
 dunce = { version = "1.0.5", optional = true }
 flate2 = { version = "1.1.1", default-features = false, features = ["zlib-rs"] }
 glob = "0.3.2"
-html-escape = "0.2.13"
+html-escape = "0.3"
 idna_adapter = { version = "=1.0.0", optional = true } # we can trim down on unicode bullshit with this...
 indoc = "2"
 itertools = "0.15.0"
@@ -58,5 +58,5 @@ tokio = { version = "1", features = ["full"] }
 tokio-rusqlite = { path = "../../tokio-rusqlite", features = ["bundled"] }
 twilight-gateway = { version = "0.17", features = ["simd-json"], optional = true }
 vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "fe421c3e6601caec9c774074d89fa9ab78e3b91c", default-features = false } # a fork to improve some things for us
-zip = { version = "8", default-features = false, features = ["lzma"] }
-zstd = "0.13.3"
+zip = { version = "9", default-features = false, features = ["lzma"] }
+zstd = "0.14.3"

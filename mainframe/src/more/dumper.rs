@@ -22,7 +22,7 @@ fn get_filelist(data: &[u8]) -> anyhow::Result<Vec<FilelistRow>> {
 	for i in 0..zip.len() {
 		let file = zip.by_index_raw(i)?;
 		rows.push(FilelistRow {
-			filename: file.name().to_owned(),
+			filename: file.name().to_owned()?.to_string(),
 			size: file.size(),
 			compressed: file.compressed_size(),
 		});
