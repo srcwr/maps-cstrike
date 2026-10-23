@@ -1,11 +1,14 @@
 mapname,filesize,filesize_bz2,sha1,note,recently_added_note,datetime
+cs_italy_hpe,152677652,72923791,fe24a601ba89b5ba6df4f46c2ad9e702ae3aba29,725727_1861123_cstrike15_maps_dec2010__a29a1.7z/cstrike15 maps (dec2010)/cs_italy_hpe.bsp,automated upload,2026-10-23 20:09
+de_piranesi_hpe,161567500,70954689,73a2c741956ab30224cbbbe8a01879660cb95278,725727_1861123_cstrike15_maps_dec2010__a29a1.7z/cstrike15 maps (dec2010)/de_piranesi_hpe.bsp,automated upload,2026-10-23 20:09
+de_vostok_hpe,124953211,60806639,f2f4b0cdde0136980445737e470b390fc2609982,725727_1861123_cstrike15_maps_dec2010__a29a1.7z/cstrike15 maps (dec2010)/de_vostok_hpe.bsp,automated upload,2026-10-23 20:09
+zr_inferno_lohas_v2,16475916,5095457,2cfc48590a651b2e08930cf0dd4b02150db49d1f,685638_1861122_zriotcssmapsbigpack_6adc4.zip/zr_inferno_lohas_v2.bsp,automated upload,2026-10-23 20:09
 zr_chateau_lohas_v2,18267984,5168150,a2019c02ed8b800bd327f749beac0c0831fd720e,685638_1859756_zriotcssmapsbigpack_7c2f0.zip/zr_chateau_lohas_v2.bsp,automated upload,2026-10-22 20:01
 de_sunsetforocean_14_release,17721272,6462022,52f3638b1b098d2bac8b89ca2b8192b576155fba,729691_1856906_de_sunseforocean.zip/maps/de_sunsetforocean_14_release.bsp,automated upload,2026-10-20 17:37
 bhop_vholume,67069824,32190729,46cbf2b4e2f7fe6f658182d6a1276f5186adbd14,730099_1856891_bhop_vholume.rar/bhop_vholume.bsp,automated upload,2026-10-20 17:37
 de_strike_mirage,23878900,10039932,f0a83859b8174a78c77e9d49786b7ce38bf96016,729559_1856676_de_strike_mirage_979c3.7z/maps/de_strike_mirage.bsp,automated upload,2026-10-20 13:18
 ze_paindown_v2_5,237918925,235533131,0405e3eb10c47b5757a8cee48fffb029a733d124,686101_1856460_ze_paindown_v2_5.rar/ze_paindown_v2_5.bsp,automated upload,2026-10-20 06:38
 bhop_postal_maptest,85860528,50402077,b9a3aad1aaf1b7fddfd3341782dc3e839dc8bf50,729817_1855998_bhop_postal_maptest.zip/bhop_postal_maptest.bsp,automated upload,2026-10-19 21:37
-de_piranesi_hpe,161550401,70949971,0bb877a2c78543ee4ac120490eaee8f3df1424a4,725727_1855443_cstrike15_maps_dec2010__fb867.7z/cstrike15 maps (dec2010)/de_piranesi_hpe.bsp,automated upload,2026-10-19 11:26
 de_vertigo_hpe,75695265,28725253,a283dfbe04b571e064dce0df6cc9294c6a14f5bf,725727_1855443_cstrike15_maps_dec2010__fb867.7z/cstrike15 maps (dec2010)/de_vertigo_hpe.bsp,automated upload,2026-10-19 11:26
 bhop_frenzy,60858727,9786061,2278d21ee423ddf312d2a62f401158f11a0eba58,729253_1854207_bhop_frenzy.zip/bhop_frenzy.bsp,automated upload,2026-10-18 16:02
 jb_hostile_v1,6294191,6283016,c6af2266e8e6774860d14f841568ce067ad85f6b,729208_1854061_jb_hostile_v1.7z/jb_hostile_v1.bsp,automated upload,2026-10-18 13:28
@@ -37,7 +40,6 @@ bhop_marathon,86707080,33655321,997e6daabdb4a4674ac04379cd9f0c507fad45ed,726236_
 bhop_gibberish_rs,40282023,11280991,f048437f1ac6257fb39dcc5c4747c16a6cb82c79,726341_1844405_bhop_gibberish_rs.zip/bhop_gibberish_rs.bsp,automated upload,2026-10-10 21:55
 mg_metal_course_level_2,53419990,9066875,12d375395642a89f822b883ccc30e3f3baad981d,,sent via check.fastdl.me,2026-10-10 20:22
 mz_wintermaze_2016_v0,71610100,17439909,38c0185ac954ec69d0ffd2437b52bea784b5beb9,397618_1844145_mz_wintermaze_2016_v0_d10a6.rar/mz_Wintermaze_2016_v0/steam/steamapps/common/Counter-Strike Source/cstrike/maps/mz_wintermaze_2016_v0.bsp,automated upload,2026-10-10 18:04
-cs_italy_hpe,152660553,72919684,6bfc09260cc17d5b4006bb03fb1dea47e92daf16,725727_1842887_cstrike15_maps_dec2010__3821f.7z/cstrike15 maps (dec2010)/cs_italy_hpe.bsp,automated upload,2026-10-09 16:29
 bhop_grassjump,26931284,3749944,cb1ac8540efb89cc7446e962613c8b9c174a0844,725820_1842834_bhop_grassjump.rar/bhop_grassjump.bsp,automated upload,2026-10-09 15:32
 de_aztec_hpe,140386717,68044352,30d17b72a7390709c23152f5d5d35db9463a79f4,725727_1842615_cstrike15_maps_dec2010_.7z/cstrike15 maps (dec2010)/de_aztec_hpe.bsp,automated upload,2026-10-09 09:50
 de_dust_hpe,123222513,59041488,6ec77830441f44db68151c3a0698c4f676708dfc,725727_1842615_cstrike15_maps_dec2010_.7z/cstrike15 maps (dec2010)/de_dust_hpe.bsp,automated upload,2026-10-09 09:50
