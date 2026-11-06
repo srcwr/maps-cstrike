@@ -102,6 +102,17 @@ pub type GbDownloads = BTreeMap<(GamebananaID, GamebananaID), GbDownloadsRow>;
 
 #[serde_with::serde_as]
 #[derive(Serialize, Deserialize, Debug, Clone, PartialOrd, Ord, PartialEq, Eq)]
+pub struct KsfDownloadsRow {
+	pub mapname: String,
+	#[serde_as(as = "serde_with::BoolFromInt")]
+	pub downloaded: bool,
+	#[serde_as(as = "serde_with::BoolFromInt")]
+	pub processed: bool,
+}
+pub type KsfDownloads = BTreeMap<String, KsfDownloadsRow>;
+
+#[serde_with::serde_as]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialOrd, Ord, PartialEq, Eq)]
 pub struct GbModifiedTimesRow {
 	pub modid: GamebananaID,
 	pub lastmodified: u64,

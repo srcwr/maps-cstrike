@@ -13,14 +13,26 @@ pub struct AMetadata1 {
 	pub _nPerpage: usize,
 	pub _nRecordCount: usize,
 }
+*/
+
 #[derive(Serialize, Deserialize)]
-pub struct ASubmitter1 {
+pub struct GbSubmitter {
 	pub _idRow: GamebananaID,
 	pub _sAvatarUrl: String,
 	pub _sName: String,
 	pub _sProfileUrl: String,
 }
-*/
+
+// na=N/A, no=None, mi=Minor, mo=Moderate, ma=Major
+#[derive(Serialize, Deserialize)]
+pub struct GbAiUsage {
+	art: String,
+	code: String,
+	audio: String,
+	concept: String,
+	profile: String,
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct GbRecords {
 	//pub _aSubmitter: ASubmitter1,
@@ -32,7 +44,7 @@ pub struct GbRecords {
 	//_tsDateUpdated: u64,
 }
 #[derive(Serialize, Deserialize)]
-pub struct GbApiV11ModIndex {
+pub struct GbApiV13ModIndex {
 	//pub _aMetadata: AMetadata1,
 	pub _aRecords: Vec<GbRecords>,
 }
@@ -56,6 +68,14 @@ pub(super) struct GbFiles {
 }
 
 #[derive(Serialize, Deserialize)]
-pub(super) struct GbApiV11Mod {
+pub(super) struct GbApiV13Mod {
 	pub _aFiles: Option<Vec<GbFiles>>,
+	pub _aAiUsage: Option<GbAiUsage>,
+	pub _aSubmitter: GbSubmitter,
+}
+
+#[derive(Deserialize)]
+pub(super) struct KsfMap {
+	pub name: String,
+	pub link: Option<String>,
 }

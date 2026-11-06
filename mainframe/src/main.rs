@@ -2,7 +2,7 @@
 // Copyright 2022, 2025-2026 rtldg <rtldg@protonmail.com>
 
 mod base; // maps-cstrike
-#[cfg(feature = "scraper")]
+#[cfg(feature = "scraping")]
 mod cloudflare;
 mod csv;
 mod downloaders;
@@ -45,9 +45,17 @@ struct Cli {
 	command: Commands,
 }
 
+#[derive(clap::ValueEnum, Copy, Clone, Debug, PartialEq, Eq)]
+enum AutodlProviders {
+	All,
+	Gamebanana,
+	KSF,
+	Unloze,
+}
+
 #[derive(Debug, Subcommand)]
 enum Commands {
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	SemiManual {
 		timestamp: i64,
 	},
@@ -59,19 +67,15 @@ enum Commands {
 		#[arg(short, long)]
 		skip_existing_hash: bool,
 	},
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	Autodl {
-		#[arg(long)]
-		gamebanana: bool,
-		#[arg(long)]
-		ksf: bool,
-		#[arg(long)]
-		unloze: bool,
+		#[arg(default_value_t = AutodlProviders::All, value_enum)]
+		provider: AutodlProviders,
 	},
 	Process,
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	Gbdls,
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	Cfpages,
 	TransferToNodes,
 	Ezcanon {
@@ -86,17 +90,17 @@ enum Commands {
 	LumpChecksummer,
 	OriginalFilename,
 	Timestamper,
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	Venus,
 	Vscripter,
 	// cloudflare
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	PurgeCache,
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	SyncR2Bz2s,
 }
 
-#[cfg(feature = "scraper")]
+#[cfg(feature = "scraping")]
 #[derive(Deserialize)]
 pub struct BucketSettings {
 	pub name: String,
@@ -114,29 +118,29 @@ pub struct GlobalSettings {
 	pub git_origin: String,
 
 	/// the zone id on cloudflare
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub cf_zone: String,
 	/// a token that has `Cache Purge:Purge` permissions on your zone
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub cf_purgetoken: String,
 	/// a token with Workers perms
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub cf_pagestoken: String,
 	/// fuck documenting
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub buckets: HashMap<String, BucketSettings>,
 	/// the account id used in r2 (which is the same as the cloudflare "account" id)
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub r2_account_id: String,
 
 	/// the discord webhook to post new downloads to
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub discord_webhook: String,
 	/// a ping identifier. e.g. "<@&123123123123>" to ping a role
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub discord_ping: String,
 	/// the discord username used for messages posted via webhook
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub discord_username: String,
 	/// the bot token used for member bots...
 	#[cfg(feature = "discordbot")]
@@ -154,45 +158,49 @@ pub struct GlobalSettings {
 	pub dir_gamebanana_auto: PathBuf,
 	/// the full path to the folder you manually put .bsp files into for maps-hasher & process & etc...
 	pub dir_manualmaps: PathBuf,
+	/// the full path to the folder where ksf downlaods are extracted to
+	pub dir_ksf_auto: PathBuf,
+	/// the full path to the folder where unloze downlaods are extracted to
+	pub dir_unloze_auto: PathBuf,
 
 	/// commands to use to transfer to nodes
 	pub cmd_transfer_to_nodes: Vec<Vec<Vec<String>>>,
 
 	/// gamebanana category ids
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_categories: Vec<GamebananaID>,
 	/// Max of 50.
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_maxperpage: NonZeroUsize,
 	/// Non-zero value up to `gb_maxperpage`.
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_perpage: NonZeroUsize,
 	/// How many items to fetch.
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_numtofetch: NonZeroUsize,
 	/// Which item to start at...
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_itemoffset: usize,
 	/// Added because caching is ruining my life...
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_walkto: usize,
 
 	/// How long to wait after an error before looping autogb.  A few minutes is a good idea.
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_wait_time_after_errors: f32,
 	/// How many seconds to wait before loop autogb.  Multiple minutes is a good idea.
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub gb_wait_time_for_looping: f32,
 
 	/// Number of seconds to wait between checking for new maps on fastdl.unloze.com.
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub unloze_check_interval_in_seconds: u32,
 	/// Number of seconds to wait between checking for new maps on ksf.surf.
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub ksf_check_interval_in_seconds: u32,
 
 	/// Proxy to use when pulling from gamebanana
-	#[cfg(feature = "scraper")]
+	#[cfg(feature = "scraping")]
 	pub proxy: Option<String>,
 }
 
@@ -208,7 +216,7 @@ static SETTINGS: LazyLock<GlobalSettings> = LazyLock::new(|| {
 	}
 });
 
-#[cfg(feature = "scraper")]
+#[cfg(feature = "scraping")]
 static PROXIED_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 	let c = reqwest::ClientBuilder::new()
 		.connect_timeout(Duration::from_secs(10))
@@ -225,7 +233,7 @@ static PROXIED_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 	c.build().unwrap()
 });
 
-#[cfg(feature = "scraper")]
+#[cfg(feature = "scraping")]
 static NOPROXY_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(|| {
 	reqwest::ClientBuilder::new()
 		.connect_timeout(Duration::from_secs(10))
@@ -287,7 +295,7 @@ async fn async_main() -> anyhow::Result<()> {
 	let args = Cli::parse();
 	match args.command {
 		// bleh
-		#[cfg(feature = "scraper")]
+		#[cfg(feature = "scraping")]
 		Commands::SemiManual { timestamp } => {
 			let timestamp = sanity_check_timestamp(timestamp)?;
 			base::semimanual::run(timestamp, None, None).await?;
@@ -299,7 +307,7 @@ async fn async_main() -> anyhow::Result<()> {
 				.await
 				.into_iter()
 				.collect::<anyhow::Result<Vec<_>>>()?;
-			#[cfg(feature = "scraper")]
+			#[cfg(feature = "scraping")]
 			cloudflare::purge_cache(None).await?;
 		}
 		// maps-cstrike
@@ -316,16 +324,16 @@ async fn async_main() -> anyhow::Result<()> {
 			)
 			.await?;
 		}
-		#[cfg(feature = "scraper")]
-		Commands::Autodl { gamebanana, ksf, unloze } => {
+		#[cfg(feature = "scraping")]
+		Commands::Autodl { provider } => {
 			// we use some of the processed csvs inside gbauto->mapshasher, so make sure they exist here...
 			base::process::run().await?;
-			downloaders::auto::run(gamebanana, ksf, unloze).await?;
+			downloaders::auto::run(provider).await?;
 		}
 		Commands::Process => base::process::run().await?,
-		#[cfg(feature = "scraper")]
+		#[cfg(feature = "scraping")]
 		Commands::Gbdls => csv::fill_downloads(&SETTINGS.dir_gamebanana_scrape).await?,
-		#[cfg(feature = "scraper")]
+		#[cfg(feature = "scraping")]
 		Commands::Cfpages => cloudflare::upload_pages().await?,
 		Commands::TransferToNodes => {
 			let _ = base::nodes::transfer()
@@ -356,16 +364,16 @@ async fn async_main() -> anyhow::Result<()> {
 		Commands::Timestamper => {
 			tokio::task::spawn_blocking(move || more::timestamper::run(None)).await??;
 		}
-		#[cfg(feature = "scraper")]
+		#[cfg(feature = "scraping")]
 		Commands::Venus => more::venus::upload().await?,
 		Commands::Vscripter => {
 			let bsps = get_all_bsps(&SETTINGS.dir_hashed);
 			tokio::task::spawn_blocking(move || more::vscripter::run(&bsps)).await??;
 		}
 		// cloudflare
-		#[cfg(feature = "scraper")]
+		#[cfg(feature = "scraping")]
 		Commands::PurgeCache => cloudflare::purge_cache(None).await?,
-		#[cfg(feature = "scraper")]
+		#[cfg(feature = "scraping")]
 		Commands::SyncR2Bz2s => cloudflare::sync_r2_bz2s().await?,
 	}
 

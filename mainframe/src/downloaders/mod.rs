@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: WTFPL
 
-#[cfg(feature = "scraper")]
+#[cfg(feature = "scraping")]
 pub mod auto;
 #[cfg(feature = "discordbot")]
 pub mod discordbot;

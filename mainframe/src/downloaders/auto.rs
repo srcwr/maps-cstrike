@@ -13,9 +13,12 @@ use tokio::task::JoinSet;
 
 #[cfg(feature = "discordbot")]
 use crate::downloaders::discordbot;
-use crate::{Bsps, NOPROXY_CLIENT, PROXIED_CLIENT, SETTINGS, base, cloudflare, hex_to_hash, normalize_mapname};
+use crate::{
+	AutodlProviders, Bsps, NOPROXY_CLIENT, PROXIED_CLIENT, SETTINGS, base, cloudflare, csv::KsfDownloadsRow,
+	downloaders::types::KsfMap, hex_to_hash, normalize_mapname,
+};
 
-use super::types::{GbApiV11Mod, GbApiV11ModIndex, GbRecords};
+use super::types::{GbApiV13Mod, GbApiV13ModIndex, GbRecords};
 
 #[derive(PartialEq)]
 enum LoopControl {
@@ -64,7 +67,7 @@ async fn get_index_records() -> Vec<GbRecords> {
 			tokio::time::sleep(Duration::from_secs(1)).await;
 
 			let url = format!(
-				"https://gamebanana.com/apiv11/Mod/Index?_nPerpage={perpage}&_sSort=Generic_LatestModified&_aFilters%5BGeneric_Category%5D={category}&cachebuster={}{}",
+				"https://gamebanana.com/apiv13/Mod/Index?_nPerpage={perpage}&_sSort=Generic_LatestModified&_aFilters%5BGeneric_Category%5D={category}&cachebuster={}{}",
 				rand::random::<u64>(),
 				if page == 1 { String::new() } else { format!("&_nPage={page}") },
 			);
@@ -76,7 +79,7 @@ async fn get_index_records() -> Vec<GbRecords> {
 					continue 'categories;
 				}
 			};
-			let resp = match resp.json::<GbApiV11ModIndex>().await {
+			let resp = match resp.json::<GbApiV13ModIndex>().await {
 				Ok(resp) => resp,
 				Err(e) => {
 					eprintln!("received invalid json from {url}\n{e:?}");
@@ -141,7 +144,7 @@ async fn fetch_gb_mod(
 	};
 
 	let url = format!(
-		"https://gamebanana.com/apiv11/Mod/{modid}?_csvProperties=_aFiles&cachebuster={}",
+		"https://gamebanana.com/apiv13/Mod/{modid}/ProfilePage?cachebuster={}",
 		rand::random::<u64>()
 	);
 	println!("fetching {url}");
@@ -153,7 +156,7 @@ async fn fetch_gb_mod(
 			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
 		}
 	};
-	let files = match files.json::<GbApiV11Mod>().await {
+	let files = match files.json::<GbApiV13Mod>().await {
 		Ok(files) => files._aFiles,
 		Err(e) => {
 			eprintln!("failed to parse json file list from {url}\n{e:?}");
@@ -485,12 +488,12 @@ async fn process_gb_item(
 	Ok(LoopControl::Restart(0.0))
 }
 
-pub(crate) async fn run(gamebanana: bool, ksf: bool, unloze: bool) -> anyhow::Result<()> {
+pub(crate) async fn run(provider: AutodlProviders) -> anyhow::Result<()> {
 	#[cfg(feature = "discordbot")]
 	tokio::spawn(discordbot::lurk());
 
-	let mut downloads = Arc::new(crate::csv::load_gbdownloads().await?);
-	let mut modified_times = Arc::new(crate::csv::load_modified_times().await?);
+	let mut gb_downloads = Arc::new(crate::csv::load_gbdownloads().await?);
+	let mut gb_modified_times = Arc::new(crate::csv::load_modified_times().await?);
 
 	let mut queued_now = None;
 	let mut new_bsps = Bsps::new();
@@ -524,24 +527,26 @@ pub(crate) async fn run(gamebanana: bool, ksf: bool, unloze: bool) -> anyhow::Re
 			}
 		}
 
-		control = process_gb_item(&mut downloads, &mut new_bsps, &mut bz2_upload_tasks, &mut queued_now).await?;
-		if control != LoopControl::Pass {
-			continue;
-		}
+		if provider == AutodlProviders::All || provider == AutodlProviders::Gamebanana {
+			control = process_gb_item(&mut gb_downloads, &mut new_bsps, &mut bz2_upload_tasks, &mut queued_now).await?;
+			if control != LoopControl::Pass {
+				continue;
+			}
 
-		control = download_gb_item(&mut downloads).await?;
-		if control != LoopControl::Pass {
-			continue;
-		}
+			control = download_gb_item(&mut gb_downloads).await?;
+			if control != LoopControl::Pass {
+				continue;
+			}
 
-		control = fetch_gb_mod(&mut downloads, &mut modified_times).await?;
-		if control != LoopControl::Pass {
-			continue;
-		}
+			control = fetch_gb_mod(&mut gb_downloads, &mut gb_modified_times).await?;
+			if control != LoopControl::Pass {
+				continue;
+			}
 
-		control = update_gb_modified_times(&mut modified_times).await?;
-		if control != LoopControl::Pass {
-			continue;
+			control = update_gb_modified_times(&mut gb_modified_times).await?;
+			if control != LoopControl::Pass {
+				continue;
+			}
 		}
 
 		if let Some(now) = queued_now.take() {
@@ -555,14 +560,21 @@ pub(crate) async fn run(gamebanana: bool, ksf: bool, unloze: bool) -> anyhow::Re
 		}
 
 		let current_unix_timestamp = jiff::Timestamp::now().as_second();
-		if (current_unix_timestamp - last_ksf_check) > SETTINGS.ksf_check_interval_in_seconds as i64 {
-			last_ksf_check = current_unix_timestamp;
-			do_ksf().await?;
-		}
 
-		if (current_unix_timestamp - last_unloze_check) > SETTINGS.unloze_check_interval_in_seconds as i64 {
-			last_unloze_check = current_unix_timestamp;
-			do_unloze().await?;
+		/*
+		if provider == AutodlProviders::All || provider == AutodlProviders::KSF {
+			if (current_unix_timestamp - last_ksf_check) > SETTINGS.ksf_check_interval_in_seconds as i64 {
+				last_ksf_check = current_unix_timestamp;
+				do_ksf().await?;
+			}
+		}
+		*/
+
+		if provider == AutodlProviders::All || provider == AutodlProviders::Unloze {
+			if (current_unix_timestamp - last_unloze_check) > SETTINGS.unloze_check_interval_in_seconds as i64 {
+				last_unloze_check = current_unix_timestamp;
+				do_unloze().await?;
+			}
 		}
 
 		control = LoopControl::Restart(SETTINGS.gb_wait_time_for_looping);
@@ -582,7 +594,201 @@ pub(crate) async fn run(gamebanana: bool, ksf: bool, unloze: bool) -> anyhow::Re
 	}
 }
 
+// worst function i've ever written?
+async fn update_ksf_list(downloads: &mut Arc<crate::csv::KsfDownloads>) -> anyhow::Result<LoopControl> {
+	// TODO: wrap this in the `try` shit whenever that drops...........
+	let resp = match PROXIED_CLIENT.get("https://ksf.surf/maps").send().await {
+		Ok(resp) => resp,
+		Err(e) => {
+			eprintln!("failed to fetch ksf.surf/maps\n{e:?}");
+			return Ok(LoopControl::Pass);
+		}
+	};
+	let resp = match resp.text().await {
+		Ok(resp) => resp,
+		Err(e) => {
+			eprintln!("failed to decode ksf.surf/maps as text\n{e:?}");
+			return Ok(LoopControl::Pass);
+		}
+	};
+
+	let maps = {
+		let document = scraper::Html::parse_document(&resp);
+		let script_selector = scraper::Selector::parse("script").unwrap();
+
+		let Some(target) = document
+			.select(&script_selector)
+			.find(|e| e.inner_html().contains(r###"\"link\":\"/files/"###))
+		else {
+			eprintln!("failed to find ksf map list javascript");
+			return Ok(LoopControl::Pass);
+		};
+		let inner = target.inner_html();
+		let Some((_, maps)) = inner.split_once(r###"{\"maps\":"###) else {
+			eprintln!("failed to split ksf map list out of string 1");
+			return Ok(LoopControl::Pass);
+		};
+		if !maps.ends_with(r##".zip\"}]}]]}]\n"])"##) {
+			eprintln!("failed to find end of ksf map list");
+			return Ok(LoopControl::Pass);
+		}
+		let maps = maps.trim_end_matches(r##"}]]}]\n"])"##);
+		let Ok(maps) = serde_json::from_str::<String>(&format!("\"{maps}\"")) else {
+			eprintln!("failed to parse ksf map list json 1");
+			return Ok(LoopControl::Pass);
+		};
+		//std::fs::write("/home/joe/Downloads/dump.json", &maps);
+		//println!("{maps}");
+		let Ok(maps) = serde_json::from_str::<Vec<KsfMap>>(&maps) else {
+			eprintln!("failed to parse ksf map list json 2");
+			return Ok(LoopControl::Pass);
+		};
+		maps
+	};
+
+	let mut updated = false;
+	{
+		let downloads = Arc::get_mut(downloads).unwrap();
+
+		for map in maps {
+			let Some(link) = &map.link else {
+				eprintln!("ksf.surf/maps has {} as fucked", map.name); // fuck you surf_sinister_evil_fix
+				continue;
+			};
+			if format!("/files/{}.zip", map.name) != *link {
+				eprintln!("ksf map {} doesn't match link!", map.name);
+				continue;
+			}
+
+			if let Some(_) = downloads.get(&map.name) {
+				continue;
+			}
+			downloads.insert(
+				map.name.clone(),
+				KsfDownloadsRow {
+					mapname: map.name,
+					downloaded: false,
+					processed: false,
+				},
+			);
+			updated = true;
+		}
+	}
+
+	if updated {
+		crate::csv::write_csv(
+			SETTINGS.dir_maps_cstrike.join("downloader-state/ksf.surf_maps-list.csv"),
+			Arc::clone(&downloads),
+		)
+		.await?;
+		Ok(LoopControl::Restart(1.0))
+	} else {
+		Ok(LoopControl::Pass)
+	}
+}
+
+async fn download_ksf_map(downloads: &mut Arc<crate::csv::KsfDownloads>) -> anyhow::Result<LoopControl> {
+	let find_next_download = || {
+		for (_mapname, row) in downloads.iter() {
+			if !row.downloaded {
+				return Some(row.clone());
+			}
+		}
+		None
+	};
+	let Some(row) = find_next_download() else {
+		return Ok(LoopControl::Pass);
+	};
+
+	let link = format!("https://ksf.surf/files/{}.zip", row.mapname);
+	let outputfilename = format!("{}.zip", row.mapname);
+	let _ = discord_webhook(true, &format!("new download at `{link}`")).await;
+
+	println!("downloading `{link}`");
+	let resp = match PROXIED_CLIENT.get(&link).send().await {
+		Ok(resp) => resp,
+		Err(e) => {
+			eprintln!("failed to download {link}\n{e:?}");
+			let _ = discord_webhook(true, &format!("{} on `{link}`", e.status().unwrap_or_default().as_u16())).await;
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors));
+		}
+	};
+
+	let resp = match resp.error_for_status() {
+		Ok(resp) => resp,
+		Err(e) => {
+			eprintln!("failed to download2 {link}\n{e:?}");
+			let _ = discord_webhook(true, &format!("{} on `{link}`", e.status().unwrap_or_default().as_u16())).await;
+
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors)); // TODO
+		}
+	};
+
+	let bytes = match resp.bytes().await {
+		Ok(bytes) => bytes,
+		Err(e) => {
+			eprintln!("stream died during {link} download?\n{e:?}");
+			let _ = discord_webhook(
+				true,
+				&format!(
+					"failed to download `{link}` (stream died?) ({})",
+					e.status().unwrap_or_default().as_u16()
+				),
+			)
+			.await;
+			return Ok(LoopControl::Restart(SETTINGS.gb_wait_time_after_errors)); // TODO
+		}
+	};
+
+	tokio::fs::write(SETTINGS.dir_ksf_auto.join(&outputfilename), &bytes).await?;
+
+	{
+		let downloads = Arc::get_mut(downloads).unwrap();
+		let entry = downloads.get_mut(&row.mapname).unwrap();
+		entry.downloaded = true;
+	}
+	crate::csv::write_csv(
+		SETTINGS.dir_maps_cstrike.join("downloader-state/ksf.surf_maps-list.csv"),
+		Arc::clone(&downloads),
+	)
+	.await?;
+	Ok(LoopControl::Restart(0.0))
+}
+
 async fn do_ksf() -> anyhow::Result<()> {
+	let mut new_bsps = Bsps::new();
+	//let mut bz2_upload_tasks = JoinSet::new();
+
+	let mut downloads = Arc::new(
+		crate::csv::load_csv(
+			SETTINGS.dir_maps_cstrike.join("downloader-state/ksf.surf_maps-list.csv"),
+			|row: &KsfDownloadsRow| row.mapname.clone(),
+		)
+		.await?,
+	);
+
+	let mut control = LoopControl::Pass;
+
+	loop {
+		if let LoopControl::Restart(sleep_seconds) = control {
+			if sleep_seconds > 0.0 {
+				tokio::time::sleep(Duration::from_secs_f32(sleep_seconds)).await;
+			}
+		}
+
+		// process
+
+		control = download_ksf_map(&mut downloads).await?;
+		if control != LoopControl::Pass {
+			continue;
+		}
+
+		control = update_ksf_list(&mut downloads).await?;
+		if control == LoopControl::Pass {
+			break;
+		}
+	}
+
 	Ok(())
 }
 
