@@ -174,7 +174,7 @@ surf_cookiejar,1,1
 surf_coralis_ksf,1,1
 surf_cordelia,1,1
 surf_core_refix,1,1
-surf_corrosion,0,0
+surf_corrosion,1,1
 surf_corruption,1,1
 surf_cosmo,1,1
 surf_cozy,1,1
@@ -190,7 +190,7 @@ surf_cubic_ksf,1,1
 surf_curious,1,1
 surf_cyanide,1,1
 surf_cyberwave,1,1
-surf_cyberwave_ksf,0,0
+surf_cyberwave_ksf,1,1
 surf_cyka_ksf,1,1
 surf_damn,1,1
 surf_damnation,1,1
@@ -229,7 +229,7 @@ surf_doodles_njv,1,1
 surf_doomsday,1,1
 surf_dova,1,1
 surf_dragon,1,1
-surf_dragonfall,0,0
+surf_dragonfall,1,1
 surf_dread,1,1
 surf_drift,1,1
 surf_drifting,1,1
@@ -301,7 +301,7 @@ surf_faint_fix,1,1
 surf_fairy,1,1
 surf_fantasy,1,1
 surf_fast,1,1
-surf_ferros,0,0
+surf_ferros,1,1
 surf_feudal,1,1
 surf_fiellu_ksf,1,1
 surf_finesse_final,1,1
@@ -427,7 +427,7 @@ surf_inrage2,1,1
 surf_insects,1,1
 surf_insideout_final,1,1
 surf_insignia_b1,1,1
-surf_insomnia,0,0
+surf_insomnia,1,1
 surf_inspire,1,1
 surf_instantdeath,1,1
 surf_intense_ksf,1,1
@@ -467,7 +467,7 @@ surf_kloakk,1,1
 surf_klue,1,1
 surf_koa,1,1
 surf_korn,1,1
-surf_kraken,0,0
+surf_kraken,1,1
 surf_krow10,1,1
 surf_kultur,1,1
 surf_kvas,1,1
@@ -490,7 +490,7 @@ surf_life_of_cow,1,1
 surf_lighthouse,1,1
 surf_like_this,1,1
 surf_limbo,1,1
-surf_liminal,0,0
+surf_liminal,1,1
 surf_listless_ksf,1,1
 surf_lithium,1,1
 surf_lithium2,1,1
@@ -536,7 +536,7 @@ surf_metallic,1,1
 surf_metalpipes,1,1
 surf_metalwall,1,1
 surf_methadone,1,1
-surf_midnight,0,0
+surf_midnight,1,1
 surf_midsommar,1,1
 surf_milkyway,1,1
 surf_minecraft_fix,1,1
@@ -568,6 +568,7 @@ surf_network2008_final,1,1
 surf_network_2009,1,1
 surf_network_2013,1,1
 surf_networked,1,1
+surf_nightingale,1,1
 surf_nightmare,1,1
 surf_nikolo,1,1
 surf_noble,1,1
@@ -583,7 +584,7 @@ surf_not_so_sinister_ksf,1,1
 surf_nova,1,1
 surf_nsz_fix,1,1
 surf_nuclear,1,1
-surf_null,0,0
+surf_null,1,1
 surf_ny_advance,1,1
 surf_ny_momentum2_ksf,1,1
 surf_ny_momentum_v3_1,1,1
@@ -643,7 +644,7 @@ surf_pogchamp,1,1
 surf_polonia,1,1
 surf_polygon,1,1
 surf_polytron,1,1
-surf_pools,0,0
+surf_pools,1,1
 surf_porn_fix,1,1
 surf_portal_game4,1,1
 surf_pox,1,1
@@ -790,7 +791,7 @@ surf_skill8,1,1
 surf_skill8_h,1,1
 surf_skipalot,1,1
 surf_sky_ages,1,1
-surf_sky_city,0,0
+surf_sky_city,1,1
 surf_slate,1,1
 surf_sleeper,1,1
 surf_slob,1,1
@@ -805,7 +806,7 @@ surf_smol,1,1
 surf_sodacity,1,1
 surf_sofia_fix,1,1
 surf_solace,1,1
-surf_solitude,0,0
+surf_solitude,1,1
 surf_spacejam,1,1
 surf_spacemonkeys,1,1
 surf_spaceship_ksf,1,1
