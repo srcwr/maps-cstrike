@@ -561,14 +561,12 @@ pub(crate) async fn run(provider: AutodlProviders) -> anyhow::Result<()> {
 
 		let current_unix_timestamp = jiff::Timestamp::now().as_second();
 
-		/*
 		if provider == AutodlProviders::All || provider == AutodlProviders::KSF {
 			if (current_unix_timestamp - last_ksf_check) > SETTINGS.ksf_check_interval_in_seconds as i64 {
 				last_ksf_check = current_unix_timestamp;
 				do_ksf().await?;
 			}
 		}
-		*/
 
 		if provider == AutodlProviders::All || provider == AutodlProviders::Unloze {
 			if (current_unix_timestamp - last_unloze_check) > SETTINGS.unloze_check_interval_in_seconds as i64 {
@@ -592,6 +590,162 @@ pub(crate) async fn run(provider: AutodlProviders) -> anyhow::Result<()> {
 			libmimalloc_sys::mi_collect(true);
 		}
 	}
+}
+
+// goal: make an even worse function that update_ksf_list
+async fn process_ksf_item(
+	downloads: &mut Arc<crate::csv::KsfDownloads>,
+	new_bsps: &mut Bsps,
+	bz2_upload_tasks: &mut JoinSet<anyhow::Result<()>>,
+	now: &mut Option<jiff::Timestamp>,
+) -> anyhow::Result<LoopControl> {
+	let find_next_download = || {
+		for (_mapname, row) in downloads.iter() {
+			if row.downloaded && !row.processed {
+				return Some(row.clone());
+			}
+		}
+		None
+	};
+	let Some(row) = find_next_download() else {
+		return Ok(LoopControl::Pass);
+	};
+
+	if now.is_none() {
+		*now = Some(jiff::Timestamp::now());
+	}
+
+	let shortnow = now.as_ref().unwrap().strftime("%Y%m%d%H%M").to_string();
+	let prettynow = now.as_ref().unwrap().strftime("%Y-%m-%d %H:%M").to_string();
+
+	let outputfilename = row.mapname.clone() + ".zip";
+	let outputdir = SETTINGS.dir_ksf_auto.join(&shortnow).join(&outputfilename);
+	tokio::fs::create_dir_all(&outputdir).await?;
+
+	let status = tokio::process::Command::new("7z")
+		.args([
+			"x",
+			"-y",
+			SETTINGS.dir_ksf_auto.join(&outputfilename).to_str().unwrap(),
+			&format!("-o{}", outputdir.to_str().unwrap()),
+		])
+		.status()
+		.await?;
+
+	anyhow::ensure!(status.success(), "failed to extract {outputfilename}");
+
+	let mut newly_hashed = base::mapshasher::run(
+		SETTINGS.dir_maps_cstrike.join("unprocessed/ksf.surf.csv"),
+		base::mapshasher::Mode::Automatic,
+		&outputdir,
+		false,
+		false,
+	)
+	.await?;
+	newly_hashed.sort();
+
+	// start uploading .bsp.bz2 files to r2...
+	for sha1 in newly_hashed.iter().map(|r| r.sha1.clone()).unique() {
+		let localpath = SETTINGS.dir_hashed.join(format!("{sha1}.bsp.bz2"));
+		let remotepath = format!("hashed/{sha1}.bsp.bz2");
+		let tries = 5;
+		bz2_upload_tasks.spawn(async move {
+			for i in 0..tries {
+				match cloudflare::r2_upload(&localpath, "hashed", &remotepath, "application/x-bzip").await {
+					Ok(()) => {
+						return Ok(());
+					}
+					Err(e) => {
+						eprintln!("failed to upload {sha1}.bsp.bz2 to r2 attempt #{}\n{e:?}", i + 1);
+						if i != tries - 1 {
+							tokio::time::sleep(Duration::from_secs(3)).await;
+						}
+					}
+				}
+			}
+			anyhow::bail!("failed to upload {sha1}.bsp.bz2 after {tries} tries...");
+		});
+	}
+
+	// do some automatic canonization stuff....
+	if !newly_hashed.is_empty() {
+		for item in &newly_hashed {
+			new_bsps.insert(hex_to_hash(&item.sha1));
+		}
+
+		let recently_added: Vec<_> = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("recently_added.csv"))?
+			.deserialize::<crate::csv::UnprocessedCsvRow>()
+			.try_collect()?;
+
+		let mut recently_added_csv = csv::Writer::from_writer(vec![]);
+		for row in &newly_hashed {
+			let mut row = row.clone();
+			row.recently_added_note = Some("automated upload".to_string());
+			row.datetime = Some(prettynow.clone());
+			recently_added_csv.serialize(row)?;
+		}
+
+		let mut newly_hashed_lookup = HashMap::new();
+		for row in &newly_hashed {
+			let _ = newly_hashed_lookup
+				.entry(normalize_mapname(&row.mapname))
+				.or_insert(row.sha1.clone());
+		}
+		let mut needs_canonization = BTreeMap::new();
+		for row in &recently_added {
+			let mapname = normalize_mapname(&row.mapname);
+			if let Some(sha1) = newly_hashed_lookup.get(&mapname) {
+				needs_canonization.insert(mapname, sha1.clone());
+			} else {
+				recently_added_csv.serialize(row)?;
+			}
+		}
+
+		tokio::fs::write(
+			SETTINGS.dir_maps_cstrike.join("recently_added.csv"),
+			recently_added_csv.into_inner().unwrap(),
+		)
+		.await?;
+
+		if !needs_canonization.is_empty() {
+			let mut canons = vec![];
+			{
+				let mut canon_csv = csv::Reader::from_path(SETTINGS.dir_maps_cstrike.join("canon.csv"))?;
+				for row in canon_csv.deserialize::<crate::csv::CanonCsvRow>() {
+					let row = row?;
+					if !needs_canonization.contains_key(&row.mapname) {
+						canons.push(row);
+					}
+				}
+			}
+			for (mapname, sha1) in needs_canonization {
+				canons.push(crate::csv::CanonCsvRow {
+					mapname,
+					sha1,
+					note: format!("automatic canonization {shortnow}"),
+				});
+			}
+			canons.sort();
+			let mut canon_csv = csv::Writer::from_writer(vec![]);
+			for row in canons {
+				canon_csv.serialize(row)?;
+			}
+			tokio::fs::write(SETTINGS.dir_maps_cstrike.join("canon.csv"), canon_csv.into_inner()?).await?;
+		}
+	}
+
+	{
+		let downloads = Arc::get_mut(downloads).unwrap();
+		let entry = downloads.get_mut(&row.mapname).unwrap();
+		entry.processed = true;
+	}
+	crate::csv::write_csv(
+		SETTINGS.dir_maps_cstrike.join("downloader-state/ksf.surf_maps-list.csv"),
+		Arc::clone(&downloads),
+	)
+	.await?;
+
+	Ok(LoopControl::Restart(0.0))
 }
 
 // worst function i've ever written?
@@ -704,7 +858,7 @@ async fn download_ksf_map(downloads: &mut Arc<crate::csv::KsfDownloads>) -> anyh
 	let outputfilename = format!("{}.zip", row.mapname);
 	let _ = discord_webhook(true, &format!("new download at `{link}`")).await;
 
-	println!("downloading `{link}`");
+	println!("downloading {link}");
 	let resp = match PROXIED_CLIENT.get(&link).send().await {
 		Ok(resp) => resp,
 		Err(e) => {
@@ -757,7 +911,7 @@ async fn download_ksf_map(downloads: &mut Arc<crate::csv::KsfDownloads>) -> anyh
 
 async fn do_ksf() -> anyhow::Result<()> {
 	let mut new_bsps = Bsps::new();
-	//let mut bz2_upload_tasks = JoinSet::new();
+	let mut bz2_upload_tasks = JoinSet::new();
 
 	let mut downloads = Arc::new(
 		crate::csv::load_csv(
@@ -767,6 +921,7 @@ async fn do_ksf() -> anyhow::Result<()> {
 		.await?,
 	);
 
+	let mut queued_now = None;
 	let mut control = LoopControl::Pass;
 
 	loop {
@@ -777,6 +932,10 @@ async fn do_ksf() -> anyhow::Result<()> {
 		}
 
 		// process
+		control = process_ksf_item(&mut downloads, &mut new_bsps, &mut bz2_upload_tasks, &mut queued_now).await?;
+		if control != LoopControl::Pass {
+			continue;
+		}
 
 		control = download_ksf_map(&mut downloads).await?;
 		if control != LoopControl::Pass {
@@ -787,6 +946,16 @@ async fn do_ksf() -> anyhow::Result<()> {
 		if control == LoopControl::Pass {
 			break;
 		}
+	}
+
+	if let Some(now) = queued_now.take() {
+		finish_semimanual_stuff(
+			now,
+			std::mem::take(&mut bz2_upload_tasks),
+			std::mem::take(&mut new_bsps),
+			"ksf.surf",
+		)
+		.await?;
 	}
 
 	Ok(())

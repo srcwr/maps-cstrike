@@ -26,11 +26,11 @@ pub struct GbSubmitter {
 // na=N/A, no=None, mi=Minor, mo=Moderate, ma=Major
 #[derive(Serialize, Deserialize)]
 pub struct GbAiUsage {
-	art: String,
-	code: String,
-	audio: String,
-	concept: String,
-	profile: String,
+	art: Option<String>,
+	code: Option<String>,
+	audio: Option<String>,
+	concept: Option<String>,
+	profile: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
