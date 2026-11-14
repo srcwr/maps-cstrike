@@ -3,6 +3,7 @@
 
 use std::{
 	collections::{BTreeMap, HashMap, btree_map},
+	path::PathBuf,
 	sync::{Arc, LazyLock, Mutex},
 	time::Duration,
 };
@@ -41,6 +42,10 @@ async fn discord_webhook(ping: bool, message: &str) -> anyhow::Result<()> {
 		}))
 		.send()
 		.await?;
+	Ok(())
+}
+
+async fn normalize_fuckass_backslashes(basedir: PathBuf) -> anyhow::Result<()> {
 	Ok(())
 }
 
@@ -378,6 +383,8 @@ async fn process_gb_item(
 
 	anyhow::ensure!(status.success(), "failed to extract {outputfilename}");
 
+	normalize_fuckass_backslashes(SETTINGS.dir_gamebanana_scrape.join(&outputfilename)).await?;
+
 	let mut newly_hashed = base::mapshasher::run(
 		SETTINGS.dir_maps_cstrike.join("unprocessed/gamebanana-x-automatic.csv"),
 		base::mapshasher::Mode::Automatic,
@@ -633,6 +640,8 @@ async fn process_ksf_item(
 		.await?;
 
 	anyhow::ensure!(status.success(), "failed to extract {outputfilename}");
+
+	normalize_fuckass_backslashes(SETTINGS.dir_gamebanana_scrape.join(&outputfilename)).await?;
 
 	let mut newly_hashed = base::mapshasher::run(
 		SETTINGS.dir_maps_cstrike.join("unprocessed/ksf.surf.csv"),
