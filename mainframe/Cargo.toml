@@ -44,8 +44,8 @@ libmimalloc-sys = { version = "*", features = ["extended"] }
 rand = "0.10"
 rayon = "1.10.0"
 regex = "1.11.1"
-reqwest = { version = "0.13", features = ["brotli", "gzip", "json", "multipart", "stream", "socks"], optional = true }
-rusqlite = { version = "0.41", features = ["bundled"] }
+reqwest = { version = "0.13", default-features = false, features = ["brotli", "charset", "gzip", "http2", "json", "multipart", "native-tls", "stream", "socks"], optional = true }
+rusqlite = { version = "0.42", features = ["bundled"] }
 rusty-s3 = { version = "0.11", optional = true }
 scraper = "0.29.0"
 serde = { version = "1", features = ["derive"] }
@@ -57,7 +57,7 @@ thousands = "0.2.0"
 tokio = { version = "1", features = ["full"] }
 #tokio-rusqlite = { version = "0.7", features = ["bundled"] }
 tokio-rusqlite = { path = "../../tokio-rusqlite", features = ["bundled"] }
-twilight-gateway = { version = "0.18", features = ["simd-json"], optional = true }
+twilight-gateway = { version = "0.18", default-features = false, features = ["native-tls", "simd-json", "zlib"], optional = true }
 vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "f6aeb7b99146c9fdeb0ed0c5449fbd1f798ba658", default-features = false } # a fork to improve some things for us
 #vbsp = { path = "../../vbsp", default-features = false } # a fork to improve some things for us
 zip = { version = "9", default-features = false, features = ["lzma"] }
