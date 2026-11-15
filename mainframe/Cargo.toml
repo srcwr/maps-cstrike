@@ -58,7 +58,7 @@ tokio = { version = "1", features = ["full"] }
 #tokio-rusqlite = { version = "0.7", features = ["bundled"] }
 tokio-rusqlite = { path = "../../tokio-rusqlite", features = ["bundled"] }
 twilight-gateway = { version = "0.18", default-features = false, features = ["native-tls", "simd-json", "zlib"], optional = true }
-vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "f6aeb7b99146c9fdeb0ed0c5449fbd1f798ba658", default-features = false } # a fork to improve some things for us
+vbsp = { git = "https://github.com/srcwr/vbsp.git", rev = "cff44f979ec2b71fb259920013bdde5e1676f548", default-features = false } # a fork to improve some things for us
 #vbsp = { path = "../../vbsp", default-features = false } # a fork to improve some things for us
 zip = { version = "9", default-features = false, features = ["lzma"] }
 zstd = "0.14.3"

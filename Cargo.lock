@@ -3097,7 +3097,7 @@ dependencies = [
 [[package]]
 name = "vbsp"
 version = "0.9.1"
-source = "git+https://github.com/srcwr/vbsp.git?rev=f6aeb7b99146c9fdeb0ed0c5449fbd1f798ba658#f6aeb7b99146c9fdeb0ed0c5449fbd1f798ba658"
+source = "git+https://github.com/srcwr/vbsp.git?rev=cff44f979ec2b71fb259920013bdde5e1676f548#cff44f979ec2b71fb259920013bdde5e1676f548"
 dependencies = [
  "ahash",
  "arrayvec",
@@ -3117,7 +3117,7 @@ dependencies = [
 [[package]]
 name = "vbsp-common"
 version = "0.1.0"
-source = "git+https://github.com/srcwr/vbsp.git?rev=f6aeb7b99146c9fdeb0ed0c5449fbd1f798ba658#f6aeb7b99146c9fdeb0ed0c5449fbd1f798ba658"
+source = "git+https://github.com/srcwr/vbsp.git?rev=cff44f979ec2b71fb259920013bdde5e1676f548#cff44f979ec2b71fb259920013bdde5e1676f548"
 dependencies = [
  "binrw",
  "cgmath",
