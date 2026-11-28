@@ -791,11 +791,12 @@ async fn update_ksf_list(downloads: &mut Arc<crate::csv::KsfDownloads>) -> anyho
 			eprintln!("failed to split ksf map list out of string 1");
 			return Ok(LoopControl::Pass);
 		};
-		if !maps.ends_with(r##".zip\"}]}]]}]\n"])"##) {
+		// meh
+		if !maps.ends_with(r##".zip\"}],\"signedIn\":false}]]}]\n"])"##) {
 			eprintln!("failed to find end of ksf map list");
 			return Ok(LoopControl::Pass);
 		}
-		let maps = maps.trim_end_matches(r##"}]]}]\n"])"##);
+		let maps = maps.trim_end_matches(r##",\"signedIn\":false}]]}]\n"])"##);
 		let Ok(maps) = serde_json::from_str::<String>(&format!("\"{maps}\"")) else {
 			eprintln!("failed to parse ksf map list json 1");
 			return Ok(LoopControl::Pass);
